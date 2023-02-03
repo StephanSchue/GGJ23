@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/grid-ingame.uss?fileID=7433441132597879392&amp;guid=55bdb8c376eac6c42a68b1d0064fb9d1&amp;type=3#grid-ingame" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: flex-end;">
+        <ui:VisualElement name="ContainerHelp" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.5); padding-left: 15px; padding-right: 15px; padding-top: 15px; padding-bottom: 15px; visibility: visible; display: none; overflow: visible; opacity: 1;">
+            <ui:VisualElement name="ContainerHelpHeadline" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; align-self: stretch; visibility: visible;">
+                <ui:Label tabindex="-1" text="Instructions" display-tooltip-when-elided="true" name="LabelHeadline" class="h1" style="flex-shrink: 0; flex-grow: 0;" />
+                <ui:Button text="X" display-tooltip-when-elided="true" name="ButtonHelpExit" class="h1" style="white-space: nowrap; flex-shrink: 0; flex-grow: 0; align-items: flex-end;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ContainerHelpContent" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ContainerHUD" style="flex-grow: 0; justify-content: flex-end; background-color: rgba(0, 0, 0, 0.5); flex-basis: 15%; flex-direction: row;">
+            <ui:Button text="Help" display-tooltip-when-elided="true" name="ButtonHelp" style="flex-direction: column;" />
+            <ui:Button text="Restart" display-tooltip-when-elided="true" name="ButtonRestart" style="flex-direction: column;" />
+            <ui:Button text="Exit" display-tooltip-when-elided="true" name="ButtonExit" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
