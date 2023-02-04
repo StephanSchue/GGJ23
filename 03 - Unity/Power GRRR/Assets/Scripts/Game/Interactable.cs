@@ -11,11 +11,13 @@ namespace GGJ23.Game
 
     public class Interactable : MonoBehaviour
     {
-        public InteractionStatus _status;
-        public SpriteRenderer sprite;
-        public float _progress = 0f;
+        private InteractionStatus _status;
+        private float _progress = 0f;
         public float _duration = 2f;
         public float _interactionRadius = 1f;
+
+        public InteractionStatus Status => _status;
+        public float Progress => _progress;
 
         private void Awake()
         {
@@ -25,7 +27,6 @@ namespace GGJ23.Game
         public void Initalize()
         {
             _status = InteractionStatus.Free;
-            sprite.color = Color.red;
             _progress = _duration;
         }
 
@@ -35,12 +36,13 @@ namespace GGJ23.Game
             {
                 if (_progress < 0f)
                 {
-                    sprite.color = Color.green;
+                    _progress = 0f;
                     _status = InteractionStatus.Finished;
                     return;
                 }
 
                 _progress -= dt;
+                _status = InteractionStatus.Progress;
             }
         }
 

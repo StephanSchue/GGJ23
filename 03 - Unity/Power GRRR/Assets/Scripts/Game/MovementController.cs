@@ -8,7 +8,9 @@ namespace GGJ23.Game
 
         private Rigidbody2D _rigidbody2D;
         private Vector2 _movement = new Vector2();
-        private bool _isMoving;
+
+        public bool IsMoving { get; private set; }
+        public Vector2 Direction { get; private set; }
 
         private void Awake()
         {
@@ -25,11 +27,12 @@ namespace GGJ23.Game
                 _movement.Normalize();
                 _rigidbody2D.MovePosition((Vector2)transform.position + (_movement * (Speed * Time.deltaTime)));
                 //TODO replicate this movement to Night version of player
-                _isMoving = true;
+                Direction = _movement;
+                IsMoving = true;
             }
             else
             {
-                _isMoving = false;
+                IsMoving = false;
             }
         }
     }
