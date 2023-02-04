@@ -969,10 +969,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
-      propertyPath: _dayDurationMs
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: CameraController
       value: 
       objectReference: {fileID: 1228991972}

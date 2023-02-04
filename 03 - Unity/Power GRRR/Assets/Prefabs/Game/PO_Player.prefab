@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2922046092800515606}
   - component: {fileID: 3683238839219040910}
   - component: {fileID: 4495007425672255498}
+  - component: {fileID: 6359459125389910386}
   m_Layer: 0
   m_Name: PO_Player
   m_TagString: Untagged
@@ -140,6 +141,27 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.8
+--- !u!95 &6359459125389910386
+Animator:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5052716930494107051}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da3b6b3ac924194439f9f2089857e84a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &6987773973082998998
 GameObject:
   m_ObjectHideFlags: 0

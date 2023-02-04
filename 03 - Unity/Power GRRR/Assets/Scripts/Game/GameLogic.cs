@@ -73,7 +73,7 @@ namespace GGJ23.Game
             List<Interactable> tempInteractables = new();
             List<Interactable> possibleInteractables = new();
 
-            foreach (var inter in _interactionController.Interactables)
+            foreach (var inter in InteractionController.Interactables)
             {
                 if (inter.Status == InteractionStatus.Free)
                 {
