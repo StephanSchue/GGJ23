@@ -4,16 +4,19 @@ namespace GGJ23.Game
 {
     public class InteractableVisuals : MonoBehaviour
     {
+        [Header("Components")]
         public Interactable interactable;
         public SpriteRenderer spriteRenderer;
-        public SpriteRenderer spriteLightGlow;
-
+        public SpriteRenderer spriteRendererLightGlow;
         public Animator animator;
+
+        [Header("Settings")]
         public RuntimeAnimatorController animatorController;
+        public Color[] statusColor;
+        public bool useStatusColor = true;
+        public bool useAnimator = true;
 
         private bool animate = false;
-
-        public Color[] statusColor;
 
         private void Awake()
         {
@@ -25,20 +28,22 @@ namespace GGJ23.Game
         private void Update()
         {
             var status = interactable.Status;
-            spriteRenderer.color = statusColor[(int)status];
+         
+            if(useStatusColor)
+                spriteRenderer.color = statusColor[(int)status];
 
             bool working = (status == InteractionStatus.Working && status == InteractionStatus.FreshlyRepaired);
 
             if (interactable.IsNight)
             {
-                spriteLightGlow.enabled = working;
+                spriteRendererLightGlow.enabled = working;
             }
             else
             {
-                spriteLightGlow.enabled = false;
+                spriteRendererLightGlow.enabled = false;
             }
 
-            if (animate)
+            if (animate && useAnimator)
             {
                 animator.SetBool("Broken", !working);
             }

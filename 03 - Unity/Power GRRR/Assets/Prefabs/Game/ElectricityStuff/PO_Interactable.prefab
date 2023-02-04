@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 8745342387419136971}
   spriteRenderer: {fileID: 1401708215118854039}
-  spriteLightGlow: {fileID: 3459754849573127731}
+  spriteRendererLightGlow: {fileID: 3459754849573127731}
   animator: {fileID: 4229308815669588759}
   animatorController: {fileID: 0}
   statusColor:
@@ -119,6 +119,8 @@ MonoBehaviour:
   - {r: 1, g: 0.06326783, b: 0, a: 1}
   - {r: 1, g: 0.9397107, b: 0, a: 1}
   - {r: 0, g: 0.16855001, b: 1, a: 1}
+  useStatusColor: 1
+  useAnimator: 1
 --- !u!95 &4229308815669588759
 Animator:
   serializedVersion: 6

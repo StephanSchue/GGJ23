@@ -4,6 +4,8 @@ namespace GGJ23.UI
 {
     public class GameManager : MonoBehaviour
     {
+        public float Energy { get; private set; } = 100f;
+
         private bool _paused = false;
 
         #region init
@@ -34,6 +36,7 @@ namespace GGJ23.UI
         public void Pause(bool pause)
         {
             _paused = pause;
+            Time.timeScale = _paused ? 0f : 1f;
         }
 
         public void Exit()

@@ -25,6 +25,8 @@ namespace GGJ23.Game
 
         public bool IsNight => _isNight;
 
+        public bool IsConnected { get; private set; } = true;
+
         private void Awake()
         {
             Initalize();
