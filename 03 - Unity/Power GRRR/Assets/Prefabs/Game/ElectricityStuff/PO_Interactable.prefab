@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8745342387419136971}
   - component: {fileID: 1660558319927056648}
   - component: {fileID: 3507545038386458444}
+  - component: {fileID: 4229308815669588759}
   m_Layer: 0
   m_Name: PO_Interactable
   m_TagString: Untagged
@@ -111,11 +112,34 @@ MonoBehaviour:
   interactable: {fileID: 8745342387419136971}
   spriteRenderer: {fileID: 1401708215118854039}
   spriteLightGlow: {fileID: 3459754849573127731}
+  animator: {fileID: 4229308815669588759}
+  animatorController: {fileID: 0}
   statusColor:
   - {r: 0.05724907, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.06326783, b: 0, a: 1}
   - {r: 1, g: 0.9397107, b: 0, a: 1}
   - {r: 0, g: 0.16855001, b: 1, a: 1}
+--- !u!95 &4229308815669588759
+Animator:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429606033355651169}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3552630559740670159
 GameObject:
   m_ObjectHideFlags: 0
