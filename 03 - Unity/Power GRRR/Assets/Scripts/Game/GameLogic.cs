@@ -34,11 +34,10 @@ namespace GGJ23.Game
                 return;
             }
 
-            float progressToNextTime = ((_isNight ? _nightDurationMs : _dayDurationMs) / (Time.deltaTime * 1000)) * 0.5f;
+            float progressToNextTime = ((Time.deltaTime * 1000) / (_isNight ? _nightDurationMs : _dayDurationMs)) * 0.5f;
+
             _currentTime += progressToNextTime;
             _isNight = _currentTime % 1f >= 0.5f;
-
-            Debug.Log($"Current time: {_currentTime}.\nIsNight: {_isNight.ToString()}");
         }
     }
 }
