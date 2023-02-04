@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GGJ23.Game
 {
@@ -8,9 +9,15 @@ namespace GGJ23.Game
         private Interactable[] _interactables;
         private Interactable _nearestInteractable;
 
-        public void PopulateInteractables(Interactable[] interactables)
+        public void PopulateInteractables(Interactable[] interactables, UnityEvent OnDaySwitch, UnityEvent OnNightSwitch)
         {
             _interactables = interactables;
+
+            for(int i = 0; i < _interactables.Length; i++)
+            {
+                OnDaySwitch.AddListener(_interactables[i].OnDaySwitch);
+                OnNightSwitch.AddListener(_interactables[i].OnNightSwitch);
+            }
         }
 
         private void Update()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GGJ23.Game
 {
@@ -14,10 +15,16 @@ namespace GGJ23.Game
         private float _currentScore = 0f;
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
 
+        [Header("Events")]
+        public UnityEvent OnDaySwitch;
+        public UnityEvent OnNightSwitch;
+
+        public bool IsNight => _isNight;
+
         private void Awake()
         {
             _interactionController = new();
-            _interactionController.PopulateInteractables(FindObjectsByType<Interactable>(FindObjectsSortMode.None));
+            _interactionController.PopulateInteractables(FindObjectsByType<Interactable>(FindObjectsSortMode.None), OnDaySwitch, OnNightSwitch);
         }
 
         // Start is called before the first frame update
@@ -34,9 +41,23 @@ namespace GGJ23.Game
                 return;
             }
 
+            bool lastIsNight = _isNight;
+
             float progressToNextTime = ((_isNight ? _nightDurationMs : _dayDurationMs) / (Time.deltaTime * 1000)) * 0.5f;
             _currentTime += progressToNextTime;
             _isNight = _currentTime % 1f >= 0.5f;
+
+            if(lastIsNight != _isNight)
+            {
+                if(_isNight)
+                {
+                    OnNightSwitch.Invoke();
+                }
+                else
+                {
+                    OnDaySwitch.Invoke();
+                }
+            }
 
             Debug.Log($"Current time: {_currentTime}.\nIsNight: {_isNight.ToString()}");
         }
