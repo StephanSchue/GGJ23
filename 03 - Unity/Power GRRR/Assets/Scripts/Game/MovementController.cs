@@ -24,6 +24,7 @@ namespace GGJ23.Game
             {
                 _movement.Normalize();
                 _rigidbody2D.MovePosition((Vector2)transform.position + (_movement * (Speed * Time.deltaTime)));
+                //TODO replicate this movement to Night version of player
                 _isMoving = true;
             }
             else
