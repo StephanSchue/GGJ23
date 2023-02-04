@@ -41,14 +41,14 @@ namespace GGJ23.Game
 
         void Update()
         {
-            if (_status == InteractionStatus.Broken)
+            if (_status == InteractionStatus.FreshlyRepaired)
             {
                 _breakableTimer += Time.deltaTime * 1000;
                 if (_breakableTimer >= _timeToBecomeBreakable)
                 {
                     _breakableTimer = 0f;
-                    _progress = 0f;
-                    _status = InteractionStatus.FreshlyRepaired;
+                    _progress = _duration;
+                    _status = InteractionStatus.Working;
                 }
             }
         }
