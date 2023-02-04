@@ -5,9 +5,10 @@ namespace GGJ23.Game
 {
     public enum InteractionStatus
     {
-        Free,
-        Progress,
-        Finished
+        Working,
+        Broken,
+        BeingRepaired,
+        FreshlyRepaired
     }
 
     public class Interactable : MonoBehaviour
@@ -31,36 +32,41 @@ namespace GGJ23.Game
 
         public void Initalize()
         {
-            _status = InteractionStatus.Free;
+            _status = InteractionStatus.Working;
             _progress = _duration;
         }
 
         public void Process(float dt)
         {
-            if (_status < InteractionStatus.Finished)
+            if (_status == InteractionStatus.Broken || _status == InteractionStatus.BeingRepaired)
             {
                 if (_progress < 0f)
                 {
                     _progress = 0f;
-                    _status = InteractionStatus.Finished;
+                    _status = InteractionStatus.FreshlyRepaired;
                     return;
                 }
 
                 _progress -= dt;
-                _status = InteractionStatus.Progress;
+                _status = InteractionStatus.BeingRepaired;
             }
         }
 
         public void OnDaySwitch()
         {
-            Debug.Log("OnDaySwitch");
+            // Debug.Log("OnDaySwitch");
             _isNight = false;
         }
 
         public void OnNightSwitch()
         {
-            Debug.Log("OnNightSwitch");
+            // Debug.Log("OnNightSwitch");
             _isNight = true;
+        }
+
+        public void Break()
+        {
+            _status = InteractionStatus.Broken;
         }
 
         private void OnDrawGizmos()

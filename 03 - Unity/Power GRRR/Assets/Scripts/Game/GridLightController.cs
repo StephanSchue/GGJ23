@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 namespace GGJ23.Game
 {
@@ -12,7 +13,7 @@ namespace GGJ23.Game
         public void PopulateInteractables(Interactable[] interactables, UnityEvent OnDaySwitch, UnityEvent OnNightSwitch)
         {
             _interactables = interactables;
-
+            
             for (int i = 0; i < lineRenderers.Length; i++)
             {
                 lineRenderers[i].positionCount = _interactables.Length;
@@ -24,6 +25,20 @@ namespace GGJ23.Game
 
             OnDaySwitch.AddListener(this.OnDaySwitch);
             OnNightSwitch.AddListener(this.OnNightSwitch);
+        }
+
+        public void RefreshInteractableStatus(Interactable[] interactables)
+        {
+            _interactables = interactables.Where(x => x.Status != InteractionStatus.Broken).ToArray();
+
+            for (int i = 0; i < lineRenderers.Length; i++)
+            {
+                lineRenderers[i].positionCount = _interactables.Length;
+                for (int x = 0; x < _interactables.Length; x++)
+                {
+                    lineRenderers[i].SetPosition(x, _interactables[x].transform.position);
+                }
+            }
         }
 
         private void OnDaySwitch()

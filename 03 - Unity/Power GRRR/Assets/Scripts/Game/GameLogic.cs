@@ -62,7 +62,12 @@ namespace GGJ23.Game
                 {
                     OnNightSwitch.Invoke();
                     //TODO hook this up properly
-                    GenerateBrokenInteractables();
+                    foreach (var inter in GenerateBrokenInteractables())
+                    {
+                        inter.Break();
+                    }
+
+                    GridLightController.RefreshInteractableStatus(InteractionController.Interactables);
                 }
                 else
                 {
@@ -81,7 +86,7 @@ namespace GGJ23.Game
 
             foreach (var inter in InteractionController.Interactables)
             {
-                if (inter.Status == InteractionStatus.Free)
+                if (inter.Status == InteractionStatus.Working)
                 {
                     possibleInteractables.Add(inter);
                 }
