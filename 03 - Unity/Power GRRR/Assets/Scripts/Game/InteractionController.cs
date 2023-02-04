@@ -8,9 +8,9 @@ namespace GGJ23.Game
         private Interactable[] _interactables;
         private Interactable _nearestInteractable;
 
-        private void Awake()
+        public void PopulateInteractables(Interactable[] interactables)
         {
-            _interactables = FindObjectsByType<Interactable>(FindObjectsSortMode.None);
+            _interactables = interactables;
         }
 
         private void Update()
