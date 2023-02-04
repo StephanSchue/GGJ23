@@ -67,5 +67,51 @@ namespace GGJ23.Game
 
             Debug.Log($"Current time: {_currentTime}.\nIsNight: {_isNight.ToString()}");
         }
+
+        private List<Interactable> GenerateBrokenInteractables()
+        {
+            List<Interactable> tempInteractables = new();
+            List<Interactable> possibleInteractables = new();
+
+            foreach (var inter in _interactionController.Interactables)
+            {
+                if (inter.Status == InteractionStatus.Free)
+                {
+                    possibleInteractables.Add(inter);
+                }
+            }
+
+            float difficultyFactor = Mathf.Lerp(1f, 15f, (Mathf.InverseLerp(1f, 10f, Mathf.Clamp(_currentTime, 1f, 10f))));
+            Debug.Log(difficultyFactor);
+
+            while (difficultyFactor > 0.5f)
+            {
+                List<Interactable> tempPossibles = new(possibleInteractables);
+                while(true)
+                {
+                    // Get random possible interactable
+                    Interactable candidate = tempPossibles[Random.Range(0, tempPossibles.Count -1)];
+                    float distance = 0f;
+
+                    if (tempInteractables.Count != 0)
+                    {
+                        // distance = GetMinDistance(tempInteractables, candidate);
+                    }
+
+                    float difficultyFromDistance = Mathf.Lerp(0f, 2f, Mathf.InverseLerp(0f, 1000f, distance));
+                    float difficultyFromNumberOfInteractables = Mathf.Pow(tempInteractables.Count + 1, 1.035f);
+
+                    if (difficultyFactor > difficultyFromDistance + difficultyFromNumberOfInteractables)
+                    {
+                        tempInteractables.Add(candidate);
+                        possibleInteractables.Remove(candidate);
+                        difficultyFactor -= difficultyFromDistance + difficultyFromNumberOfInteractables;
+                        break;
+                    }
+                }
+            }
+
+            return tempInteractables;
+        }
     }
 }
