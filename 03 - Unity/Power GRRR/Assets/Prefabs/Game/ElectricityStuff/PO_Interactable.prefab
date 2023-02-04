@@ -112,9 +112,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1401708215118854039}
   spriteLightGlow: {fileID: 3459754849573127731}
   statusColor:
-  - {r: 1, g: 0.088493854, b: 0, a: 1}
-  - {r: 1, g: 0.9750242, b: 0, a: 1}
-  - {r: 0.09435034, g: 1, b: 0, a: 1}
+  - {r: 0.05724907, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.06326783, b: 0, a: 1}
+  - {r: 1, g: 0.9397107, b: 0, a: 1}
+  - {r: 0, g: 0.16855001, b: 1, a: 1}
 --- !u!1 &3552630559740670159
 GameObject:
   m_ObjectHideFlags: 0
