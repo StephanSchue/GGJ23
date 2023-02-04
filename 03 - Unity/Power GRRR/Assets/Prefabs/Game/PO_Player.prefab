@@ -76,8 +76,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f9bd28118a6b4488b133b6303f3d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 7064031461995699231}
   movementController: {fileID: 8945997299003857636}
+  interactionController: {fileID: 528225488335055854}
+  spriteRenderer: {fileID: 7064031461995699231}
+  animator: {fileID: 6359459125389910386}
 --- !u!50 &3683238839219040910
 Rigidbody2D:
   serializedVersion: 4

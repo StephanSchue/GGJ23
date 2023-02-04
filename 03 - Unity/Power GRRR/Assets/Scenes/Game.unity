@@ -911,6 +911,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1708451880}
+    - target: {fileID: 5588323956161145595, guid: 09e69d0c68820b744b06362d870f9a3e, type: 3}
+      propertyPath: m_Priority
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 9134769571471099703, guid: 09e69d0c68820b744b06362d870f9a3e, type: 3}
       propertyPath: m_RootOrder
       value: 3

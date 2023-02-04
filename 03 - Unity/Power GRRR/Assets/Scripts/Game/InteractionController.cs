@@ -10,6 +10,10 @@ namespace GGJ23.Game
         private Interactable[] _interactables;
         private Interactable _nearestInteractable;
 
+        private bool _isWorking = false;
+
+        public bool IsWorking => _isWorking;
+
         public void PopulateInteractables(Interactable[] interactables, UnityEvent OnDaySwitch, UnityEvent OnNightSwitch)
         {
             _interactables = interactables;
@@ -23,6 +27,8 @@ namespace GGJ23.Game
 
         private void Update()
         {
+            _isWorking = false;
+
             if (Input.GetButton("Fire1"))
             {
                 // Check for nearest Interactable
@@ -44,6 +50,7 @@ namespace GGJ23.Game
                 if (_nearestInteractable != null)
                 {
                     _nearestInteractable.Process(Time.deltaTime);
+                    _isWorking = true;
                 }
             }
         }
