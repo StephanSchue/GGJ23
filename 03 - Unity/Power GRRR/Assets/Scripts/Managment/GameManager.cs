@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GGJ23.UI
 {
     public class GameManager : MonoBehaviour
     {
         public float Energy { get; private set; } = 100f;
+        public int Score { get; private set; } = 0;
+
+        public UnityEvent OnGameOver;
 
         private bool _paused = false;
 
@@ -37,6 +41,21 @@ namespace GGJ23.UI
         {
             _paused = pause;
             Time.timeScale = _paused ? 0f : 1f;
+        }
+
+        public void SetEnergy(float energy)
+        {
+            Energy = energy;
+        }
+
+        public void SetScore(int score)
+        {
+            Score = score;
+        }
+
+        public void GameOver()
+        {
+            OnGameOver.Invoke();
         }
 
         public void Exit()

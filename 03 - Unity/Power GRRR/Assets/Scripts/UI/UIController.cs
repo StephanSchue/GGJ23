@@ -13,6 +13,7 @@ namespace GGJ23.UI
 
         private VisualElement _helpContainer;
         private VisualElement _pauseContainer;
+        private VisualElement _gameOverContainer;
 
         private ProgressBar _progressbarEnergy;
         private Button _buttonPause;
@@ -22,12 +23,17 @@ namespace GGJ23.UI
         private Button _buttonRestart;
         private Button _buttonExit;
 
-        private bool _focused = false;
+        private Label _valueScore;
+
+        private bool _pauseOpen = false;
         private bool _helpOpen = false;
+        private bool _gameOverOpen = false;
 
         private void OnEnable()
         {
             _root = uiDocument.rootVisualElement;
+
+            gameManager.OnGameOver.AddListener(OnGameOver);
 
             if (_root == null)
                 return;
@@ -79,9 +85,13 @@ namespace GGJ23.UI
                 _buttonExit.focusable = false;
             }
 
+            // --- Value ---
+            _valueScore = _root.Q<Label>("ValueScore");
+
             // --- Containers ---
             _pauseContainer = _root.Q<VisualElement>("ContainerPause");
             _helpContainer = _root.Q<VisualElement>("ContainerHelp");
+            _gameOverContainer = _root.Q<VisualElement>("ContainerGameOver");
         }
 
         private void OnDisable()
@@ -111,7 +121,11 @@ namespace GGJ23.UI
 
             if (Input.GetButtonDown("Cancel"))
             {
-                if(_helpOpen)
+                if(_gameOverOpen)
+                {
+                    OnGameOverExit();
+                }
+                else if(_helpOpen)
                 {
                     OnClickHelpExit();
                 }
@@ -122,10 +136,25 @@ namespace GGJ23.UI
             }
         }
 
+        private void OnGameOver()
+        {
+            Debug.Log("GameOver:Enter");
+            _gameOverContainer.style.display = DisplayStyle.Flex;
+            _valueScore.text = string.Format("{0}", gameManager.Score);
+            _gameOverOpen = true;
+        }
+
+        private void OnGameOverExit()
+        {
+            Debug.Log("GameOver:Exit");
+            _gameOverContainer.style.display = DisplayStyle.None;
+            _gameOverOpen = false;
+        }
+
         private void TogglePause()
         {
-            _focused = !_focused;
-            OnClickPause(_focused);
+            _pauseOpen = !_pauseOpen;
+            OnClickPause(_pauseOpen);
         }
 
         private void OnClickPause(bool active)
@@ -166,6 +195,7 @@ namespace GGJ23.UI
         private void OnClickRestart()
         {
             Debug.Log("Restart");
+            OnGameOverExit();
             gameManager.Restart();
         }
 

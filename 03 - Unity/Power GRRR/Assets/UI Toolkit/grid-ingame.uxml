@@ -1,6 +1,14 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/grid-ingame.uss?fileID=7433441132597879392&amp;guid=55bdb8c376eac6c42a68b1d0064fb9d1&amp;type=3#grid-ingame" />
     <ui:VisualElement style="flex-grow: 1; justify-content: flex-end;">
+        <ui:VisualElement name="ContainerGameOver" style="background-color: rgba(0, 0, 0, 0.37); display: none; min-height: 80%; flex-grow: 1;">
+            <ui:VisualElement name="Space" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+            <ui:Label tabindex="-1" text="GameOver" display-tooltip-when-elided="true" name="LabelHeadline" class="h1" style="font-size: 32px; -unity-text-align: middle-center; white-space: normal;" />
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:Label tabindex="-1" text="Score" display-tooltip-when-elided="true" name="LabelScore" class="h1" style="font-size: 24px; -unity-text-align: lower-center; white-space: normal;" />
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ValueScore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement name="ContainerPause" style="background-color: rgba(0, 0, 0, 0.37); display: none; min-height: 80%; flex-grow: 1;">
             <ui:VisualElement name="ContainerHelpHeadline" style="background-color: rgba(0, 0, 0, 0); justify-content: flex-end; align-self: flex-end; height: 15%;">
                 <ui:Button text="X" display-tooltip-when-elided="true" name="ButtonPauseExit" class="h1" style="white-space: nowrap; align-items: flex-end;" />
