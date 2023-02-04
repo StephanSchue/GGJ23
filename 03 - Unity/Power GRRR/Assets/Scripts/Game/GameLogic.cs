@@ -17,11 +17,20 @@ namespace GGJ23.Game
 
         private bool _isNight = false;
         private float _currentScore = 0f;
+        private float _lossPoints = 0f;
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
 
         [Header("Events")]
         public UnityEvent OnDaySwitch;
         public UnityEvent OnNightSwitch;
+
+        [Header("Design Tuning")]
+        [Range(0f, 500f)] [SerializeField] private float _lossPointsNeeded = 100;
+        [Range(5f, 30f)][SerializeField] private float _maxDifficulty = 15f;
+        [Range(2.5f, 20f)][SerializeField] private float _timeToMaxDifficulty = 10f;
+        [Range(1f, 50f)][SerializeField] private float _maxDifficultyFromDistance = 15f;
+        [Range(200f, 2000f)][SerializeField] private float _distanceToMaxDifficulty = 500f;
+        [Range(0.1f, 1.5f)][SerializeField] private float _difficultyFactorFromMultipleBreakages = 0.235f;
 
         public bool IsNight => _isNight;
         
@@ -46,7 +55,6 @@ namespace GGJ23.Game
             OnDaySwitch.Invoke();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (Time.deltaTime == 0f)
@@ -79,7 +87,43 @@ namespace GGJ23.Game
                 }
             }
 
-            // Debug.Log($"Current time: {_currentTime}.\nIsNight: {_isNight.ToString()}");
+            UpdatePoints(Time.deltaTime);
+        }
+
+        private void UpdatePoints(float deltaTime)
+        {
+            // Track two scores simultaneously - the actual points and the progress to game loss.
+            // Gain points for just surviving.
+            // Gain progress towards game loss if there are broken buildings. The rate increases if the buildings have been broken for long.
+            // Undo progress towards game loss if there is a prolonged period of all buildings being fixed.
+
+            _currentScore += deltaTime;
+
+            bool allGood = true;
+            if (InteractionController != null)
+            {
+                foreach (var inter in InteractionController.Interactables)
+                {
+                    if (inter.Status == InteractionStatus.Broken || inter.Status == InteractionStatus.BeingRepaired)
+                    {
+                        allGood = false;
+                        _lossPoints += deltaTime;
+                    }
+                }
+
+                if (allGood)
+                {
+                    _lossPoints -= deltaTime;
+                }
+            }
+
+            if (_lossPoints >= _lossPointsNeeded)
+            {
+                // End the game
+                Debug.LogError($"You lost the game lmao");
+            }
+
+            Debug.Log($"Points:{_currentScore}, LossPoints:{_lossPoints}");
         }
 
         private List<Interactable> GenerateBrokenInteractables()
@@ -101,7 +145,7 @@ namespace GGJ23.Game
                 return tempInteractables;
             }
 
-            float difficultyFactor = Mathf.Lerp(1f, 15f, (Mathf.InverseLerp(1f, 10f, Mathf.Clamp(_currentTime, 1f, 10f))));
+            float difficultyFactor = Mathf.Lerp(1f, _maxDifficulty, (Mathf.InverseLerp(1f, _timeToMaxDifficulty, Mathf.Clamp(_currentTime, 1f, _timeToMaxDifficulty))));
             Debug.Log($"difficultyFactor to begin with: {difficultyFactor}");
 
             while (difficultyFactor >= 1f)
@@ -125,8 +169,8 @@ namespace GGJ23.Game
                         distance = GetMinDistance(tempInteractables, candidate);
                     }
 
-                    float difficultyFromDistance = Mathf.Lerp(0f, 15f, Mathf.InverseLerp(0f, 1000f, distance));
-                    float difficultyFromNumberOfInteractables = Mathf.Pow(tempInteractables.Count + 1, 0.235f);
+                    float difficultyFromDistance = Mathf.Lerp(0f, _maxDifficultyFromDistance, Mathf.InverseLerp(0f, _distanceToMaxDifficulty, distance));
+                    float difficultyFromNumberOfInteractables = Mathf.Pow(tempInteractables.Count + 1, _difficultyFactorFromMultipleBreakages);
 
                     Debug.Log($"distance: {distance}");
                     Debug.Log($"difficultyFromDistance: {difficultyFromDistance}");
