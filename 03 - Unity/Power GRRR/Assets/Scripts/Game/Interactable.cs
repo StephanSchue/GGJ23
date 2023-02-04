@@ -20,6 +20,10 @@ namespace GGJ23.Game
         public InteractionStatus Status => _status;
         public float Progress => _progress;
 
+        private bool _isNight = false;
+
+        public bool IsNight => _isNight;
+
         private void Awake()
         {
             Initalize();
@@ -50,11 +54,13 @@ namespace GGJ23.Game
         public void OnDaySwitch()
         {
             Debug.Log("OnDaySwitch");
+            _isNight = false;
         }
 
         public void OnNightSwitch()
         {
             Debug.Log("OnNightSwitch");
+            _isNight = true;
         }
 
         private void OnDrawGizmos()

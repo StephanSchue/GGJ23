@@ -10,7 +10,10 @@ namespace GGJ23.Game
         [SerializeField] private int _dayDurationMs = 60000;
         [SerializeField] private int _nightDurationMs = 10000;
 
-        public InteractionController _interactionController;
+        public InteractionController InteractionController;
+        public GridLightController GridLightController;
+        public CameraController CameraController;
+
         private bool _isNight = false;
         private float _currentScore = 0f;
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
@@ -24,7 +27,17 @@ namespace GGJ23.Game
         // Start is called before the first frame update
         void Start()
         {
-            _interactionController.PopulateInteractables(FindObjectsByType<Interactable>(FindObjectsSortMode.None), OnDaySwitch, OnNightSwitch);
+            var interactables = FindObjectsByType<Interactable>(FindObjectsSortMode.None);
+
+            if (InteractionController != null)
+                InteractionController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch);
+
+            if (GridLightController != null)
+                GridLightController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch);
+
+            if (CameraController != null)
+                CameraController.Populate(OnDaySwitch, OnNightSwitch);
+                
             GenerateBrokenInteractables();
         }
 
@@ -65,7 +78,7 @@ namespace GGJ23.Game
             List<Interactable> tempInteractables = new();
             List<Interactable> possibleInteractables = new();
 
-            foreach (var inter in _interactionController.Interactables)
+            foreach (var inter in InteractionController.Interactables)
             {
                 if (inter.Status == InteractionStatus.Free)
                 {

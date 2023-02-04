@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6190295885027169071}
   - component: {fileID: 6439203316802139592}
   - component: {fileID: 6913462494801278134}
+  - component: {fileID: 6882985345225581748}
   m_Layer: 0
   m_Name: PO_Main Camera
   m_TagString: MainCamera
@@ -127,3 +128,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6882985345225581748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086646307565277119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8953476c3e410b64f941e2a153634540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 6190295885027169071}
+  dayColor: {r: 1, g: 1, b: 1, a: 1}
+  nightColor: {r: 0, g: 0, b: 0, a: 1}
