@@ -6,6 +6,7 @@ namespace GGJ23.Game
     {
         public Interactable interactable;
         public SpriteRenderer spriteRenderer;
+        public SpriteRenderer spriteLightGlow;
 
         public Color[] statusColor;
 
@@ -13,6 +14,7 @@ namespace GGJ23.Game
         private void Update()
         {
             spriteRenderer.color = statusColor[(int)interactable.Status];
+            spriteLightGlow.enabled = interactable.IsNight;
         }
     }
 }
