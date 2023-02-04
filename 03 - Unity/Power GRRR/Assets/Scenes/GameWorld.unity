@@ -246,6 +246,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29907573dca87f54c922d095e2f04410, type: 3}
+--- !u!114 &930686120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6882985345225581748, guid: d1fddfcf8d3369b4396d91ec7bc317a6, type: 3}
+  m_PrefabInstance: {fileID: 103176456}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8953476c3e410b64f941e2a153634540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &932652140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -342,7 +353,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dayDurationMs: 6000
   _nightDurationMs: 1000
-  _interactionController: {fileID: 1690838180}
+  InteractionController: {fileID: 1690838180}
+  GridLightController: {fileID: 0}
+  CameraController: {fileID: 930686120}
   OnDaySwitch:
     m_PersistentCalls:
       m_Calls: []
