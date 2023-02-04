@@ -5,6 +5,7 @@ namespace GGJ23.Game
     public class InteractionController : MonoBehaviour
     {
         public float interactionRadius = 1f;
+        public Interactable[] Interactables {get => _interactables}
         private Interactable[] _interactables;
         private Interactable _nearestInteractable;
 
