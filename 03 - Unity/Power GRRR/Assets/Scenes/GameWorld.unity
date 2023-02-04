@@ -340,8 +340,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1998e36bed8b3f049b73bba3c99cdda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dayDurationMs: 60000
-  _nightDurationMs: 10000
+  _dayDurationMs: 6000
+  _nightDurationMs: 1000
+  _interactionController: {fileID: 1690838180}
+  OnDaySwitch:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNightSwitch:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1511537119
 Transform:
   m_ObjectHideFlags: 0
@@ -423,6 +430,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4541771713821877554, guid: 7c173f5bdd9e1ed41867d7c53b5a94bd, type: 3}
   m_PrefabInstance: {fileID: 1690838175}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1690838180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 528225488335055854, guid: 7c173f5bdd9e1ed41867d7c53b5a94bd, type: 3}
+  m_PrefabInstance: {fileID: 1690838175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0affbad523ff8c2459dbcd310a60f361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2039025455
 GameObject:
   m_ObjectHideFlags: 0

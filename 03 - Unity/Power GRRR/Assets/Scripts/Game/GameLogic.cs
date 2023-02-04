@@ -25,6 +25,7 @@ namespace GGJ23.Game
         void Start()
         {
             _interactionController.PopulateInteractables(FindObjectsByType<Interactable>(FindObjectsSortMode.None), OnDaySwitch, OnNightSwitch);
+            GenerateBrokenInteractables();
         }
 
         // Update is called once per frame
@@ -46,6 +47,8 @@ namespace GGJ23.Game
                 if (_isNight)
                 {
                     OnNightSwitch.Invoke();
+                    //TODO hook this up properly
+                    GenerateBrokenInteractables();
                 }
                 else
                 {
@@ -53,11 +56,12 @@ namespace GGJ23.Game
                 }
             }
 
-            Debug.Log($"Current time: {_currentTime}.\nIsNight: {_isNight.ToString()}");
+            // Debug.Log($"Current time: {_currentTime}.\nIsNight: {_isNight.ToString()}");
         }
 
         private List<Interactable> GenerateBrokenInteractables()
         {
+            Debug.Log("GENERATE BROKEN INTERACTABLES START");
             List<Interactable> tempInteractables = new();
             List<Interactable> possibleInteractables = new();
 
@@ -69,37 +73,77 @@ namespace GGJ23.Game
                 }
             }
 
-            float difficultyFactor = Mathf.Lerp(1f, 15f, (Mathf.InverseLerp(1f, 10f, Mathf.Clamp(_currentTime, 1f, 10f))));
-            Debug.Log(difficultyFactor);
+            if (possibleInteractables.Count < 1)
+            {
+                return tempInteractables;
+            }
 
-            while (difficultyFactor > 0.5f)
+            float difficultyFactor = Mathf.Lerp(1f, 15f, (Mathf.InverseLerp(1f, 10f, Mathf.Clamp(_currentTime, 1f, 10f))));
+            Debug.Log($"difficultyFactor to begin with: {difficultyFactor}");
+
+            while (difficultyFactor >= 1f)
             {
                 List<Interactable> tempPossibles = new(possibleInteractables);
                 while(true)
                 {
-                    // Get random possible interactable
-                    Interactable candidate = tempPossibles[Random.Range(0, tempPossibles.Count -1)];
-                    float distance = 0f;
-
-                    if (tempInteractables.Count != 0)
+                    if (tempPossibles.Count < 1)
                     {
-                        // distance = GetMinDistance(tempInteractables, candidate);
+                        Debug.Log("GENERATE BROKEN INTERACTABLES END NR 1");
+                        return tempInteractables;
                     }
 
-                    float difficultyFromDistance = Mathf.Lerp(0f, 2f, Mathf.InverseLerp(0f, 1000f, distance));
-                    float difficultyFromNumberOfInteractables = Mathf.Pow(tempInteractables.Count + 1, 1.035f);
+                    // Get random possible interactable
+                    Interactable candidate = tempPossibles[Random.Range(0, tempPossibles.Count -1)];
+                    Debug.Log($"candidate: {candidate.gameObject.name}");
+                    float distance = 0f;
 
-                    if (difficultyFactor > difficultyFromDistance + difficultyFromNumberOfInteractables)
+                    if (tempInteractables.Count > 0)
+                    {
+                        distance = GetMinDistance(tempInteractables, candidate);
+                    }
+
+                    float difficultyFromDistance = Mathf.Lerp(0f, 15f, Mathf.InverseLerp(0f, 1000f, distance));
+                    float difficultyFromNumberOfInteractables = Mathf.Pow(tempInteractables.Count + 1, 0.235f);
+
+                    Debug.Log($"distance: {distance}");
+                    Debug.Log($"difficultyFromDistance: {difficultyFromDistance}");
+                    Debug.Log($"difficultyFromNumberOfInteractables: {difficultyFromNumberOfInteractables}");
+                    Debug.Log($"total difficulty for this candidate: {difficultyFromDistance + difficultyFromNumberOfInteractables}");
+
+                    if (difficultyFactor - (difficultyFromDistance + difficultyFromNumberOfInteractables) > -0.5f)
                     {
                         tempInteractables.Add(candidate);
                         possibleInteractables.Remove(candidate);
                         difficultyFactor -= difficultyFromDistance + difficultyFromNumberOfInteractables;
+                        
+                        Debug.Log($"Added valid candidate: {candidate.gameObject.name}");
+                        Debug.Log($"leftover difficultyFactor: {difficultyFactor}");
+
                         break;
+                    }
+                    else
+                    {
+                        Debug.Log($"Removing invalid candidate, was too difficult: {candidate.gameObject.name}");
+                        tempPossibles.Remove(candidate);
                     }
                 }
             }
 
+
+            Debug.Log("GENERATE BROKEN INTERACTABLES END");
             return tempInteractables;
+        }
+
+        private float GetMinDistance(List<Interactable> list, Interactable candidate)
+        {
+            float tempDistance = float.MaxValue;
+
+            foreach (var inter in list)
+            {
+                tempDistance = Mathf.Min(tempDistance, Vector2.Distance(candidate.transform.position, inter.transform.position));
+            }
+
+            return tempDistance;
         }
     }
 }
