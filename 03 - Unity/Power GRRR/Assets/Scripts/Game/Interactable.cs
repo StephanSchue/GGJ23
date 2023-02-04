@@ -27,6 +27,9 @@ namespace GGJ23.Game
 
         public bool IsConnected { get; private set; } = true;
 
+        private float _timeToBecomeBreakable = 10000f;
+        private float _breakableTimer = 0f;
+
         private void Awake()
         {
             Initalize();
@@ -36,6 +39,20 @@ namespace GGJ23.Game
         {
             _status = InteractionStatus.Working;
             _progress = _duration;
+        }
+
+        void Update()
+        {
+            if (_status == InteractionStatus.FreshlyRepaired)
+            {
+                _breakableTimer += Time.deltaTime * 1000;
+                if (_breakableTimer >= _timeToBecomeBreakable)
+                {
+                    _breakableTimer = 0f;
+                    _progress = _duration;
+                    _status = InteractionStatus.Working;
+                }
+            }
         }
 
         public void Process(float dt)
