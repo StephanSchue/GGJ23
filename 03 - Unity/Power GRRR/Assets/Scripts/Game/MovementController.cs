@@ -22,6 +22,7 @@ namespace GGJ23.Game
 
             if(_movement.magnitude > 0.1f)
             {
+                _movement.Normalize();
                 _rigidbody2D.MovePosition((Vector2)transform.position + (_movement * (Speed * Time.deltaTime)));
                 //TODO replicate this movement to Night version of player
                 _isMoving = true;
