@@ -25,6 +25,8 @@ namespace GGJ23.Game
 
         public bool IsNight => _isNight;
 
+        public bool IsConnected { get; private set; } = true;
+
         private float _timeToBecomeBreakable = 10000f;
         private float _breakableTimer = 0f;
 
@@ -84,7 +86,6 @@ namespace GGJ23.Game
         public void Break()
         {
             _status = InteractionStatus.Broken;
-
         }
 
         private void OnDrawGizmos()

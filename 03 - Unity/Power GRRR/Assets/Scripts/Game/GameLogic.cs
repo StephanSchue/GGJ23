@@ -11,6 +11,7 @@ namespace GGJ23.Game
         [SerializeField] private int _nightDurationMs = 10000;
 
         public InteractionController InteractionController;
+        public PropController PropController;
         public GridLightController GridLightController;
         public CameraController CameraController;
 
@@ -40,6 +41,9 @@ namespace GGJ23.Game
 
             if (InteractionController != null)
                 InteractionController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch);
+
+            if (PropController != null)
+                PropController.PopulateProps(FindObjectsByType<Prop>(FindObjectsSortMode.None), OnDaySwitch, OnNightSwitch);
 
             if (GridLightController != null)
                 GridLightController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch);
