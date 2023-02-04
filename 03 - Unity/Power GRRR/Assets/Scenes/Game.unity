@@ -173,6 +173,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4541771713821877554, guid: 7c173f5bdd9e1ed41867d7c53b5a94bd, type: 3}
   m_PrefabInstance: {fileID: 256887169623285498}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1708451884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 528225488335055854, guid: 7c173f5bdd9e1ed41867d7c53b5a94bd, type: 3}
+  m_PrefabInstance: {fileID: 256887169623285498}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0affbad523ff8c2459dbcd310a60f361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &256887169623285498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -445,6 +456,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
+      propertyPath: _interactionController
+      value: 
+      objectReference: {fileID: 1708451884}
     - target: {fileID: 2929598138056439599, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: m_Name
       value: PO_GameManager

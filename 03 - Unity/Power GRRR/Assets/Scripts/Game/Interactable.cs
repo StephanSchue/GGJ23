@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GGJ23.Game
 {
@@ -44,6 +45,16 @@ namespace GGJ23.Game
                 _progress -= dt;
                 _status = InteractionStatus.Progress;
             }
+        }
+
+        public void OnDaySwitch()
+        {
+            Debug.Log("OnDaySwitch");
+        }
+
+        public void OnNightSwitch()
+        {
+            Debug.Log("OnNightSwitch");
         }
 
         private void OnDrawGizmos()
