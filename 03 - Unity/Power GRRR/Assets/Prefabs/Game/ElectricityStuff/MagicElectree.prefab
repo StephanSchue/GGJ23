@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 2863439252643743119}
   - component: {fileID: 1684274736912592337}
   - component: {fileID: 3988010086288879102}
+  - component: {fileID: 9012346989552641193}
   m_Layer: 0
   m_Name: MagicElectree
   m_TagString: Untagged
@@ -184,3 +185,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 2
   _interactionRadius: 1
+--- !u!114 &9012346989552641193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8784453974137783218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231982a263c06354e859d79beab15b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 3988010086288879102}
+  spriteRenderer: {fileID: 1684274736912592337}
+  spriteLightGlow: {fileID: 0}
+  statusColor: []

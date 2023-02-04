@@ -37,8 +37,9 @@ namespace GGJ23.Game
 
             if (CameraController != null)
                 CameraController.Populate(OnDaySwitch, OnNightSwitch);
-                
-            GenerateBrokenInteractables();
+
+            // GenerateBrokenInteractables();
+            OnDaySwitch.Invoke();
         }
 
         // Update is called once per frame
