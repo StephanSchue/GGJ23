@@ -10,7 +10,7 @@ namespace GGJ23.UI
 
         private void Initialize()
         {
-
+            DontDestroyOnLoad(this);
         }
 
         #endregion
