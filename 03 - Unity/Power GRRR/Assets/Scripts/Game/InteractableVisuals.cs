@@ -59,7 +59,8 @@ namespace GGJ23.Game
 
             if (interactable.IsNight)
             {
-                spriteRendererLightGlow.enabled = working;
+                spriteRendererLightGlow.enabled = true;
+                spriteRenderer.gameObject.SetActive(false);
                 notification.gameObject.SetActive(false);
                 fadingIn = false;
                 fadingOut = false;
@@ -68,6 +69,7 @@ namespace GGJ23.Game
             else
             {
                 spriteRendererLightGlow.enabled = false;
+                spriteRenderer.gameObject.SetActive(true);
                 if (working)
                 {
                     notification.gameObject.SetActive(false);

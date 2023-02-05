@@ -10,10 +10,21 @@ namespace GGJ23.Game
         public SpriteRenderer spriteRenderer;
         public Animator animator;
 
+        public SpriteRenderer nightSprite;
+
         private PlayerDirection playerDirection;
 
         private void Update()
         {
+            if (interactionController.IsNight)
+            {
+                spriteRenderer.gameObject.SetActive(false);
+                nightSprite.gameObject.SetActive(true);
+                return;
+            }
+
+            spriteRenderer.gameObject.SetActive(true);
+            nightSprite.gameObject.SetActive(false);
             float dot = Vector3.Dot(Vector3.right, movementController.Direction);
             spriteRenderer.flipX = (dot < 0f);
 
