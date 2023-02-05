@@ -119,6 +119,14 @@ namespace GGJ23.UI
         {
             _progressbarEnergy.value = gameManager.Energy;
 
+            if(Input.GetButtonDown("Submit"))
+            {
+                if (_gameOverOpen)
+                {
+                    OnGameOverExit();
+                }
+            }
+
             if (Input.GetButtonDown("Cancel"))
             {
                 if(_gameOverOpen)
