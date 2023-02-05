@@ -37,7 +37,7 @@ Transform:
   - {fileID: 5128449909980532874}
   - {fileID: 8268580083371942773}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8745342387419136971
 MonoBehaviour:
@@ -80,7 +80,7 @@ MonoBehaviour:
   - {r: 1, g: 0.06326783, b: 0, a: 1}
   - {r: 1, g: 0.9397107, b: 0, a: 1}
   - {r: 0, g: 0.16855001, b: 1, a: 1}
-  useStatusColor: 1
+  useStatusColor: 0
   useAnimator: 1
 --- !u!95 &4229308815669588759
 Animator:
