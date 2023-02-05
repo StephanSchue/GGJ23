@@ -1,3 +1,4 @@
+using GGJ23.Game;
 using GGJ23.Managment;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,6 +9,7 @@ namespace GGJ23.UI
     {
         [Header("Components")]
         public GameManager gameManager;
+        public MovementController movementController;
         public UIDocument uiDocument;
 
         private VisualElement _root;
@@ -17,6 +19,8 @@ namespace GGJ23.UI
         private VisualElement _gameOverContainer;
 
         private ProgressBar _progressbarEnergy;
+        private ProgressBar _progressbarBoost;
+
         private Button _buttonPause;
         private Button _buttonPauseExit;
         private Button _buttonHelp;
@@ -41,6 +45,7 @@ namespace GGJ23.UI
 
             // --- Progressbar ---
             _progressbarEnergy = _root.Q<ProgressBar>("ProgressbarEnergy");
+            _progressbarBoost = _root.Q<ProgressBar>("ProgressbarBoost");
 
             // --- Buttons ---
             _buttonPause = _root.Q<Button>("ButtonPause");
@@ -120,7 +125,14 @@ namespace GGJ23.UI
         {
             _progressbarEnergy.value = gameManager.Energy;
 
-            if(Input.GetButtonDown("Submit"))
+            if (movementController != null)
+            {
+                Debug.LogFormat("BoostInterval: {0}; BoostReady: {1}", movementController.BoostIntervalPercentage, movementController.BoostReady);
+                _progressbarBoost.value = movementController.BoostIntervalPercentage * 100f;
+                _progressbarBoost.title = movementController.BoostActive ? "Boost Active" : movementController.BoostReady ? "Boost Ready" : "Reload Boost";
+            }
+
+            if (Input.GetButtonDown("Submit"))
             {
                 if (_gameOverOpen)
                 {

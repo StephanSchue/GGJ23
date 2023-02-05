@@ -38,8 +38,6 @@ namespace GGJ23.Game
 
         private void Update()
         {
-            
-
             if (Input.GetButton("Fire1"))
             {
                 // Check for nearest Interactable
