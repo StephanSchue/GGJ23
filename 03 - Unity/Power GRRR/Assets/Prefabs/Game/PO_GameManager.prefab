@@ -576,8 +576,12 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 77c4a01fbddc3ec4cb7f2d6d109055cc, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
-  - label: Interactable_Fix_Abort
-    audioClips: []
+  - label: Interactable_Fix_Step
+    audioClips:
+    - {fileID: 8300000, guid: 330c85ce6014a804ba5269db80286139, type: 3}
+    - {fileID: 8300000, guid: 49cee02c4714b284694cb207f0a51f51, type: 3}
+    - {fileID: 8300000, guid: 2625abb32cd202a4ca2b788b3330c09e, type: 3}
+    - {fileID: 8300000, guid: 6c2cfbc3ea2c6a344a4b7c2203dfeae5, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Interactable_Fix_Complete

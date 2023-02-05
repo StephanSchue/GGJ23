@@ -3,6 +3,13 @@ using DG.Tweening;
 
 namespace GGJ23.Game
 {
+    public enum InteractableType
+    {
+        Tree = 0,
+        Flower,
+        Cactus
+    }
+
     public class InteractableVisuals : MonoBehaviour
     {
         [Header("Components")]

@@ -55,6 +55,7 @@ namespace GGJ23.Game
         void Start()
         {
             var interactables = FindObjectsByType<Interactable>(FindObjectsSortMode.None);
+            var props = FindObjectsByType<Prop>(FindObjectsSortMode.None);
 
             if (InteractionController != null)
             {
@@ -63,10 +64,10 @@ namespace GGJ23.Game
             }
 
             if (PropController != null)
-                PropController.PopulateProps(FindObjectsByType<Prop>(FindObjectsSortMode.None), OnDaySwitch, OnNightSwitch);
+                PropController.PopulateProps(props, OnDaySwitch, OnNightSwitch);
 
             if (GridLightController != null)
-                GridLightController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch);
+                GridLightController.PopulateInteractables(interactables, props, OnDaySwitch, OnNightSwitch);
 
             if (CameraController != null)
                 CameraController.Populate(OnDaySwitch, OnNightSwitch);
