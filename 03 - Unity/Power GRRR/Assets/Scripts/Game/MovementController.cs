@@ -64,7 +64,7 @@ namespace GGJ23.Game
 
             if (velocity > 0.1f
                 && _boostInputTimer < BoostThreshold
-                 && Input.GetButtonDown("Fire1"))
+                 && Input.GetButtonDown("Fire2"))
             {
                 _boostEffectTimer = BoostDuration;
                 _boostInputTimer = BoostInterval;
