@@ -211,7 +211,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: A_Character_TopView_Idle
-  m_Speed: 2
+  m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1060365810534349381}
@@ -473,7 +473,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: A_Character_RightView_Idle
-  m_Speed: 2
+  m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8449390017545058450}
@@ -678,7 +678,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: A_Character_BottomView_Idle
-  m_Speed: 2
+  m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1991448288681734068}
