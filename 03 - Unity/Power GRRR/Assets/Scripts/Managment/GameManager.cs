@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace GGJ23.Managment
 {
@@ -16,14 +17,10 @@ namespace GGJ23.Managment
         private bool _paused = false;
         private bool _gameOver = false;
 
-        #region init
-
-        private void Initialize()
+        private void Start()
         {
-            DontDestroyOnLoad(this);
+            gameLogic.GameOver.AddListener(GameOver);
         }
-
-        #endregion
 
         #region loop
 
@@ -31,11 +28,6 @@ namespace GGJ23.Managment
         {
             Energy = 1f - gameLogic.LossPercentage;
             Score = gameLogic.Score;
-
-            if(!_gameOver && Energy < 0f)
-            {
-                GameOver();
-            }
         }
 
         #endregion
@@ -45,6 +37,8 @@ namespace GGJ23.Managment
         public void Restart()
         {
             _gameOver = false;
+            Energy = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             Pause(false);
         }
 
