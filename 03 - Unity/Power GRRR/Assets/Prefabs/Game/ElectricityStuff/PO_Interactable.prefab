@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8610322923951162677}
   - component: {fileID: 8745342387419136971}
-  - component: {fileID: 1660558319927056648}
   - component: {fileID: 3507545038386458444}
   - component: {fileID: 4229308815669588759}
+  - component: {fileID: 2407249153789801972}
   m_Layer: 0
   m_Name: PO_Interactable
   m_TagString: Untagged
@@ -51,8 +51,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 2
   _interactionRadius: 1
---- !u!61 &1660558319927056648
-BoxCollider2D:
+--- !u!114 &3507545038386458444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429606033355651169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231982a263c06354e859d79beab15b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 8745342387419136971}
+  spriteRenderer: {fileID: 1401708215118854039}
+  spriteRendererLightGlow: {fileID: 3459754849573127731}
+  animator: {fileID: 4229308815669588759}
+  animatorController: {fileID: 9100000, guid: 2799f95603875ae479ae6393c9162f62, type: 2}
+  statusColor:
+  - {r: 0.05724907, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.06326783, b: 0, a: 1}
+  - {r: 1, g: 0.9397107, b: 0, a: 1}
+  - {r: 0, g: 0.16855001, b: 1, a: 1}
+  useStatusColor: 1
+  useAnimator: 1
+--- !u!95 &4229308815669588759
+Animator:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429606033355651169}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4fd97c76c53c4c4d8645e17c659a833, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!70 &2407249153789801972
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -86,62 +131,8 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &3507545038386458444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429606033355651169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 231982a263c06354e859d79beab15b94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 8745342387419136971}
-  spriteRenderer: {fileID: 1401708215118854039}
-  spriteRendererLightGlow: {fileID: 3459754849573127731}
-  animator: {fileID: 4229308815669588759}
-  animatorController: {fileID: 0}
-  statusColor:
-  - {r: 0.05724907, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.06326783, b: 0, a: 1}
-  - {r: 1, g: 0.9397107, b: 0, a: 1}
-  - {r: 0, g: 0.16855001, b: 1, a: 1}
-  useStatusColor: 1
-  useAnimator: 1
---- !u!95 &4229308815669588759
-Animator:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429606033355651169}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_Size: {x: 1.59, y: 1.94}
+  m_Direction: 0
 --- !u!1 &3552630559740670159
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,8 +290,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ead7b359c3384db4fa2fefd1da0c1c46, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
