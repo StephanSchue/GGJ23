@@ -79,8 +79,9 @@ namespace GGJ23.Managment
             {
                 if (sfxLayers[i].label == label)
                 {
+                    if (sfxLayers[i].audioClips.Length < 1) {break;}
                     sfxLayerSources[i].enabled = true;
-                    sfxLayerSources[i].clip = sfxLayers[i].audioClips[Random.Range(0, sfxLayers[i].audioClips.Length)];
+                    sfxLayerSources[i].clip = sfxLayers[i].audioClips[Random.Range(0, sfxLayers[i].audioClips.Length - 1)];
                     sfxLayerSources[i].DOFade(sfxLayers[i].volume, 0.1f);
                     sfxLayerSources[i].Play();
                     break;

@@ -127,7 +127,7 @@ namespace GGJ23.UI
 
             if (movementController != null)
             {
-                Debug.LogFormat("BoostInterval: {0}; BoostReady: {1}", movementController.BoostIntervalPercentage, movementController.BoostReady);
+                // Debug.LogFormat("BoostInterval: {0}; BoostReady: {1}", movementController.BoostIntervalPercentage, movementController.BoostReady);
                 _progressbarBoost.value = movementController.BoostIntervalPercentage * 100f;
                 _progressbarBoost.title = movementController.BoostActive ? "Boost Active" : movementController.BoostReady ? "Boost Ready" : "Reload Boost";
             }

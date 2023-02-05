@@ -154,7 +154,7 @@ namespace GGJ23.Game
                 Debug.LogError($"You lost the game lmao");
             }
 
-            Debug.Log($"Points:{_currentScore}, LossPoints:{_lossPoints}");
+            // Debug.Log($"Points:{_currentScore}, LossPoints:{_lossPoints}");
         }
 
         private void UpdateBrokenLevel()
