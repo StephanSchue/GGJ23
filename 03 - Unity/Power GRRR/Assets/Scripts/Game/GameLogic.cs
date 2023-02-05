@@ -5,6 +5,14 @@ using UnityEngine.Events;
 
 namespace GGJ23.Game
 {
+    public enum BrokenLevel
+    {
+        None,
+        Level01,
+        Level02,
+        Level03
+    }
+
     public class GameLogic : MonoBehaviour
     {
         [SerializeField] private int _dayDurationMs = 60000;
@@ -14,11 +22,14 @@ namespace GGJ23.Game
         public PropController PropController;
         public GridLightController GridLightController;
         public CameraController CameraController;
+        public EffectContoller effectContoller;
 
         private bool _isNight = false;
         private float _currentScore = 0f;
         private float _lossPoints = 0f;
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
+
+        private BrokenLevel _brokenLevel;
 
         public float LossPercentage => _lossPoints / _lossPointsNeeded;
         public float Score => _currentScore;
@@ -53,6 +64,12 @@ namespace GGJ23.Game
 
             if (CameraController != null)
                 CameraController.Populate(OnDaySwitch, OnNightSwitch);
+
+            if (effectContoller != null)
+            {
+                OnDaySwitch.AddListener(() => effectContoller.OnDay.Invoke());
+                OnNightSwitch.AddListener(() => effectContoller.OnNight.Invoke());
+            }
 
             // GenerateBrokenInteractables();
             OnDaySwitch.Invoke();
@@ -91,6 +108,7 @@ namespace GGJ23.Game
             }
 
             UpdatePoints(Time.deltaTime);
+            UpdateBrokenLevel();
         }
 
         private void UpdatePoints(float deltaTime)
@@ -127,6 +145,37 @@ namespace GGJ23.Game
             }
 
             Debug.Log($"Points:{_currentScore}, LossPoints:{_lossPoints}");
+        }
+
+        private void UpdateBrokenLevel()
+        {
+            var brokenLevel = BrokenLevel.None;
+            
+            if (LossPercentage > 0.9f)
+            {
+                brokenLevel = BrokenLevel.Level03;
+            }
+            else if (LossPercentage > 0.6f)
+            {
+                brokenLevel = BrokenLevel.Level02;
+            }
+            else if (LossPercentage > 0.3f)
+            {
+                brokenLevel = BrokenLevel.Level01;
+            }
+
+            if (brokenLevel != _brokenLevel)
+            {
+                switch (brokenLevel)
+                {
+                    case BrokenLevel.Level01: effectContoller.OnBrokenLevel01.Invoke(); break;
+                    case BrokenLevel.Level02: effectContoller.OnBrokenLevel02.Invoke(); break;
+                    case BrokenLevel.Level03: effectContoller.OnBrokenLevel03.Invoke(); break;
+                    default: effectContoller.OnBrokenLevel00.Invoke(); break;
+                }
+
+                _brokenLevel = brokenLevel;
+            }
         }
 
         private List<Interactable> GenerateBrokenInteractables()

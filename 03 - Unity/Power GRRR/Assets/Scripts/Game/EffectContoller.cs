@@ -11,6 +11,7 @@ namespace GGJ23.Game
         public UnityEvent OnNight;
         public UnityEvent OnDayNightTransition;
 
+        public UnityEvent OnBrokenLevel00;
         public UnityEvent OnBrokenLevel01;
         public UnityEvent OnBrokenLevel02;
         public UnityEvent OnBrokenLevel03;

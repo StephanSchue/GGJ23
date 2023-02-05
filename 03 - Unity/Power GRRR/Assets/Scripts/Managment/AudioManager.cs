@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 namespace GGJ23.Managment
 {
@@ -37,6 +38,10 @@ namespace GGJ23.Managment
             for (int i = 0; i < audioLayerSources.Length; i++)
             {
                 audioLayerSources[i] = audioSourceRoot.AddComponent<AudioSource>();
+                audioLayerSources[i].clip = audioLayers[i].audioClip;
+                audioLayerSources[i].volume = 0f;
+                audioLayerSources[i].loop = true;
+                audioLayerSources[i].Play();
             }
 
             // SFX Layers
@@ -55,12 +60,26 @@ namespace GGJ23.Managment
 
         public void PlayLayer(string label)
         {
-
+            for (int i = 0; i < audioLayers.Length; i++)
+            {
+                if (audioLayers[i].label == label)
+                {
+                    audioLayerSources[i].DOFade(audioLayers[i].volume, audioLayers[i].fadeInOut.x);
+                    break;
+                }
+            }
         }
     
         public void RemoveLayer(string label)
         {
-
+            for (int i = 0; i < audioLayers.Length; i++)
+            {
+                if (audioLayers[i].label == label)
+                {
+                    audioLayerSources[i].DOFade(0f, audioLayers[i].fadeInOut.y);
+                    break;
+                }
+            }
         }
     }
 }
