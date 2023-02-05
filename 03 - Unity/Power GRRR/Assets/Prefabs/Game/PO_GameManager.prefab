@@ -582,7 +582,7 @@ MonoBehaviour:
     volume: 1
   - label: Interactable_Fix_Complete
     audioClips:
-    - {fileID: 8300000, guid: 679c8238a7ca9d94ea75db7b836e7cda, type: 3}
+    - {fileID: 8300000, guid: 396bb43ba5553c740b120db6bded3d3d, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Movement_Start

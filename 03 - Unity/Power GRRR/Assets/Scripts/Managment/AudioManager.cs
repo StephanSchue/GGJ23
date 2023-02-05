@@ -43,7 +43,7 @@ namespace GGJ23.Managment
             {
                 audioLayerSources[i] = audioSourceRoot.AddComponent<AudioSource>();
                 audioLayerSources[i].clip = audioLayers[i].audioClip;
-                audioLayerSources[i].outputAudioMixerGroup = sfxLayerMixerGroup;
+                audioLayerSources[i].outputAudioMixerGroup = audioLayerMixerGroup;
                 audioLayerSources[i].volume = 0f;
                 audioLayerSources[i].loop = true;
                 audioLayerSources[i].Play();
@@ -55,7 +55,7 @@ namespace GGJ23.Managment
             for (int i = 0; i < sfxLayerSources.Length; i++)
             {
                 sfxLayerSources[i] = audioSourceRoot.AddComponent<AudioSource>();
-                sfxLayerSources[i].outputAudioMixerGroup = audioLayerMixerGroup;
+                sfxLayerSources[i].outputAudioMixerGroup = sfxLayerMixerGroup;
                 sfxLayerSources[i].enabled = false;
             }
         }
@@ -68,6 +68,7 @@ namespace GGJ23.Managment
                     && sfxLayerSources[i].enabled)
                 {
                     sfxLayerSources[i].enabled = false;
+                    sfxLayerSources[i].clip = null;
                 }
             }
         }
@@ -79,6 +80,7 @@ namespace GGJ23.Managment
                 if (sfxLayers[i].label == label)
                 {
                     sfxLayerSources[i].enabled = true;
+                    sfxLayerSources[i].clip = sfxLayers[i].audioClips[Random.Range(0, sfxLayers[i].audioClips.Length)];
                     sfxLayerSources[i].DOFade(sfxLayers[i].volume, 0.1f);
                     sfxLayerSources[i].Play();
                     break;

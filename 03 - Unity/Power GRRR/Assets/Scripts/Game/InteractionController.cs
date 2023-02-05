@@ -43,7 +43,6 @@ namespace GGJ23.Game
             if (Input.GetButton("Fire1"))
             {
                 // Check for nearest Interactable
-                _isWorking = false;
                 float nearestDistance = float.MaxValue;
                 _nearestInteractable = null;
 
@@ -75,6 +74,10 @@ namespace GGJ23.Game
                     }
 
                     _isWorking = true;
+                }
+                else
+                {
+                    _isWorking = false;
                 }
             }
             else
