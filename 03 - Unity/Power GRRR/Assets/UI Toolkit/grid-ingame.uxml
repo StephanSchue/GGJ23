@@ -6,7 +6,7 @@
             <ui:Label tabindex="-1" text="GameOver" display-tooltip-when-elided="true" name="LabelHeadline" class="h1" style="font-size: 32px; -unity-text-align: middle-center; white-space: normal;" />
             <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:Label tabindex="-1" text="Score" display-tooltip-when-elided="true" name="LabelScore" class="h1" style="font-size: 24px; -unity-text-align: lower-center; white-space: normal;" />
-                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ValueScore" />
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ValueScore" style="-unity-text-align: upper-center; -unity-font-style: bold;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="ContainerPause" style="background-color: rgba(0, 0, 0, 0.37); display: none; min-height: 80%; flex-grow: 1;">

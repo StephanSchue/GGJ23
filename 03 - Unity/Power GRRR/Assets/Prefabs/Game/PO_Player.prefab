@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 2885738409528543028}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &528225488335055854
 MonoBehaviour:
@@ -50,7 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0affbad523ff8c2459dbcd310a60f361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRadius: 1
+  interactionRadius: 1.5
+  interactionOffset: {x: 0.23, y: 0.41}
   OnFixStart:
     m_PersistentCalls:
       m_Calls: []
@@ -131,7 +132,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4495007425672255498
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,7 +167,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.13, y: 0.29}
   m_Radius: 0.8
 --- !u!95 &6359459125389910386
 Animator:
@@ -262,12 +263,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 39376c6b54ff21d49a3c5e5887a3cd2b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e80051db0b9c15943841acba092fd670, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.525, y: 2.33}
+  m_Size: {x: 9.599999, y: 5.3999996}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
