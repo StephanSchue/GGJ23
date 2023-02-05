@@ -31,6 +31,7 @@ namespace GGJ23.Game
         public void RefreshInteractableStatus()
         {
             int count = 0;
+            roots.Clear();
 
             List<Transform> transforms = new List<Transform>();
 
@@ -90,7 +91,7 @@ namespace GGJ23.Game
         {
             for (int i = 0; i < lineRenderers.Length; i++)
             {
-                lineRenderers[i].enabled = true;
+                lineRenderers[i].enabled = false;
             }
         }
 
