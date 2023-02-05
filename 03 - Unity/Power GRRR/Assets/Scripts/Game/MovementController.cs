@@ -37,7 +37,7 @@ namespace GGJ23.Game
             if(velocity > 0.1f)
             {
                 _movement.Normalize();
-                _rigidbody2D.MovePosition((Vector2)transform.position + ((_movement * Speed) * Time.deltaTime));
+                _rigidbody2D.MovePosition((Vector2)transform.position + _movement * Time.deltaTime * Speed);
                 
                 Direction = _movement;
 
