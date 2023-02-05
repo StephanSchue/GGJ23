@@ -51,6 +51,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRadius: 1
+  OnFixStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFixOnFixAbourt:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFixOnFixComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8945997299003857636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +73,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  BoostInterval: 2
+  BoostThreshold: 1
+  BoostDuration: 1
+  BoostSpeed: 10
+  OnMovementStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMovementStep:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMovementStop:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMovementBoost:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2922046092800515606
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,9 +14,16 @@ namespace GGJ23.Game
     public class MovementController : MonoBehaviour
     {
         public float Speed = 1f;
+        public float BoostInterval = 2f;
+        public float BoostThreshold = 0.5f;
+        public float BoostDuration = 2f;
+        public float BoostSpeed = 1.5f;
 
         private Rigidbody2D _rigidbody2D;
         private Vector2 _movement = new Vector2();
+
+        private float _boostInputTimer = 0f;
+        private float _boostEffectTimer = 0f;
 
         public bool IsMoving { get; private set; }
         public Vector2 Direction { get; private set; }
@@ -32,6 +39,8 @@ namespace GGJ23.Game
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _boostInputTimer = BoostInterval;
+            _boostEffectTimer = 0f;
         }
 
         public void RegisterEvents(EffectContoller effectContoller)
@@ -49,10 +58,29 @@ namespace GGJ23.Game
 
             float velocity = _movement.magnitude;
 
-            if(velocity > 0.1f)
+            if (velocity > 0.1f
+                && _boostInputTimer < BoostThreshold
+                 && Input.GetButtonDown("Fire1"))
+            {
+                _boostEffectTimer = BoostDuration;
+                _boostInputTimer = BoostInterval;
+            }
+            else
+            {
+                _boostInputTimer -= Time.deltaTime;
+            }
+
+            if (_boostEffectTimer > 0f)
+            {
+                _boostEffectTimer -= Time.deltaTime;
+            }
+
+            if (velocity > 0.1f)
             {
                 _movement.Normalize();
-                _rigidbody2D.MovePosition((Vector2)transform.position + _movement * Time.deltaTime * Speed);
+
+                float speed = _boostEffectTimer > 0f ? BoostSpeed : Speed;
+                _rigidbody2D.MovePosition((Vector2)transform.position + _movement * Time.deltaTime * speed);
                 
                 Direction = _movement;
 

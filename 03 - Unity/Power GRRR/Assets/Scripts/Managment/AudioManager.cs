@@ -55,7 +55,7 @@ namespace GGJ23.Managment
             for (int i = 0; i < sfxLayerSources.Length; i++)
             {
                 sfxLayerSources[i] = audioSourceRoot.AddComponent<AudioSource>();
-                audioLayerSources[i].outputAudioMixerGroup = audioLayerMixerGroup;
+                sfxLayerSources[i].outputAudioMixerGroup = audioLayerMixerGroup;
                 sfxLayerSources[i].enabled = false;
             }
         }

@@ -55,7 +55,10 @@ namespace GGJ23.Game
             var interactables = FindObjectsByType<Interactable>(FindObjectsSortMode.None);
 
             if (InteractionController != null)
+            {
                 InteractionController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch);
+                InteractionController.RegisterEvents(EffectContoller);
+            }
 
             if (PropController != null)
                 PropController.PopulateProps(FindObjectsByType<Prop>(FindObjectsSortMode.None), OnDaySwitch, OnNightSwitch);
