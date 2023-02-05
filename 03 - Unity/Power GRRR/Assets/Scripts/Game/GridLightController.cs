@@ -19,15 +19,27 @@ namespace GGJ23.Game
         {
             lineRenderers = GetComponentsInChildren<LineRenderer>();
 
-            int count = 0;
             _interactables = interactables;
             _props = props;
+
+            RefreshInteractableStatus();
+
+            OnDaySwitch.AddListener(this.OnDaySwitch);
+            OnNightSwitch.AddListener(this.OnNightSwitch);
+        }
+
+        public void RefreshInteractableStatus()
+        {
+            int count = 0;
 
             List<Transform> transforms = new List<Transform>();
 
             for (int i = 0; i < _interactables.Length; i++)
             {
-                transforms.Add(_interactables[i].transform);
+                if(_interactables[i].Status != InteractionStatus.Broken && _interactables[i].Status != InteractionStatus.BeingRepaired)
+                {
+                    transforms.Add(_interactables[i].transform);
+                }
             }
 
             for (int i = 0; i < _props.Length; i++)
@@ -35,13 +47,13 @@ namespace GGJ23.Game
                 transforms.Add(_props[i].transform);
             }
 
-            // --- Interactables ---
+            // --- Interactables && Props ---
             for (int i = 0; i < transforms.Count; i++)
             {
                 bool contains = false;
                 foreach (var root in roots)
                 {
-                    if(root.Value.Contains(transforms[i]))
+                    if (root.Value.Contains(transforms[i]))
                     {
                         contains = true;
                         break;
@@ -71,23 +83,6 @@ namespace GGJ23.Game
                     lineRenderer.positionCount = lineCount;
                     count++;
                 }
-            } 
-
-            OnDaySwitch.AddListener(this.OnDaySwitch);
-            OnNightSwitch.AddListener(this.OnNightSwitch);
-        }
-
-        public void RefreshInteractableStatus(Interactable[] interactables)
-        {
-            _interactables = interactables.Where(x => x.Status != InteractionStatus.Broken && x.Status != InteractionStatus.BeingRepaired).ToArray();
-
-            for (int i = 0; i < lineRenderers.Length; i++)
-            {
-                lineRenderers[i].positionCount = _interactables.Length;
-                for (int x = 0; x < _interactables.Length; x++)
-                {
-                    lineRenderers[i].SetPosition(x, _interactables[x].transform.position);
-                }
             }
         }
 
@@ -95,7 +90,7 @@ namespace GGJ23.Game
         {
             for (int i = 0; i < lineRenderers.Length; i++)
             {
-                lineRenderers[i].enabled = false;
+                lineRenderers[i].enabled = true;
             }
         }
 
