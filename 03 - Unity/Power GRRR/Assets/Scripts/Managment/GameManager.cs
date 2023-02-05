@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GGJ23.UI
+namespace GGJ23.Managment
 {
     public class GameManager : MonoBehaviour
     {

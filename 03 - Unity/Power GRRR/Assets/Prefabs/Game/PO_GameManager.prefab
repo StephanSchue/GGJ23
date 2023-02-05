@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1210537597138008614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4757299630863160643}
+  m_Layer: 0
+  m_Name: AudioSources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &4757299630863160643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210537597138008614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6295178893953826061}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2929598138056439599
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,12 +43,14 @@ GameObject:
   - component: {fileID: 3856296940595807266}
   - component: {fileID: 227835895363568597}
   - component: {fileID: 108147613186522104}
+  - component: {fileID: 3858312805285020214}
+  - component: {fileID: 180032631416248981}
   m_Layer: 0
   m_Name: PO_GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6295178893953826061
 Transform:
@@ -30,7 +63,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4757299630863160643}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,3 +126,256 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8d8ed11acb00844865f3870c114234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3858312805285020214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929598138056439599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64099f9c192d69544b4699108b318248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlayLayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Intro
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDay:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlayLayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Day
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNight:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlayLayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Night
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDayNightTransition:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBrokenLevel01:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlayLayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boken_Layer_01
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBrokenLevel02:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlayLayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boken_Layer_02
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBrokenLevel03:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlayLayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boken_Layer_03
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBreak:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Break
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFixStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Fix_Start
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFixOnFixAbourt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Fix_Abourt
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFixOnFixComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Fix_Complete
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMovementStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMovementStep:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMovementStop:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMovementBoost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &180032631416248981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929598138056439599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9457fb298c370947aa5fde0516b021d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourceRoot: {fileID: 1210537597138008614}
+  audioLayers:
+  - label: Day
+    audioClip: {fileID: 8300000, guid: f10c7e65bd17ca54ca4434a6ce89cb00, type: 3}
+    fadeInOut: {x: 1, y: 1}
+    volume: 1
+  - label: Night
+    audioClip: {fileID: 8300000, guid: db16f8b161ac37a4ea82ebfc2ae682aa, type: 3}
+    fadeInOut: {x: 1, y: 1}
+    volume: 1
+  - label: DayNightTransition
+    audioClip: {fileID: 8300000, guid: e2fc0c95f5377494cb236c92fcae3afd, type: 3}
+    fadeInOut: {x: 0.25, y: 0.25}
+    volume: 1
+  - label: Boken_Layer_01
+    audioClip: {fileID: 8300000, guid: cc7dc33288e190542a5b08f110e906e6, type: 3}
+    fadeInOut: {x: 1, y: 1}
+    volume: 1
+  - label: Boken_Layer_02
+    audioClip: {fileID: 8300000, guid: 98b36256eb464d94a9c87d66bb5c88e2, type: 3}
+    fadeInOut: {x: 1, y: 1}
+    volume: 1
+  - label: Boken_Layer_03
+    audioClip: {fileID: 8300000, guid: a1b7d88e1073e974fae8d444e8b9fec1, type: 3}
+    fadeInOut: {x: 1, y: 1}
+    volume: 1
+  sfxLayers:
+  - label: Interactable_Broken
+    audioClips: []
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Interactable_Fix_Start
+    audioClips:
+    - {fileID: 8300000, guid: 77c4a01fbddc3ec4cb7f2d6d109055cc, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Interactable_Fix_Abort
+    audioClips: []
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Interactable_Fix_Complete
+    audioClips:
+    - {fileID: 8300000, guid: 679c8238a7ca9d94ea75db7b836e7cda, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Movement_Start
+    audioClips: []
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Movement_Step
+    audioClips:
+    - {fileID: 8300000, guid: 7876522b62d541940a2da7b89b56cf72, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Movement_Stop
+    audioClips:
+    - {fileID: 8300000, guid: e8f096776d4394549b05f8ee06989aee, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Movement_Boost
+    audioClips:
+    - {fileID: 8300000, guid: ed85d0f3149f7d8409614097c6dbaf62, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
