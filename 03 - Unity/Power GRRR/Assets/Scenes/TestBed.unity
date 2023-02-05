@@ -821,6 +821,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 631422173}
+    - target: {fileID: 7077953433310768433, guid: 0ba39335ec970f94c89ce86133cbbc9d, type: 3}
+      propertyPath: movementController
+      value: 
+      objectReference: {fileID: 1708451889}
     - target: {fileID: 9054744929607950742, guid: 0ba39335ec970f94c89ce86133cbbc9d, type: 3}
       propertyPath: m_RootOrder
       value: 5

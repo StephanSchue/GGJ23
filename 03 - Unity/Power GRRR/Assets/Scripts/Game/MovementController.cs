@@ -30,6 +30,10 @@ namespace GGJ23.Game
         public PlayerDirection PlayerDirection { get; private set; } = PlayerDirection.Right;
         public float Velocity { get; private set; }
 
+        public float BoostIntervalPercentage => _boostInputTimer / BoostInterval;
+        public bool BoostReady => _boostInputTimer < BoostThreshold;
+        public bool BoostActive => _boostEffectTimer > 0f;
+
         [Header("Events")]
         public UnityEvent OnMovementStart;
         public UnityEvent OnMovementStep;
@@ -67,6 +71,11 @@ namespace GGJ23.Game
             }
             else
             {
+                if(_boostInputTimer < 0f)
+                {
+                    _boostInputTimer = BoostInterval;
+                }
+
                 _boostInputTimer -= Time.deltaTime;
             }
 
