@@ -45,6 +45,7 @@ namespace GGJ23.Game
         {
             index = Random.Range(0, animatorControllers.Length);
             animator.runtimeAnimatorController = animatorControllers[index];
+            animator.Rebind();
         }
 
         // Update is called once per frame
