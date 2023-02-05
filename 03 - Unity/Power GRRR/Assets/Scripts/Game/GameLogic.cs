@@ -116,7 +116,7 @@ namespace GGJ23.Game
 
                 if (allGood)
                 {
-                    _lossPoints -= deltaTime;
+                    _lossPoints = Mathf.Max(0, _lossPoints - deltaTime);
                 }
             }
 
