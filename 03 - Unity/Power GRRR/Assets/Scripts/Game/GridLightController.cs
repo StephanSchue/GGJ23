@@ -49,7 +49,7 @@ namespace GGJ23.Game
                 if (!contains)
                 {
                     Vector3 origin = transforms[i].position;
-                    LineRenderer lineRenderer = lineRenderers[i];
+                    LineRenderer lineRenderer = lineRenderers[count];
                     lineRenderer.positionCount = transforms.Count;
                     int lineCount = 0;
                     lineRenderer.SetPosition(lineCount++, origin);
