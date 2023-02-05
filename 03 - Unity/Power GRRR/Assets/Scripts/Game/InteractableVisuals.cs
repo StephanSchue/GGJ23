@@ -32,7 +32,7 @@ namespace GGJ23.Game
             if(useStatusColor)
                 spriteRenderer.color = statusColor[(int)status];
 
-            bool working = (status == InteractionStatus.Working && status == InteractionStatus.FreshlyRepaired);
+            bool working = (status == InteractionStatus.Working || status == InteractionStatus.FreshlyRepaired);
 
             if (interactable.IsNight)
             {

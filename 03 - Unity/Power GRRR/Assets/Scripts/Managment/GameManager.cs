@@ -5,12 +5,16 @@ namespace GGJ23.UI
 {
     public class GameManager : MonoBehaviour
     {
-        public float Energy { get; private set; } = 100f;
-        public int Score { get; private set; } = 0;
+        public Game.GameLogic gameLogic;
 
+        public float Energy { get; private set; } = 100f;
+        public float Score { get; private set; } = 0;
+
+        [Header("Events")]
         public UnityEvent OnGameOver;
 
         private bool _paused = false;
+        private bool _gameOver = false;
 
         #region init
 
@@ -25,7 +29,13 @@ namespace GGJ23.UI
 
         private void Update()
         {
-            
+            Energy = 1f - gameLogic.LossPercentage;
+            Score = gameLogic.Score;
+
+            if(!_gameOver && Energy < 0f)
+            {
+                GameOver();
+            }
         }
 
         #endregion
@@ -34,7 +44,8 @@ namespace GGJ23.UI
 
         public void Restart()
         {
-
+            _gameOver = false;
+            Pause(false);
         }
 
         public void Pause(bool pause)
@@ -43,18 +54,11 @@ namespace GGJ23.UI
             Time.timeScale = _paused ? 0f : 1f;
         }
 
-        public void SetEnergy(float energy)
-        {
-            Energy = energy;
-        }
-
-        public void SetScore(int score)
-        {
-            Score = score;
-        }
-
         public void GameOver()
         {
+            Pause(true);
+
+            _gameOver = true;
             OnGameOver.Invoke();
         }
 

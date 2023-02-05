@@ -20,6 +20,9 @@ namespace GGJ23.Game
         private float _lossPoints = 0f;
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
 
+        public float LossPercentage => _lossPoints / _lossPointsNeeded;
+        public float Score => _currentScore;
+
         [Header("Events")]
         public UnityEvent OnDaySwitch;
         public UnityEvent OnNightSwitch;

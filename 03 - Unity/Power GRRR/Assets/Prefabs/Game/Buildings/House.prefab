@@ -195,8 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef030b0041a163c45956ca6203cc0a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prop: {fileID: 0}
+  prop: {fileID: 9016477114609373505}
   spriteRenderer: {fileID: 1684274736912592337}
   spriteRendererLightGlow: {fileID: 6183087074189495512}
   daySprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   nightSprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  useDayNightSprite: 1
+  useNightGlow: 1
