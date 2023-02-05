@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace GGJ23.Game
 {
@@ -17,6 +18,8 @@ namespace GGJ23.Game
         private float _progress = 0f;
         public float _duration = 2f;
         public float _interactionRadius = 1f;
+
+        public Slider progressBar;
 
         public InteractionStatus Status => _status;
         public float Progress => _progress;
@@ -63,11 +66,15 @@ namespace GGJ23.Game
                 {
                     _progress = 0f;
                     _status = InteractionStatus.FreshlyRepaired;
+                    progressBar.gameObject.SetActive(false);
+                    progressBar.value = 0f;
                     return;
                 }
 
                 _progress -= dt;
                 _status = InteractionStatus.BeingRepaired;
+                progressBar.gameObject.SetActive(true);
+                progressBar.value = 1f - Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, _duration, _progress));
             }
         }
 
