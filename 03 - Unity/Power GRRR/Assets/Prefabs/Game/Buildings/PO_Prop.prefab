@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1455763616446047546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5747689464844089163}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1c7e00d18bb534b4b9901f27b899699c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 5747689464844089163}
   - component: {fileID: 9146324720074127638}
   - component: {fileID: 6079590882610066377}
+  - component: {fileID: 3133522869580445572}
   m_Layer: 0
   m_Name: PO_Prop
   m_TagString: Untagged
@@ -201,7 +202,7 @@ Transform:
   - {fileID: 1123817320707835342}
   - {fileID: 1849926000877024530}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9146324720074127638
 MonoBehaviour:
@@ -230,7 +231,59 @@ MonoBehaviour:
   prop: {fileID: 9146324720074127638}
   spriteRenderer: {fileID: 6423562801050996530}
   spriteRendererLightGlow: {fileID: 3458272978376007587}
-  daySprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  nightSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  daySprites:
+  - {fileID: 21300000, guid: c4c52abff71d46e4c905d45cccc18a4b, type: 3}
+  - {fileID: 21300000, guid: 9e8291c845087054eafc4fafed50528a, type: 3}
+  - {fileID: 21300000, guid: 1c7e00d18bb534b4b9901f27b899699c, type: 3}
+  nightSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   useDayNightSprite: 1
   useNightGlow: 0
+--- !u!61 &3133522869580445572
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208669373440644680}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

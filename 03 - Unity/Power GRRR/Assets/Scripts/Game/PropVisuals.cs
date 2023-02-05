@@ -10,15 +10,28 @@ namespace GGJ23.Game
         public SpriteRenderer spriteRendererLightGlow;
 
         [Header("Sprites")]
-        public Sprite daySprite;
-        public Sprite nightSprite;
+        public Sprite[] daySprites;
+        public Sprite[] nightSprites;
         public bool useDayNightSprite = true;
         public bool useNightGlow = false;
+
+        private int index = 0;
+
+        private void Awake()
+        {
+            index = 0;
+            Ramdomize();
+        }
+
+        public void Ramdomize()
+        {
+            index = Random.Range(0, daySprites.Length);
+        }
 
         private void Update()
         {
             if(useDayNightSprite)
-                spriteRenderer.sprite = prop.IsNight ? nightSprite : daySprite;
+                spriteRenderer.sprite = prop.IsNight ? nightSprites[index] : daySprites[index];
             
             if(useNightGlow)
                 spriteRendererLightGlow.enabled = prop.IsNight;

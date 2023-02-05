@@ -20,7 +20,7 @@ namespace GGJ23.Game
         public Animator animator;
 
         [Header("Settings")]
-        public RuntimeAnimatorController animatorController;
+        public RuntimeAnimatorController[] animatorControllers;
         public Color[] statusColor;
         public bool useStatusColor = true;
         public bool useAnimator = true;
@@ -29,10 +29,22 @@ namespace GGJ23.Game
         private bool fadingOut = false;
         private bool fadingIn = false;
 
+        private int index = 0;
+
         private void Awake()
         {
-            animator.runtimeAnimatorController = animatorController;
-            animate = animatorController != null;
+            animate = animatorControllers != null;
+
+            index = 0;
+            animator.runtimeAnimatorController = animatorControllers[index];
+
+            Ramdomize();
+        }
+
+        public void Ramdomize()
+        {
+            index = Random.Range(0, animatorControllers.Length);
+            animator.runtimeAnimatorController = animatorControllers[index];
         }
 
         // Update is called once per frame
@@ -92,11 +104,11 @@ namespace GGJ23.Game
             fadingOut = !fadingOut;
             if (fadingIn)
             {
-                        DOTween.ToAlpha(() => notification.color, x => notification.color = x, 1f, 1f).onComplete = () => SwitchFade();
+                DOTween.ToAlpha(() => notification.color, x => notification.color = x, 1f, 1f).onComplete = () => SwitchFade();
             }
             else if (fadingOut)
             {
-                        DOTween.ToAlpha(() => notification.color, x => notification.color = x, 0f, 1f).onComplete = () => SwitchFade();
+                DOTween.ToAlpha(() => notification.color, x => notification.color = x, 0f, 1f).onComplete = () => SwitchFade();
             }
         }
     }

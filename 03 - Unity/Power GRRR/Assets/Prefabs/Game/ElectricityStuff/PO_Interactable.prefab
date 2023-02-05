@@ -37,7 +37,7 @@ Transform:
   - {fileID: 5128449909980532874}
   - {fileID: 8268580083371942773}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8745342387419136971
 MonoBehaviour:
@@ -71,7 +71,10 @@ MonoBehaviour:
   spriteRendererLightGlow: {fileID: 3459754849573127731}
   notification: {fileID: 2861064695984734975}
   animator: {fileID: 4229308815669588759}
-  animatorController: {fileID: 9100000, guid: a4fd97c76c53c4c4d8645e17c659a833, type: 2}
+  animatorControllers:
+  - {fileID: 9100000, guid: a4fd97c76c53c4c4d8645e17c659a833, type: 2}
+  - {fileID: 9100000, guid: ea97e4a8ee9f2d74f817f0da35f559db, type: 2}
+  - {fileID: 9100000, guid: 736bcabcc87b53c4d899e6e5733f9a3f, type: 2}
   statusColor:
   - {r: 0.05724907, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.06326783, b: 0, a: 1}
