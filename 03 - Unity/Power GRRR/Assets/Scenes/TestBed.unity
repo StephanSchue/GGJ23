@@ -504,6 +504,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PO_Interactable
       objectReference: {fileID: 0}
+    - target: {fileID: 4229308815669588759, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a4fd97c76c53c4c4d8645e17c659a833, type: 2}
     - target: {fileID: 8610322923951162677, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: m_RootOrder
       value: -1
