@@ -29,7 +29,7 @@ namespace GGJ23.Game
 
         public void RefreshInteractableStatus(Interactable[] interactables)
         {
-            _interactables = interactables.Where(x => x.Status != InteractionStatus.Broken).ToArray();
+            _interactables = interactables.Where(x => x.Status != InteractionStatus.Broken && x.Status != InteractionStatus.BeingRepaired).ToArray();
 
             for (int i = 0; i < lineRenderers.Length; i++)
             {

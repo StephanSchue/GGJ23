@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 namespace GGJ23.Game
 {
@@ -21,7 +22,8 @@ namespace GGJ23.Game
 
         private void OnDaySwitch()
         {
-            camera.backgroundColor = dayColor;
+            camera.DOColor(dayColor, 2f);
+            // camera.backgroundColor = dayColor;
 
             dayVirtualCamera.Priority = 1000;
             nightVirtualCamera.Priority = 0;
@@ -29,7 +31,8 @@ namespace GGJ23.Game
 
         private void OnNightSwitch()
         {
-            camera.backgroundColor = nightColor;
+            camera.DOColor(nightColor, 2f);
+            // camera.backgroundColor = nightColor;
 
             dayVirtualCamera.Priority = 0;
             nightVirtualCamera.Priority = 1000;
