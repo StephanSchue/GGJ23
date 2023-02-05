@@ -19,10 +19,11 @@ namespace GGJ23.Game
         [SerializeField] private int _nightDurationMs = 10000;
 
         public InteractionController InteractionController;
+        public MovementController MovementController;
         public PropController PropController;
         public GridLightController GridLightController;
         public CameraController CameraController;
-        public EffectContoller effectContoller;
+        public EffectContoller EffectContoller;
 
         private bool _isNight = false;
         private float _currentScore = 0f;
@@ -65,10 +66,15 @@ namespace GGJ23.Game
             if (CameraController != null)
                 CameraController.Populate(OnDaySwitch, OnNightSwitch);
 
-            if (effectContoller != null)
+            if (EffectContoller != null)
             {
-                OnDaySwitch.AddListener(() => effectContoller.OnDay.Invoke());
-                OnNightSwitch.AddListener(() => effectContoller.OnNight.Invoke());
+                OnDaySwitch.AddListener(() => EffectContoller.OnDay.Invoke());
+                OnNightSwitch.AddListener(() => EffectContoller.OnNight.Invoke());
+            }
+
+            if (MovementController != null)
+            {
+                MovementController.RegisterEvents(EffectContoller);
             }
 
             // GenerateBrokenInteractables();
@@ -168,10 +174,10 @@ namespace GGJ23.Game
             {
                 switch (brokenLevel)
                 {
-                    case BrokenLevel.Level01: effectContoller.OnBrokenLevel01.Invoke(); break;
-                    case BrokenLevel.Level02: effectContoller.OnBrokenLevel02.Invoke(); break;
-                    case BrokenLevel.Level03: effectContoller.OnBrokenLevel03.Invoke(); break;
-                    default: effectContoller.OnBrokenLevel00.Invoke(); break;
+                    case BrokenLevel.Level01: EffectContoller.OnBrokenLevel01.Invoke(); break;
+                    case BrokenLevel.Level02: EffectContoller.OnBrokenLevel02.Invoke(); break;
+                    case BrokenLevel.Level03: EffectContoller.OnBrokenLevel03.Invoke(); break;
+                    default: EffectContoller.OnBrokenLevel00.Invoke(); break;
                 }
 
                 _brokenLevel = brokenLevel;

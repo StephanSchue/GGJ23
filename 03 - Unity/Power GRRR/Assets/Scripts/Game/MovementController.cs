@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GGJ23.Game
 {
@@ -22,9 +23,23 @@ namespace GGJ23.Game
         public PlayerDirection PlayerDirection { get; private set; } = PlayerDirection.Right;
         public float Velocity { get; private set; }
 
+        [Header("Events")]
+        public UnityEvent OnMovementStart;
+        public UnityEvent OnMovementStep;
+        public UnityEvent OnMovementStop;
+        public UnityEvent OnMovementBoost;
+
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+
+        public void RegisterEvents(EffectContoller effectContoller)
+        {
+            OnMovementStart.AddListener(() => effectContoller.OnMovementStart.Invoke());
+            OnMovementStep.AddListener(() => effectContoller.OnMovementStep.Invoke());
+            OnMovementStop.AddListener(() => effectContoller.OnMovementStop.Invoke());
+            OnMovementBoost.AddListener(() => effectContoller.OnMovementBoost.Invoke());
         }
 
         private void Update()
@@ -57,12 +72,22 @@ namespace GGJ23.Game
                 {
                     PlayerDirection = PlayerDirection.Left;
                 }
+
+                if(!IsMoving)
+                {
+                    OnMovementStart.Invoke();
+                }
                 
                 Velocity = velocity;
                 IsMoving = true;
             }
             else
             {
+                if (IsMoving)
+                {
+                    OnMovementStop.Invoke();
+                }
+
                 Velocity = 0f;
                 IsMoving = false;
             }

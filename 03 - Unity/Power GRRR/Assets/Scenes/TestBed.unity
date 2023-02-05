@@ -721,6 +721,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0affbad523ff8c2459dbcd310a60f361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1708451889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8945997299003857636, guid: 7c173f5bdd9e1ed41867d7c53b5a94bd, type: 3}
+  m_PrefabInstance: {fileID: 256887169623285498}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd17ccf269fd4240ba9a21ceccfe6c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &256887169623285498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1022,27 +1033,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
-      propertyPath: _dayDurationMs
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: CameraController
       value: 
       objectReference: {fileID: 1228991972}
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
-      propertyPath: _nightDurationMs
-      value: 5000
-      objectReference: {fileID: 0}
+      propertyPath: MovementController
+      value: 
+      objectReference: {fileID: 1708451889}
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: GridLightController
       value: 
       objectReference: {fileID: 1001918102}
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: InteractionController
-      value: 
-      objectReference: {fileID: 1708451884}
-    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
-      propertyPath: _interactionController
       value: 
       objectReference: {fileID: 1708451884}
     - target: {fileID: 2929598138056439599, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Audio;
 
 namespace GGJ23.Managment
 {
@@ -27,6 +28,9 @@ namespace GGJ23.Managment
         public AudioLayerData[] audioLayers;
         public SFXData[] sfxLayers;
 
+        public AudioMixerGroup audioLayerMixerGroup;
+        public AudioMixerGroup sfxLayerMixerGroup;
+
         private AudioSource[] audioLayerSources;
         private AudioSource[] sfxLayerSources;
 
@@ -39,6 +43,7 @@ namespace GGJ23.Managment
             {
                 audioLayerSources[i] = audioSourceRoot.AddComponent<AudioSource>();
                 audioLayerSources[i].clip = audioLayers[i].audioClip;
+                audioLayerSources[i].outputAudioMixerGroup = sfxLayerMixerGroup;
                 audioLayerSources[i].volume = 0f;
                 audioLayerSources[i].loop = true;
                 audioLayerSources[i].Play();
@@ -50,12 +55,35 @@ namespace GGJ23.Managment
             for (int i = 0; i < sfxLayerSources.Length; i++)
             {
                 sfxLayerSources[i] = audioSourceRoot.AddComponent<AudioSource>();
+                audioLayerSources[i].outputAudioMixerGroup = audioLayerMixerGroup;
+                sfxLayerSources[i].enabled = false;
+            }
+        }
+
+        private void Update()
+        {
+            for (int i = 0; i < sfxLayerSources.Length; i++)
+            {
+                if (!sfxLayerSources[i].isPlaying 
+                    && sfxLayerSources[i].enabled)
+                {
+                    sfxLayerSources[i].enabled = false;
+                }
             }
         }
 
         public void PlaySFX(string label)
         {
-
+            for (int i = 0; i < sfxLayers.Length; i++)
+            {
+                if (sfxLayers[i].label == label)
+                {
+                    sfxLayerSources[i].enabled = true;
+                    sfxLayerSources[i].DOFade(sfxLayers[i].volume, 0.1f);
+                    sfxLayerSources[i].Play();
+                    break;
+                }
+            }
         }
 
         public void PlayLayer(string label)

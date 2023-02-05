@@ -96,13 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1998e36bed8b3f049b73bba3c99cdda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dayDurationMs: 60000
-  _nightDurationMs: 10000
+  _dayDurationMs: 5000
+  _nightDurationMs: 5000
   InteractionController: {fileID: 0}
+  MovementController: {fileID: 0}
   PropController: {fileID: 108147613186522104}
   GridLightController: {fileID: 0}
   CameraController: {fileID: 0}
-  effectContoller: {fileID: 3858312805285020214}
+  EffectContoller: {fileID: 3858312805285020214}
   OnDaySwitch:
     m_PersistentCalls:
       m_Calls: []
@@ -454,6 +455,18 @@ MonoBehaviour:
           m_StringArgument: Movement_Start
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlayLayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Movement_Loop
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMovementStep:
     m_PersistentCalls:
       m_Calls:
@@ -482,6 +495,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Movement_Stop
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: RemoveLayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Movement_Loop
           m_BoolArgument: 0
         m_CallState: 2
   OnMovementBoost:
@@ -537,6 +562,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: a1b7d88e1073e974fae8d444e8b9fec1, type: 3}
     fadeInOut: {x: 1, y: 1}
     volume: 1
+  - label: Movement_Loop
+    audioClip: {fileID: 8300000, guid: 7876522b62d541940a2da7b89b56cf72, type: 3}
+    fadeInOut: {x: 1, y: 1}
+    volume: 1
   sfxLayers:
   - label: Interactable_Broken
     audioClips: []
@@ -575,3 +604,5 @@ MonoBehaviour:
     - {fileID: 8300000, guid: ed85d0f3149f7d8409614097c6dbaf62, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
+  audioLayerMixerGroup: {fileID: -8381770243145164063, guid: dbf2b2d16a0a2c44db2b1c79a37c0a48, type: 2}
+  sfxLayerMixerGroup: {fileID: 2256716037003612413, guid: dbf2b2d16a0a2c44db2b1c79a37c0a48, type: 2}
