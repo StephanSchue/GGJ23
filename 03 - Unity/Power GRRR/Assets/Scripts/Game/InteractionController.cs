@@ -20,6 +20,8 @@ namespace GGJ23.Game
 
         public bool IsWorking => _isWorking;
 
+        public bool IsNight {get { return _interactables.Length > 0 ? _interactables[0].IsNight : false;}}
+
         public void PopulateInteractables(Interactable[] interactables, UnityEvent OnDaySwitch, UnityEvent OnNightSwitch)
         {
             _interactables = interactables;
