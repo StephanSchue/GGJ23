@@ -23,6 +23,8 @@ namespace GGJ23.Game
         public PropController PropController;
         public GridLightController GridLightController;
         public CameraController CameraController;
+
+        public UnityEvent GameOver;
         public EffectContoller EffectContoller;
 
         private bool _isNight = false;
@@ -151,6 +153,8 @@ namespace GGJ23.Game
             {
                 // End the game
                 Debug.LogError($"You lost the game lmao");
+                GameOver.Invoke();
+                
             }
 
             // Debug.Log($"Points:{_currentScore}, LossPoints:{_lossPoints}");
