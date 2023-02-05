@@ -115,7 +115,7 @@ namespace GGJ23.Game
                         inter.Break();
                     }
 
-                    GridLightController.RefreshInteractableStatus(InteractionController.Interactables);
+                    GridLightController.RefreshInteractableStatus();
                 }
                 else
                 {
