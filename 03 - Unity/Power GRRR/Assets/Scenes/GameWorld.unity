@@ -130,7 +130,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: _dayDurationMs
-      value: 10000
+      value: 60000
+      objectReference: {fileID: 0}
+    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
+      propertyPath: _maxDifficulty
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: CameraController
@@ -141,6 +145,10 @@ PrefabInstance:
       value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
+      propertyPath: _lossPointsNeeded
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: MovementController
       value: 
       objectReference: {fileID: 1029713834}
@@ -149,6 +157,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1711623295}
     - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
+      propertyPath: _timeToMaxDifficulty
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: InteractionController
       value: 
       objectReference: {fileID: 554017226}
@@ -156,6 +168,14 @@ PrefabInstance:
       propertyPath: _interactionController
       value: 
       objectReference: {fileID: 554017226}
+    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
+      propertyPath: _distanceToMaxDifficulty
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 227835895363568597, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
+      propertyPath: _difficultyFactorFromMultipleBreakages
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2929598138056439599, guid: 7ff3b9dfc61f8fd4185ea94a04699dee, type: 3}
       propertyPath: m_Name
       value: PO_GameManager
@@ -283,6 +303,10 @@ PrefabInstance:
     - target: {fileID: 5052716930494107051, guid: 7c173f5bdd9e1ed41867d7c53b5a94bd, type: 3}
       propertyPath: m_Name
       value: PO_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945997299003857636, guid: 7c173f5bdd9e1ed41867d7c53b5a94bd, type: 3}
+      propertyPath: Speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
