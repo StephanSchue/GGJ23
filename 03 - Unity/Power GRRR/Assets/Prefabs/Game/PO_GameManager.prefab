@@ -103,6 +103,9 @@ MonoBehaviour:
   PropController: {fileID: 108147613186522104}
   GridLightController: {fileID: 0}
   CameraController: {fileID: 0}
+  GameOver:
+    m_PersistentCalls:
+      m_Calls: []
   EffectContoller: {fileID: 3858312805285020214}
   OnDaySwitch:
     m_PersistentCalls:
@@ -601,8 +604,9 @@ MonoBehaviour:
   - label: Movement_Stop
     audioClips:
     - {fileID: 8300000, guid: e8f096776d4394549b05f8ee06989aee, type: 3}
+    - {fileID: 0}
     fadeInOut: {x: 0, y: 0}
-    volume: 1
+    volume: 0.5
   - label: Movement_Boost
     audioClips:
     - {fileID: 8300000, guid: ed85d0f3149f7d8409614097c6dbaf62, type: 3}

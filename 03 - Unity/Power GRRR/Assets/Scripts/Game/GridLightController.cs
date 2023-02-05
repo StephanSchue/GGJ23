@@ -7,7 +7,7 @@ namespace GGJ23.Game
 {
     public class GridLightController : MonoBehaviour
     {
-        public LineRenderer[] lineRenderers;
+        private LineRenderer[] lineRenderers;
         public float energyConnectionDistance = 1f;
 
         private Interactable[] _interactables;
@@ -17,6 +17,8 @@ namespace GGJ23.Game
 
         public void PopulateInteractables(Interactable[] interactables, Prop[] props, UnityEvent OnDaySwitch, UnityEvent OnNightSwitch)
         {
+            lineRenderers = GetComponentsInChildren<LineRenderer>();
+
             int count = 0;
             _interactables = interactables;
             _props = props;
