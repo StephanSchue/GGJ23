@@ -30,7 +30,7 @@ namespace GGJ23.Game
         private bool _isNight = false;
         private float _currentScore = 0f;
         private float _lossPoints = 0f;
-        private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
+        private float _currentTime = 1.4f; // 1 = first day, 1.5 = first night, 2 = second day etc.
 
         private BrokenLevel _brokenLevel;
 

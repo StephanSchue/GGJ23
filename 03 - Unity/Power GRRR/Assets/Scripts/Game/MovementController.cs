@@ -55,7 +55,7 @@ namespace GGJ23.Game
             OnMovementBoost.AddListener(() => effectContoller.OnMovementBoost.Invoke());
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _movement.x = Input.GetAxis("Horizontal");
             _movement.y = Input.GetAxis("Vertical");
@@ -76,12 +76,12 @@ namespace GGJ23.Game
                     _boostInputTimer = BoostInterval;
                 }
 
-                _boostInputTimer -= Time.deltaTime;
+                _boostInputTimer -= Time.fixedDeltaTime;
             }
 
             if (_boostEffectTimer > 0f)
             {
-                _boostEffectTimer -= Time.deltaTime;
+                _boostEffectTimer -= Time.fixedDeltaTime;
             }
 
             if (velocity > 0.1f)
@@ -89,7 +89,7 @@ namespace GGJ23.Game
                 _movement.Normalize();
 
                 float speed = _boostEffectTimer > 0f ? BoostSpeed : Speed;
-                _rigidbody2D.MovePosition((Vector2)transform.position + _movement * Time.deltaTime * speed);
+                _rigidbody2D.MovePosition((Vector2)transform.position + _movement * Time.fixedDeltaTime * speed);
                 
                 Direction = _movement;
 
