@@ -15,7 +15,9 @@ namespace GGJ23.Game
 
     public class GameLogic : MonoBehaviour
     {
-        [SerializeField] private int _dayDurationMs = 60000;
+        [SerializeField] private float _dayDurationMs = 40000;
+        [SerializeField] private int _finalDayDurationMs = 40000;
+        [SerializeField] private int _earlyDayDurationMs = 10000;
         [SerializeField] private int _nightDurationMs = 10000;
 
         public InteractionController InteractionController;
@@ -30,7 +32,7 @@ namespace GGJ23.Game
         private bool _isNight = false;
         private float _currentScore = 0f;
         private float _lossPoints = 0f;
-        private float _currentTime = 1.4f; // 1 = first day, 1.5 = first night, 2 = second day etc.
+        private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
 
         private BrokenLevel _brokenLevel;
 
@@ -99,6 +101,8 @@ namespace GGJ23.Game
 
             _currentTime += progressToNextTime;
             _isNight = _currentTime % 1f >= 0.5f;
+
+            _dayDurationMs = Mathf.Lerp(_earlyDayDurationMs, _finalDayDurationMs, Mathf.InverseLerp(1f, 4f, _currentTime));
 
             if (lastIsNight != _isNight)
             {
@@ -211,7 +215,7 @@ namespace GGJ23.Game
                 return tempInteractables;
             }
 
-            float difficultyFactor = Mathf.Lerp(1f, _maxDifficulty, (Mathf.InverseLerp(1f, _timeToMaxDifficulty, Mathf.Clamp(_currentTime, 1f, _timeToMaxDifficulty))));
+            float difficultyFactor = Mathf.Lerp(1f, _maxDifficulty, Mathf.Pow((Mathf.InverseLerp(1f, _timeToMaxDifficulty, Mathf.Clamp(_currentTime, 1f, _timeToMaxDifficulty))), 1.1f));
             Debug.Log($"difficultyFactor to begin with: {difficultyFactor}");
 
             while (difficultyFactor >= 1f)
