@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 6a4e12fc969de65489799b4ed8637a2c
+guid: 4d18b859902d55b40acc390d09e6f7ed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 351390848488759271
-    second: Energy-Tree-01_damaged_05_0
+      213: 3417255794890744343
+    second: energy-sunflower_01_working_00003_0
   - first:
-      213: -6688597295263259853
-    second: Energy-Tree-01_damaged_05_1
+      213: 7050974158866594299
+    second: energy-sunflower_01_working_00003_1
   - first:
-      213: -5143015962893927776
-    second: Energy-Tree-01_damaged_05_2
-  - first:
-      213: 7584691759041615805
-    second: Energy-Tree-01_damaged_05_3
-  - first:
-      213: 8755271715039831476
-    second: Energy-Tree-01_damaged_05_4
+      213: -187869659770253424
+    second: energy-sunflower_01_working_00003_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -61,8 +55,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.4740765, y: 0.38}
   spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -134,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Energy-Tree-01_damaged_05_0
+      name: energy-sunflower_01_working_00003_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 410
-        width: 25
-        height: 38
+        x: 139
+        y: 430
+        width: 36
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7efde7d6d1460e400800000000000000
-      internalID: 351390848488759271
+      spriteID: 712ab114a088c6f20800000000000000
+      internalID: 3417255794890744343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Energy-Tree-01_damaged_05_1
+      name: energy-sunflower_01_working_00003_1
       rect:
         serializedVersion: 2
-        x: 28
-        y: 41
-        width: 282
-        height: 415
+        x: 242
+        y: 508
+        width: 23
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 333e13a92345d23a0800000000000000
-      internalID: -6688597295263259853
+      spriteID: bf9b3bbc3a71ad160800000000000000
+      internalID: 7050974158866594299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Energy-Tree-01_damaged_05_2
+      name: energy-sunflower_01_working_00003_2
       rect:
         serializedVersion: 2
-        x: 282
-        y: 413
-        width: 33
-        height: 51
+        x: 112
+        y: 29
+        width: 251
+        height: 412
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,50 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0aa3b890b3650a8b0800000000000000
-      internalID: -5143015962893927776
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Energy-Tree-01_damaged_05_3
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 201
-        width: 37
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db7128c28fc324960800000000000000
-      internalID: 7584691759041615805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Energy-Tree-01_damaged_05_4
-      rect:
-        serializedVersion: 2
-        x: 287
-        y: 185
-        width: 54
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4b569f6cc39f08970800000000000000
-      internalID: 8755271715039831476
+      spriteID: 09f02513a8d846df0800000000000000
+      internalID: -187869659770253424
       vertices: []
       indices: 
       edges: []
@@ -249,11 +201,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Energy-Tree-01_damaged_05_2: -5143015962893927776
-      Energy-Tree-01_damaged_05_4: 8755271715039831476
-      Energy-Tree-01_damaged_05_1: -6688597295263259853
-      Energy-Tree-01_damaged_05_3: 7584691759041615805
-      Energy-Tree-01_damaged_05_0: 351390848488759271
+      energy-sunflower_01_working_00003_2: -187869659770253424
+      energy-sunflower_01_working_00003_0: 3417255794890744343
+      energy-sunflower_01_working_00003_1: 7050974158866594299
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

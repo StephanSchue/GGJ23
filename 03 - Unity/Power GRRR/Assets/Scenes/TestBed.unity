@@ -133,10 +133,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1001918100}
     m_Modifications:
+    - target: {fileID: 1401708215118854039, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f32a17489175cd844baead48221a2f79, type: 3}
     - target: {fileID: 1429606033355651169, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: m_Name
       value: PO_Interactable (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3507545038386458444, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: animatorController
+      value: 
+      objectReference: {fileID: 9100000, guid: ea97e4a8ee9f2d74f817f0da35f559db, type: 2}
+    - target: {fileID: 4229308815669588759, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ea97e4a8ee9f2d74f817f0da35f559db, type: 2}
     - target: {fileID: 8610322923951162677, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: m_RootOrder
       value: -1

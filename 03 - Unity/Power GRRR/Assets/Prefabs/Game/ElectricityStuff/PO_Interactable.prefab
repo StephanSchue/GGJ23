@@ -67,7 +67,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1401708215118854039}
   spriteRendererLightGlow: {fileID: 3459754849573127731}
   animator: {fileID: 4229308815669588759}
-  animatorController: {fileID: 9100000, guid: 2799f95603875ae479ae6393c9162f62, type: 2}
+  animatorController: {fileID: 9100000, guid: a4fd97c76c53c4c4d8645e17c659a833, type: 2}
   statusColor:
   - {r: 0.05724907, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.06326783, b: 0, a: 1}
