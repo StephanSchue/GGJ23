@@ -52,7 +52,11 @@ namespace GGJ23.Game
                 {
                     float tmpDistance = Vector2.Distance(transform.position + (Vector3)interactionOffset, _interactables[i].transform.position);
 
-                    if (tmpDistance < (interactionRadius + _interactables[i]._interactionRadius) && tmpDistance < nearestDistance)
+                    if (tmpDistance < (interactionRadius + _interactables[i]._interactionRadius)
+                        && !_interactables[i].IsNight
+                        && (_interactables[i].Status == InteractionStatus.Broken 
+                            || _interactables[i].Status == InteractionStatus.BeingRepaired)
+                        && tmpDistance < nearestDistance)
                     {
                         _nearestInteractable = _interactables[i];
                         nearestDistance = tmpDistance;
