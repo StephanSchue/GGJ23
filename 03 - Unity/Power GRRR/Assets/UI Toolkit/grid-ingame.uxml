@@ -24,7 +24,7 @@
                 <ui:Label tabindex="-1" text="Every night, some electrical plants will get broken. It&apos;s your job to fix them during the day!&#10;Hold E (keyboard) / A (controller) to repair broken plants.&#10;If you leave plants broken for too long, you will lose the game.&#10;You can tell which plants are broken by their missing connection to the energy grid at night.&#10;&#10;Pro tip: you can move much faster by pressing Spacebar (keyboard) / B (controller) in rhythm." display-tooltip-when-elided="true" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="ContainerHUD" style="flex-grow: 0; justify-content: flex-end; background-color: rgba(0, 0, 0, 0.5); min-height: 10%; flex-direction: row; flex-shrink: 0;">
+        <ui:VisualElement name="ContainerHUD" style="flex-grow: 0; justify-content: flex-end; background-color: rgb(0, 0, 0); min-height: 10%; flex-direction: row; flex-shrink: 0;">
             <ui:ProgressBar value="50" title="Energy" name="ProgressbarEnergy" style="display: none;" />
             <ui:ProgressBar value="50" title="Boost" name="ProgressbarBoost" />
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
