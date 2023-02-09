@@ -24,6 +24,7 @@ namespace GGJ23.Game
         public Color[] statusColor;
         public bool useStatusColor = true;
         public bool useAnimator = true;
+        public bool useRandomize = true;
 
         private bool animate = false;
         private bool fadingOut = false;
@@ -33,12 +34,10 @@ namespace GGJ23.Game
 
         private void Awake()
         {
-            animate = animatorControllers != null;
+            animate = useAnimator && animatorControllers != null;
 
-            index = 0;
-            animator.runtimeAnimatorController = animatorControllers[index];
-
-            Ramdomize();
+            if(animate && useRandomize)
+                Ramdomize();
         }
 
         public void Ramdomize()
@@ -63,6 +62,10 @@ namespace GGJ23.Game
                 spriteRendererLightGlow.enabled = true;
                 spriteRenderer.gameObject.SetActive(false);
                 notification.gameObject.SetActive(false);
+
+                if(animate)
+                    animator.enabled = false;
+
                 fadingIn = false;
                 fadingOut = false;
                 notification.color = new Color(notification.color.r, notification.color.g, notification.color.b, 1f);
@@ -71,6 +74,10 @@ namespace GGJ23.Game
             {
                 spriteRendererLightGlow.enabled = false;
                 spriteRenderer.gameObject.SetActive(true);
+
+                if (animate)
+                    animator.enabled = true;
+
                 if (working)
                 {
                     notification.gameObject.SetActive(false);
