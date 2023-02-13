@@ -10,6 +10,7 @@ namespace GGJ23.Managment
         public struct AudioLayerData
         {
             public string label;
+            public bool enabled;
             public AudioClip audioClip;
             public Vector2 fadeInOut;
             public float volume;
@@ -19,6 +20,7 @@ namespace GGJ23.Managment
         public struct SFXData
         {
             public string label;
+            public bool enabled;
             public AudioClip[] audioClips;
             public Vector2 fadeInOut;
             public float volume;
@@ -77,9 +79,11 @@ namespace GGJ23.Managment
         {
             for (int i = 0; i < sfxLayers.Length; i++)
             {
-                if (sfxLayers[i].label == label)
+                if (sfxLayers[i].label == label
+                    && sfxLayers[i].enabled)
                 {
                     if (sfxLayers[i].audioClips.Length < 1) {break;}
+
                     sfxLayerSources[i].enabled = true;
                     sfxLayerSources[i].clip = sfxLayers[i].audioClips[Random.Range(0, sfxLayers[i].audioClips.Length)];
                     sfxLayerSources[i].DOFade(sfxLayers[i].volume, 0.1f);
@@ -93,7 +97,8 @@ namespace GGJ23.Managment
         {
             for (int i = 0; i < audioLayers.Length; i++)
             {
-                if (audioLayers[i].label == label)
+                if (audioLayers[i].label == label
+                    && audioLayers[i].enabled)
                 {
                     audioLayerSources[i].DOFade(audioLayers[i].volume, audioLayers[i].fadeInOut.x);
                     break;
@@ -105,7 +110,8 @@ namespace GGJ23.Managment
         {
             for (int i = 0; i < audioLayers.Length; i++)
             {
-                if (audioLayers[i].label == label)
+                if (audioLayers[i].label == label
+                    && audioLayers[i].enabled)
                 {
                     audioLayerSources[i].DOFade(0f, audioLayers[i].fadeInOut.y);
                     break;

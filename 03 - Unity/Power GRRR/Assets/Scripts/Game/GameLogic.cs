@@ -1,3 +1,4 @@
+using GGJ23.Game.Config;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,20 +16,18 @@ namespace GGJ23.Game
 
     public class GameLogic : MonoBehaviour
     {
-        [SerializeField] private float _dayDurationMs = 40000;
-        [SerializeField] private int _finalDayDurationMs = 40000;
-        [SerializeField] private int _earlyDayDurationMs = 10000;
-        [SerializeField] private int _nightDurationMs = 10000;
+        // --- Variables ---
+        public GameLogicConfig config;
 
+        [Header("Components")]
         public InteractionController InteractionController;
         public MovementController MovementController;
         public PropController PropController;
         public GridLightController GridLightController;
         public CameraController CameraController;
-
-        public UnityEvent GameOver;
         public EffectContoller EffectContoller;
 
+        private float _dayDurationMs = 40000;
         private bool _isNight = false;
         private float _currentScore = 0f;
         private float _lossPoints = 0f;
@@ -36,20 +35,14 @@ namespace GGJ23.Game
 
         private BrokenLevel _brokenLevel;
 
-        public float LossPercentage => _lossPoints / _lossPointsNeeded;
+        // --- Properties ---
+        public float LossPercentage => _lossPoints / config.LossPointsNeeded;
         public float Score => _currentScore;
 
         [Header("Events")]
         public UnityEvent OnDaySwitch;
         public UnityEvent OnNightSwitch;
-
-        [Header("Design Tuning")]
-        [Range(0f, 500f)] [SerializeField] private float _lossPointsNeeded = 100;
-        [Range(5f, 30f)][SerializeField] private float _maxDifficulty = 15f;
-        [Range(2.5f, 20f)][SerializeField] private float _timeToMaxDifficulty = 10f;
-        [Range(1f, 50f)][SerializeField] private float _maxDifficultyFromDistance = 15f;
-        [Range(200f, 2000f)][SerializeField] private float _distanceToMaxDifficulty = 500f;
-        [Range(0.1f, 1.5f)][SerializeField] private float _difficultyFactorFromMultipleBreakages = 0.235f;
+        public UnityEvent GameOver;
 
         public bool IsNight => _isNight;
         
@@ -82,7 +75,7 @@ namespace GGJ23.Game
 
             if (MovementController != null)
             {
-                MovementController.RegisterEvents(EffectContoller);
+                MovementController.RegisterEvents(EffectContoller, OnDaySwitch, OnNightSwitch);
             }
 
             // GenerateBrokenInteractables();
@@ -96,13 +89,13 @@ namespace GGJ23.Game
                 return;
             }
 
-            float progressToNextTime = ((Time.deltaTime * 1000) / (_isNight ? _nightDurationMs : _dayDurationMs)) * 0.5f;
+            float progressToNextTime = ((Time.deltaTime * 1000) / (_isNight ? config.NightDurationMs : _dayDurationMs)) * 0.5f;
             bool lastIsNight = _isNight;
 
             _currentTime += progressToNextTime;
             _isNight = _currentTime % 1f >= 0.5f;
 
-            _dayDurationMs = Mathf.Lerp(_earlyDayDurationMs, _finalDayDurationMs, Mathf.InverseLerp(1f, 4f, _currentTime));
+            _dayDurationMs = Mathf.Lerp(config.EarlyDayDurationMs, config.FinalDayDurationMs, Mathf.InverseLerp(1f, 4f, _currentTime));
 
             if (lastIsNight != _isNight)
             {
@@ -154,7 +147,7 @@ namespace GGJ23.Game
                 }
             }
 
-            if (_lossPoints >= _lossPointsNeeded)
+            if (_lossPoints >= config.LossPointsNeeded)
             {
                 // End the game
                 Debug.LogError($"You lost the game lmao");
@@ -215,7 +208,7 @@ namespace GGJ23.Game
                 return tempInteractables;
             }
 
-            float difficultyFactor = Mathf.Lerp(1f, _maxDifficulty, Mathf.Pow((Mathf.InverseLerp(1f, _timeToMaxDifficulty, Mathf.Clamp(_currentTime, 1f, _timeToMaxDifficulty))), 1.1f));
+            float difficultyFactor = Mathf.Lerp(1f, config.MaxDifficulty, Mathf.Pow((Mathf.InverseLerp(1f, config.TimeToMaxDifficulty, Mathf.Clamp(_currentTime, 1f, config.TimeToMaxDifficulty))), 1.1f));
             Debug.Log($"difficultyFactor to begin with: {difficultyFactor}");
 
             while (difficultyFactor >= 1f)
@@ -239,8 +232,8 @@ namespace GGJ23.Game
                         distance = GetMinDistance(tempInteractables, candidate);
                     }
 
-                    float difficultyFromDistance = Mathf.Lerp(0f, _maxDifficultyFromDistance, Mathf.InverseLerp(0f, _distanceToMaxDifficulty, distance));
-                    float difficultyFromNumberOfInteractables = Mathf.Pow(tempInteractables.Count + 1, _difficultyFactorFromMultipleBreakages);
+                    float difficultyFromDistance = Mathf.Lerp(0f, config.MaxDifficultyFromDistance, Mathf.InverseLerp(0f, config.DistanceToMaxDifficulty, distance));
+                    float difficultyFromNumberOfInteractables = Mathf.Pow(tempInteractables.Count + 1, config.DifficultyFactorFromMultipleBreakages);
 
                     Debug.Log($"distance: {distance}");
                     Debug.Log($"difficultyFromDistance: {difficultyFromDistance}");

@@ -96,16 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1998e36bed8b3f049b73bba3c99cdda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dayDurationMs: 5000
-  _nightDurationMs: 5000
+  config: {fileID: 11400000, guid: d44df69ec3c388b42a4304528865ad7f, type: 2}
   InteractionController: {fileID: 0}
   MovementController: {fileID: 0}
   PropController: {fileID: 108147613186522104}
   GridLightController: {fileID: 0}
   CameraController: {fileID: 0}
-  GameOver:
-    m_PersistentCalls:
-      m_Calls: []
   EffectContoller: {fileID: 3858312805285020214}
   OnDaySwitch:
     m_PersistentCalls:
@@ -113,12 +109,9 @@ MonoBehaviour:
   OnNightSwitch:
     m_PersistentCalls:
       m_Calls: []
-  _lossPointsNeeded: 100
-  _maxDifficulty: 15
-  _timeToMaxDifficulty: 10
-  _maxDifficultyFromDistance: 15
-  _distanceToMaxDifficulty: 500
-  _difficultyFactorFromMultipleBreakages: 0.235
+  GameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &108147613186522104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,44 +535,54 @@ MonoBehaviour:
   audioSourceRoot: {fileID: 1210537597138008614}
   audioLayers:
   - label: Day
+    enabled: 1
     audioClip: {fileID: 8300000, guid: f10c7e65bd17ca54ca4434a6ce89cb00, type: 3}
     fadeInOut: {x: 1, y: 1}
     volume: 1
   - label: Night
+    enabled: 1
     audioClip: {fileID: 8300000, guid: db16f8b161ac37a4ea82ebfc2ae682aa, type: 3}
     fadeInOut: {x: 1, y: 1}
     volume: 1
   - label: DayNightTransition
+    enabled: 0
     audioClip: {fileID: 8300000, guid: e2fc0c95f5377494cb236c92fcae3afd, type: 3}
     fadeInOut: {x: 0.25, y: 0.25}
     volume: 1
   - label: Boken_Layer_01
+    enabled: 0
     audioClip: {fileID: 8300000, guid: cc7dc33288e190542a5b08f110e906e6, type: 3}
     fadeInOut: {x: 1, y: 1}
     volume: 1
   - label: Boken_Layer_02
+    enabled: 0
     audioClip: {fileID: 8300000, guid: 98b36256eb464d94a9c87d66bb5c88e2, type: 3}
     fadeInOut: {x: 1, y: 1}
     volume: 1
   - label: Boken_Layer_03
+    enabled: 0
     audioClip: {fileID: 8300000, guid: a1b7d88e1073e974fae8d444e8b9fec1, type: 3}
     fadeInOut: {x: 1, y: 1}
     volume: 1
   - label: Movement_Loop
+    enabled: 0
     audioClip: {fileID: 8300000, guid: 7876522b62d541940a2da7b89b56cf72, type: 3}
     fadeInOut: {x: 1, y: 1}
     volume: 1
   sfxLayers:
   - label: Interactable_Broken
+    enabled: 0
     audioClips: []
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Interactable_Fix_Start
+    enabled: 0
     audioClips:
     - {fileID: 8300000, guid: 77c4a01fbddc3ec4cb7f2d6d109055cc, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Interactable_Fix_Step
+    enabled: 0
     audioClips:
     - {fileID: 8300000, guid: 330c85ce6014a804ba5269db80286139, type: 3}
     - {fileID: 8300000, guid: 49cee02c4714b284694cb207f0a51f51, type: 3}
@@ -588,26 +591,31 @@ MonoBehaviour:
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Interactable_Fix_Complete
+    enabled: 0
     audioClips:
     - {fileID: 8300000, guid: 396bb43ba5553c740b120db6bded3d3d, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Movement_Start
+    enabled: 0
     audioClips: []
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Movement_Step
+    enabled: 0
     audioClips:
     - {fileID: 8300000, guid: 7876522b62d541940a2da7b89b56cf72, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Movement_Stop
+    enabled: 0
     audioClips:
     - {fileID: 8300000, guid: e8f096776d4394549b05f8ee06989aee, type: 3}
     - {fileID: 0}
     fadeInOut: {x: 0, y: 0}
     volume: 0.5
   - label: Movement_Boost
+    enabled: 0
     audioClips:
     - {fileID: 8300000, guid: ed85d0f3149f7d8409614097c6dbaf62, type: 3}
     fadeInOut: {x: 0, y: 0}

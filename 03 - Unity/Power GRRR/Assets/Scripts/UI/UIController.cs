@@ -10,16 +10,21 @@ namespace GGJ23.UI
         [Header("Components")]
         public GameManager gameManager;
         public MovementController movementController;
+        public InteractionController interactionController;
         public UIDocument uiDocument;
 
         private VisualElement _root;
 
+        public VisualElement _hudContainer;
         private VisualElement _helpContainer;
         private VisualElement _pauseContainer;
         private VisualElement _gameOverContainer;
 
         private ProgressBar _progressbarEnergy;
         private ProgressBar _progressbarBoost;
+
+        private Button _buttonBoost;
+        private Button _buttonInteract;
 
         private Button _buttonPause;
         private Button _buttonPauseExit;
@@ -48,12 +53,27 @@ namespace GGJ23.UI
             _progressbarBoost = _root.Q<ProgressBar>("ProgressbarBoost");
 
             // --- Buttons ---
+            _buttonBoost = _root.Q<Button>("ButtonBoost");
+            _buttonInteract = _root.Q<Button>("ButtonInteract");
+
             _buttonPause = _root.Q<Button>("ButtonPause");
             _buttonPauseExit = _root.Q<Button>("ButtonPauseExit");
             _buttonHelp = _root.Q<Button>("ButtonHelp");
             _buttonHelpExit = _root.Q<Button>("ButtonHelpExit");
             _buttonRestart = _root.Q<Button>("ButtonRestart");
             _buttonExit = _root.Q<Button>("ButtonExit");
+
+            if (_buttonBoost != null)
+            {
+                _buttonBoost.clicked += OnClickBoost;
+            }
+
+            if (_buttonInteract != null)
+            {
+                _buttonInteract.clickable.activators.Clear();
+                _buttonInteract.RegisterCallback<MouseDownEvent>(e => OnClickInteractEnter());
+                _buttonInteract.RegisterCallback<MouseUpEvent>(e => OnClickInteractExit());
+            }
 
             if (_buttonPause != null)
             {
@@ -95,6 +115,7 @@ namespace GGJ23.UI
             _valueScore = _root.Q<Label>("ValueScore");
 
             // --- Containers ---
+            _hudContainer = _root.Q<VisualElement>("ContainerHUD");
             _pauseContainer = _root.Q<VisualElement>("ContainerPause");
             _helpContainer = _root.Q<VisualElement>("ContainerHelp");
             _gameOverContainer = _root.Q<VisualElement>("ContainerGameOver");
@@ -102,7 +123,18 @@ namespace GGJ23.UI
 
         private void OnDisable()
         {
-            if(_buttonPause != null)
+            if (_buttonBoost != null)
+            {
+                _buttonBoost.clicked -= OnClickBoost;
+            }
+
+            if (_buttonInteract != null)
+            {
+                _buttonInteract.UnregisterCallback<MouseDownEvent>(e => OnClickInteractEnter());
+                _buttonInteract.UnregisterCallback<MouseUpEvent>(e => OnClickInteractExit());
+            }
+
+            if (_buttonPause != null)
                 _buttonPause.clicked += OnClickHelp;
 
             if (_buttonPauseExit != null)
@@ -123,6 +155,14 @@ namespace GGJ23.UI
 
         private void Update()
         {
+            var mousePosition = Input.mousePosition;
+            Vector2 mousePositionCorrected = new Vector2(mousePosition.x, Screen.height - mousePosition.y);
+            mousePositionCorrected = RuntimePanelUtils.ScreenToPanel(_root.panel, mousePositionCorrected);
+
+            bool blockInput = (mousePositionCorrected.y > Screen.height * 0.89f);
+            interactionController.BlockInput(blockInput);
+            movementController.BlockInput(blockInput);
+
             _progressbarEnergy.value = gameManager.Energy;
 
             if (movementController != null)
@@ -171,6 +211,24 @@ namespace GGJ23.UI
             _gameOverContainer.style.display = DisplayStyle.None;
             _gameOverOpen = false;
         }
+        
+        private void OnClickBoost()
+        {
+            Debug.Log("UIController:OnClickBoost");
+            movementController.PressBoost();
+        }
+
+        private void OnClickInteractEnter()
+        {
+            Debug.Log("UIController:OnClickInteractEnter");
+            interactionController.PressInteractButton();
+        }
+
+        private void OnClickInteractExit()
+        {
+            Debug.Log("UIController:OnClickInteractExit");
+            interactionController.LeaveInteractButton();
+        }
 
         private void TogglePause()
         {
@@ -215,14 +273,14 @@ namespace GGJ23.UI
 
         private void OnClickRestart()
         {
-            Debug.Log("Restart");
+            Debug.Log("UIController::Restart");
             OnGameOverExit();
             gameManager.Restart();
         }
 
         private void OnClickExit()
         {
-            Debug.Log("Exit");
+            Debug.Log("UIController::Exit");
             gameManager.Exit();
         }
     }

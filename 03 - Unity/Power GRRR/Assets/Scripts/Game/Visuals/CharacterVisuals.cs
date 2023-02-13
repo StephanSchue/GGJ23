@@ -1,16 +1,17 @@
 using UnityEngine;
 
-namespace GGJ23.Game
+namespace GGJ23.Game.Visuals
 {
     public class CharacterVisuals : MonoBehaviour
     {
+        // --- Variables ---
+        [Header("Components")]
         public MovementController movementController;
         public InteractionController interactionController;
 
         public SpriteRenderer spriteRenderer;
-        public Animator animator;
-
-        public SpriteRenderer nightSprite;
+        public SpriteRenderer nightSpriteRenderer;
+        public Animator animator;        
 
         private PlayerDirection playerDirection;
 
@@ -18,19 +19,25 @@ namespace GGJ23.Game
         {
             if (interactionController.IsNight)
             {
-                spriteRenderer.gameObject.SetActive(false);
-                nightSprite.gameObject.SetActive(true);
+                // --- Set Visuals Night ---
+                spriteRenderer.enabled = false;
+                nightSpriteRenderer.enabled = true;
+                animator.enabled = false;
                 return;
             }
 
-            spriteRenderer.gameObject.SetActive(true);
-            nightSprite.gameObject.SetActive(false);
+            // --- Set Visuals Day ---
+            spriteRenderer.enabled = true;
+            nightSpriteRenderer.enabled = false;
+            animator.enabled = true;
+
             float dot = Vector3.Dot(Vector3.right, movementController.Direction);
             spriteRenderer.flipX = (dot < 0f);
 
             animator.SetBool("Working", interactionController.IsWorking);
             animator.SetFloat("Velocity", movementController.Velocity);
 
+            // -- Set Directions --
             if (playerDirection != movementController.PlayerDirection)
             {
                 switch (movementController.PlayerDirection)

@@ -1,3 +1,4 @@
+using GGJ23.Game.Config;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,11 +14,7 @@ namespace GGJ23.Game
 
     public class MovementController : MonoBehaviour
     {
-        public float Speed = 1f;
-        public float BoostInterval = 2f;
-        public float BoostThreshold = 0.5f;
-        public float BoostDuration = 2f;
-        public float BoostSpeed = 1.5f;
+        public MovementConfig config;
 
         private Rigidbody2D _rigidbody2D;
         private Vector2 _movement = new Vector2();
@@ -25,13 +22,18 @@ namespace GGJ23.Game
         private float _boostInputTimer = 0f;
         private float _boostEffectTimer = 0f;
 
+        private bool _isNight = false;
+        private bool _boostButtonPressed = false;
+
+        private bool _blockInput = false;
+
         public bool IsMoving { get; private set; }
         public Vector2 Direction { get; private set; }
         public PlayerDirection PlayerDirection { get; private set; } = PlayerDirection.Right;
         public float Velocity { get; private set; }
 
-        public float BoostIntervalPercentage => _boostInputTimer / BoostInterval;
-        public bool BoostReady => _boostInputTimer < BoostThreshold;
+        public float BoostIntervalPercentage => _boostInputTimer / config.BoostInterval;
+        public bool BoostReady => _boostInputTimer < config.BoostThreshold;
         public bool BoostActive => _boostEffectTimer > 0f;
 
         [Header("Events")]
@@ -43,37 +45,88 @@ namespace GGJ23.Game
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            _boostInputTimer = BoostInterval;
+            _boostInputTimer = config.BoostInterval;
             _boostEffectTimer = 0f;
         }
 
-        public void RegisterEvents(EffectContoller effectContoller)
+        public void RegisterEvents(EffectContoller effectContoller, UnityEvent onDayEvent, UnityEvent onNightEvent)
         {
             OnMovementStart.AddListener(() => effectContoller.OnMovementStart.Invoke());
             OnMovementStep.AddListener(() => effectContoller.OnMovementStep.Invoke());
             OnMovementStop.AddListener(() => effectContoller.OnMovementStop.Invoke());
             OnMovementBoost.AddListener(() => effectContoller.OnMovementBoost.Invoke());
+
+            onDayEvent.AddListener(() => _isNight = false);
+            onNightEvent.AddListener(() => _isNight = true);
+        }
+
+        public void PressBoost()
+        {
+            _boostButtonPressed = true;
+        }
+
+        public void BlockInput(bool block)
+        {
+            _blockInput = block;
         }
 
         private void FixedUpdate()
         {
+            if (config.StopAtNight 
+                && _isNight)
+            {
+                if (IsMoving)
+                {
+                    OnMovementStop.Invoke();
+                }
+
+                Velocity = 0f;
+                IsMoving = false;
+
+                return;
+            }
+
             _movement.x = Input.GetAxis("Horizontal");
             _movement.y = Input.GetAxis("Vertical");
+
+            if (Input.GetButtonDown("Fire2"))
+                _boostButtonPressed = true;  
+
+            // mouse input
+            if (_movement.sqrMagnitude > 0.1f)
+            {
+                // If external device input is pressed don't use mouse
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                _movement = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+
+                if (_movement.sqrMagnitude > 0.5f)
+                    _movement.Normalize();
+                else
+                    _movement = Vector2.zero;
+            }
+
+            if (_blockInput)
+            {
+                _movement = Vector2.zero;
+            }
 
             float velocity = _movement.magnitude;
 
             if (velocity > 0.1f
-                && _boostInputTimer < BoostThreshold
-                 && Input.GetButtonDown("Fire2"))
+                && _boostInputTimer < config.BoostThreshold
+                 && _boostButtonPressed)
             {
-                _boostEffectTimer = BoostDuration;
-                _boostInputTimer = BoostInterval;
+                _boostEffectTimer = config.BoostDuration;
+                _boostInputTimer = config.BoostInterval;
+                _boostButtonPressed = false;
             }
             else
             {
                 if(_boostInputTimer < 0f)
                 {
-                    _boostInputTimer = BoostInterval;
+                    _boostInputTimer = config.BoostInterval;
                 }
 
                 _boostInputTimer -= Time.fixedDeltaTime;
@@ -88,7 +141,7 @@ namespace GGJ23.Game
             {
                 _movement.Normalize();
 
-                float speed = _boostEffectTimer > 0f ? BoostSpeed : Speed;
+                float speed = _boostEffectTimer > 0f ? config.BoostSpeed : config.Speed;
                 _rigidbody2D.MovePosition((Vector2)transform.position + _movement * Time.fixedDeltaTime * speed);
                 
                 Direction = _movement;

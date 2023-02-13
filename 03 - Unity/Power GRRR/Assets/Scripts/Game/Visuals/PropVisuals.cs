@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GGJ23.Game
+namespace GGJ23.Game.Visuals
 {
     public class PropVisuals : MonoBehaviour
     {

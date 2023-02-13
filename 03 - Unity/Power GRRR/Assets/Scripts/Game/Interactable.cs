@@ -1,6 +1,6 @@
+using GGJ23.Game.Config;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace GGJ23.Game
 {
@@ -14,51 +14,61 @@ namespace GGJ23.Game
 
     public class Interactable : MonoBehaviour
     {
+        // --- Variables ---
+        [Header("Settings")]
+        public InteractableConfig config;
+
         private InteractionStatus _status;
         private float _progress = 0f;
-        public float _duration = 2f;
-        public float _interactionRadius = 1f;
-
-        public Slider progressBar;
-
-        public InteractionStatus Status => _status;
-        public float Progress => _progress;
-
         private bool _isNight = false;
-
-        public bool IsNight => _isNight;
-
-        public bool IsConnected { get; private set; } = true;
 
         private float _timeToBecomeBreakable = 10000f;
         private float _breakableTimer = 0f;
+
+        // --- Properties ---
+        public InteractionStatus Status => _status;
+        public float InteractionRadius => config.InteractionRadius;
+        public float Progress => 1f - Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, config.Duration, _progress));
+        public bool IsNight => _isNight;
+
+        #region Init
 
         private void Awake()
         {
             Initalize();
         }
 
+        #endregion
+
+        #region Public methods
+
         public void Initalize()
         {
             _status = InteractionStatus.Working;
-            _progress = _duration;
+            _progress = config.Duration;
         }
 
-        void Update()
+        public void RegisterEvents(UnityEvent onDaySwitch, UnityEvent onNightSwitch)
+        {
+            onDaySwitch.AddListener(OnDaySwitch);
+            onNightSwitch.AddListener(OnNightSwitch);
+        }
+
+        public void Process(float dt)
         {
             if (_status == InteractionStatus.FreshlyRepaired)
             {
-                _breakableTimer += Time.deltaTime * 1000;
+                _breakableTimer += dt * 1000;
                 if (_breakableTimer >= _timeToBecomeBreakable)
                 {
                     _breakableTimer = 0f;
-                    _progress = _duration;
+                    _progress = config.Duration;
                     _status = InteractionStatus.Working;
                 }
             }
         }
 
-        public void Process(float dt)
+        public void ProcessInteraction(float dt)
         {
             if (_status == InteractionStatus.Broken || _status == InteractionStatus.BeingRepaired)
             {
@@ -66,28 +76,12 @@ namespace GGJ23.Game
                 {
                     _progress = 0f;
                     _status = InteractionStatus.FreshlyRepaired;
-                    progressBar.gameObject.SetActive(false);
-                    progressBar.value = 0f;
                     return;
                 }
 
                 _progress -= dt;
                 _status = InteractionStatus.BeingRepaired;
-                progressBar.gameObject.SetActive(true);
-                progressBar.value = 1f - Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, _duration, _progress));
             }
-        }
-
-        public void OnDaySwitch()
-        {
-            // Debug.Log("OnDaySwitch");
-            _isNight = false;
-        }
-
-        public void OnNightSwitch()
-        {
-            // Debug.Log("OnNightSwitch");
-            _isNight = true;
         }
 
         public void Break()
@@ -95,9 +89,34 @@ namespace GGJ23.Game
             _status = InteractionStatus.Broken;
         }
 
+        #endregion
+
+        #region Events
+
+        private void OnDaySwitch()
+        {
+            // Debug.Log("OnDaySwitch");
+            _isNight = false;
+        }
+
+        private void OnNightSwitch()
+        {
+            // Debug.Log("OnNightSwitch");
+            _isNight = true;
+        }
+
+        #endregion
+
+        #region Editor
+
         private void OnDrawGizmos()
         {
-            Gizmos.DrawWireSphere(transform.position, _interactionRadius);
+            if(config != null)
+            {
+                Gizmos.DrawWireSphere(transform.position, config.InteractionRadius);
+            }
         }
+
+        #endregion
     }
 }

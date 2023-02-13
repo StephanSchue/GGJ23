@@ -8,14 +8,13 @@ namespace GGJ23.Game
         public Prop[] Props { get => _props; }
         private Prop[] _props;
 
-        public void PopulateProps(Prop[] props, UnityEvent OnDaySwitch, UnityEvent OnNightSwitch)
+        public void PopulateProps(Prop[] props, UnityEvent onDaySwitch, UnityEvent onNightSwitch)
         {
             _props = props;
 
             for (int i = 0; i < _props.Length; i++)
             {
-                OnDaySwitch.AddListener(_props[i].OnDaySwitch);
-                OnNightSwitch.AddListener(_props[i].OnNightSwitch);
+                _props[i].RegisterEvents(onDaySwitch, onNightSwitch);
             }
         }
     }
