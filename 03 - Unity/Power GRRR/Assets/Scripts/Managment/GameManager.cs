@@ -34,6 +34,13 @@ namespace GGJ23.Managment
 
         #region public methods
 
+        public void StartGame()
+        {
+            _gameOver = false;
+            Energy = 1f;
+            Pause(false);
+        }
+
         public void Restart()
         {
             _gameOver = false;

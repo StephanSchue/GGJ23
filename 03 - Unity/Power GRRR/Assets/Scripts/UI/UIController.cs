@@ -1,287 +1,358 @@
 using GGJ23.Game;
 using GGJ23.Managment;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 namespace GGJ23.UI
 {
+    [System.Serializable]
+    public enum UIState
+    {
+        None,
+        StartScreen,
+        GameScreen,
+        GameOverScreen,
+        PauseScreen,
+        HelpScreen,
+        OptionScreen,
+        CreditsScreen
+    }
+
+    [System.Serializable]
+    public enum UIAction
+    {
+        None,
+        Open_StartScreen,
+        Start_Game,
+        Open_GameOverScreen,
+        Open_PauseScreen,
+        Open_HelpScreen,
+        Open_OptionScreen,
+        Open_CreditsScreen,
+        Exit_Game
+    }
+
+    public enum UIInputButton
+    {
+        Accept,
+        Cancel,
+        Function01,
+        Function02,
+        Function03,
+        Up,
+        Right,
+        Down,
+        Left,
+    }
+
+    public enum UIInputStatus
+    {
+        None,
+        Press,
+        Hold,
+        Release
+    }
+    
+    public class UIInputData
+    {
+        public UIInputStatus Accept; // A
+        public UIInputStatus Cancel; // B
+        public UIInputStatus Function01; // X
+        public UIInputStatus Function02; // Y
+        public UIInputStatus Function03; // Menu
+
+        public UIInputStatus Up;
+        public UIInputStatus Right;
+        public UIInputStatus Down;
+        public UIInputStatus Left;
+
+        public void SetButtonStatus(UIInputButton button, bool press, bool hold, bool release)
+        {
+            var status = UIInputStatus.None;
+            if (press) { status = UIInputStatus.Press; }
+            else if (hold) { status = UIInputStatus.Hold; }
+            else if (release) { status = UIInputStatus.Release; }
+
+            switch (button)
+            {
+                case UIInputButton.Accept:
+                    Accept = status;
+                    break;
+                case UIInputButton.Cancel:
+                    Cancel = status;
+                    break;
+                case UIInputButton.Function01:
+                    Function01 = status;
+                    break;
+                case UIInputButton.Function02:
+                    Function02 = status;
+                    break;
+                case UIInputButton.Function03:
+                    Function03 = status;
+                    break;
+                case UIInputButton.Up:
+                    Up = status;
+                    break;
+                case UIInputButton.Right:
+                    Right = status;
+                    break;
+                case UIInputButton.Down:
+                    Down = status;
+                    break;
+                case UIInputButton.Left:
+                    Left = status;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public UIInputStatus GetButtonStatus(UIInputButton button)
+        {
+            switch (button)
+            {
+                case UIInputButton.Accept:
+                    return Accept;
+                case UIInputButton.Cancel:
+                    return Cancel;
+                case UIInputButton.Function01:
+                    return Function01;
+                case UIInputButton.Function02:
+                    return Function02;
+                case UIInputButton.Function03:
+                    return Function03;
+                case UIInputButton.Up:
+                    return Up;
+                case UIInputButton.Right:
+                    return Right;
+                case UIInputButton.Down:
+                    return Down;
+                case UIInputButton.Left:
+                    return Left;
+                default:
+                    return UIInputStatus.None;
+            }
+        }
+
+        public bool IsPressed(UIInputButton button)
+        {
+            return GetButtonStatus(button) == UIInputStatus.Press;
+        }
+
+        public bool IsHold(UIInputButton button)
+        {
+            return GetButtonStatus(button) == UIInputStatus.Hold;
+        }
+
+        public bool IsRelease(UIInputButton button)
+        {
+            return GetButtonStatus(button) == UIInputStatus.Release;
+        }
+    }
+
     public class UIController : MonoBehaviour
     {
+        [System.Serializable]
+        public struct UIScreenCollection
+        {
+            public UIScreen StartScreen;
+            public UIScreen GameScreen;
+            public UIScreen GameOverScreen;
+            public UIScreen PauseScreen;
+            public UIScreen HelpScreen;
+            public UIScreen OptionScreen;
+            public UIScreen CreditsScreen;
+
+            public void Init(UIController uiController)
+            {
+                StartScreen?.Init(uiController);
+                GameScreen?.Init(uiController);
+                GameOverScreen?.Init(uiController);
+                PauseScreen?.Init(uiController);
+                HelpScreen?.Init(uiController);
+                OptionScreen?.Init(uiController);
+                CreditsScreen?.Init(uiController);
+            }
+
+            public UIScreen GetCurrentScreen(UIState index)
+            {
+                switch (index)
+                {
+                    case UIState.None:
+                        return null;
+                    case UIState.StartScreen:
+                        return StartScreen;
+                    case UIState.GameScreen:
+                        return GameScreen;
+                    case UIState.GameOverScreen:
+                        return GameOverScreen;
+                    case UIState.PauseScreen:
+                        return PauseScreen;
+                    case UIState.HelpScreen:
+                        return HelpScreen;
+                    case UIState.OptionScreen:
+                        return OptionScreen;
+                    case UIState.CreditsScreen:
+                        return CreditsScreen;
+                    default:
+                        return null;
+                }
+            }
+        }
+
         [Header("Components")]
         public GameManager gameManager;
         public MovementController movementController;
         public InteractionController interactionController;
-        public UIDocument uiDocument;
+        public EventSystem eventSystem;
 
-        private VisualElement _root;
+        public UIScreenCollection screens;
+        private UIState _currentState;
+        private UIScreen _currentScreen => screens.GetCurrentScreen(_currentState);
+        private UIInputData _inputData = new UIInputData();
 
-        public VisualElement _hudContainer;
-        private VisualElement _helpContainer;
-        private VisualElement _pauseContainer;
-        private VisualElement _gameOverContainer;
-
-        private ProgressBar _progressbarEnergy;
-        private ProgressBar _progressbarBoost;
-
-        private Button _buttonBoost;
-        private Button _buttonInteract;
-
-        private Button _buttonPause;
-        private Button _buttonPauseExit;
-        private Button _buttonHelp;
-        private Button _buttonHelpExit;
-        private Button _buttonRestart;
-        private Button _buttonExit;
-
-        private Label _valueScore;
-
-        private bool _pauseOpen = false;
-        private bool _helpOpen = false;
-        private bool _gameOverOpen = false;
-
-        private void OnEnable()
+        private void Awake()
         {
-            _root = uiDocument.rootVisualElement;
-
-            gameManager.OnGameOver.AddListener(OnGameOver);
-
-            if (_root == null)
-                return;
-
-            // --- Progressbar ---
-            _progressbarEnergy = _root.Q<ProgressBar>("ProgressbarEnergy");
-            _progressbarBoost = _root.Q<ProgressBar>("ProgressbarBoost");
-
-            // --- Buttons ---
-            _buttonBoost = _root.Q<Button>("ButtonBoost");
-            _buttonInteract = _root.Q<Button>("ButtonInteract");
-
-            _buttonPause = _root.Q<Button>("ButtonPause");
-            _buttonPauseExit = _root.Q<Button>("ButtonPauseExit");
-            _buttonHelp = _root.Q<Button>("ButtonHelp");
-            _buttonHelpExit = _root.Q<Button>("ButtonHelpExit");
-            _buttonRestart = _root.Q<Button>("ButtonRestart");
-            _buttonExit = _root.Q<Button>("ButtonExit");
-
-            if (_buttonBoost != null)
-            {
-                _buttonBoost.clicked += OnClickBoost;
-            }
-
-            if (_buttonInteract != null)
-            {
-                _buttonInteract.clickable.activators.Clear();
-                _buttonInteract.RegisterCallback<MouseDownEvent>(e => OnClickInteractEnter());
-                _buttonInteract.RegisterCallback<MouseUpEvent>(e => OnClickInteractExit());
-            }
-
-            if (_buttonPause != null)
-            {
-                _buttonPause.clicked += TogglePause;
-                _buttonPause.focusable = false;
-            }
-
-            if (_buttonPauseExit != null)
-            {
-                _buttonPauseExit.clicked += TogglePause;
-                _buttonPauseExit.focusable = false;
-            }
-
-            if (_buttonHelp != null)
-            {
-                _buttonHelp.clicked += OnClickHelp;
-                _buttonHelp.focusable = false;
-            }
-
-            if (_buttonHelpExit != null)
-            {
-                _buttonHelpExit.clicked += OnClickHelpExit;
-                _buttonHelpExit.focusable = false;
-            }
-
-            if (_buttonRestart != null)
-            {
-                _buttonRestart.clicked += OnClickRestart;
-                _buttonRestart.focusable = false;
-            }
-            
-            if (_buttonExit != null)
-            {
-                _buttonExit.clicked += OnClickExit;
-                _buttonExit.focusable = false;
-            }
-
-            // --- Value ---
-            _valueScore = _root.Q<Label>("ValueScore");
-
-            // --- Containers ---
-            _hudContainer = _root.Q<VisualElement>("ContainerHUD");
-            _pauseContainer = _root.Q<VisualElement>("ContainerPause");
-            _helpContainer = _root.Q<VisualElement>("ContainerHelp");
-            _gameOverContainer = _root.Q<VisualElement>("ContainerGameOver");
+            screens.Init(this);
+            SwitchState(UIState.StartScreen);
         }
 
         private void OnDisable()
         {
-            if (_buttonBoost != null)
-            {
-                _buttonBoost.clicked -= OnClickBoost;
-            }
-
-            if (_buttonInteract != null)
-            {
-                _buttonInteract.UnregisterCallback<MouseDownEvent>(e => OnClickInteractEnter());
-                _buttonInteract.UnregisterCallback<MouseUpEvent>(e => OnClickInteractExit());
-            }
-
-            if (_buttonPause != null)
-                _buttonPause.clicked += OnClickHelp;
-
-            if (_buttonPauseExit != null)
-                _buttonPauseExit.clicked += TogglePause;
-
-            if (_buttonHelp != null)
-                _buttonHelp.clicked -= OnClickHelp;
-
-            if (_buttonHelpExit != null)
-                _buttonHelpExit.clicked -= OnClickHelpExit;
-
-            if (_buttonRestart != null)
-                _buttonRestart.clicked -= OnClickRestart;
-
-            if (_buttonRestart != null)
-                _buttonExit.clicked -= OnClickExit;
+            
         }
 
         private void Update()
         {
-            var mousePosition = Input.mousePosition;
-            Vector2 mousePositionCorrected = new Vector2(mousePosition.x, Screen.height - mousePosition.y);
-            mousePositionCorrected = RuntimePanelUtils.ScreenToPanel(_root.panel, mousePositionCorrected);
+            _inputData.SetButtonStatus(UIInputButton.Accept, Input.GetButtonDown("Submit"), Input.GetButton("Submit"), Input.GetButtonUp("Submit"));
+            _inputData.SetButtonStatus(UIInputButton.Cancel, Input.GetButtonDown("Cancel"), Input.GetButton("Cancel"), Input.GetButtonUp("Cancel"));
 
-            bool blockInput = (mousePositionCorrected.y > Screen.height * 0.89f);
-            interactionController.BlockInput(blockInput);
-            movementController.BlockInput(blockInput);
+            _currentScreen?.Tick(Time.deltaTime, _inputData);
+        }
 
-            _progressbarEnergy.value = gameManager.Energy;
+        #region Statemachine
 
-            if (movementController != null)
+        public void DoAction(UIAction uiAction)
+        {
+            Debug.Log($"UIController::DoAction {uiAction}");
+
+            switch (uiAction)
             {
-                // Debug.LogFormat("BoostInterval: {0}; BoostReady: {1}", movementController.BoostIntervalPercentage, movementController.BoostReady);
-                _progressbarBoost.value = movementController.BoostIntervalPercentage * 100f;
-                _progressbarBoost.title = movementController.BoostActive ? "Boost Active" : movementController.BoostReady ? "Boost Ready" : "Reload Boost";
-            }
-
-            if (Input.GetButtonDown("Submit"))
-            {
-                if (_gameOverOpen)
-                {
-                    OnGameOverExit();
-                }
-            }
-
-            if (Input.GetButtonDown("Cancel"))
-            {
-                if(_gameOverOpen)
-                {
-                    OnGameOverExit();
-                }
-                else if(_helpOpen)
-                {
-                    OnClickHelpExit();
-                }
-                else
-                {
-                    TogglePause();
-                } 
+                case UIAction.Open_StartScreen:
+                    break;
+                case UIAction.Start_Game:
+                    gameManager.StartGame();
+                    break;
+                case UIAction.Open_GameOverScreen:
+                    break;
+                case UIAction.Open_PauseScreen:
+                    break;
+                case UIAction.Open_HelpScreen:
+                    break;
+                case UIAction.Open_OptionScreen:
+                    break;
+                case UIAction.Open_CreditsScreen:
+                    break;
+                case UIAction.Exit_Game:
+                    gameManager.Exit();
+                    break;
             }
         }
 
-        private void OnGameOver()
+        public void SwitchState(UIState newState)
         {
-            Debug.Log("GameOver:Enter");
-            _gameOverContainer.style.display = DisplayStyle.Flex;
-            _valueScore.text = string.Format("{0}", gameManager.Score);
-            _gameOverOpen = true;
+            _currentScreen?.Exit();
+            _currentState = newState;
+            _currentScreen.Enter();
         }
 
-        private void OnGameOverExit()
-        {
-            Debug.Log("GameOver:Exit");
-            _gameOverContainer.style.display = DisplayStyle.None;
-            _gameOverOpen = false;
-        }
-        
-        private void OnClickBoost()
-        {
-            Debug.Log("UIController:OnClickBoost");
-            movementController.PressBoost();
-        }
+        #endregion
 
-        private void OnClickInteractEnter()
-        {
-            Debug.Log("UIController:OnClickInteractEnter");
-            interactionController.PressInteractButton();
-        }
+        //private void OnGameOver()
+        //{
+        //    Debug.Log("GameOver:Enter");
+        //    //_gameOverContainer.style.display = DisplayStyle.Flex;
+        //    //_valueScore.text = string.Format("{0}", gameManager.Score);
+        //    _gameOverOpen = true;
+        //}
 
-        private void OnClickInteractExit()
-        {
-            Debug.Log("UIController:OnClickInteractExit");
-            interactionController.LeaveInteractButton();
-        }
+        //private void OnGameOverExit()
+        //{
+        //    Debug.Log("GameOver:Exit");
+        //    //_gameOverContainer.style.display = DisplayStyle.None;
+        //    _gameOverOpen = false;
+        //}
 
-        private void TogglePause()
-        {
-            _pauseOpen = !_pauseOpen;
-            OnClickPause(_pauseOpen);
-        }
+        //private void OnClickBoost()
+        //{
+        //    Debug.Log("UIController:OnClickBoost");
+        //    movementController.PressBoost();
+        //}
 
-        private void OnClickPause(bool active)
-        {
-            _pauseContainer.style.display = active ? DisplayStyle.Flex : DisplayStyle.None;
-            gameManager.Pause(active);
+        //private void OnClickInteractEnter()
+        //{
+        //    Debug.Log("UIController:OnClickInteractEnter");
+        //    interactionController.PressInteractButton();
+        //}
 
-            if (_buttonHelp != null)
-            {
-                _buttonHelp.focusable = active;
-            }
+        //private void OnClickInteractExit()
+        //{
+        //    Debug.Log("UIController:OnClickInteractExit");
+        //    interactionController.LeaveInteractButton();
+        //}
 
-            if (_buttonRestart != null)
-            {
-                _buttonRestart.focusable = active;
-            }
+        //private void TogglePause()
+        //{
+        //    _pauseOpen = !_pauseOpen;
+        //    OnClickPause(_pauseOpen);
+        //}
 
-            if (_buttonExit != null)
-            {
-                _buttonExit.focusable = active;
-            }
-        }
+        //private void OnClickPause(bool active)
+        //{
+        //    //_pauseContainer.style.display = active ? DisplayStyle.Flex : DisplayStyle.None;
+        //    gameManager.Pause(active);
 
-        private void OnClickHelp()
-        {
-            Debug.Log("Help:Enter");
-            _helpContainer.style.display = DisplayStyle.Flex;
-            _helpOpen = true;
-        }
+        //    //if (_buttonHelp != null)
+        //    //{
+        //    //    _buttonHelp.focusable = active;
+        //    //}
 
-        private void OnClickHelpExit()
-        {
-            Debug.Log("Help:Exit");
-            _helpContainer.style.display = DisplayStyle.None;
-            _helpOpen = false;
-        }
+        //    //if (_buttonRestart != null)
+        //    //{
+        //    //    _buttonRestart.focusable = active;
+        //    //}
 
-        private void OnClickRestart()
-        {
-            Debug.Log("UIController::Restart");
-            OnGameOverExit();
-            gameManager.Restart();
-        }
+        //    //if (_buttonExit != null)
+        //    //{
+        //    //    _buttonExit.focusable = active;
+        //    //}
+        //}
 
-        private void OnClickExit()
-        {
-            Debug.Log("UIController::Exit");
-            gameManager.Exit();
-        }
+        //private void OnClickHelp()
+        //{
+        //    Debug.Log("Help:Enter");
+        //    //_helpContainer.style.display = DisplayStyle.Flex;
+        //    _helpOpen = true;
+        //}
+
+        //private void OnClickHelpExit()
+        //{
+        //    Debug.Log("Help:Exit");
+        //    //_helpContainer.style.display = DisplayStyle.None;
+        //    _helpOpen = false;
+        //}
+
+        //private void OnClickRestart()
+        //{
+        //    Debug.Log("UIController::Restart");
+        //    OnGameOverExit();
+        //    gameManager.Restart();
+        //}
+
+        //private void OnClickExit()
+        //{
+        //    Debug.Log("UIController::Exit");
+        //    gameManager.Exit();
+        //}
     }
 }
