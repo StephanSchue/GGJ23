@@ -10,18 +10,30 @@ namespace GGJ23.UI
         public CanvasGroup canvasGroup;
         public GraphicRaycaster graphicRaycaster;
 
+        private LayoutGroup[] layoutGroups;
+
         protected UIController _uiController;
+
+        private void Start()
+        {
+            layoutGroups = GetComponentsInChildren<LayoutGroup>();
+        }
 
         public void Init(UIController uiController)
         {
             _uiController = uiController;
         }
 
-        public abstract void Enter();
+        public virtual void Enter() { Show(); }
         public abstract void Tick(float dt, UIInputData inputData);
-        public abstract void Exit();
+        public virtual void Exit() { Hide(); }
+        
+        public void DoAction(UIActionObject actionComponent)
+        {
+            DoAction(actionComponent.Action);
+        }
 
-        public void DoAction(UIAction action)
+        protected void DoAction(UIAction action)
         {
             _uiController.DoAction(action);
         }
@@ -36,6 +48,18 @@ namespace GGJ23.UI
         {
             graphicRaycaster.enabled = false;
             canvasGroup.DOFade(1f, 0.25f).OnComplete(() => canvas.enabled = canvasGroup.blocksRaycasts = canvasGroup.interactable = false);
+        }
+
+        public virtual void Refresh()
+        {
+            Canvas.ForceUpdateCanvases();
+
+            for (int i = 0; i < layoutGroups.Length; i++)
+            {
+                layoutGroups[i].enabled = false;
+                layoutGroups[i].enabled = true;
+            }
+
         }
     }
 }

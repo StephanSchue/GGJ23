@@ -1,7 +1,11 @@
 using GGJ23.Game;
 using GGJ23.Managment;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace GGJ23.UI
 {
@@ -29,7 +33,9 @@ namespace GGJ23.UI
         Open_HelpScreen,
         Open_OptionScreen,
         Open_CreditsScreen,
-        Exit_Game
+        Exit_Game,
+        Save_Options,
+        Reset_Options
     }
 
     public enum UIInputButton
@@ -150,6 +156,20 @@ namespace GGJ23.UI
         }
     }
 
+    public enum Setting
+    {
+        AudioMasterVolume,
+        AudioMusicVolume,
+        AudioSFXVolume,
+    }
+
+    public struct Settings
+    {
+        public int audioMasterVolume;
+        public int audioMusicVolume;
+        public int audioSFXVolume;
+    }
+
     public class UIController : MonoBehaviour
     {
         [System.Serializable]
@@ -205,16 +225,23 @@ namespace GGJ23.UI
         public MovementController movementController;
         public InteractionController interactionController;
         public EventSystem eventSystem;
+        public AudioMixer audioMixer;
 
         public UIScreenCollection screens;
         private UIState _currentState;
         private UIScreen _currentScreen => screens.GetCurrentScreen(_currentState);
         private UIInputData _inputData = new UIInputData();
 
+        private Settings _settings;
+
+        public Settings Settings => _settings;
+
         private void Awake()
         {
             screens.Init(this);
             SwitchState(UIState.StartScreen);
+            
+            LoadOptions();
         }
 
         private void OnDisable()
@@ -224,9 +251,6 @@ namespace GGJ23.UI
 
         private void Update()
         {
-            _inputData.SetButtonStatus(UIInputButton.Accept, Input.GetButtonDown("Submit"), Input.GetButton("Submit"), Input.GetButtonUp("Submit"));
-            _inputData.SetButtonStatus(UIInputButton.Cancel, Input.GetButtonDown("Cancel"), Input.GetButton("Cancel"), Input.GetButtonUp("Cancel"));
-
             _currentScreen?.Tick(Time.deltaTime, _inputData);
         }
 
@@ -239,6 +263,7 @@ namespace GGJ23.UI
             switch (uiAction)
             {
                 case UIAction.Open_StartScreen:
+                    SwitchState(UIState.StartScreen);
                     break;
                 case UIAction.Start_Game:
                     gameManager.StartGame();
@@ -250,6 +275,14 @@ namespace GGJ23.UI
                 case UIAction.Open_HelpScreen:
                     break;
                 case UIAction.Open_OptionScreen:
+                    SwitchState(UIState.OptionScreen);
+                    break;
+                case UIAction.Save_Options:
+                    SaveOptions();
+                    SwitchState(UIState.StartScreen);
+                    break;
+                case UIAction.Reset_Options:
+                    ResetOptions();
                     break;
                 case UIAction.Open_CreditsScreen:
                     break;
@@ -264,6 +297,109 @@ namespace GGJ23.UI
             _currentScreen?.Exit();
             _currentState = newState;
             _currentScreen.Enter();
+        }
+
+        public void RefreshUI()
+        {
+            StartCoroutine(InternalRefreshUI());
+        }
+
+        private IEnumerator InternalRefreshUI()
+        {
+            yield return new WaitForEndOfFrame();
+            _currentScreen.Refresh();
+        }
+
+        #endregion
+
+        #region Input
+
+        private void OnConfirm(InputValue value)
+        {
+            _inputData.SetButtonStatus(UIInputButton.Accept, value.isPressed, value.isPressed, !value.isPressed);
+        }
+
+        private void OnCancel(InputValue value)
+        {
+            _inputData.SetButtonStatus(UIInputButton.Cancel, value.isPressed, value.isPressed, !value.isPressed);
+        }
+
+        private void OnFunction01(InputValue value)
+        {
+            _inputData.SetButtonStatus(UIInputButton.Function01, value.isPressed, value.isPressed, !value.isPressed);
+        }
+
+        private void OnFunction02(InputValue value)
+        {
+            _inputData.SetButtonStatus(UIInputButton.Function02, value.isPressed, value.isPressed, !value.isPressed);
+        }
+
+        private void OnFunction03(InputValue value)
+        {
+            _inputData.SetButtonStatus(UIInputButton.Function03, value.isPressed, value.isPressed, !value.isPressed);
+        }
+
+        #endregion
+
+        #region Options
+
+        private void ApplyOptions()
+        {
+            audioMixer.SetFloat("MasterVolume", _settings.audioMasterVolume > 0 ? Mathf.Log10(_settings.audioMasterVolume / 10f) * 20 : -80f);
+            audioMixer.SetFloat("MusicVolume", _settings.audioMusicVolume > 0 ? Mathf.Log10(_settings.audioMusicVolume / 10f) * 20 : -80f);
+            audioMixer.SetFloat("SFXVolume", _settings.audioSFXVolume > 0 ? Mathf.Log10(_settings.audioSFXVolume / 10f) * 20 : -80f);
+        }
+
+        private void LoadOptions()
+        {
+            _settings.audioMasterVolume = PlayerPrefs.GetInt("AudioMasterVolume", 10);
+            _settings.audioMusicVolume = PlayerPrefs.GetInt("AudioMusicVolume", 10);
+            _settings.audioSFXVolume = PlayerPrefs.GetInt("AudioSFXVolume", 10);
+
+            ApplyOptions();
+        }
+
+        private void SaveOptions()
+        {
+            PlayerPrefs.SetInt("AudioMasterVolume", _settings.audioMasterVolume);
+            PlayerPrefs.SetInt("AudioMusicVolume", _settings.audioMusicVolume);
+            PlayerPrefs.SetInt("AudioSFXVolume", _settings.audioSFXVolume);
+
+            PlayerPrefs.Save();
+        }
+
+        private void ResetOptions()
+        {
+            _settings.audioMasterVolume = 10;
+            _settings.audioMusicVolume = 10;
+            _settings.audioSFXVolume = 10;
+
+            PlayerPrefs.SetInt("AudioMasterVolume", _settings.audioMasterVolume);
+            PlayerPrefs.SetInt("AudioMusicVolume", _settings.audioMusicVolume);
+            PlayerPrefs.SetInt("AudioSFXVolume", _settings.audioSFXVolume);
+
+            ApplyOptions();
+
+            _currentScreen.Refresh();
+        }
+
+        public void UpdateOptionInt(Setting option, int value)
+        {
+            switch (option)
+            {
+                case Setting.AudioMasterVolume:
+                    _settings.audioMasterVolume = Mathf.Clamp(value, 0, 10);
+                    ApplyOptions();
+                    break;
+                case Setting.AudioMusicVolume:
+                    _settings.audioMusicVolume = Mathf.Clamp(value, 0, 10);
+                    ApplyOptions();
+                    break;
+                case Setting.AudioSFXVolume:
+                    _settings.audioSFXVolume = Mathf.Clamp(value, 0, 10);
+                    ApplyOptions();
+                    break;
+            }
         }
 
         #endregion

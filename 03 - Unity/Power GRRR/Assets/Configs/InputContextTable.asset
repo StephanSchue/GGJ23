@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b78b6596ab98b4095c7e2d804ab5a2, type: 3}
+  m_Name: InputContextTable
+  m_EditorClassIdentifier: 
+  _entries:
+  - _device_xbox: A
+    _button: 0
+    _device_playstation: X
+    _device_mouse_keyboard: _
+    _device_touch: 
+  - _device_xbox: B
+    _button: 1
+    _device_playstation: O
+    _device_mouse_keyboard: ESC
+    _device_touch: 
+  - _device_xbox: X
+    _button: 2
+    _device_playstation: '[]'
+    _device_mouse_keyboard: CTRL
+    _device_touch: 
+  - _device_xbox: Y
+    _button: 3
+    _device_playstation: T
+    _device_mouse_keyboard: SHIFT
+    _device_touch: 
+  - _device_xbox: =
+    _button: 4
+    _device_playstation: =
+    _device_mouse_keyboard: ALT
+    _device_touch: 

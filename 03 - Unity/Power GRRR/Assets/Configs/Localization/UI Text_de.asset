@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI Text_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: c13804f9a29a8a046880647014258f9b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 28497879040
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 115697459200
+    m_Localized: Hilfe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151659421696
+    m_Localized: Optionen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176489701376
+    m_Localized: Mitwirkende
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218466295808
+    m_Localized: Beenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5432854388736
+    m_Localized: "Zur\xFCcksetzen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5429473779712
+    m_Localized: "Zur\xFCck"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5370984210432
+    m_Localized: Speichern
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,22 +1,62 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GGJ23.UI
 {
     public class UIOptionsScreen : UIScreen
     {
+        public Slider audioMasterVolume;
+        public Slider audioMusicVolume;
+        public Slider audioSFXVolume;
+
         public override void Enter()
         {
-            throw new System.NotImplementedException();
+            base.Enter();
+            Refresh();
         }
 
         public override void Exit()
         {
-            throw new System.NotImplementedException();
+            base.Hide();
         }
 
         public override void Tick(float dt, UIInputData inputData)
         {
-            throw new System.NotImplementedException();
+            if (inputData.IsPressed(UIInputButton.Accept))
+            {
+                DoAction(UIAction.Save_Options);
+            }
+            else if (inputData.IsPressed(UIInputButton.Function01))
+            {
+                DoAction(UIAction.Reset_Options);
+            }
+            else if (inputData.IsPressed(UIInputButton.Cancel))
+            {
+                DoAction(UIAction.Open_StartScreen);
+            }
+        }
+        
+        public override void Refresh()
+        {
+            base.Refresh();
+            audioMasterVolume.value = _uiController.Settings.audioMasterVolume;
+            audioMusicVolume.value = _uiController.Settings.audioMusicVolume;
+            audioSFXVolume.value = _uiController.Settings.audioSFXVolume;
+        }
+
+        public void UpdateAudioMasterVolume(float value)
+        {
+            _uiController.UpdateOptionInt(Setting.AudioMasterVolume, (int)value);
+        }
+
+        public void UpdateAudioMusicVolume(float value)
+        {
+            _uiController.UpdateOptionInt(Setting.AudioMusicVolume, (int)value);
+        }
+
+        public void UpdateAudioSFXVolume(float value)
+        {
+            _uiController.UpdateOptionInt(Setting.AudioSFXVolume, (int)value);
         }
     }
 }

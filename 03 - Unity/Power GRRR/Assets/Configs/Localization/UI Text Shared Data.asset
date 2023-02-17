@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UI Text Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UI Text
+  m_TableCollectionNameGuidString: c13804f9a29a8a046880647014258f9b
+  m_Entries:
+  - m_Id: 28497879040
+    m_Key: Button_Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 115697459200
+    m_Key: Button_Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151659421696
+    m_Key: Button_Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176489701376
+    m_Key: Button_Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218466295808
+    m_Key: Button_Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5370984210432
+    m_Key: Button_Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5429473779712
+    m_Key: Button_Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5432854388736
+    m_Key: Button_Reset
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8092506038986604594
+  references:
+    version: 2
+    RefIds:
+    - rid: 8092506038986604594
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1676666667229
