@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameWorld.unity
     guid: 6a9a8e3b47ab4d141b58d200cebb5c31
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 10f5b04639345c64f8b6abb4a35872ea, type: 2}
+    com.unity.localization.addressable-group-rules: {fileID: 11400000, guid: 68121460592399340953aa0a4150a1cb, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: ac3ad7b54eddf2346b97f6c608ac313d, type: 2}
   m_UseUCBPForAssetBundles: 0
