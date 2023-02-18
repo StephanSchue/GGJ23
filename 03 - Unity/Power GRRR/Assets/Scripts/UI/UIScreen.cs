@@ -14,14 +14,24 @@ namespace GGJ23.UI
 
         protected UIController _uiController;
 
+        private void Reset()
+        {
+            canvas = GetComponent<Canvas>();
+            canvasGroup = GetComponent<CanvasGroup>();
+            graphicRaycaster = GetComponent<GraphicRaycaster>();
+        }
+
         private void Start()
         {
             layoutGroups = GetComponentsInChildren<LayoutGroup>();
         }
 
-        public void Init(UIController uiController)
+        public void Init(UIController uiController, bool visible)
         {
             _uiController = uiController;
+
+            canvasGroup.alpha = visible ? 1f : 0f;
+            canvas.enabled = canvasGroup.blocksRaycasts = canvasGroup.interactable = visible;
         }
 
         public virtual void Enter() { Show(); }
@@ -47,7 +57,7 @@ namespace GGJ23.UI
         protected void Hide()
         {
             graphicRaycaster.enabled = false;
-            canvasGroup.DOFade(1f, 0.25f).OnComplete(() => canvas.enabled = canvasGroup.blocksRaycasts = canvasGroup.interactable = false);
+            canvasGroup.DOFade(0f, 0.25f).OnComplete(() => canvas.enabled = canvasGroup.blocksRaycasts = canvasGroup.interactable = false);
         }
 
         public virtual void Refresh()

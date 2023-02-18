@@ -35,7 +35,7 @@ namespace GGJ23.UI
         Open_CreditsScreen,
         Exit_Game,
         Save_Options,
-        Reset_Options
+        Reset_Options,
     }
 
     public enum UIInputButton
@@ -185,13 +185,13 @@ namespace GGJ23.UI
 
             public void Init(UIController uiController)
             {
-                StartScreen?.Init(uiController);
-                GameScreen?.Init(uiController);
-                GameOverScreen?.Init(uiController);
-                PauseScreen?.Init(uiController);
-                HelpScreen?.Init(uiController);
-                OptionScreen?.Init(uiController);
-                CreditsScreen?.Init(uiController);
+                StartScreen?.Init(uiController, false);
+                GameScreen?.Init(uiController, false);
+                GameOverScreen?.Init(uiController, false);
+                PauseScreen?.Init(uiController, false);
+                HelpScreen?.Init(uiController, false);
+                OptionScreen?.Init(uiController, false);
+                CreditsScreen?.Init(uiController, false);
             }
 
             public UIScreen GetCurrentScreen(UIState index)
@@ -240,7 +240,10 @@ namespace GGJ23.UI
         {
             screens.Init(this);
             SwitchState(UIState.StartScreen);
-            
+        }
+
+        private void Start()
+        {
             LoadOptions();
         }
 
@@ -264,6 +267,7 @@ namespace GGJ23.UI
             {
                 case UIAction.Open_StartScreen:
                     SwitchState(UIState.StartScreen);
+                    LoadOptions();
                     break;
                 case UIAction.Start_Game:
                     gameManager.StartGame();
@@ -273,6 +277,7 @@ namespace GGJ23.UI
                 case UIAction.Open_PauseScreen:
                     break;
                 case UIAction.Open_HelpScreen:
+                    SwitchState(UIState.HelpScreen);
                     break;
                 case UIAction.Open_OptionScreen:
                     SwitchState(UIState.OptionScreen);
@@ -285,6 +290,7 @@ namespace GGJ23.UI
                     ResetOptions();
                     break;
                 case UIAction.Open_CreditsScreen:
+                    SwitchState(UIState.CreditsScreen);
                     break;
                 case UIAction.Exit_Game:
                     gameManager.Exit();

@@ -50,6 +50,22 @@ MonoBehaviour:
     m_Localized: Speichern
     m_Metadata:
       m_Items: []
+  - m_Id: 215712381214720
+    m_Localized: "Nicole Tietze | Illustration / Environment Animation\nStephan Schueritz
+      | Programming\nPaul Wulf | Game Design / Programming\nH\xFCr Palo | Character
+      Animation\nOrion x | Audio Recordings"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 219439439749120
+    m_Localized: "Jede Nacht gehen einige elektrische Anlagen kaputt. \nEs ist deine
+      Aufgabe, sie tags\xFCber zu reparieren!\n\r\nHalte E (Tastatur) / A (Controller),
+      um kaputte Pflanzen zu reparieren.\r\nWenn du Pflanzen zu lange kaputt lassen,
+      verlieren Sie das Spiel.\n\r\nWelche Anlagen defekt sind, erkennen Sie nachts
+      an der fehlenden Verbindung zum Energienetz.\r\n\r\nPro-Tipp: Du kannst dich
+      viel schneller bewegen, indem Sie die Leertaste (Tastatur) / B (Controller)
+      im Rhythmus dr\xFCcken."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

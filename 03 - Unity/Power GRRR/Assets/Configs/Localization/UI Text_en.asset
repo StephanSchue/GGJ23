@@ -50,6 +50,21 @@ MonoBehaviour:
     m_Localized: Save
     m_Metadata:
       m_Items: []
+  - m_Id: 215712381214720
+    m_Localized: "Nicole Tietze | Illustration / Environment Animation\nStephan Schueritz
+      | Programming\nPaul Wulf | Game Design / Programming\nH\xFCr Palo | Character
+      Animation\nOrion x | Audio Recordings"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 219439439749120
+    m_Localized: "Every night, some electrical plants will get broken. \nIt's your
+      job to fix them during the day!\n\nHold E (keyboard) / A (controller) to repair
+      broken plants.\nIf you leave plants broken for too long, you will lose the
+      game.\n\nYou can tell which plants are broken by their missing connection to
+      the energy grid at night.\n\nPro tip: you can move much faster by pressing
+      Spacebar (keyboard) / B (controller) in rhythm."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -17,7 +17,13 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: c13804f9a29a8a046880647014258f9b, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 215712381214720
+    m_Localized: "Nicole Tietze | Illustration / Environment Animation\nStephan Schueritz
+      | Programming\nPaul Wulf | Game Design / Programming\nH\xFCr Palo | Character
+      Animation\nOrion x | Audio Recordings"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

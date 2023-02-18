@@ -47,6 +47,14 @@ MonoBehaviour:
     m_Key: Button_Reset
     m_Metadata:
       m_Items: []
+  - m_Id: 215712381214720
+    m_Key: Text_Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 219439439749120
+    m_Key: Text_Help
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
