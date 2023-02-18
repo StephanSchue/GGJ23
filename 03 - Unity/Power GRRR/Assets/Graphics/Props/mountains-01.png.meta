@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -122,15 +122,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mountains-01_0
+      name: mountains-01_b1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 950
-        height: 388
+        width: 549
+        height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,6 +138,69 @@ TextureImporter:
       bones: []
       spriteID: cf8b725e0a090bb20800000000000000
       internalID: 3148175160245729532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mountains-01_t1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 211
+        width: 549
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e66dc00642805fa4fa892379b268ed58
+      internalID: 1032003018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mountains-01_t2
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 153
+        width: 400
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe992cae590a7b4295c8b809aefba8f
+      internalID: 2144498155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mountains-01_b2
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 0
+        width: 401
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6fc0c3667df76f4ca75f626b3737b0f
+      internalID: -806796062
       vertices: []
       indices: 
       edges: []
@@ -153,7 +216,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mountains-01_0: 3148175160245729532
+      mountains-01_t1: 1032003018
+      mountains-01_b2: -806796062
+      mountains-01_t2: 2144498155
+      mountains-01_b1: 3148175160245729532
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
