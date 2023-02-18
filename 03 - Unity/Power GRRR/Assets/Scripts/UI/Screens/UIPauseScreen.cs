@@ -14,10 +14,10 @@ namespace GGJ23.UI
             {
                 DoAction(UIAction.Restart_Game);
             }
-            //else if (inputData.IsPressed(UIInputButton.Function03))
-            //{
-            //    DoAction(UIAction.Stop_Game);
-            //}
+            else if (inputData.IsPressed(UIInputButton.Function03))
+            {
+                DoAction(UIAction.Stop_Game);
+            }
         }
     }
 }

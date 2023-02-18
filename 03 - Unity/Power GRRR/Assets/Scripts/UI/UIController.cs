@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Localization.Settings;
+using static UnityEngine.InputSystem.InputAction;
 
 namespace GGJ23.UI
 {
@@ -74,29 +75,26 @@ namespace GGJ23.UI
 
         public Vector2 Axis01; // X/Y
 
-        public void SetButtonStatus(UIInputButton button, bool press, bool hold, bool release)
+        public void SetButtonStatus(UIInputButton button, bool press)
         {
-            var status = UIInputStatus.None;
-            if (press) { status = UIInputStatus.Press; }
-            else if (hold) { status = UIInputStatus.Hold; }
-            else if (release) { status = UIInputStatus.Release; }
+            Debug.Log($"SetButtonStatus: {button}: {press}");
 
             switch (button)
             {
                 case UIInputButton.Accept:
-                    Accept = status;
+                    Accept = press ? (Accept == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
                     break;
                 case UIInputButton.Cancel:
-                    Cancel = status;
+                    Cancel = press ? (Cancel == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
                     break;
                 case UIInputButton.Function01:
-                    Function01 = status;
+                    Function01 = press ? (Function01 == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
                     break;
                 case UIInputButton.Function02:
-                    Function02 = status;
+                    Function02 = press ? (Function02 == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
                     break;
                 case UIInputButton.Function03:
-                    Function03 = status;
+                    Function03 = press ? (Function03 == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
                     break;
                 default:
                     break;
@@ -209,6 +207,7 @@ namespace GGJ23.UI
         public InteractionController interactionController;
         public EventSystem eventSystem;
         public AudioMixer audioMixer;
+        public PlayerInput playerInput;
 
         public UIScreenCollection screens;
         public TMPro.TextMeshProUGUI debugText;
@@ -330,27 +329,27 @@ namespace GGJ23.UI
 
         private void OnConfirm(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Accept, value.isPressed, value.isPressed, !value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Accept, value.isPressed);
         }
 
         private void OnCancel(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Cancel, value.isPressed, value.isPressed, !value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Cancel, value.isPressed);
         }
 
         private void OnFunction01(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function01, value.isPressed, value.isPressed, !value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Function01, value.isPressed);
         }
 
         private void OnFunction02(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function02, value.isPressed, value.isPressed, !value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Function02, value.isPressed);
         }
 
         private void OnFunction03(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function03, value.isPressed, value.isPressed, !value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Function03, value.isPressed);
         }
 
         private void OnMovement(InputValue value)

@@ -120,6 +120,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &29340669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 949746778711528243, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+  m_PrefabInstance: {fileID: 2114549613700952682}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &83729914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5747689464844089163, guid: f3bdc358db05bfd4ca81cce0c1735523, type: 3}
@@ -1762,6 +1773,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 949746778711528243, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 949746778711528243, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 949746778711528243, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: dea010d9-a4eb-4f1b-bd1c-f74f766210c0
+      objectReference: {fileID: 0}
+    - target: {fileID: 949746778711528243, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: 'UI/Movement[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 949746778711528243, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 949746778711528243, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 949746778711528243, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 968167980195237145, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3134,6 +3173,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 631422173}
+    - target: {fileID: 5653247588373176802, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 29340669}
     - target: {fileID: 5653247588373176802, guid: 4826cd0ee97ca2c46b2b0103768d2b23, type: 3}
       propertyPath: movementController
       value: 
