@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 namespace GGJ23.UI
@@ -36,6 +37,11 @@ namespace GGJ23.UI
         Exit_Game,
         Save_Options,
         Reset_Options,
+        Gameplay_Repair,
+        Gameplay_Boost,
+        Continue_Game,
+        Restart_Game,
+        Stop_Game,
     }
 
     public enum UIInputButton
@@ -168,6 +174,7 @@ namespace GGJ23.UI
         public int audioMasterVolume;
         public int audioMusicVolume;
         public int audioSFXVolume;
+        public int language;
     }
 
     public class UIController : MonoBehaviour
@@ -185,7 +192,7 @@ namespace GGJ23.UI
 
             public void Init(UIController uiController)
             {
-                StartScreen?.Init(uiController, false);
+                StartScreen?.Init(uiController, true);
                 GameScreen?.Init(uiController, false);
                 GameOverScreen?.Init(uiController, false);
                 PauseScreen?.Init(uiController, false);
@@ -270,11 +277,15 @@ namespace GGJ23.UI
                     LoadOptions();
                     break;
                 case UIAction.Start_Game:
+                    SwitchState(UIState.GameScreen);
                     gameManager.StartGame();
                     break;
                 case UIAction.Open_GameOverScreen:
+                    SwitchState(UIState.GameOverScreen);
                     break;
                 case UIAction.Open_PauseScreen:
+                    SwitchState(UIState.PauseScreen);
+                    gameManager.Pause(true);
                     break;
                 case UIAction.Open_HelpScreen:
                     SwitchState(UIState.HelpScreen);
@@ -294,6 +305,24 @@ namespace GGJ23.UI
                     break;
                 case UIAction.Exit_Game:
                     gameManager.Exit();
+                    break;
+                case UIAction.Gameplay_Repair:
+                    interactionController.PressInteractButton();
+                    break;
+                case UIAction.Gameplay_Boost:
+                    movementController.PressBoost();
+                    break;
+                case UIAction.Continue_Game:
+                    SwitchState(UIState.GameScreen);
+                    gameManager.ContinueGame();
+                    break;
+                case UIAction.Restart_Game:
+                    SwitchState(UIState.GameScreen);
+                    gameManager.RestartGame();
+                    break;
+                case UIAction.Stop_Game:
+                    SwitchState(UIState.StartScreen);
+                    gameManager.StopGame();
                     break;
             }
         }
@@ -354,6 +383,12 @@ namespace GGJ23.UI
             audioMixer.SetFloat("MasterVolume", _settings.audioMasterVolume > 0 ? Mathf.Log10(_settings.audioMasterVolume / 10f) * 20 : -80f);
             audioMixer.SetFloat("MusicVolume", _settings.audioMusicVolume > 0 ? Mathf.Log10(_settings.audioMusicVolume / 10f) * 20 : -80f);
             audioMixer.SetFloat("SFXVolume", _settings.audioSFXVolume > 0 ? Mathf.Log10(_settings.audioSFXVolume / 10f) * 20 : -80f);
+
+            if (_settings.language > -1)
+            {
+                var locale = LocalizationSettings.AvailableLocales.Locales[Mathf.Clamp(_settings.language, 0, LocalizationSettings.AvailableLocales.Locales.Count)];
+                LocalizationSettings.SelectedLocale = locale;
+            }
         }
 
         private void LoadOptions()
@@ -361,6 +396,7 @@ namespace GGJ23.UI
             _settings.audioMasterVolume = PlayerPrefs.GetInt("AudioMasterVolume", 10);
             _settings.audioMusicVolume = PlayerPrefs.GetInt("AudioMusicVolume", 10);
             _settings.audioSFXVolume = PlayerPrefs.GetInt("AudioSFXVolume", 10);
+            _settings.language = PlayerPrefs.GetInt("Language", -1);
 
             ApplyOptions();
         }
@@ -370,6 +406,17 @@ namespace GGJ23.UI
             PlayerPrefs.SetInt("AudioMasterVolume", _settings.audioMasterVolume);
             PlayerPrefs.SetInt("AudioMusicVolume", _settings.audioMusicVolume);
             PlayerPrefs.SetInt("AudioSFXVolume", _settings.audioSFXVolume);
+
+            for (int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; i++)
+            {
+                if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[i])
+                {
+                    _settings.language = i;
+                    break;
+                }
+            }
+
+            PlayerPrefs.SetInt("Language", _settings.language);
 
             PlayerPrefs.Save();
         }

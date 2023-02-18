@@ -33,6 +33,8 @@ namespace GGJ23.Game
         private float _lossPoints = 0f;
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
 
+        private bool _running = false;
+
         private BrokenLevel _brokenLevel;
 
         // --- Properties ---
@@ -82,12 +84,20 @@ namespace GGJ23.Game
             OnDaySwitch.Invoke();
         }
 
+        public void RunGame()
+        {
+            _running = true;
+        }
+
+        public void StopGame()
+        {
+            _running = false;
+        }
+
         void Update()
         {
-            if (Time.deltaTime == 0f)
-            {
+            if (!_running)
                 return;
-            }
 
             float progressToNextTime = ((Time.deltaTime * 1000) / (_isNight ? config.NightDurationMs : _dayDurationMs)) * 0.5f;
             bool lastIsNight = _isNight;
@@ -151,6 +161,7 @@ namespace GGJ23.Game
             {
                 // End the game
                 Debug.LogError($"You lost the game lmao");
+                _running = false;
                 GameOver.Invoke();
                 
             }

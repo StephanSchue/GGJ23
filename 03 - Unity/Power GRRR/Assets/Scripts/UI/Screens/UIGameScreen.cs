@@ -4,19 +4,20 @@ namespace GGJ23.UI
 {
     public class UIGameScreen : UIScreen
     {
-        public override void Enter()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Exit()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void Tick(float dt, UIInputData inputData)
         {
-            throw new System.NotImplementedException();
+            if (inputData.IsPressed(UIInputButton.Accept))
+            {
+                DoAction(UIAction.Gameplay_Repair);
+            }
+            else if (inputData.IsPressed(UIInputButton.Function01))
+            {
+                DoAction(UIAction.Gameplay_Boost);
+            }
+            else if (inputData.IsPressed(UIInputButton.Function03))
+            {
+                DoAction(UIAction.Open_PauseScreen);
+            }
         }
     }
 }

@@ -65,6 +65,34 @@ MonoBehaviour:
       Spacebar (keyboard) / B (controller) in rhythm."
     m_Metadata:
       m_Items: []
+  - m_Id: 245745334296576
+    m_Localized: Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246163854532608
+    m_Localized: Boost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 247176376295424
+    m_Localized: Repair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 305656231567360
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 306212945731584
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 306441329778688
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 307530728939520
+    m_Localized: Game Over
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -41,18 +41,31 @@ namespace GGJ23.Managment
             Pause(false);
         }
 
-        public void Restart()
+        public void ContinueGame()
+        {
+            Pause(false);
+        }
+
+        public void RestartGame()
         {
             _gameOver = false;
             Energy = 1f;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             Pause(false);
+        }
+
+        public void StopGame()
+        {
+            Pause(true);
         }
 
         public void Pause(bool pause)
         {
             _paused = pause;
-            Time.timeScale = _paused ? 0f : 1f;
+            gameLogic.InteractionController.enabled = !pause;
+            gameLogic.MovementController.enabled = !pause;
+
+            if(pause) { gameLogic.StopGame(); }
+            else { gameLogic.RunGame(); }
         }
 
         public void GameOver()

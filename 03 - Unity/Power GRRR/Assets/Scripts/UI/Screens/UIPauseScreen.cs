@@ -4,19 +4,20 @@ namespace GGJ23.UI
 {
     public class UIPauseScreen : UIScreen
     {
-        public override void Enter()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Exit()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void Tick(float dt, UIInputData inputData)
         {
-            throw new System.NotImplementedException();
+            if (inputData.IsPressed(UIInputButton.Accept))
+            {
+                DoAction(UIAction.Continue_Game);
+            }
+            else if (inputData.IsPressed(UIInputButton.Function01))
+            {
+                DoAction(UIAction.Restart_Game);
+            }
+            //else if (inputData.IsPressed(UIInputButton.Function03))
+            //{
+            //    DoAction(UIAction.Stop_Game);
+            //}
         }
     }
 }
