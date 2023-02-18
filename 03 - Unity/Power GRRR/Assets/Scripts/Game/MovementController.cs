@@ -1,6 +1,7 @@
 using GGJ23.Game.Config;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace GGJ23.Game
 {
@@ -60,6 +61,11 @@ namespace GGJ23.Game
             onNightEvent.AddListener(() => _isNight = true);
         }
 
+        public void UpdateMovement(Vector2 axis)
+        {
+            _movement = axis;
+        }
+
         public void PressBoost()
         {
             _boostButtonPressed = true;
@@ -86,32 +92,12 @@ namespace GGJ23.Game
                 return;
             }
 
-            _movement.x = Input.GetAxis("Horizontal");
-            _movement.y = Input.GetAxis("Vertical");
-
-            if (Input.GetButtonDown("Fire2"))
-                _boostButtonPressed = true;  
-
-            // mouse input
-            if (_movement.sqrMagnitude > 0.1f)
-            {
-                // If external device input is pressed don't use mouse
-            }
-            else if (Input.GetMouseButton(0))
-            {
-                _movement = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-
-                if (_movement.sqrMagnitude > 0.5f)
-                    _movement.Normalize();
-                else
-                    _movement = Vector2.zero;
-            }
-
             if (_blockInput)
             {
                 _movement = Vector2.zero;
             }
 
+            // --- Boost ---
             float velocity = _movement.magnitude;
 
             if (velocity > 0.1f
@@ -120,7 +106,6 @@ namespace GGJ23.Game
             {
                 _boostEffectTimer = config.BoostDuration;
                 _boostInputTimer = config.BoostInterval;
-                _boostButtonPressed = false;
             }
             else
             {
@@ -137,6 +122,9 @@ namespace GGJ23.Game
                 _boostEffectTimer -= Time.fixedDeltaTime;
             }
 
+            _boostButtonPressed = false;
+
+            // -- Movement ---
             if (velocity > 0.1f)
             {
                 _movement.Normalize();

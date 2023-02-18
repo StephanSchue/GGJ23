@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Localization.Settings;
-using UnityEngine.UI;
 
 namespace GGJ23.UI
 {
@@ -73,10 +72,7 @@ namespace GGJ23.UI
         public UIInputStatus Function02; // Y
         public UIInputStatus Function03; // Menu
 
-        public UIInputStatus Up;
-        public UIInputStatus Right;
-        public UIInputStatus Down;
-        public UIInputStatus Left;
+        public Vector2 Axis01; // X/Y
 
         public void SetButtonStatus(UIInputButton button, bool press, bool hold, bool release)
         {
@@ -102,18 +98,6 @@ namespace GGJ23.UI
                 case UIInputButton.Function03:
                     Function03 = status;
                     break;
-                case UIInputButton.Up:
-                    Up = status;
-                    break;
-                case UIInputButton.Right:
-                    Right = status;
-                    break;
-                case UIInputButton.Down:
-                    Down = status;
-                    break;
-                case UIInputButton.Left:
-                    Left = status;
-                    break;
                 default:
                     break;
             }
@@ -133,14 +117,6 @@ namespace GGJ23.UI
                     return Function02;
                 case UIInputButton.Function03:
                     return Function03;
-                case UIInputButton.Up:
-                    return Up;
-                case UIInputButton.Right:
-                    return Right;
-                case UIInputButton.Down:
-                    return Down;
-                case UIInputButton.Left:
-                    return Left;
                 default:
                     return UIInputStatus.None;
             }
@@ -235,6 +211,8 @@ namespace GGJ23.UI
         public AudioMixer audioMixer;
 
         public UIScreenCollection screens;
+        public TMPro.TextMeshProUGUI debugText;
+
         private UIState _currentState;
         private UIScreen _currentScreen => screens.GetCurrentScreen(_currentState);
         private UIInputData _inputData = new UIInputData();
@@ -262,6 +240,7 @@ namespace GGJ23.UI
         private void Update()
         {
             _currentScreen?.Tick(Time.deltaTime, _inputData);
+            UpdateMovement();
         }
 
         #region Statemachine
@@ -372,6 +351,37 @@ namespace GGJ23.UI
         private void OnFunction03(InputValue value)
         {
             _inputData.SetButtonStatus(UIInputButton.Function03, value.isPressed, value.isPressed, !value.isPressed);
+        }
+
+        private void OnMovement(InputValue value)
+        {
+            _inputData.Axis01 = value.Get<Vector2>().normalized;
+        }
+
+        private void UpdateMovement()
+        {
+            // mouse input
+            if (_inputData.Axis01.sqrMagnitude > 0.1f)
+            {
+                // If external device input is pressed don't use mouse
+                movementController.UpdateMovement(_inputData.Axis01);
+            }
+            else if (Input.GetMouseButton(0)
+                && !EventSystem.current.IsPointerOverGameObject())
+            {
+                Vector2 move = Input.mousePosition - Camera.main.WorldToScreenPoint(movementController.transform.position);
+
+                if (move.sqrMagnitude > 0.5f)
+                    move.Normalize();
+                else
+                    move = Vector2.zero;
+
+                movementController.UpdateMovement(move);
+            }
+            else
+            {
+                movementController.UpdateMovement(Vector2.zero);
+            }
         }
 
         #endregion

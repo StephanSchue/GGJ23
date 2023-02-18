@@ -80,9 +80,6 @@ namespace GGJ23.Game
             }
 
             // Iterate through Input on nearest Interactble
-            if (Input.GetButton("Fire1"))
-                _interactButtonPressed = true;
-
             if (_interactButtonPressed)
             {
                 // Check for nearest Interactable
