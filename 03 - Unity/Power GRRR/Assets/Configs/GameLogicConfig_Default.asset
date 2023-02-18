@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b056bc6413c0748458d9585b9cbf2a6d, type: 3}
   m_Name: GameLogicConfig_Default
   m_EditorClassIdentifier: 
-  _dayDurationMs: 40000
+  _earlyDayDurationMs: 100000
   _finalDayDurationMs: 40000
-  _earlyDayDurationMs: 5000
-  _nightDurationMs: 10000
+  _nightDurationMs: 5000
   _lossPointsNeeded: 200
   _maxDifficulty: 20
   _timeToMaxDifficulty: 20

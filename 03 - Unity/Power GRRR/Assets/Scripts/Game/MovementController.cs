@@ -107,11 +107,6 @@ namespace GGJ23.Game
                     _movement = Vector2.zero;
             }
 
-            if (_blockInput)
-            {
-                _movement = Vector2.zero;
-            }
-
             float velocity = _movement.magnitude;
 
             if (velocity > 0.1f

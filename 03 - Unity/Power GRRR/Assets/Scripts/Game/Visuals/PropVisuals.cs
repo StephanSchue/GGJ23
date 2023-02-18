@@ -6,35 +6,26 @@ namespace GGJ23.Game.Visuals
     {
         [Header("Components")]
         public Prop prop;
-        public SpriteRenderer spriteRenderer;
+        public SpriteRenderer[] spriteRenderers;
         public SpriteRenderer spriteRendererLightGlow;
 
         [Header("Sprites")]
-        public Sprite[] daySprites;
-        public Sprite[] nightSprites;
-        public bool useDayNightSprite = true;
         public bool useNightGlow = false;
-
-        private int index = 0;
 
         private void Awake()
         {
-            index = 0;
-            Ramdomize();
-        }
 
-        public void Ramdomize()
-        {
-            index = Random.Range(0, daySprites.Length);
         }
 
         private void Update()
         {
-            if(useDayNightSprite)
-                spriteRenderer.sprite = prop.IsNight ? nightSprites[index] : daySprites[index];
-            
             if(useNightGlow)
                 spriteRendererLightGlow.enabled = prop.IsNight;
+
+            for (int i = 0; i < spriteRenderers.Length; i++)
+            {
+                spriteRenderers[i].enabled = !prop.IsNight;
+            }
         }
     }
 }
