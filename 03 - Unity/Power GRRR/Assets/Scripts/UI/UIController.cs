@@ -51,10 +51,6 @@ namespace GGJ23.UI
         Function01,
         Function02,
         Function03,
-        Up,
-        Right,
-        Down,
-        Left,
     }
 
     public enum UIInputStatus
@@ -75,26 +71,26 @@ namespace GGJ23.UI
 
         public Vector2 Axis01; // X/Y
 
-        public void SetButtonStatus(UIInputButton button, bool press)
+        public void SetButtonStatus(UIInputButton button, UIInputStatus status)
         {
-            Debug.Log($"SetButtonStatus: {button}: {press}");
+            Debug.Log($"SetButtonStatus: {button}: {status}");
 
             switch (button)
             {
                 case UIInputButton.Accept:
-                    Accept = press ? (Accept == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
+                    Accept = status;
                     break;
                 case UIInputButton.Cancel:
-                    Cancel = press ? (Cancel == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
+                    Cancel = status;
                     break;
                 case UIInputButton.Function01:
-                    Function01 = press ? (Function01 == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
+                    Function01 = status;
                     break;
                 case UIInputButton.Function02:
-                    Function02 = press ? (Function02 == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
+                    Function02 = status;
                     break;
                 case UIInputButton.Function03:
-                    Function03 = press ? (Function03 == UIInputStatus.Press ? UIInputStatus.Hold : UIInputStatus.Press) : UIInputStatus.Release;
+                    Function03 = status;
                     break;
                 default:
                     break;
@@ -240,6 +236,17 @@ namespace GGJ23.UI
         {
             _currentScreen?.Tick(Time.deltaTime, _inputData);
             UpdateMovement();
+
+            debugText.text = $"Score: {gameManager.Score.ToString("0.00")}; Energy: {(int)(gameManager.Energy * 100f)}"; 
+        }
+
+        private void LateUpdate()
+        {
+            UpdateButtonStatus(UIInputButton.Accept);
+            UpdateButtonStatus(UIInputButton.Cancel);
+            UpdateButtonStatus(UIInputButton.Function01);
+            UpdateButtonStatus(UIInputButton.Function02);
+            UpdateButtonStatus(UIInputButton.Function03);
         }
 
         #region Statemachine
@@ -329,27 +336,27 @@ namespace GGJ23.UI
 
         private void OnConfirm(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Accept, value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Accept, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnCancel(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Cancel, value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Cancel, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnFunction01(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function01, value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Function01, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnFunction02(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function02, value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Function02, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnFunction03(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function03, value.isPressed);
+            _inputData.SetButtonStatus(UIInputButton.Function03, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnMovement(InputValue value)
@@ -381,6 +388,14 @@ namespace GGJ23.UI
             {
                 movementController.UpdateMovement(Vector2.zero);
             }
+        }
+
+        private void UpdateButtonStatus(UIInputButton button)
+        {
+            if (_inputData.GetButtonStatus(button) == UIInputStatus.Press)
+                _inputData.SetButtonStatus(button, UIInputStatus.Hold);
+            else if (_inputData.GetButtonStatus(button) == UIInputStatus.Release)
+                _inputData.SetButtonStatus(button, UIInputStatus.None);
         }
 
         #endregion

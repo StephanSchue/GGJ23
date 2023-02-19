@@ -5,27 +5,27 @@ namespace GGJ23.UI
 {
     public class UIGameScreen : UIScreen
     {
-        private bool _repairButtonHold = false;
+        private bool _uiRepairButtonHold = false;
 
         public void OnRepairButtonDown()
         {
-            _repairButtonHold = true;
+            _uiRepairButtonHold = true;
         }
 
         public void OnRepairButtonUp()
         {
-            _repairButtonHold = false;
+            _uiRepairButtonHold = false;
         }
 
         public override void Enter()
         {
             base.Enter();
-            _repairButtonHold = false;
+            _uiRepairButtonHold = false;
         }
 
         public override void Tick(float dt, UIInputData inputData)
         {
-            if (inputData.IsPressed(UIInputButton.Accept) || _repairButtonHold)
+            if (inputData.IsPressed(UIInputButton.Accept) || inputData.IsHold(UIInputButton.Accept) || _uiRepairButtonHold)
             {
                 DoAction(UIAction.Gameplay_Repair);
             }
