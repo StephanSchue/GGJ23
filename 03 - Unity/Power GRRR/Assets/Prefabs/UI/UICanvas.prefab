@@ -6178,7 +6178,7 @@ MonoBehaviour:
   interactionController: {fileID: 0}
   eventSystem: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: dbf2b2d16a0a2c44db2b1c79a37c0a48, type: 2}
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 949746778711528243}
   screens:
     StartScreen: {fileID: 2074056728242300719}
     GameScreen: {fileID: 7122726513149907568}
