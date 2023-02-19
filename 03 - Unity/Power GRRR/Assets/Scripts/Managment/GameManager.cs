@@ -50,6 +50,8 @@ namespace GGJ23.Managment
         {
             _gameOver = false;
             Energy = 1f;
+            Score = 0;
+            gameLogic.ResetGame();
             Pause(false);
         }
 

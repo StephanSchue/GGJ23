@@ -94,6 +94,21 @@ namespace GGJ23.Game
             _running = false;
         }
 
+        public void ResetGame()
+        {
+            _lossPoints = 0f;
+            _currentScore = 0f;
+            _currentTime = 1f;
+            _isNight = false;
+
+            foreach (var inter in InteractionController.Interactables)
+            {
+                inter.Initalize();
+            }
+
+            OnDaySwitch.Invoke();
+        }
+
         void Update()
         {
             if (!_running)
