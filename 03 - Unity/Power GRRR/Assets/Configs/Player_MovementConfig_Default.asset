@@ -17,4 +17,4 @@ MonoBehaviour:
   _boostThreshold: 1
   _boostDuration: 1
   _boostSpeed: 10
-  _stopAtNight: 0
+  _stopAtNight: 1
