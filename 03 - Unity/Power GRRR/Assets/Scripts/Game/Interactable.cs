@@ -20,6 +20,8 @@ namespace GGJ23.Game
 
         public UnityEvent OnInitialize;
 
+        public bool brokenOnStart = false;
+
         private InteractionStatus _status;
         private float _progress = 0f;
         private bool _isNight = false;
@@ -48,6 +50,11 @@ namespace GGJ23.Game
         {
             _status = InteractionStatus.Working;
             _progress = config.Duration;
+
+            if (brokenOnStart)
+            {
+                Break();
+            }
 
             if (OnInitialize != null) { OnInitialize.Invoke(); }
         }

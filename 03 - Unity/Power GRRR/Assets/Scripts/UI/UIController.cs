@@ -200,6 +200,7 @@ namespace GGJ23.UI
 
         // --- Variables ---
         [Header("Components")]
+        public Canvas canvas;
         public GameManager gameManager;
         public MovementController movementController;
         public InteractionController interactionController;
@@ -210,18 +211,24 @@ namespace GGJ23.UI
         public UIScreenCollection screens;
         public TMPro.TextMeshProUGUI debugText;
 
+        public bool startGameDirect = false;
+
         private UIState _currentState;
         private UIScreen _currentScreen => screens.GetCurrentScreen(_currentState);
         private UIInputData _inputData = new UIInputData();
 
         private Settings _settings;
 
+        private bool startGameDirectExecuted = false;
+
         // --- Properties ---
         public Settings Settings => _settings;
 
         private void Awake()
         {
+            canvas.enabled = true;
             screens.Init(this);
+            
             SwitchState(UIState.StartScreen);
 
             gameManager.OnGameOver.AddListener(GameOver);
@@ -239,6 +246,13 @@ namespace GGJ23.UI
 
         private void Update()
         {
+            if(startGameDirect && !startGameDirectExecuted)
+            {
+                SwitchState(UIState.GameScreen);
+                gameManager.StartGame();
+                startGameDirectExecuted = true;
+            }
+
             _currentScreen?.Tick(Time.deltaTime, _inputData);
             UpdateMovement();
 
@@ -258,7 +272,7 @@ namespace GGJ23.UI
 
         public void DoAction(UIAction uiAction)
         {
-            Debug.Log($"UIController::DoAction {uiAction}");
+            //Debug.Log($"UIController::DoAction {uiAction}");
 
             switch (uiAction)
             {
