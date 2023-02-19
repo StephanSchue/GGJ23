@@ -1,6 +1,7 @@
 using GGJ23.Game;
 using GGJ23.Managment;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
@@ -377,7 +378,7 @@ namespace GGJ23.UI
                 movementController.UpdateMovement(_inputData.Axis01);
             }
             else if (Input.GetMouseButton(0)
-                && !EventSystem.current.IsPointerOverGameObject())
+                && !IsPointerOverUIObject())
             {
                 Vector2 move = Input.mousePosition - Camera.main.WorldToScreenPoint(movementController.transform.position);
 
@@ -392,6 +393,15 @@ namespace GGJ23.UI
             {
                 movementController.UpdateMovement(Vector2.zero);
             }
+        }
+
+        private bool IsPointerOverUIObject()
+        {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+            return results.Count > 0;
         }
 
         private void UpdateButtonStatus(UIInputButton button)
