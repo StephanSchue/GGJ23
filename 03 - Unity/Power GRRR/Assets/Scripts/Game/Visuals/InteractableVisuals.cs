@@ -44,6 +44,13 @@ namespace GGJ23.Game.Visuals
             _hasAnimation = useAnimator && animatorControllers != null;
             _hasProgressbar = progressBarCanvas != null && progressBarSlider != null;
 
+            Initalize();
+
+            interactable.OnInitialize.AddListener(Initalize);
+        }
+
+        private void Initalize()
+        {
             if (_hasAnimation)
             {
                 if (useRandomize)
@@ -53,7 +60,7 @@ namespace GGJ23.Game.Visuals
                 else
                 {
                     SetAnimator(nonRandomizedIndex);
-                } 
+                }
             }
         }
 

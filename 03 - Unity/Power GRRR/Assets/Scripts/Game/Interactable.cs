@@ -18,6 +18,8 @@ namespace GGJ23.Game
         [Header("Settings")]
         public InteractableConfig config;
 
+        public UnityEvent OnInitialize;
+
         private InteractionStatus _status;
         private float _progress = 0f;
         private bool _isNight = false;
@@ -46,6 +48,8 @@ namespace GGJ23.Game
         {
             _status = InteractionStatus.Working;
             _progress = config.Duration;
+
+            if (OnInitialize != null) { OnInitialize.Invoke(); }
         }
 
         public void RegisterEvents(UnityEvent onDaySwitch, UnityEvent onNightSwitch)

@@ -197,6 +197,7 @@ namespace GGJ23.UI
             }
         }
 
+        // --- Variables ---
         [Header("Components")]
         public GameManager gameManager;
         public MovementController movementController;
@@ -214,12 +215,15 @@ namespace GGJ23.UI
 
         private Settings _settings;
 
+        // --- Properties ---
         public Settings Settings => _settings;
 
         private void Awake()
         {
             screens.Init(this);
             SwitchState(UIState.StartScreen);
+
+            gameManager.OnGameOver.AddListener(GameOver);
         }
 
         private void Start()
@@ -477,6 +481,15 @@ namespace GGJ23.UI
                     ApplyOptions();
                     break;
             }
+        }
+
+        #endregion
+
+        #region GameOver
+
+        private void GameOver()
+        {
+            DoAction(UIAction.Open_GameOverScreen);
         }
 
         #endregion

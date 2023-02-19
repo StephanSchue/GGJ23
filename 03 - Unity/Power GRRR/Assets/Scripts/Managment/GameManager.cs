@@ -15,7 +15,6 @@ namespace GGJ23.Managment
         public UnityEvent OnGameOver;
 
         private bool _paused = false;
-        private bool _gameOver = false;
 
         private void Start()
         {
@@ -36,8 +35,9 @@ namespace GGJ23.Managment
 
         public void StartGame()
         {
-            _gameOver = false;
             Energy = 1f;
+            Score = 0;
+            gameLogic.ResetGame();
             Pause(false);
         }
 
@@ -48,7 +48,6 @@ namespace GGJ23.Managment
 
         public void RestartGame()
         {
-            _gameOver = false;
             Energy = 1f;
             Score = 0;
             gameLogic.ResetGame();
@@ -57,6 +56,7 @@ namespace GGJ23.Managment
 
         public void StopGame()
         {
+            Score = 0;
             Pause(true);
         }
 
@@ -70,11 +70,9 @@ namespace GGJ23.Managment
             else { gameLogic.RunGame(); }
         }
 
-        public void GameOver()
+        private void GameOver()
         {
             Pause(true);
-
-            _gameOver = true;
             OnGameOver.Invoke();
         }
 
