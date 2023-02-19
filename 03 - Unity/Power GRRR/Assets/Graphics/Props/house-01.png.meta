@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,15 +122,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: house-01_0
+      name: house-01_b
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 302
-        height: 489
+        height: 171
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,6 +138,27 @@ TextureImporter:
       bones: []
       spriteID: af984b2ef98da3040800000000000000
       internalID: 4628249748291488250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: house-01_t
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 171
+        width: 302
+        height: 318
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c773419cd627a44eb941c57ce765cd1
+      internalID: -2051222003
       vertices: []
       indices: 
       edges: []
@@ -153,7 +174,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      house-01_0: 4628249748291488250
+      house-01_b: 4628249748291488250
+      house-01_t: -2051222003
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

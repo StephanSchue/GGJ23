@@ -63,26 +63,29 @@ namespace GGJ23.Game
 
                 if (!contains)
                 {
-                    Vector3 origin = transforms[i].position;
-                    LineRenderer lineRenderer = lineRenderers[count];
-                    lineRenderer.positionCount = transforms.Count;
-                    int lineCount = 0;
-                    lineRenderer.SetPosition(lineCount++, origin);
-                    roots.Add(count, new List<Transform>() { transforms[i] });
-
-                    for (int x = 0; x < transforms.Count; x++)
+                    if(count < lineRenderers.Length)
                     {
-                        if (Vector2.Distance(origin, transforms[x].position) < energyConnectionDistance
-                            && !roots[count].Contains(transforms[x]))
-                        {
-                            lineRenderer.SetPosition(lineCount++, transforms[x].position);
-                            origin = transforms[x].position;
-                            roots[count].Add(transforms[x]);
-                        }
-                    }
+                        Vector3 origin = transforms[i].position;
+                        LineRenderer lineRenderer = lineRenderers[count];
+                        lineRenderer.positionCount = transforms.Count;
+                        int lineCount = 0;
+                        lineRenderer.SetPosition(lineCount++, origin);
+                        roots.Add(count, new List<Transform>() { transforms[i] });
 
-                    lineRenderer.positionCount = lineCount;
-                    count++;
+                        for (int x = 0; x < transforms.Count; x++)
+                        {
+                            if (Vector2.Distance(origin, transforms[x].position) < energyConnectionDistance
+                                && !roots[count].Contains(transforms[x]))
+                            {
+                                lineRenderer.SetPosition(lineCount++, transforms[x].position);
+                                origin = transforms[x].position;
+                                roots[count].Add(transforms[x]);
+                            }
+                        }
+
+                        lineRenderer.positionCount = lineCount;
+                        count++;
+                    } 
                 }
             }
         }

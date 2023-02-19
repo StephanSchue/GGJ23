@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player_InteractionConfig_Default
   m_EditorClassIdentifier: 
   _interactionRadius: 2
-  _interactionOffset: {x: 0, y: 0.5}
+  _interactionOffset: {x: 0, y: 0}

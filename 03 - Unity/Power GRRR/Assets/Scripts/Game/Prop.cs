@@ -6,12 +6,17 @@ namespace GGJ23.Game
     public class Prop : MonoBehaviour
     {
         // -- Variables ---
-        public BoxCollider2D collider;
+        private Collider2D[] colliders;
 
         private bool _isNight = false;
 
         // --- Properties ---
         public bool IsNight => _isNight;
+
+        private void Awake()
+        {
+            colliders = GetComponents<Collider2D>();
+        }
 
         #region Public methods
 
@@ -29,14 +34,22 @@ namespace GGJ23.Game
         {
             // Debug.Log("OnDaySwitch");
             _isNight = false;
-            collider.enabled = true;
+
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                colliders[i].enabled = true;
+            }            
         }
 
         private void OnNightSwitch()
         {
             // Debug.Log("OnNightSwitch");
             _isNight = true;
-            collider.enabled = false;
+
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                colliders[i].enabled = false;
+            }
         }
 
         #endregion
