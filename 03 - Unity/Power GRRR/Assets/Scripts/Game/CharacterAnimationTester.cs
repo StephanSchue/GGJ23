@@ -20,9 +20,9 @@ namespace GGJ23.Editor
         {
             animator.SetFloat("Velocity", velocity);
 
-            if (direction == PlayerDirection.Top) animator.SetTrigger("top");
-            else if (direction == PlayerDirection.Right) animator.SetTrigger("right");
-            else if (direction == PlayerDirection.Bottom) animator.SetTrigger("bottom");
+            if (direction == PlayerDirection.Top) { animator.SetTrigger("Top"); }
+            else if (direction == PlayerDirection.Right) { animator.SetTrigger("Right"); }
+            else if (direction == PlayerDirection.Bottom) { animator.SetTrigger("Bottom"); }
 
             animator.SetBool("Working", working);
             animator.SetFloat("Boost", boost);
