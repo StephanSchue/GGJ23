@@ -36,6 +36,7 @@ namespace GGJ23.Game.Visuals
 
             animator.SetBool("Working", interactionController.IsWorking);
             animator.SetFloat("Velocity", movementController.Velocity);
+            animator.SetFloat("Boost", movementController.BoostActive ? 1f : 0f);
 
             // -- Set Directions --
             if (playerDirection != movementController.PlayerDirection)

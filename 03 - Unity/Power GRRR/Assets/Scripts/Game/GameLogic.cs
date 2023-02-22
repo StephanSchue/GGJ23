@@ -1,5 +1,4 @@
 using GGJ23.Game.Config;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
