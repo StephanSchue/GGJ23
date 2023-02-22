@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4492943710006153382}
   - component: {fileID: 1147091401082410809}
   m_Layer: 6
-  m_Name: PO_PowerUp
+  m_Name: PO_Pickup_Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
