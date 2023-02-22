@@ -4,6 +4,9 @@ using UnityEngine.Events;
 
 namespace GGJ23.Game
 {
+    [System.Serializable]
+    public class PickupEvent : UnityEvent<Pickup> { }
+
     public class InteractionController : MonoBehaviour
     {
         // --- Variables ---
@@ -11,6 +14,8 @@ namespace GGJ23.Game
         
         private Interactable[] _interactables;
         private Interactable _nearestInteractable;
+
+        private Pickup[] _pickups;
 
         private bool _isWorking = false;
         private bool _interactButtonPressed = false;
@@ -21,16 +26,18 @@ namespace GGJ23.Game
         public UnityEvent OnFixStart;
         public UnityEvent OnFixOnFixAbourt;
         public UnityEvent OnFixOnFixComplete;
+        public PickupEvent OnPickupActivate;
 
         // --- Properties ---
         public Interactable[] Interactables { get => _interactables; }
+        public Pickup[] Pickups { get => _pickups; }
 
         public bool IsWorking => _isWorking;
 
         public bool IsNight { get { return _interactables.Length > 0 ? _interactables[0].IsNight : false; } }
 
-
         #region Public methods
+
         public void PopulateInteractables(Interactable[] interactables, UnityEvent onDaySwitch, UnityEvent onNightSwitch)
         {
             _interactables = interactables;
@@ -39,6 +46,18 @@ namespace GGJ23.Game
             {
                 _interactables[i].RegisterEvents(onDaySwitch, onNightSwitch);
             }
+        }
+
+        public void PopulatePickups(Pickup[] pickups, PickupEvent onPickup, UnityEvent onDaySwitch, UnityEvent onNightSwitch)
+        {
+            _pickups = pickups;
+
+            for (int i = 0; i < _pickups.Length; i++)
+            {
+                _pickups[i].RegisterEvents(onDaySwitch, onNightSwitch);
+            }
+
+            OnPickupActivate.AddListener((t) => onPickup.Invoke(t));
         }
 
         public void RegisterEvents(EffectContoller effectContoller)
@@ -137,7 +156,28 @@ namespace GGJ23.Game
                 _isWorking = false;
             }
 
+            // Pickups
+            for (int i = 0; i < _pickups.Length; i++)
+            {
+                _pickups[i].Process(Time.deltaTime);
+
+                if(_pickups[i].Status == PickupStatus.On)
+                {
+                    float tmpDistance = Vector2.Distance(transform.position + (Vector3)config.InteractionOffset, _pickups[i].transform.position);
+
+                    if (tmpDistance < (config.InteractionRadius + _pickups[i].interactionRadius))
+                    {
+                        ApplyPickup(_pickups[i]);
+                    }
+                } 
+            }
+
             _interactButtonPressed = false;
+        }
+
+        private void ApplyPickup(Pickup pickup)
+        {
+            OnPickupActivate.Invoke(pickup);
         }
 
         #region Editor
@@ -145,7 +185,9 @@ namespace GGJ23.Game
         private void OnDrawGizmos()
         {
             if (config != null)
+            {
                 Gizmos.DrawWireSphere(transform.position + (Vector3)config.InteractionOffset, config.InteractionRadius);
+            }
         }
 
         #endregion

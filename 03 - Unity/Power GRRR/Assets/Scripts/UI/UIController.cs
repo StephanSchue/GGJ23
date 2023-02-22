@@ -256,7 +256,7 @@ namespace GGJ23.UI
             _currentScreen?.Tick(Time.deltaTime, _inputData);
             UpdateMovement();
 
-            debugText.text = $"Score: {gameManager.Score.ToString("0.00")}; Energy: {(int)(gameManager.Energy * 100f)}"; 
+            debugText.text = $"Score: {gameManager.Score.ToString("0.00")}; Energy: {(int)(gameManager.Energy * 100f)}; Boosts: {movementController.BoostCount}"; 
         }
 
         private void LateUpdate()

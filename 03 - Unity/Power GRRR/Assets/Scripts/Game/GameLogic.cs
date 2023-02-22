@@ -44,6 +44,7 @@ namespace GGJ23.Game
         [Header("Events")]
         public UnityEvent OnDaySwitch;
         public UnityEvent OnNightSwitch;
+        public PickupEvent OnPickupActivate;
         public UnityEvent GameOver;
 
         public bool IsNight => _isNight;
@@ -52,11 +53,15 @@ namespace GGJ23.Game
         void Start()
         {
             var interactables = FindObjectsByType<Interactable>(FindObjectsSortMode.None);
+            var pickups = FindObjectsByType<Pickup>(FindObjectsSortMode.None);
             var props = FindObjectsByType<Prop>(FindObjectsSortMode.None);
+
+            OnPickupActivate.AddListener(ProcessPickupActivate);
 
             if (InteractionController != null)
             {
                 InteractionController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch);
+                InteractionController.PopulatePickups(pickups, OnPickupActivate, OnDaySwitch, OnNightSwitch);
                 InteractionController.RegisterEvents(EffectContoller);
             }
 
@@ -109,7 +114,7 @@ namespace GGJ23.Game
             OnDaySwitch.Invoke();
         }
 
-        void Update()
+        private void Update()
         {
             if (!_running)
                 return;
@@ -300,6 +305,19 @@ namespace GGJ23.Game
             }
 
             return tempDistance;
+        }
+    
+        private void ProcessPickupActivate(Pickup pickup)
+        {
+            switch (pickup.type)
+            {
+                case PickupType.Boost:
+                    if(MovementController.AddBoostPickup())
+                    {
+                        pickup.Apply();
+                    }
+                    break;
+            }
         }
     }
 }

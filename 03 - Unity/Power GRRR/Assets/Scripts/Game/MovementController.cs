@@ -20,7 +20,6 @@ namespace GGJ23.Game
         private Rigidbody2D _rigidbody2D;
         private Vector2 _movement = new Vector2();
 
-        private float _boostInputTimer = 0f;
         private float _boostEffectTimer = 0f;
 
         private bool _isNight = false;
@@ -28,14 +27,15 @@ namespace GGJ23.Game
 
         private bool _blockInput = false;
 
+        private int _boostCount = 0;
+
         public bool IsMoving { get; private set; }
         public Vector2 Direction { get; private set; }
         public PlayerDirection PlayerDirection { get; private set; } = PlayerDirection.Right;
         public float Velocity { get; private set; }
 
-        public float BoostIntervalPercentage => _boostInputTimer / config.BoostInterval;
-        public bool BoostReady => _boostInputTimer < config.BoostThreshold;
         public bool BoostActive => _boostEffectTimer > 0f;
+        public int BoostCount => _boostCount; 
 
         [Header("Events")]
         public UnityEvent OnMovementStart;
@@ -46,8 +46,8 @@ namespace GGJ23.Game
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            _boostInputTimer = config.BoostInterval;
             _boostEffectTimer = 0f;
+            _boostCount = 0;
         }
 
         public void RegisterEvents(EffectContoller effectContoller, UnityEvent onDayEvent, UnityEvent onNightEvent)
@@ -64,6 +64,15 @@ namespace GGJ23.Game
         public void UpdateMovement(Vector2 axis)
         {
             _movement = axis;
+        }
+
+        public bool AddBoostPickup()
+        {
+            if ((_boostCount+1) > config.MaxBoostPickups)
+                return false;
+
+            ++_boostCount;
+            return true;
         }
 
         public void PressBoost()
@@ -100,21 +109,11 @@ namespace GGJ23.Game
             // --- Boost ---
             float velocity = _movement.magnitude;
 
-            if (velocity > 0.1f
-                && _boostInputTimer < config.BoostThreshold
-                 && _boostButtonPressed)
+            if(_boostButtonPressed && _boostCount > 0)
             {
+                // Apply Boost
                 _boostEffectTimer = config.BoostDuration;
-                _boostInputTimer = config.BoostInterval;
-            }
-            else
-            {
-                if(_boostInputTimer < 0f)
-                {
-                    _boostInputTimer = config.BoostInterval;
-                }
-
-                _boostInputTimer -= Time.fixedDeltaTime;
+                --_boostCount;
             }
 
             if (_boostEffectTimer > 0f)
