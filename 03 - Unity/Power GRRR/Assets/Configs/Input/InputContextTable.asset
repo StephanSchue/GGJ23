@@ -43,7 +43,7 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: d1fe0c9350dfbf64fbf6219ef26696c9, type: 3}
     _function03:
       label: Menu
-      sprite: {fileID: -868583073011021807, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: f9a2b198ef67ce247bafea034ac301ea, type: 3}
   _playstationController:
     _accept:
       label: X
