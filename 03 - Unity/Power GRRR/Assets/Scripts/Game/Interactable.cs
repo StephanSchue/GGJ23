@@ -1,4 +1,5 @@
 using GGJ23.Game.Config;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,12 +15,91 @@ namespace GGJ23.Game
 
     public class Interactable : MonoBehaviour
     {
+        [System.Serializable]
+        public class Puzzle
+        {
+            public const int PuzzleMaxNumber = 4;
+
+            public int[] buttons;
+            public int index;
+            public int maxNumber;
+
+            public void Generate(int buttonNumber)
+            {
+                maxNumber = buttonNumber;
+                buttons = new int[maxNumber];
+
+                int currentNumber = 0;
+
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    if(currentNumber < PuzzleMaxNumber)
+                    {
+                        buttons[i] = currentNumber;
+                        ++currentNumber;
+                    }
+                    else
+                    {
+                        currentNumber = 0;
+                        buttons[i] = i;
+                    }
+                }
+
+                Shuffle(buttons);
+            }
+
+            public bool Evaluate(int input, out bool puzzleComplete)
+            {
+                if(buttons[index] == input)
+                {
+                    if(index + 1 < maxNumber)
+                    {
+                        // in progress
+                        ++index;
+                        puzzleComplete = false;
+                    }
+                    else
+                    {
+                        // complete
+                        puzzleComplete = true;
+                    }
+
+                    return true;
+                }
+                else
+                {
+                    // failed
+                    index = 0;
+                    puzzleComplete = false;
+                    return false;
+                }
+            }
+
+            // --- Shuffle ---
+
+            private static System.Random rng = new System.Random();
+
+            public static void Shuffle<T>(IList<T> list)
+            {
+                int n = list.Count;
+                while (n > 1)
+                {
+                    n--;
+                    int k = rng.Next(n + 1);
+                    T value = list[k];
+                    list[k] = list[n];
+                    list[n] = value;
+                }
+            }
+        }
+
         // --- Variables ---
         [Header("Settings")]
         public InteractableConfig config;
 
         public UnityEvent OnInitialize;
 
+        public Puzzle puzzle = new Puzzle();
         public bool brokenOnStart = false;
 
         private InteractionStatus _status;
@@ -28,6 +108,8 @@ namespace GGJ23.Game
 
         private float _timeToBecomeBreakable = 10000f;
         private float _breakableTimer = 0f;
+
+
 
         // --- Properties ---
         public InteractionStatus Status => _status;
@@ -98,6 +180,7 @@ namespace GGJ23.Game
         public void Break()
         {
             _status = InteractionStatus.Broken;
+            puzzle.Generate(4);
         }
 
         #endregion

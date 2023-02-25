@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GGJ23.UI
+namespace GGJ23.Game
 {
     public enum InputControlSchema
     {

@@ -116,6 +116,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c4224d0b-5712-46f4-a3ef-4420c3642eae",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cf69a562-94c7-48ef-813d-efbe002c0e9c",
                     "path": "<DualShockGamepad>/buttonEast",
                     "interactions": "",

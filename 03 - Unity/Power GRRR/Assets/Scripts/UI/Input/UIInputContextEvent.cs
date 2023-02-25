@@ -1,5 +1,5 @@
+using GGJ23.Game;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace GGJ23.UI
 {
