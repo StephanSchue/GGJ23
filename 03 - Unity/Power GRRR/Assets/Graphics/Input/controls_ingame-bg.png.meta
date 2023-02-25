@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6ed3e76f48516dd4ab4fe9f7c85c7565
+guid: 86330f928b579d9448fdb275c3bddb4b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2741364732659841621
-    second: controls_ps_Square_0
+      213: -7533204637180145449
+    second: controls_ingame-bg_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,8 +51,8 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 500
+  spriteBorder: {x: 200, y: 150, z: 200, w: 150}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -122,22 +122,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: controls_ps_Square_0
+      name: controls_ingame-bg_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 5
-        width: 223
-        height: 245
+        x: 10
+        y: 7
+        width: 987
+        height: 336
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba5c60ecc47b4f9d0800000000000000
-      internalID: -2741364732659841621
+      spriteID: 7d05d8c8b4ea47790800000000000000
+      internalID: -7533204637180145449
       vertices: []
       indices: 
       edges: []
@@ -146,14 +146,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      controls_ps_Square_0: -2741364732659841621
+      controls_ingame-bg_0: -7533204637180145449
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

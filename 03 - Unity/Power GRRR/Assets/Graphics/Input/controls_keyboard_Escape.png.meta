@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6ed3e76f48516dd4ab4fe9f7c85c7565
+guid: d6f29d80ab2211449b9cc2b520b05700
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2741364732659841621
-    second: controls_ps_Square_0
+      213: 5224804334556305850
+    second: controls_keyboard_Escape_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -122,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: controls_ps_Square_0
+      name: controls_keyboard_Escape_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 5
-        width: 223
-        height: 245
+        x: 6
+        y: 7
+        width: 243
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,8 +136,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba5c60ecc47b4f9d0800000000000000
-      internalID: -2741364732659841621
+      spriteID: ab9562e2cdb328840800000000000000
+      internalID: 5224804334556305850
       vertices: []
       indices: 
       edges: []
@@ -153,7 +153,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      controls_ps_Square_0: -2741364732659841621
+      controls_keyboard_Escape_0: 5224804334556305850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
