@@ -47,16 +47,16 @@ MonoBehaviour:
   _playstationController:
     _accept:
       label: X
-      sprite: {fileID: 3979185699268812072, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: 5c705230bedd97842a13427af377b914, type: 3}
     _cancel:
       label: Y
-      sprite: {fileID: -6815477925117793086, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: 0ef610047d5102d40866e79d889db16c, type: 3}
     _function01:
       label: Square
-      sprite: {fileID: -1340100122680316981, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: 6ed3e76f48516dd4ab4fe9f7c85c7565, type: 3}
     _function02:
       label: Triangle
-      sprite: {fileID: -222379578940218239, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: e67ae1e5db1d04446831d3ba0f980aee, type: 3}
     _function03:
       label: Options
-      sprite: {fileID: -9094422172179179313, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: 5d7d3d86dd166a74da55ebe776e68a6b, type: 3}
