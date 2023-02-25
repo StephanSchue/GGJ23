@@ -87,7 +87,7 @@
                     "path": "<XInputController>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -131,7 +131,7 @@
                     "path": "<XInputController>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -175,7 +175,7 @@
                     "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Function01",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -208,7 +208,7 @@
                     "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Function02",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -241,7 +241,7 @@
                     "path": "<XInputController>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Function03",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -274,7 +274,7 @@
                     "path": "<XInputController>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -285,7 +285,7 @@
                     "path": "<XInputController>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -296,7 +296,7 @@
                     "path": "<XInputController>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -307,7 +307,7 @@
                     "path": "<XInputController>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -494,7 +494,7 @@
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController",
+                    "groups": "XboxController",
                     "action": "Axis02",
                     "isComposite": true,
                     "isPartOfComposite": false
@@ -505,7 +505,7 @@
                     "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController;PlaystationController",
+                    "groups": "XboxController;PlaystationController",
                     "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -516,7 +516,7 @@
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController;PlaystationController",
+                    "groups": "XboxController;PlaystationController",
                     "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -527,7 +527,7 @@
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController;PlaystationController",
+                    "groups": "XboxController;PlaystationController",
                     "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -538,7 +538,7 @@
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XBoxController;PlaystationController",
+                    "groups": "XboxController;PlaystationController",
                     "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -555,17 +555,12 @@
                     "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
-                },
-                {
-                    "devicePath": "<Mouse>",
-                    "isOptional": true,
-                    "isOR": false
                 }
             ]
         },
         {
-            "name": "XBoxController",
-            "bindingGroup": "XBoxController",
+            "name": "XboxController",
+            "bindingGroup": "XboxController",
             "devices": [
                 {
                     "devicePath": "<XInputController>",

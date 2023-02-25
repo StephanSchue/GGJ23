@@ -31,16 +31,16 @@ MonoBehaviour:
   _xBoxController:
     _accept:
       label: A
-      sprite: {fileID: -7999949606625496365, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: db066c3582f323f48bfc7f4abf874dc9, type: 3}
     _cancel:
       label: B
-      sprite: {fileID: 4885734825404273375, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: f3fe9db1c0e93754ba98d94e5bb02680, type: 3}
     _function01:
       label: X
-      sprite: {fileID: -3769773760827755861, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: 563af420e290252458c8a382e43d1d97, type: 3}
     _function02:
       label: Y
-      sprite: {fileID: 1152794170358909290, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
+      sprite: {fileID: 21300000, guid: d1fe0c9350dfbf64fbf6219ef26696c9, type: 3}
     _function03:
       label: Menu
       sprite: {fileID: -868583073011021807, guid: 1445447aa3f59c241a8ff40ab4f60464, type: 3}
