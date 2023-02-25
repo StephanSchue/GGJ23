@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.Users;
 using UnityEngine.Localization.Settings;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -45,15 +47,6 @@ namespace GGJ23.UI
         Stop_Game,
     }
 
-    public enum UIInputButton
-    {
-        Accept,
-        Cancel,
-        Function01,
-        Function02,
-        Function03,
-    }
-
     public enum UIInputStatus
     {
         None,
@@ -70,27 +63,28 @@ namespace GGJ23.UI
         public UIInputStatus Function02; // Y
         public UIInputStatus Function03; // Menu
 
-        public Vector2 Axis01; // X/Y
+        public Vector2 Axis01; // Analogstick X/Y
+        public Vector2 Axis02; // DPad
 
-        public void SetButtonStatus(UIInputButton button, UIInputStatus status)
+        public void SetButtonStatus(InputButton button, UIInputStatus status)
         {
             Debug.Log($"SetButtonStatus: {button}: {status}");
 
             switch (button)
             {
-                case UIInputButton.Accept:
+                case InputButton.Accept:
                     Accept = status;
                     break;
-                case UIInputButton.Cancel:
+                case InputButton.Cancel:
                     Cancel = status;
                     break;
-                case UIInputButton.Function01:
+                case InputButton.Function01:
                     Function01 = status;
                     break;
-                case UIInputButton.Function02:
+                case InputButton.Function02:
                     Function02 = status;
                     break;
-                case UIInputButton.Function03:
+                case InputButton.Function03:
                     Function03 = status;
                     break;
                 default:
@@ -98,36 +92,36 @@ namespace GGJ23.UI
             }
         }
 
-        public UIInputStatus GetButtonStatus(UIInputButton button)
+        public UIInputStatus GetButtonStatus(InputButton button)
         {
             switch (button)
             {
-                case UIInputButton.Accept:
+                case InputButton.Accept:
                     return Accept;
-                case UIInputButton.Cancel:
+                case InputButton.Cancel:
                     return Cancel;
-                case UIInputButton.Function01:
+                case InputButton.Function01:
                     return Function01;
-                case UIInputButton.Function02:
+                case InputButton.Function02:
                     return Function02;
-                case UIInputButton.Function03:
+                case InputButton.Function03:
                     return Function03;
                 default:
                     return UIInputStatus.None;
             }
         }
 
-        public bool IsPressed(UIInputButton button)
+        public bool IsPressed(InputButton button)
         {
             return GetButtonStatus(button) == UIInputStatus.Press;
         }
 
-        public bool IsHold(UIInputButton button)
+        public bool IsHold(InputButton button)
         {
             return GetButtonStatus(button) == UIInputStatus.Hold;
         }
 
-        public bool IsRelease(UIInputButton button)
+        public bool IsRelease(InputButton button)
         {
             return GetButtonStatus(button) == UIInputStatus.Release;
         }
@@ -204,9 +198,9 @@ namespace GGJ23.UI
         public GameManager gameManager;
         public MovementController movementController;
         public InteractionController interactionController;
+        public PlayerInput playerInput;
         public EventSystem eventSystem;
         public AudioMixer audioMixer;
-        public PlayerInput playerInput;
 
         public UIScreenCollection screens;
         public TMPro.TextMeshProUGUI debugText;
@@ -221,6 +215,8 @@ namespace GGJ23.UI
 
         private bool startGameDirectExecuted = false;
 
+        private UIInputContextEvent[] inputContextEvents;
+
         // --- Properties ---
         public Settings Settings => _settings;
 
@@ -228,7 +224,9 @@ namespace GGJ23.UI
         {
             canvas.enabled = true;
             screens.Init(this);
-            
+
+            inputContextEvents = FindObjectsByType<UIInputContextEvent>(FindObjectsSortMode.None);
+
             SwitchState(UIState.StartScreen);
 
             gameManager.OnGameOver.AddListener(GameOver);
@@ -237,11 +235,17 @@ namespace GGJ23.UI
         private void Start()
         {
             LoadOptions();
+            UpdateControlSchema(Gamepad.current);
+        }
+
+        private void OnEnable()
+        {
+            InputUser.onChange += OnInputDeviceChange;
         }
 
         private void OnDisable()
         {
-            
+            InputUser.onChange -= OnInputDeviceChange;
         }
 
         private void Update()
@@ -261,11 +265,11 @@ namespace GGJ23.UI
 
         private void LateUpdate()
         {
-            UpdateButtonStatus(UIInputButton.Accept);
-            UpdateButtonStatus(UIInputButton.Cancel);
-            UpdateButtonStatus(UIInputButton.Function01);
-            UpdateButtonStatus(UIInputButton.Function02);
-            UpdateButtonStatus(UIInputButton.Function03);
+            UpdateButtonStatus(InputButton.Accept);
+            UpdateButtonStatus(InputButton.Cancel);
+            UpdateButtonStatus(InputButton.Function01);
+            UpdateButtonStatus(InputButton.Function02);
+            UpdateButtonStatus(InputButton.Function03);
         }
 
         #region Statemachine
@@ -353,34 +357,83 @@ namespace GGJ23.UI
 
         #region Input
 
+        private void OnInputDeviceChange(InputUser user, InputUserChange change, InputDevice device)
+        {
+            if (change == InputUserChange.ControlSchemeChanged)
+            {  
+                InputControlSchema controlSchema = InputControlSchema.Keyboard;
+                switch (user.controlScheme.Value.name)
+                {
+                    case "Keyboard":
+                        controlSchema = InputControlSchema.Keyboard;
+                        break;
+                    case "PlaystationController":
+                        controlSchema = InputControlSchema.PlaystationController;
+                        break;
+                    case "XboxController":
+                        controlSchema = InputControlSchema.XboxController;
+                        break;
+                }
+
+                UpdateControlSchema(controlSchema);
+            }
+        }
+
+        private void UpdateControlSchema(InputDevice device)
+        {
+            if (device != null)
+            {
+                UpdateControlSchema(device is DualShockGamepad ? InputControlSchema.PlaystationController : InputControlSchema.XboxController);
+            }
+            else
+            {
+                UpdateControlSchema(InputControlSchema.Keyboard);
+            }
+        }
+
+        private void UpdateControlSchema(InputControlSchema controlSchema)
+        {
+            Debug.Log($"UpdateControlSchema: {controlSchema}");
+
+            for (int i = 0; i < inputContextEvents.Length; i++)
+            {
+                inputContextEvents[i].OnInputDeviceChange(controlSchema);
+            }
+        }
+        
         private void OnConfirm(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Accept, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
+            _inputData.SetButtonStatus(InputButton.Accept, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnCancel(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Cancel, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
+            _inputData.SetButtonStatus(InputButton.Cancel, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnFunction01(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function01, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
+            _inputData.SetButtonStatus(InputButton.Function01, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnFunction02(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function02, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
+            _inputData.SetButtonStatus(InputButton.Function02, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
         private void OnFunction03(InputValue value)
         {
-            _inputData.SetButtonStatus(UIInputButton.Function03, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
+            _inputData.SetButtonStatus(InputButton.Function03, value.isPressed ? UIInputStatus.Press : UIInputStatus.Release);
         }
 
-        private void OnMovement(InputValue value)
+        private void OnAxis01(InputValue value)
         {
             _inputData.Axis01 = value.Get<Vector2>().normalized;
+        }
+
+        private void OnAxis02(InputValue value)
+        {
+            _inputData.Axis02 = value.Get<Vector2>().normalized;
         }
 
         private void UpdateMovement()
@@ -409,6 +462,11 @@ namespace GGJ23.UI
             }
         }
 
+        private void UpdatePuzzleInput()
+        {
+
+        }
+
         private bool IsPointerOverUIObject()
         {
             PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
@@ -418,7 +476,7 @@ namespace GGJ23.UI
             return results.Count > 0;
         }
 
-        private void UpdateButtonStatus(UIInputButton button)
+        private void UpdateButtonStatus(InputButton button)
         {
             if (_inputData.GetButtonStatus(button) == UIInputStatus.Press)
                 _inputData.SetButtonStatus(button, UIInputStatus.Hold);
@@ -517,92 +575,5 @@ namespace GGJ23.UI
         }
 
         #endregion
-
-        //private void OnGameOver()
-        //{
-        //    Debug.Log("GameOver:Enter");
-        //    //_gameOverContainer.style.display = DisplayStyle.Flex;
-        //    //_valueScore.text = string.Format("{0}", gameManager.Score);
-        //    _gameOverOpen = true;
-        //}
-
-        //private void OnGameOverExit()
-        //{
-        //    Debug.Log("GameOver:Exit");
-        //    //_gameOverContainer.style.display = DisplayStyle.None;
-        //    _gameOverOpen = false;
-        //}
-
-        //private void OnClickBoost()
-        //{
-        //    Debug.Log("UIController:OnClickBoost");
-        //    movementController.PressBoost();
-        //}
-
-        //private void OnClickInteractEnter()
-        //{
-        //    Debug.Log("UIController:OnClickInteractEnter");
-        //    interactionController.PressInteractButton();
-        //}
-
-        //private void OnClickInteractExit()
-        //{
-        //    Debug.Log("UIController:OnClickInteractExit");
-        //    interactionController.LeaveInteractButton();
-        //}
-
-        //private void TogglePause()
-        //{
-        //    _pauseOpen = !_pauseOpen;
-        //    OnClickPause(_pauseOpen);
-        //}
-
-        //private void OnClickPause(bool active)
-        //{
-        //    //_pauseContainer.style.display = active ? DisplayStyle.Flex : DisplayStyle.None;
-        //    gameManager.Pause(active);
-
-        //    //if (_buttonHelp != null)
-        //    //{
-        //    //    _buttonHelp.focusable = active;
-        //    //}
-
-        //    //if (_buttonRestart != null)
-        //    //{
-        //    //    _buttonRestart.focusable = active;
-        //    //}
-
-        //    //if (_buttonExit != null)
-        //    //{
-        //    //    _buttonExit.focusable = active;
-        //    //}
-        //}
-
-        //private void OnClickHelp()
-        //{
-        //    Debug.Log("Help:Enter");
-        //    //_helpContainer.style.display = DisplayStyle.Flex;
-        //    _helpOpen = true;
-        //}
-
-        //private void OnClickHelpExit()
-        //{
-        //    Debug.Log("Help:Exit");
-        //    //_helpContainer.style.display = DisplayStyle.None;
-        //    _helpOpen = false;
-        //}
-
-        //private void OnClickRestart()
-        //{
-        //    Debug.Log("UIController::Restart");
-        //    OnGameOverExit();
-        //    gameManager.Restart();
-        //}
-
-        //private void OnClickExit()
-        //{
-        //    Debug.Log("UIController::Exit");
-        //    gameManager.Exit();
-        //}
     }
 }

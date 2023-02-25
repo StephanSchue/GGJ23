@@ -22,15 +22,15 @@ namespace GGJ23.UI
 
         public override void Tick(float dt, UIInputData inputData)
         {
-            if (inputData.IsPressed(UIInputButton.Accept))
+            if (inputData.IsPressed(InputButton.Accept))
             {
                 DoAction(UIAction.Save_Options);
             }
-            else if (inputData.IsPressed(UIInputButton.Function01))
+            else if (inputData.IsPressed(InputButton.Function01))
             {
                 DoAction(UIAction.Reset_Options);
             }
-            else if (inputData.IsPressed(UIInputButton.Cancel))
+            else if (inputData.IsPressed(InputButton.Cancel))
             {
                 DoAction(UIAction.Open_StartScreen);
             }

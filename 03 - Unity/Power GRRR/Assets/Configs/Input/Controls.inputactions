@@ -51,9 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Movement",
+                    "name": "Axis01",
                     "type": "Value",
                     "id": "dea010d9-a4eb-4f1b-bd1c-f74f766210c0",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Axis02",
+                    "type": "Value",
+                    "id": "24b35a35-d454-4ab7-911d-3a177e99f4b4",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -255,7 +264,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -266,7 +275,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XBoxController",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -277,7 +286,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XBoxController",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -288,7 +297,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XBoxController",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -299,7 +308,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XBoxController",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -310,7 +319,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -321,7 +330,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PlaystationController",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -332,7 +341,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PlaystationController",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -343,7 +352,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PlaystationController",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -354,18 +363,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PlaystationController",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector Keyboard",
+                    "name": "2D Vector Keyboard Arrrow Keys",
                     "id": "f4b9e605-a044-4282-b0d9-ec7cf7862a68",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -376,7 +385,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -387,7 +396,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -398,7 +407,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Axis01",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -409,7 +418,128 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Axis01",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector Keyboard WASD",
+                    "id": "f39a331a-bdf6-4c47-a86f-81dfabbe8353",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis01",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "a6c28810-56d3-4e8e-aa78-710049e18fdd",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis01",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "c6050d9f-4241-4f81-af2b-92a38cd04aff",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis01",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "abe833ad-df59-481d-bd95-5088e1d960fb",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis01",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "9aa36746-4673-4e55-a4cc-032ffe088847",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis01",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector DPad",
+                    "id": "1f0fb13e-c3c7-4396-bd1d-928863a16afa",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis02",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector Gamepad",
+                    "id": "3092bb99-d553-405e-a552-dc4031455509",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBoxController",
+                    "action": "Axis02",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "cbd1efcb-2b88-454d-99af-c771b9ef5c46",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBoxController;PlaystationController",
+                    "action": "Axis02",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "f4cb524c-1c00-4a64-ad73-91c1fe0613cf",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBoxController;PlaystationController",
+                    "action": "Axis02",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "0a3b8396-e638-4370-a100-715dad5ea6b5",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBoxController;PlaystationController",
+                    "action": "Axis02",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "6fee583c-c642-46de-9d49-3a513eac1198",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XBoxController;PlaystationController",
+                    "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

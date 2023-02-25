@@ -6,15 +6,15 @@ namespace GGJ23.UI
     {
         public override void Tick(float dt, UIInputData inputData)
         {
-            if (inputData.IsPressed(UIInputButton.Accept))
+            if (inputData.IsPressed(InputButton.Accept))
             {
                 DoAction(UIAction.Continue_Game);
             }
-            else if (inputData.IsPressed(UIInputButton.Function01))
+            else if (inputData.IsPressed(InputButton.Function01))
             {
                 DoAction(UIAction.Restart_Game);
             }
-            else if (inputData.IsPressed(UIInputButton.Function03))
+            else if (inputData.IsPressed(InputButton.Function03))
             {
                 DoAction(UIAction.Stop_Game);
             }

@@ -6,11 +6,15 @@ namespace GGJ23.UI
     [System.Serializable]
     public class InputContextStringEvent : UnityEvent<string> { }
 
-    public class UIInputContextStringEvent : MonoBehaviour
+    public class UIInputContextStringEvent : UIInputContextEvent
     {
-        public UIInputButton inputButton = UIInputButton.Accept;
-
         [SerializeField]
         private InputContextStringEvent _onContextChanged;
+
+        public override void OnInputDeviceChange(InputControlSchema inputControl) 
+        {
+            var label = contextTable.GetContextLabel(inputControl, inputButton);
+            _onContextChanged.Invoke(label);
+        }
     }
 }

@@ -25,15 +25,15 @@ namespace GGJ23.UI
 
         public override void Tick(float dt, UIInputData inputData)
         {
-            if (inputData.IsPressed(UIInputButton.Accept) || inputData.IsHold(UIInputButton.Accept) || _uiRepairButtonHold)
+            if (inputData.IsPressed(InputButton.Accept) || inputData.IsHold(InputButton.Accept) || _uiRepairButtonHold)
             {
                 DoAction(UIAction.Gameplay_Repair);
             }
-            else if (inputData.IsPressed(UIInputButton.Function01))
+            else if (inputData.IsPressed(InputButton.Function01))
             {
                 DoAction(UIAction.Gameplay_Boost);
             }
-            else if (inputData.IsPressed(UIInputButton.Function03))
+            else if (inputData.IsPressed(InputButton.Function03))
             {
                 DoAction(UIAction.Open_PauseScreen);
             }
