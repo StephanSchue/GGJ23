@@ -7,9 +7,9 @@ namespace GGJ23.Game
 {
     public enum PlayerDirection
     {
-        Top = 0,
+        Up = 0,
         Right,
-        Bottom,
+        Down,
         Left
     }
 
@@ -26,8 +26,10 @@ namespace GGJ23.Game
         private bool _boostButtonPressed = false;
 
         private bool _blockInput = false;
-
+        private Vector2 _boost = Vector2.zero;
         private int _boostCount = 0;
+
+        private PlayerDirection _boostDirection = PlayerDirection.Right;
 
         public bool IsMoving { get; private set; }
         public Vector2 Direction { get; private set; }
@@ -106,6 +108,8 @@ namespace GGJ23.Game
                 _movement = Vector2.zero;
             }
 
+            float dt = Time.fixedDeltaTime;
+
             // --- Boost ---
             float velocity = _movement.magnitude;
 
@@ -113,12 +117,13 @@ namespace GGJ23.Game
             {
                 // Apply Boost
                 _boostEffectTimer = config.BoostDuration;
+                _boostDirection = PlayerDirection;
                 --_boostCount;
             }
 
             if (_boostEffectTimer > 0f)
             {
-                _boostEffectTimer -= Time.fixedDeltaTime;
+                _boostEffectTimer -= dt;
             }
 
             _boostButtonPressed = false;
@@ -127,19 +132,19 @@ namespace GGJ23.Game
             if (velocity > 0.1f)
             {
                 _movement.Normalize();
-
-                float speed = _boostEffectTimer > 0f ? config.BoostSpeed : config.Speed;
-                _rigidbody2D.MovePosition((Vector2)transform.position + _movement * Time.fixedDeltaTime * speed);
+                
+                _boost = _boostEffectTimer > 0f ? GetVectorForPlayerDirection(_boostDirection) : Vector2.zero;
+                _rigidbody2D.MovePosition((Vector2)transform.position + (_movement * dt * config.Speed) + (_boost * dt * config.BoostSpeed));
                 
                 Direction = _movement;
 
                 if (Vector2.Dot(Vector2.up, Direction) > 0.5f)
                 {
-                    PlayerDirection = PlayerDirection.Top;
+                    PlayerDirection = PlayerDirection.Up;
                 }
                 else if (Vector2.Dot(Vector2.up, Direction) < -0.5f)
                 {
-                    PlayerDirection = PlayerDirection.Bottom;
+                    PlayerDirection = PlayerDirection.Down;
                 }
                 else if (Vector2.Dot(Vector2.right, Direction) > 0.5f)
                 {
@@ -167,6 +172,18 @@ namespace GGJ23.Game
 
                 Velocity = 0f;
                 IsMoving = false;
+            }
+        }
+
+        private Vector2 GetVectorForPlayerDirection(PlayerDirection playerDirection)
+        {
+            switch (playerDirection)
+            {
+                case PlayerDirection.Up: return Vector2.up;
+                case PlayerDirection.Right: return Vector2.right;
+                case PlayerDirection.Down: return Vector2.down;
+                case PlayerDirection.Left: return Vector2.left;
+                default: return Vector2.zero;
             }
         }
     }

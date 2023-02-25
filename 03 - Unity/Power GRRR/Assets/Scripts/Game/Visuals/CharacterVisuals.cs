@@ -43,9 +43,9 @@ namespace GGJ23.Game.Visuals
             {
                 switch (movementController.PlayerDirection)
                 {
-                    case PlayerDirection.Top: animator.SetTrigger("Top"); break;
+                    case PlayerDirection.Up: animator.SetTrigger("Top"); break;
                     case PlayerDirection.Right: animator.SetTrigger("Right"); break;
-                    case PlayerDirection.Bottom: animator.SetTrigger("Bottom"); break;
+                    case PlayerDirection.Down: animator.SetTrigger("Bottom"); break;
                     case PlayerDirection.Left: animator.SetTrigger("Right"); break; // Since we mirror the character
                 }
 
