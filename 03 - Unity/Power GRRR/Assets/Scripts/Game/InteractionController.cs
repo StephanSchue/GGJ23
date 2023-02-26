@@ -5,6 +5,13 @@ using UnityEngine.Events;
 namespace GGJ23.Game
 {
     [System.Serializable]
+    public enum InteractionMode
+    {
+        HoldDuration,
+        Puzzle
+    }
+
+    [System.Serializable]
     public class PickupEvent : UnityEvent<Pickup> { }
 
     public class InteractionController : MonoBehaviour
@@ -13,12 +20,13 @@ namespace GGJ23.Game
         public InteractionConfig config;
         
         private Interactable[] _interactables;
-        private Interactable _nearestInteractable;
+        public Interactable _nearestInteractable;
 
         private Pickup[] _pickups;
 
-        private bool _isWorking = false;
         private bool _interactButtonPressed = false;
+        private InteractionMode _interactionMode = InteractionMode.Puzzle;
+        private bool _isWorking = false;
 
         private bool _blockInput = false;
 
@@ -31,6 +39,7 @@ namespace GGJ23.Game
         // --- Properties ---
         public Interactable[] Interactables { get => _interactables; }
         public Pickup[] Pickups { get => _pickups; }
+        public Interactable.Puzzle CurrentPuzzle => _nearestInteractable.puzzle;
 
         public bool IsWorking => _isWorking;
 
@@ -72,11 +81,21 @@ namespace GGJ23.Game
         public void PressInteractButton()
         {
             _interactButtonPressed = true;
+            _nearestInteractable?.StartInteraction(_interactionMode);
+        }
+
+        public void UpdatePuzzle(int inputButton)
+        {
+            if (!IsWorking)
+                return;
+
+            _nearestInteractable.ProcessPuzzleInteraction(inputButton);
         }
 
         public void LeaveInteractButton()
         {
             _interactButtonPressed = false;
+            _nearestInteractable?.StopInteraction(_interactionMode);
         }
 
         public void BlockInput(bool block)
@@ -124,7 +143,15 @@ namespace GGJ23.Game
                 if (_nearestInteractable != null)
                 {
                     var lastStatus = _nearestInteractable.Status;
-                    _nearestInteractable.ProcessInteraction(Time.deltaTime);
+
+                    if (_interactionMode == InteractionMode.Puzzle)
+                    {
+                        // PuzzleUpdate
+                    }
+                    else
+                    {
+                        _nearestInteractable.ProcessHoldButtonInteraction(Time.deltaTime);
+                    }
 
                     if (!_isWorking)
                     {

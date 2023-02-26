@@ -270,7 +270,12 @@ namespace GGJ23.UI
             _currentScreen?.Tick(Time.deltaTime, _inputData);
             UpdateMovement();
 
-            debugText.text = $"Score: {gameManager.Score.ToString("0.00")}; Energy: {(int)(gameManager.Energy * 100f)}; Boosts: {movementController.BoostCount}"; 
+            debugText.text = $"Score: {gameManager.Score.ToString("000")}; Energy: {(int)(gameManager.Energy * 100f)}; Boosts: {movementController.BoostCount}";
+            
+            if (interactionController.IsWorking)
+            {
+                debugText.text += $"; Puzzle: {interactionController.CurrentPuzzle}";
+            }
         }
 
         private void LateUpdate()
@@ -449,6 +454,28 @@ namespace GGJ23.UI
         private void OnAxis02(InputValue value)
         {
             _inputData.Axis02 = value.Get<Vector2>().normalized;
+
+            var inputInt = Vector2Int.RoundToInt(_inputData.Axis02);
+            var inputButton = 0;
+            
+            if(inputInt == Vector2Int.up)
+            {
+                inputButton = 0;
+            }
+            else if(inputInt == Vector2Int.right)
+            {
+                inputButton = 1;
+            }
+            else if (inputInt == Vector2Int.down)
+            {
+                inputButton = 2;
+            }
+            else if (inputInt == Vector2Int.left)
+            {
+                inputButton = 3;
+            }
+
+            if (inputInt.sqrMagnitude > 0f) { interactionController.UpdatePuzzle(inputButton); }
         }
 
         private void UpdateMovement()
@@ -475,11 +502,6 @@ namespace GGJ23.UI
             {
                 movementController.UpdateMovement(Vector2.zero);
             }
-        }
-
-        private void UpdatePuzzleInput()
-        {
-
         }
 
         private bool IsPointerOverUIObject()

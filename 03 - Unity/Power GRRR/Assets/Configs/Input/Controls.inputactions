@@ -65,7 +65,7 @@
                     "id": "24b35a35-d454-4ab7-911d-3a177e99f4b4",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": true
                 }
             ],
@@ -291,61 +291,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector Keyboard Arrrow Keys",
-                    "id": "f4b9e605-a044-4282-b0d9-ec7cf7862a68",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Axis01",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Up",
-                    "id": "288420ab-3d7b-44b4-8411-245b71aadbc9",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Axis01",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Down",
-                    "id": "7ac732b2-caef-4a94-988a-fd1b6b8ee12b",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Axis01",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Left",
-                    "id": "0ac7ec72-2fdf-481a-b5bf-e6a35f3cb3ba",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Axis01",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "33179c13-751a-480e-9155-f5b22bd2cd01",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Axis01",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "2D Vector Keyboard WASD",
                     "id": "f39a331a-bdf6-4c47-a86f-81dfabbe8353",
                     "path": "2DVector",
@@ -401,7 +346,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector DPad",
+                    "name": "2D Vector Keyboard Arrowkeys",
                     "id": "1f0fb13e-c3c7-4396-bd1d-928863a16afa",
                     "path": "2DVector",
                     "interactions": "",
@@ -412,7 +357,51 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector Gamepad",
+                    "name": "Up",
+                    "id": "288420ab-3d7b-44b4-8411-245b71aadbc9",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis02",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "7ac732b2-caef-4a94-988a-fd1b6b8ee12b",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis02",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "0ac7ec72-2fdf-481a-b5bf-e6a35f3cb3ba",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis02",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "33179c13-751a-480e-9155-f5b22bd2cd01",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Axis02",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector Gamepad DPad",
                     "id": "3092bb99-d553-405e-a552-dc4031455509",
                     "path": "2DVector",
                     "interactions": "",

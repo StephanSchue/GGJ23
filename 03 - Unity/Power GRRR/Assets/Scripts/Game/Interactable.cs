@@ -20,42 +20,67 @@ namespace GGJ23.Game
         {
             public const int PuzzleMaxNumber = 4;
 
-            public int[] buttons;
-            public int index;
-            public int maxNumber;
+            private int[] _buttons;
+            private int _index;
+            private int _maxNumber;
+
+            private string _output;
+
+            public int[] Buttons => _buttons;
+            public int Index => _index;
+            public int MaxNumber => _maxNumber;
+            public float Progress => ((float)_index / _maxNumber);
 
             public void Generate(int buttonNumber)
             {
-                maxNumber = buttonNumber;
-                buttons = new int[maxNumber];
+                _maxNumber = buttonNumber;
+                _buttons = new int[_maxNumber];
 
                 int currentNumber = 0;
 
-                for (int i = 0; i < buttons.Length; i++)
+                for (int i = 0; i < _buttons.Length; i++)
                 {
                     if(currentNumber < PuzzleMaxNumber)
                     {
-                        buttons[i] = currentNumber;
+                        _buttons[i] = currentNumber;
                         ++currentNumber;
                     }
                     else
                     {
                         currentNumber = 0;
-                        buttons[i] = i;
+                        _buttons[i] = i;
                     }
                 }
 
-                Shuffle(buttons);
+                Shuffle(_buttons);
+                GenerateOutput();
+            }
+
+            private void GenerateOutput()
+            {
+                _output = "";
+
+                for (int i = 0; i < _buttons.Length; i++)
+                {
+                    if (i == _index)
+                    {
+                        _output += $"[{_buttons[i]}]";
+                    }
+                    else
+                    {
+                        _output += $"{_buttons[i]}";
+                    }
+                }
             }
 
             public bool Evaluate(int input, out bool puzzleComplete)
             {
-                if(buttons[index] == input)
+                if(_buttons[_index] == input)
                 {
-                    if(index + 1 < maxNumber)
+                    if(_index + 1 < _maxNumber)
                     {
                         // in progress
-                        ++index;
+                        ++_index;
                         puzzleComplete = false;
                     }
                     else
@@ -64,15 +89,22 @@ namespace GGJ23.Game
                         puzzleComplete = true;
                     }
 
+                    GenerateOutput();
                     return true;
                 }
                 else
                 {
                     // failed
-                    index = 0;
+                    _index = 0;
                     puzzleComplete = false;
+                    GenerateOutput();
                     return false;
                 }
+            }
+
+            public override string ToString()
+            {
+                return _output;
             }
 
             // --- Shuffle ---
@@ -108,9 +140,7 @@ namespace GGJ23.Game
 
         private float _timeToBecomeBreakable = 10000f;
         private float _breakableTimer = 0f;
-
-
-
+        
         // --- Properties ---
         public InteractionStatus Status => _status;
         public float InteractionRadius => config.InteractionRadius;
@@ -161,7 +191,7 @@ namespace GGJ23.Game
             }
         }
 
-        public void ProcessInteraction(float dt)
+        public void ProcessHoldButtonInteraction(float dt)
         {
             if (_status == InteractionStatus.Broken || _status == InteractionStatus.BeingRepaired)
             {
@@ -177,10 +207,45 @@ namespace GGJ23.Game
             }
         }
 
+        public void ProcessPuzzleInteraction(int button)
+        {
+            if (puzzle.Evaluate(button, out bool finished))
+            {
+                if (finished)
+                {
+                    // Complete Repair
+                    _progress = 0f;
+                    _status = InteractionStatus.FreshlyRepaired;
+                }
+                else
+                {
+                    // Progress Repair
+                    _progress = config.Duration - (puzzle.Progress * config.Duration);
+                    _status = InteractionStatus.BeingRepaired;
+                }
+            }
+            else
+            {
+                // Failed
+                _progress = config.Duration;
+                _status = InteractionStatus.BeingRepaired;
+            }
+        }
+
         public void Break()
         {
             _status = InteractionStatus.Broken;
             puzzle.Generate(4);
+        }
+
+        public void StartInteraction(InteractionMode interactionMode)
+        {
+            if (interactionMode == InteractionMode.Puzzle && _status == InteractionStatus.Broken) { _status = InteractionStatus.BeingRepaired; }
+        }
+
+        public void StopInteraction(InteractionMode interactionMode)
+        {
+            if (interactionMode == InteractionMode.Puzzle && _status == InteractionStatus.BeingRepaired) { _status = InteractionStatus.Broken; }
         }
 
         #endregion
