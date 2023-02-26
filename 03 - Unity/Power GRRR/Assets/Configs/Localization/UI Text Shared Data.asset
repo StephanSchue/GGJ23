@@ -83,6 +83,34 @@ MonoBehaviour:
     m_Key: Button_GameOver
     m_Metadata:
       m_Items: []
+  - m_Id: 3207288762081280
+    m_Key: label_music_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207323033739264
+    m_Key: label_sfx_volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207349030035456
+    m_Key: label_language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3209986806849536
+    m_Key: label_movement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3210544758333440
+    m_Key: label_puzzle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3211988391632896
+    m_Key: button_controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3252100433387520
+    m_Key: label_controls_switch_help
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

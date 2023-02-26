@@ -43,10 +43,7 @@ namespace GGJ23.UI
             DoAction(actionComponent.Action);
         }
 
-        protected void DoAction(UIAction action)
-        {
-            _uiController.DoAction(action);
-        }
+        protected void DoAction(UIAction action) => _uiController.DoAction(action);
 
         protected void Show()
         {

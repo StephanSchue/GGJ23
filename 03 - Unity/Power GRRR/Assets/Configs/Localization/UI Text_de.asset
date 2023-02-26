@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 151659421696
-    m_Localized: Optionen
+    m_Localized: Einstellungen
     m_Metadata:
       m_Items: []
   - m_Id: 176489701376
@@ -92,6 +92,35 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 307530728939520
     m_Localized: Spiel vorbei
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207349030035456
+    m_Localized: Sprache
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207288762081280
+    m_Localized: "Musik Lautst\xE4rke"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207323033739264
+    m_Localized: "SFX Lautst\xE4rke"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3209986806849536
+    m_Localized: Bewegung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3210544758333440
+    m_Localized: Puzzle Mechanik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3211988391632896
+    m_Localized: Steuerung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3252100433387520
+    m_Localized: "Um die Steuerung eines anderen Ger\xE4ts anzuzeigen, dr\xFCcke
+      einfach eine Taste."
     m_Metadata:
       m_Items: []
   references:

@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 151659421696
-    m_Localized: Options
+    m_Localized: Settings
     m_Metadata:
       m_Items: []
   - m_Id: 176489701376
@@ -91,6 +91,34 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 307530728939520
     m_Localized: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207349030035456
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207323033739264
+    m_Localized: SFX Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207288762081280
+    m_Localized: Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3209986806849536
+    m_Localized: Movement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3210544758333440
+    m_Localized: Riddle mechanic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3211988391632896
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3252100433387520
+    m_Localized: To see the controls of a different device just pres a button.
     m_Metadata:
       m_Items: []
   references:

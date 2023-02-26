@@ -6,9 +6,13 @@ namespace GGJ23.UI
 {
     public class UIOptionsScreen : UIScreen
     {
-        public Slider audioMasterVolume;
         public Slider audioMusicVolume;
+        public Button audioMusicMute;
         public Slider audioSFXVolume;
+        public Button audioSFXMute;
+
+        public Sprite audioMuteActive;
+        public Sprite audioMuteInactive;
 
         public override void Enter()
         {
@@ -40,14 +44,11 @@ namespace GGJ23.UI
         public override void Refresh()
         {
             base.Refresh();
-            audioMasterVolume.value = _uiController.Settings.audioMasterVolume;
             audioMusicVolume.value = _uiController.Settings.audioMusicVolume;
             audioSFXVolume.value = _uiController.Settings.audioSFXVolume;
-        }
 
-        public void UpdateAudioMasterVolume(float value)
-        {
-            _uiController.UpdateOptionInt(Setting.AudioMasterVolume, (int)value);
+            if(audioMusicMute.targetGraphic is Image audioMusicMuteImage) { audioMusicMuteImage.sprite = _uiController.Settings.audioMusicMute ? audioMuteActive : audioMuteInactive; }
+            if (audioSFXMute.targetGraphic is Image audioSFXMuteImage) { audioSFXMuteImage.sprite = _uiController.Settings.audioSFXMute ? audioMuteActive : audioMuteInactive; }
         }
 
         public void UpdateAudioMusicVolume(float value)
@@ -55,9 +56,23 @@ namespace GGJ23.UI
             _uiController.UpdateOptionInt(Setting.AudioMusicVolume, (int)value);
         }
 
+        public void ToggleAudioMusicMute()
+        {
+            _uiController.UpdateOptionBool(Setting.AudioMusicVolume, !_uiController.Settings.audioMusicMute);
+
+            if (audioMusicMute.targetGraphic is Image audioMusicMuteImage) { audioMusicMuteImage.sprite = _uiController.Settings.audioMusicMute ? audioMuteActive : audioMuteInactive; }
+        }
+
         public void UpdateAudioSFXVolume(float value)
         {
             _uiController.UpdateOptionInt(Setting.AudioSFXVolume, (int)value);
+        }
+
+        public void ToggleAudioSFXMute()
+        {
+            _uiController.UpdateOptionBool(Setting.AudioSFXVolume, !_uiController.Settings.audioSFXMute);
+
+            if (audioSFXMute.targetGraphic is Image audioSFXMuteImage) { audioSFXMuteImage.sprite = _uiController.Settings.audioSFXMute ? audioMuteActive : audioMuteInactive; }
         }
     }
 }

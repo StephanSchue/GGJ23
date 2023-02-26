@@ -15,6 +15,10 @@ namespace GGJ23.UI
             {
                 DoAction(UIAction.Restart_Game);
             }
+            else if (inputData.IsPressed(InputButton.Function02))
+            {
+                DoAction(UIAction.Open_HelpScreen);
+            }
             else if (inputData.IsPressed(InputButton.Function03))
             {
                 DoAction(UIAction.Stop_Game);
