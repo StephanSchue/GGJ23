@@ -271,11 +271,6 @@ namespace GGJ23.UI
             UpdateMovement();
 
             debugText.text = $"Score: {gameManager.Score.ToString("000")}; Energy: {(int)(gameManager.Energy * 100f)}; Boosts: {movementController.BoostCount}";
-            
-            if (interactionController.IsWorking)
-            {
-                debugText.text += $"; Puzzle: {interactionController.CurrentPuzzle}";
-            }
         }
 
         private void LateUpdate()
