@@ -42,6 +42,7 @@ namespace GGJ23.Game.Visuals
         private bool _fadingIn = false;
 
         private int _index = 0;
+        private bool _puzzleRefreshPending = false;
 
         private void Awake()
         {
@@ -51,6 +52,7 @@ namespace GGJ23.Game.Visuals
             Initalize();
 
             interactable.OnInitialize.AddListener(Initalize);
+            interactable.OnPuzzleRefresh.AddListener(PuzzleRefresh);
         }
 
         private void Initalize()
@@ -66,6 +68,11 @@ namespace GGJ23.Game.Visuals
                     SetAnimator(nonRandomizedIndex);
                 }
             }
+        }
+
+        private void PuzzleRefresh()
+        {
+            _puzzleRefreshPending = true;
         }
 
         // Update is called once per frame
@@ -106,7 +113,7 @@ namespace GGJ23.Game.Visuals
                 {
                     if (interactable.Status == InteractionStatus.BeingRepaired && i < interactable.puzzle.MaxNumber)
                     {
-                        if (!puzzleImages[i].gameObject.activeSelf) { puzzleImages[i].gameObject.SetActive(true); puzzleImages[i].sprite = puzzleButtons[interactable.puzzle.Buttons[i]]; }
+                        if (!puzzleImages[i].gameObject.activeSelf || _puzzleRefreshPending) { puzzleImages[i].gameObject.SetActive(true); puzzleImages[i].sprite = puzzleButtons[interactable.puzzle.Buttons[i]]; }
 
                         puzzleImages[i].color = i == interactable.puzzle.Index ? puzzleSelectorColor : Color.white;
                     }
@@ -118,6 +125,8 @@ namespace GGJ23.Game.Visuals
                         }
                     }
                 }
+
+                _puzzleRefreshPending = false;
 
                 if (working)
                 {

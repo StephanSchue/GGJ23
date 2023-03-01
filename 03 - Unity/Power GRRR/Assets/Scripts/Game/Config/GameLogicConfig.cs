@@ -10,9 +10,12 @@ namespace GGJ23.Game.Config
         [SerializeField] private int _earlyDayDurationMs = 10000;
         [SerializeField] private int _finalDayDurationMs = 40000;
         [SerializeField] private int _nightDurationMs = 10000;
+        [SerializeField] private int _allGoodRewardSec = 1;
+        [SerializeField] private int _loosePointsSec = 1;
+
 
         [Header("Design Tuning")]
-        [Range(0f, 500f)] [SerializeField] private float _lossPointsNeeded = 100;
+        [Range(0f, 900f)] [SerializeField] private float _lossPointsNeeded = 100;
         [Range(5f, 30f)] [SerializeField] private float _maxDifficulty = 15f;
         [Range(2.5f, 20f)] [SerializeField] private float _timeToMaxDifficulty = 10f;
         [Range(1f, 50f)] [SerializeField] private float _maxDifficultyFromDistance = 15f;
@@ -30,5 +33,9 @@ namespace GGJ23.Game.Config
         public float MaxDifficultyFromDistance => _maxDifficultyFromDistance;
         public float DistanceToMaxDifficulty => _distanceToMaxDifficulty;
         public float DifficultyFactorFromMultipleBreakages => _difficultyFactorFromMultipleBreakages;
+        public float AllGoodRewardSec => _allGoodRewardSec;
+        public float LoosePointsSec => _loosePointsSec;
+
+
     }
 }

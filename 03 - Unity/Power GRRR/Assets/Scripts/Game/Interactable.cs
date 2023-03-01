@@ -31,28 +31,35 @@ namespace GGJ23.Game
             public int MaxNumber => _maxNumber;
             public float Progress => ((float)_index / _maxNumber);
 
-            public void Generate(int buttonNumber)
+            public void Generate(int buttonNumber, int maxApperence = 2)
             {
                 _maxNumber = buttonNumber;
-                _buttons = new int[_maxNumber];
 
+                // Create tmp array  with the number apperences
+                int[] buttons = new int[_maxNumber * maxApperence];
                 int currentNumber = 0;
 
-                for (int i = 0; i < _buttons.Length; i++)
+                for (int i = 0; i < buttons.Length; i++)
                 {
                     if(currentNumber < PuzzleMaxNumber)
                     {
-                        _buttons[i] = currentNumber;
+                        buttons[i] = currentNumber;
                         ++currentNumber;
                     }
                     else
                     {
                         currentNumber = 0;
-                        _buttons[i] = i;
+                        buttons[i] = 0;
                     }
                 }
 
-                Shuffle(_buttons);
+                // Shuffle the array
+                Shuffle(buttons);
+
+                // Use the MaxNumbers
+                _buttons = new int[_maxNumber];
+                for (int i = 0; i < _maxNumber; i++) { _buttons[i] = buttons[i]; }
+
                 GenerateOutput();
             }
 
@@ -129,7 +136,8 @@ namespace GGJ23.Game
         [Header("Settings")]
         public InteractableConfig config;
 
-        public UnityEvent OnInitialize;
+        private UnityEvent _onInitialize = new ();
+        private UnityEvent _onPuzzleRefresh = new();
 
         public Puzzle puzzle = new Puzzle();
         public bool brokenOnStart = false;
@@ -137,15 +145,19 @@ namespace GGJ23.Game
         private InteractionStatus _status;
         private float _progress = 0f;
         private bool _isNight = false;
+        private int _puzzleTries = 0;
 
         private float _timeToBecomeBreakable = 10000f;
         private float _breakableTimer = 0f;
-        
+
         // --- Properties ---
         public InteractionStatus Status => _status;
         public float InteractionRadius => config.InteractionRadius;
         public float Progress => 1f - Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, config.Duration, _progress));
         public bool IsNight => _isNight;
+
+        public UnityEvent OnInitialize => _onInitialize;
+        public UnityEvent OnPuzzleRefresh => _onPuzzleRefresh;
 
         #region Init
 
@@ -168,7 +180,7 @@ namespace GGJ23.Game
                 Break();
             }
 
-            if (OnInitialize != null) { OnInitialize.Invoke(); }
+            if (_onInitialize != null) { _onInitialize.Invoke(); }
         }
 
         public void RegisterEvents(UnityEvent onDaySwitch, UnityEvent onNightSwitch)
@@ -207,7 +219,7 @@ namespace GGJ23.Game
             }
         }
 
-        public void ProcessPuzzleInteraction(int button)
+        public (bool, bool) ProcessPuzzleInteraction(int button)
         {
             if (puzzle.Evaluate(button, out bool finished))
             {
@@ -216,12 +228,14 @@ namespace GGJ23.Game
                     // Complete Repair
                     _progress = 0f;
                     _status = InteractionStatus.FreshlyRepaired;
+                    return (true,true);
                 }
                 else
                 {
                     // Progress Repair
                     _progress = config.Duration - (puzzle.Progress * config.Duration);
                     _status = InteractionStatus.BeingRepaired;
+                    return (true, false);
                 }
             }
             else
@@ -229,13 +243,24 @@ namespace GGJ23.Game
                 // Failed
                 _progress = config.Duration;
                 _status = InteractionStatus.BeingRepaired;
+                ++_puzzleTries;
+
+                if(_puzzleTries == config.PuzzleTriesBeforeRegenerate)
+                {
+                    puzzle.Generate(config.PuzzleNumberCount, config.PuzzleNumberApperence);
+                    _puzzleTries = 0;
+                    _onPuzzleRefresh.Invoke();
+                }
+
+                return (false,false);
             }
         }
 
         public void Break()
         {
             _status = InteractionStatus.Broken;
-            puzzle.Generate(4);
+            _puzzleTries = 0;
+            puzzle.Generate(config.PuzzleNumberCount, config.PuzzleNumberApperence);
         }
 
         public void StartInteraction(InteractionMode interactionMode)
@@ -245,7 +270,7 @@ namespace GGJ23.Game
 
         public void StopInteraction(InteractionMode interactionMode)
         {
-            if (interactionMode == InteractionMode.Puzzle && _status == InteractionStatus.BeingRepaired) { _status = InteractionStatus.Broken; }
+            if (interactionMode == InteractionMode.Puzzle && (_status == InteractionStatus.BeingRepaired)) { _status = InteractionStatus.Broken; puzzle.Generate(config.PuzzleNumberCount, config.PuzzleNumberApperence); }
         }
 
         #endregion

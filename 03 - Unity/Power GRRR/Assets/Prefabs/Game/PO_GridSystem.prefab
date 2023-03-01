@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e426c2bd92767a418fb8d1d530696c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyConnectionDistance: 30
+  energyConnectionDistance: 60
+  includeProps: 0
 --- !u!1001 &485648022155887383
 PrefabInstance:
   m_ObjectHideFlags: 0

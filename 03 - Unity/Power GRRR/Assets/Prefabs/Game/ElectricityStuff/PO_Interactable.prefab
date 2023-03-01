@@ -37,7 +37,7 @@ Transform:
   - {fileID: 2365064769359649661}
   - {fileID: 515919447338411294}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8745342387419136971
 MonoBehaviour:
@@ -52,9 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: f7e1502b31c4db24696cad64df9e5422, type: 2}
-  OnInitialize:
-    m_PersistentCalls:
-      m_Calls: []
   brokenOnStart: 0
 --- !u!114 &3507545038386458444
 MonoBehaviour:
@@ -102,6 +99,7 @@ MonoBehaviour:
   - {fileID: -7362197380302021544, guid: 26865e0627b1c194c86d9b336af7e2a1, type: 3}
   - {fileID: -2921533227642092032, guid: 9f45aa188cd7ac741b94f01a79cb62c8, type: 3}
   - {fileID: -5486222130666489385, guid: f084d7d33c20b7e43adeb161a0dbaaae, type: 3}
+  puzzleSelectorColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!95 &4229308815669588759
 Animator:
   serializedVersion: 6
@@ -234,7 +232,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.752, g: 0.752, b: 0.752, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

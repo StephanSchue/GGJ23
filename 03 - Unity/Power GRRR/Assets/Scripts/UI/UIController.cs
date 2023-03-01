@@ -221,7 +221,8 @@ namespace GGJ23.UI
 
         private Settings _settings;
 
-        private bool startGameDirectExecuted = false;
+        private bool _startGameDirectExecuted = false;
+        public float _timer, _refresh, _avgFramerate;
 
         private UIInputContextEvent[] inputContextEvents;
 
@@ -260,17 +261,18 @@ namespace GGJ23.UI
 
         private void Update()
         {
-            if(startGameDirect && !startGameDirectExecuted)
+            if(startGameDirect && !_startGameDirectExecuted)
             {
                 SwitchState(UIState.GameScreen);
                 gameManager.StartGame();
-                startGameDirectExecuted = true;
+                _startGameDirectExecuted = true;
             }
 
             _currentScreen?.Tick(Time.deltaTime, _inputData);
             UpdateMovement();
+            UpdateFPSCounter();
 
-            debugText.text = $"Score: {gameManager.Score.ToString("000")}; Energy: {(int)(gameManager.Energy * 100f)}; Boosts: {movementController.BoostCount}";
+            debugText.text = $"Score: {gameManager.Score.ToString("000")}; Boosts: {movementController.BoostCount}; FPS: {_avgFramerate}";
         }
 
         private void LateUpdate()
@@ -473,6 +475,11 @@ namespace GGJ23.UI
             if (inputInt.sqrMagnitude > 0f) { interactionController.UpdatePuzzle(inputButton); }
         }
 
+        public void PressPuzzleButton(int inputButton)
+        {
+            interactionController.UpdatePuzzle(inputButton);
+        }
+
         private void UpdateMovement()
         {
             // mouse input
@@ -521,6 +528,15 @@ namespace GGJ23.UI
                 _inputData.SetButtonStatus(button, UIInputStatus.Hold);
             else if (_inputData.GetButtonStatus(button) == UIInputStatus.Release)
                 _inputData.SetButtonStatus(button, UIInputStatus.None);
+        }
+
+        private void UpdateFPSCounter()
+        {
+            //Change smoothDeltaTime to deltaTime or fixedDeltaTime to see the difference
+            float timelapse = Time.smoothDeltaTime;
+            _timer = _timer <= 0 ? _refresh : _timer -= timelapse;
+
+            if (_timer <= 0) _avgFramerate = (int)(1f / timelapse);
         }
 
         #endregion

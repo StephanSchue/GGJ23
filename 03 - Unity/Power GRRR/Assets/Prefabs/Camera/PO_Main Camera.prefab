@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8953476c3e410b64f941e2a153634540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 6190295885027169071}
+  focusCamera: {fileID: 6190295885027169071}
+  dayVirtualCamera: {fileID: 0}
+  nightVirtualCamera: {fileID: 0}
   dayColor: {r: 1, g: 1, b: 1, a: 1}
   nightColor: {r: 0, g: 0, b: 0, a: 1}

@@ -10,6 +10,9 @@ namespace GGJ23.Game
         private LineRenderer[] lineRenderers;
         public float energyConnectionDistance = 1f;
 
+        public bool includeProps = false;
+
+
         private Interactable[] _interactables;
         private Prop[] _props;
 
@@ -43,10 +46,14 @@ namespace GGJ23.Game
                 }
             }
 
-            for (int i = 0; i < _props.Length; i++)
+            if (includeProps)
             {
-                transforms.Add(_props[i].transform);
+                for (int i = 0; i < _props.Length; i++)
+                {
+                    transforms.Add(_props[i].transform);
+                }
             }
+            
 
             // --- Interactables && Props ---
             for (int i = 0; i < transforms.Count; i++)

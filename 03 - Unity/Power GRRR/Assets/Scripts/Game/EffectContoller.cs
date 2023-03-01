@@ -19,6 +19,8 @@ namespace GGJ23.Game
         [Header("Interactable")]
         public UnityEvent OnBreak;
         public UnityEvent OnFixStart;
+        public UnityEvent[] OnFixOnFixPositiveSteps;
+        public UnityEvent OnFixOnFixNegativeStep;
         public UnityEvent OnFixOnFixAbourt;
         public UnityEvent OnFixOnFixComplete;
 

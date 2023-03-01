@@ -26,15 +26,18 @@ namespace GGJ23.Game
 
         private bool _interactButtonPressed = false;
         private InteractionMode _interactionMode = InteractionMode.Puzzle;
+        private bool _inRepairMode = false;
         private bool _isWorking = false;
 
         private bool _blockInput = false;
 
         // --- Events ---
-        public UnityEvent OnFixStart;
-        public UnityEvent OnFixOnFixAbourt;
-        public UnityEvent OnFixOnFixComplete;
-        public PickupEvent OnPickupActivate;
+        private UnityEvent OnFixStart = new();
+        private UnityEvent OnFixOnFixAbourt = new();
+        private UnityEvent[] OnFixOnFixPositiveSteps = new UnityEvent[4] { new(), new(), new(), new() };
+        private UnityEvent OnFixOnFixNegativeStep = new();
+        private UnityEvent OnFixOnFixComplete = new();
+        private PickupEvent OnPickupActivate = new ();
 
         // --- Properties ---
         public Interactable[] Interactables { get => _interactables; }
@@ -72,6 +75,8 @@ namespace GGJ23.Game
         public void RegisterEvents(EffectContoller effectContoller)
         {
             OnFixStart.AddListener(() => effectContoller.OnFixStart.Invoke());
+            for (int i = 0; i < OnFixOnFixPositiveSteps.Length; i++) { int index = i; OnFixOnFixPositiveSteps[index].AddListener(() => effectContoller.OnFixOnFixPositiveSteps[index].Invoke()); }
+            OnFixOnFixNegativeStep.AddListener(() => effectContoller.OnFixOnFixNegativeStep.Invoke());
             OnFixOnFixAbourt.AddListener(() => effectContoller.OnFixOnFixAbourt.Invoke());
             OnFixOnFixComplete.AddListener(() => effectContoller.OnFixOnFixComplete.Invoke());
         }
@@ -81,6 +86,7 @@ namespace GGJ23.Game
         public void PressInteractButton()
         {
             _interactButtonPressed = true;
+            _inRepairMode = true;
             _nearestInteractable?.StartInteraction(_interactionMode);
         }
 
@@ -89,7 +95,21 @@ namespace GGJ23.Game
             if (!IsWorking)
                 return;
 
-            _nearestInteractable.ProcessPuzzleInteraction(inputButton);
+            (bool success, bool finished) = _nearestInteractable.ProcessPuzzleInteraction(inputButton);
+
+            if (finished)
+            {
+                OnFixOnFixPositiveSteps[inputButton].Invoke();
+                _inRepairMode = false;
+            }
+            else if (success)
+            {
+                OnFixOnFixPositiveSteps[inputButton].Invoke();
+            }
+            else
+            {
+                OnFixOnFixNegativeStep.Invoke();
+            }    
         }
 
         public void LeaveInteractButton()
@@ -118,7 +138,10 @@ namespace GGJ23.Game
             }
 
             // Iterate through Input on nearest Interactble
-            if (_interactButtonPressed)
+            bool stopRepair = false;
+            Interactable lastInteractable = _nearestInteractable;
+
+            if (_inRepairMode)
             {
                 // Check for nearest Interactable
                 float nearestDistance = float.MaxValue;
@@ -130,7 +153,7 @@ namespace GGJ23.Game
 
                     if (tmpDistance < (config.InteractionRadius + _interactables[i].InteractionRadius)
                         && !_interactables[i].IsNight
-                        && (_interactables[i].Status == InteractionStatus.Broken 
+                        && (_interactables[i].Status == InteractionStatus.Broken
                             || _interactables[i].Status == InteractionStatus.BeingRepaired)
                         && tmpDistance < nearestDistance)
                     {
@@ -157,7 +180,7 @@ namespace GGJ23.Game
                     {
                         OnFixStart.Invoke();
                     }
-                    else if(lastStatus != _nearestInteractable.Status
+                    else if (lastStatus != _nearestInteractable.Status
                         && _nearestInteractable.Status == InteractionStatus.FreshlyRepaired)
                     {
                         OnFixOnFixComplete.Invoke();
@@ -167,20 +190,27 @@ namespace GGJ23.Game
                 }
                 else
                 {
-                    _isWorking = false;
+                    stopRepair = true;
                 }
             }
             else
             {
+                stopRepair = true;
+            }
+
+            if (stopRepair)
+            {
                 if (_isWorking
-                    && _nearestInteractable != null
-                    && (_nearestInteractable.Status == InteractionStatus.Broken 
-                        || (_nearestInteractable.Status == InteractionStatus.BeingRepaired)))
+                    && lastInteractable != null
+                    && (lastInteractable.Status == InteractionStatus.Broken 
+                        || lastInteractable.Status == InteractionStatus.BeingRepaired))
                 {
+                    lastInteractable?.StopInteraction(_interactionMode);
                     OnFixOnFixAbourt.Invoke();
                 }
-
+                
                 _isWorking = false;
+                _inRepairMode = false;
             }
 
             // Pickups
