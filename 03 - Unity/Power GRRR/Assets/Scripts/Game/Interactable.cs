@@ -33,6 +33,7 @@ namespace GGJ23.Game
 
             public void Generate(int buttonNumber, int maxApperence = 2)
             {
+                _index = 0;
                 _maxNumber = buttonNumber;
 
                 // Create tmp array  with the number apperences

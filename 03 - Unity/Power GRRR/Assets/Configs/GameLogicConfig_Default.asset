@@ -16,6 +16,7 @@ MonoBehaviour:
   _finalDayDurationMs: 40000
   _nightDurationMs: 5000
   _allGoodRewardSec: 5
+  _loosePointsSec: 0.25
   _lossPointsNeeded: 500
   _maxDifficulty: 20
   _timeToMaxDifficulty: 20

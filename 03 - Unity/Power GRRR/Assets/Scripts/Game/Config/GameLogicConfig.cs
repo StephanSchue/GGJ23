@@ -10,8 +10,8 @@ namespace GGJ23.Game.Config
         [SerializeField] private int _earlyDayDurationMs = 10000;
         [SerializeField] private int _finalDayDurationMs = 40000;
         [SerializeField] private int _nightDurationMs = 10000;
-        [SerializeField] private int _allGoodRewardSec = 1;
-        [SerializeField] private int _loosePointsSec = 1;
+        [SerializeField] private float _allGoodRewardSec = 1.0f;
+        [SerializeField] private float _loosePointsSec = 1.0f;
 
 
         [Header("Design Tuning")]
