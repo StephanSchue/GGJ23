@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _boostInterval: 2
-  _boostThreshold: 1
   _boostDuration: 1
   _boostSpeed: 10
   _stopAtNight: 1
-  _maxBoostPickups: 2
+  _maxBoostPickups: 5
