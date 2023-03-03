@@ -6,7 +6,7 @@ namespace GGJ23.Managment
 {
     public class GameManager : MonoBehaviour
     {
-        public Game.GameLogic gameLogic;
+        public GameLogic gameLogic;
 
         public float Energy { get; private set; } = 100f;
         public EnergyStatus EnergyStatus => gameLogic.EnergyStatus;

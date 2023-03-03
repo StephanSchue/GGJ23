@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: GameLogicConfig_Default
   m_EditorClassIdentifier: 
   _earlyDayDurationMs: 5000
-  _finalDayDurationMs: 40000
+  _finalDayDurationMs: 60000
   _nightDurationMs: 8000
   _allGoodRewardSec: 5
   _loosePointsSec: 0.25
-  _lossPointsNeeded: 500
-  _maxDifficulty: 20
-  _timeToMaxDifficulty: 20
+  _lossPointsNeeded: 200
+  _maxDifficulty: 10
+  _timeToMaxDifficulty: 10
   _maxDifficultyFromDistance: 15
   _distanceToMaxDifficulty: 1000
   _difficultyFactorFromMultipleBreakages: 0.25
