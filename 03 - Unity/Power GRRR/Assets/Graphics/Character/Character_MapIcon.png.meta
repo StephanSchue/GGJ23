@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 72a190aef89f90a46a4f83ab5e2191ff
+guid: a2cee78e3f889c54aa3d88c1457e1d86
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5396248245163305115
-    second: Character-Design_v02_front-view_0
+      213: -8568277507338380404
+    second: C_IDLE_Back_00000_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -49,8 +49,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.33}
+  alignment: 9
+  spritePivot: {x: 0.5083373, y: 0.3331601}
   spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -122,22 +122,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character-Design_v02_front-view_0
+      name: C_IDLE_Back_00000_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 180
-        height: 469
+        x: 153
+        y: 367
+        width: 182
+        height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b98a8cc303353ea40800000000000000
-      internalID: 5396248245163305115
+      spriteID: c8b5026f00d571980800000000000000
+      internalID: -8568277507338380404
       vertices: []
       indices: 
       edges: []
@@ -145,15 +145,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character-Design_v02_front-view_0: 5396248245163305115
+      C_IDLE_Back_00000_0: -8568277507338380404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

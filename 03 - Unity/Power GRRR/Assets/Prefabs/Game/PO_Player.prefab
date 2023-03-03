@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2566330117200156960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4541771713821877554}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -8568277507338380404, guid: a2cee78e3f889c54aa3d88c1457e1d86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,7 +121,7 @@ Transform:
   - {fileID: 2885738409528543028}
   - {fileID: 5761610194882254427}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &528225488335055854
 MonoBehaviour:
@@ -136,15 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 58226ed702a2e88488d852bba69a37af, type: 2}
-  OnFixStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnFixOnFixAbourt:
-    m_PersistentCalls:
-      m_Calls: []
-  OnFixOnFixComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _nearestInteractable: {fileID: 0}
 --- !u!114 &8945997299003857636
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Serialization;
 
 namespace GGJ23.Game.Visuals
 {
@@ -17,8 +18,11 @@ namespace GGJ23.Game.Visuals
         [Header("Components")]
         public Interactable interactable;
         public SpriteRenderer spriteRenderer;
-        public SpriteRenderer spriteRendererLightGlow;
-        public SpriteRenderer notificationSpriteRenderer;
+        [FormerlySerializedAs("spriteRendererLightGlow")]
+        public SpriteRenderer spriteRendererNightGlow;
+        [FormerlySerializedAs("notificationSpriteRenderer")]
+        public SpriteRenderer dayDotificationSpriteRenderer;
+        public SpriteRenderer nightDotificationSpriteRenderer;
         public Animator animator;
         public Canvas progressBarCanvas;
         public Slider progressBarSlider;
@@ -90,20 +94,20 @@ namespace GGJ23.Game.Visuals
             if (interactable.IsNight)
             {
                 // --- Night ---
-                spriteRendererLightGlow.enabled = true;
-                spriteRenderer.enabled = false;
-                notificationSpriteRenderer.enabled = false;
+                spriteRendererNightGlow.enabled = true;
+                nightDotificationSpriteRenderer.enabled = !working;
+                spriteRenderer.enabled = dayDotificationSpriteRenderer.enabled = false;
 
                 if(_hasAnimation) { animator.enabled = false; }
 
                 _fadingIn = false;
                 _fadingOut = false;
-                notificationSpriteRenderer.color = new Color(notificationSpriteRenderer.color.r, notificationSpriteRenderer.color.g, notificationSpriteRenderer.color.b, 1f);
+                dayDotificationSpriteRenderer.color = new Color(dayDotificationSpriteRenderer.color.r, dayDotificationSpriteRenderer.color.g, dayDotificationSpriteRenderer.color.b, 1f);
             }
             else
             {
                 // --- Day ---
-                spriteRendererLightGlow.enabled = false;
+                spriteRendererNightGlow.enabled = nightDotificationSpriteRenderer.enabled = false;
                 spriteRenderer.enabled = true;
 
                 if (_hasAnimation) { animator.enabled = true; }
@@ -130,18 +134,18 @@ namespace GGJ23.Game.Visuals
 
                 if (working)
                 {
-                    notificationSpriteRenderer.enabled = false;
+                    dayDotificationSpriteRenderer.enabled = false;
                     _fadingIn = false;
                     _fadingOut = false;
-                    notificationSpriteRenderer.color = new Color(notificationSpriteRenderer.color.r, notificationSpriteRenderer.color.g, notificationSpriteRenderer.color.b, 1f);
+                    dayDotificationSpriteRenderer.color = new Color(dayDotificationSpriteRenderer.color.r, dayDotificationSpriteRenderer.color.g, dayDotificationSpriteRenderer.color.b, 1f);
                 }
                 else
                 {
-                    notificationSpriteRenderer.enabled = true;
+                    dayDotificationSpriteRenderer.enabled = true;
                     if (!_fadingOut && !_fadingIn)
                     {
                         _fadingOut = true;
-                        DOTween.ToAlpha(() => notificationSpriteRenderer.color, x => notificationSpriteRenderer.color = x, 0f, 1f).onComplete = () => SwitchFade();
+                        DOTween.ToAlpha(() => dayDotificationSpriteRenderer.color, x => dayDotificationSpriteRenderer.color = x, 0f, 1f).onComplete = () => SwitchFade();
                     }
                 }
             }
@@ -172,7 +176,7 @@ namespace GGJ23.Game.Visuals
         {
             if (!_fadingIn && !_fadingOut)
             { 
-                notificationSpriteRenderer.color = new Color(notificationSpriteRenderer.color.r, notificationSpriteRenderer.color.g, notificationSpriteRenderer.color.b, 1f);
+                dayDotificationSpriteRenderer.color = new Color(dayDotificationSpriteRenderer.color.r, dayDotificationSpriteRenderer.color.g, dayDotificationSpriteRenderer.color.b, 1f);
                 return;
             }
 
@@ -181,11 +185,11 @@ namespace GGJ23.Game.Visuals
 
             if (_fadingIn)
             {
-                DOTween.ToAlpha(() => notificationSpriteRenderer.color, x => notificationSpriteRenderer.color = x, 1f, 1f).onComplete = () => SwitchFade();
+                DOTween.ToAlpha(() => dayDotificationSpriteRenderer.color, x => dayDotificationSpriteRenderer.color = x, 1f, 1f).onComplete = () => SwitchFade();
             }
             else if (_fadingOut)
             {
-                DOTween.ToAlpha(() => notificationSpriteRenderer.color, x => notificationSpriteRenderer.color = x, 0f, 1f).onComplete = () => SwitchFade();
+                DOTween.ToAlpha(() => dayDotificationSpriteRenderer.color, x => dayDotificationSpriteRenderer.color = x, 0f, 1f).onComplete = () => SwitchFade();
             }
         }
     }

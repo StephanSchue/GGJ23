@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _earlyDayDurationMs: 5000
   _finalDayDurationMs: 40000
-  _nightDurationMs: 5000
+  _nightDurationMs: 8000
   _allGoodRewardSec: 5
   _loosePointsSec: 0.25
   _lossPointsNeeded: 500
