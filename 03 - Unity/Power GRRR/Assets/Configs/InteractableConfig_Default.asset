@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: InteractableConfig_Default
   m_EditorClassIdentifier: 
   _duration: 2
-  _interactionRadius: 2
+  _interactionRadius: 4
+  _puzzleNumberCount: 4
+  _puzzleNumberApperence: 2
+  _puzzleTriesBeforeRegenerate: 3

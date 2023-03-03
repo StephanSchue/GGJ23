@@ -113,7 +113,7 @@ namespace GGJ23.Game
             // --- Boost ---
             float velocity = _movement.magnitude;
 
-            if(_boostButtonPressed && _boostCount > 0)
+            if(_boostButtonPressed && _boostCount > 0 && !BoostActive)
             {
                 // Apply Boost
                 _boostEffectTimer = config.BoostDuration;
@@ -123,17 +123,22 @@ namespace GGJ23.Game
 
             if (_boostEffectTimer > 0f)
             {
-                _boostEffectTimer -= dt;
+                _boostEffectTimer -= dt; 
+                _boost = GetVectorForPlayerDirection(_boostDirection);
+            }
+            else
+            {
+                _boost = Vector2.zero;
             }
 
             _boostButtonPressed = false;
 
             // -- Movement ---
-            if (velocity > 0.1f)
+            
+
+            if (velocity > 0.1f || BoostActive)
             {
-                _movement.Normalize();
-                
-                _boost = _boostEffectTimer > 0f ? GetVectorForPlayerDirection(_boostDirection) : Vector2.zero;
+                _movement.Normalize(); 
                 _rigidbody2D.MovePosition((Vector2)transform.position + (_movement * dt * config.Speed) + (_boost * dt * config.BoostSpeed));
                 
                 Direction = _movement;

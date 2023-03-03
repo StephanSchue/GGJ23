@@ -1,6 +1,6 @@
+using GGJ23.Game;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 namespace GGJ23.Managment
 {
@@ -9,6 +9,7 @@ namespace GGJ23.Managment
         public Game.GameLogic gameLogic;
 
         public float Energy { get; private set; } = 100f;
+        public EnergyStatus EnergyStatus => gameLogic.EnergyStatus;
         public float Score { get; private set; } = 0;
 
         [Header("Events")]

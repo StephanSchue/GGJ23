@@ -320,3 +320,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickup: {fileID: 4492943710006153382}
   spriteRenderer: {fileID: 5762117641690473980}
+  label: {fileID: 7196045366971750925}

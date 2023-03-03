@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 namespace GGJ23.Game.Visuals
 {
@@ -7,6 +8,7 @@ namespace GGJ23.Game.Visuals
         [Header("Components")]
         public Pickup pickup;
         public SpriteRenderer spriteRenderer;
+        public TextMeshPro label;
 
         private void Awake()
         {
@@ -15,7 +17,10 @@ namespace GGJ23.Game.Visuals
 
         private void Update()
         {
-            spriteRenderer.enabled = !pickup.IsNight && pickup.Status == PickupStatus.On;
+            bool visible = !pickup.IsNight && pickup.Status == PickupStatus.On;
+            spriteRenderer.enabled = visible;
+            label.enabled = visible;
+
         }
     }
 }

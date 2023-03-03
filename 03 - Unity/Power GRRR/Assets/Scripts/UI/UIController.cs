@@ -9,7 +9,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.Localization.Settings;
-using static UnityEngine.InputSystem.InputAction;
 
 namespace GGJ23.UI
 {
@@ -272,7 +271,7 @@ namespace GGJ23.UI
             UpdateMovement();
             UpdateFPSCounter();
 
-            debugText.text = $"Score: {gameManager.Score.ToString("000")}; Boosts: {movementController.BoostCount}/{movementController.config.MaxBoostPickups}; FPS: {_avgFramerate}";
+            debugText.text = $"DEBUG - Score: {gameManager.Score.ToString("000")}; FPS: {_avgFramerate}";
         }
 
         private void LateUpdate()

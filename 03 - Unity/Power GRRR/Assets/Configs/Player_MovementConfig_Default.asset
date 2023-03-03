@@ -15,6 +15,6 @@ MonoBehaviour:
   _speed: 10
   _boostInterval: 2
   _boostDuration: 1
-  _boostSpeed: 20
+  _boostSpeed: 15
   _stopAtNight: 1
   _maxBoostPickups: 5

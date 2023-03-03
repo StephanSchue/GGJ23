@@ -13,6 +13,14 @@ namespace GGJ23.Game
         Level03
     }
 
+    public enum EnergyStatus
+    {
+        None,
+        Balanced,
+        Increase,
+        Decrease
+    }
+
     public class GameLogic : MonoBehaviour
     {
         // --- Variables ---
@@ -31,6 +39,7 @@ namespace GGJ23.Game
         private float _currentScore = 0f;
         private float _lossPoints = 0f;
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
+        private EnergyStatus _energyStatus = EnergyStatus.Balanced;
 
         private bool _running = false;
 
@@ -38,7 +47,9 @@ namespace GGJ23.Game
 
         // --- Properties ---
         public float LossPercentage => _lossPoints / config.LossPointsNeeded;
+        public EnergyStatus EnergyStatus => _energyStatus;
         public float Score => _currentScore;
+        public float CurrentTime => _currentTime;
 
         [Header("Events")]
         public UnityEvent OnDaySwitch;
@@ -118,6 +129,9 @@ namespace GGJ23.Game
             if (!_running)
                 return;
 
+            if (InteractionController.IsWorking)
+                return;
+
             float progressToNextTime = ((Time.deltaTime * 1000) / (_isNight ? config.NightDurationMs : _dayDurationMs)) * 0.5f;
             bool lastIsNight = _isNight;
 
@@ -167,12 +181,15 @@ namespace GGJ23.Game
                     {
                         allGood = false;
                         _lossPoints += (config.LoosePointsSec * deltaTime);
+                        _energyStatus = EnergyStatus.Decrease;
                     }
                 }
 
                 if (allGood)
                 {
+                    _energyStatus = Mathf.Approximately(_lossPoints, 0f) ? EnergyStatus.Balanced : EnergyStatus.Increase;
                     _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodRewardSec * deltaTime));
+                    
                 }
             }
 
