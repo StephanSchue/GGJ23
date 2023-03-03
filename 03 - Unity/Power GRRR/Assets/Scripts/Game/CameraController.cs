@@ -6,7 +6,7 @@ namespace GGJ23.Game
 {
     public class CameraController : MonoBehaviour
     {
-        public Camera camera;
+        public Camera focusCamera;
 
         public Cinemachine.CinemachineVirtualCamera dayVirtualCamera;
         public Cinemachine.CinemachineVirtualCamera nightVirtualCamera;
@@ -22,7 +22,7 @@ namespace GGJ23.Game
 
         private void OnDaySwitch()
         {
-            camera.DOColor(dayColor, 2f);
+            focusCamera.DOColor(dayColor, 2f);
             // camera.backgroundColor = dayColor;
 
             dayVirtualCamera.Priority = 1000;
@@ -31,7 +31,7 @@ namespace GGJ23.Game
 
         private void OnNightSwitch()
         {
-            camera.DOColor(nightColor, 2f);
+            focusCamera.DOColor(nightColor, 2f);
             // camera.backgroundColor = nightColor;
 
             dayVirtualCamera.Priority = 0;

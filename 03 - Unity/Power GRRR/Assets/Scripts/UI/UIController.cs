@@ -23,7 +23,8 @@ namespace GGJ23.UI
         PauseScreen,
         HelpScreen,
         OptionScreen,
-        CreditsScreen
+        CreditsScreen,
+        ControlsScreen
     }
 
     [System.Serializable]
@@ -45,6 +46,7 @@ namespace GGJ23.UI
         Continue_Game,
         Restart_Game,
         Stop_Game,
+        Open_ControlsScreen,
     }
 
     public enum UIInputStatus
@@ -129,16 +131,18 @@ namespace GGJ23.UI
 
     public enum Setting
     {
-        AudioMasterVolume,
         AudioMusicVolume,
+        AudioMusicMute,
         AudioSFXVolume,
+        AudioSFXMute,
     }
 
     public struct Settings
     {
-        public int audioMasterVolume;
         public int audioMusicVolume;
+        public bool audioMusicMute;
         public int audioSFXVolume;
+        public bool audioSFXMute;
         public int language;
     }
 
@@ -152,6 +156,7 @@ namespace GGJ23.UI
             public UIScreen GameOverScreen;
             public UIScreen PauseScreen;
             public UIScreen HelpScreen;
+            public UIScreen ControlsScreen;
             public UIScreen OptionScreen;
             public UIScreen CreditsScreen;
 
@@ -162,6 +167,7 @@ namespace GGJ23.UI
                 GameOverScreen?.Init(uiController, false);
                 PauseScreen?.Init(uiController, false);
                 HelpScreen?.Init(uiController, false);
+                ControlsScreen?.Init(uiController, false);
                 OptionScreen?.Init(uiController, false);
                 CreditsScreen?.Init(uiController, false);
             }
@@ -186,6 +192,8 @@ namespace GGJ23.UI
                         return OptionScreen;
                     case UIState.CreditsScreen:
                         return CreditsScreen;
+                    case UIState.ControlsScreen:
+                        return ControlsScreen;
                     default:
                         return null;
                 }
@@ -213,12 +221,15 @@ namespace GGJ23.UI
 
         private Settings _settings;
 
-        private bool startGameDirectExecuted = false;
+        private bool _startGameDirectExecuted = false;
+        public float _timer, _refresh, _avgFramerate;
 
         private UIInputContextEvent[] inputContextEvents;
 
         // --- Properties ---
         public Settings Settings => _settings;
+
+        public bool Paused => gameManager.Paused;
 
         private void Awake()
         {
@@ -235,7 +246,7 @@ namespace GGJ23.UI
         private void Start()
         {
             LoadOptions();
-            UpdateControlSchema(Gamepad.current);
+            UpdateControlSchema(InputControlSchema.Keyboard);
         }
 
         private void OnEnable()
@@ -250,17 +261,18 @@ namespace GGJ23.UI
 
         private void Update()
         {
-            if(startGameDirect && !startGameDirectExecuted)
+            if(startGameDirect && !_startGameDirectExecuted)
             {
                 SwitchState(UIState.GameScreen);
                 gameManager.StartGame();
-                startGameDirectExecuted = true;
+                _startGameDirectExecuted = true;
             }
 
             _currentScreen?.Tick(Time.deltaTime, _inputData);
             UpdateMovement();
+            UpdateFPSCounter();
 
-            debugText.text = $"Score: {gameManager.Score.ToString("0.00")}; Energy: {(int)(gameManager.Energy * 100f)}; Boosts: {movementController.BoostCount}"; 
+            debugText.text = $"Score: {gameManager.Score.ToString("000")}; Boosts: {movementController.BoostCount}/{movementController.config.MaxBoostPickups}; FPS: {_avgFramerate}";
         }
 
         private void LateUpdate()
@@ -297,6 +309,9 @@ namespace GGJ23.UI
                     break;
                 case UIAction.Open_HelpScreen:
                     SwitchState(UIState.HelpScreen);
+                    break;
+                case UIAction.Open_ControlsScreen:
+                    SwitchState(UIState.ControlsScreen);
                     break;
                 case UIAction.Open_OptionScreen:
                     SwitchState(UIState.OptionScreen);
@@ -399,6 +414,8 @@ namespace GGJ23.UI
             {
                 inputContextEvents[i].OnInputDeviceChange(controlSchema);
             }
+
+            if(screens.ControlsScreen is UIControlsScreen controlsScreen) { controlsScreen.OnInputDeviceChange(controlSchema); }
         }
         
         private void OnConfirm(InputValue value)
@@ -434,6 +451,33 @@ namespace GGJ23.UI
         private void OnAxis02(InputValue value)
         {
             _inputData.Axis02 = value.Get<Vector2>().normalized;
+
+            var inputInt = Vector2Int.RoundToInt(_inputData.Axis02);
+            var inputButton = 0;
+            
+            if(inputInt == Vector2Int.up)
+            {
+                inputButton = 0;
+            }
+            else if(inputInt == Vector2Int.right)
+            {
+                inputButton = 1;
+            }
+            else if (inputInt == Vector2Int.down)
+            {
+                inputButton = 2;
+            }
+            else if (inputInt == Vector2Int.left)
+            {
+                inputButton = 3;
+            }
+
+            if (inputInt.sqrMagnitude > 0f) { interactionController.UpdatePuzzle(inputButton); }
+        }
+
+        public void PressPuzzleButton(int inputButton)
+        {
+            interactionController.UpdatePuzzle(inputButton);
         }
 
         private void UpdateMovement()
@@ -462,13 +506,19 @@ namespace GGJ23.UI
             }
         }
 
-        private void UpdatePuzzleInput()
-        {
-
-        }
-
         private bool IsPointerOverUIObject()
         {
+            //check mouse
+            if (EventSystem.current.IsPointerOverGameObject())
+                return true;
+
+            //check touch
+            if (Input.touchCount > 0 && Input.touches[0].phase == UnityEngine.TouchPhase.Began)
+            {
+                if (EventSystem.current.IsPointerOverGameObject(Input.touches[0].fingerId))
+                    return true;
+            }
+
             PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
             eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             List<RaycastResult> results = new List<RaycastResult>();
@@ -484,15 +534,23 @@ namespace GGJ23.UI
                 _inputData.SetButtonStatus(button, UIInputStatus.None);
         }
 
+        private void UpdateFPSCounter()
+        {
+            //Change smoothDeltaTime to deltaTime or fixedDeltaTime to see the difference
+            float timelapse = Time.smoothDeltaTime;
+            _timer = _timer <= 0 ? _refresh : _timer -= timelapse;
+
+            if (_timer <= 0) _avgFramerate = (int)(1f / timelapse);
+        }
+
         #endregion
 
         #region Options
 
         private void ApplyOptions()
         {
-            audioMixer.SetFloat("MasterVolume", _settings.audioMasterVolume > 0 ? Mathf.Log10(_settings.audioMasterVolume / 10f) * 20 : -80f);
-            audioMixer.SetFloat("MusicVolume", _settings.audioMusicVolume > 0 ? Mathf.Log10(_settings.audioMusicVolume / 10f) * 20 : -80f);
-            audioMixer.SetFloat("SFXVolume", _settings.audioSFXVolume > 0 ? Mathf.Log10(_settings.audioSFXVolume / 10f) * 20 : -80f);
+            audioMixer.SetFloat("MusicVolume", _settings.audioMusicVolume > 0 && !_settings.audioMusicMute ? Mathf.Log10(_settings.audioMusicVolume / 10f) * 20 : -80f);
+            audioMixer.SetFloat("SFXVolume", _settings.audioSFXVolume > 0 && !_settings.audioSFXMute ? Mathf.Log10(_settings.audioSFXVolume / 10f) * 20 : -80f);
 
             if (_settings.language > -1)
             {
@@ -503,9 +561,10 @@ namespace GGJ23.UI
 
         private void LoadOptions()
         {
-            _settings.audioMasterVolume = PlayerPrefs.GetInt("AudioMasterVolume", 10);
             _settings.audioMusicVolume = PlayerPrefs.GetInt("AudioMusicVolume", 10);
+            _settings.audioMusicMute = PlayerPrefs.GetInt("AudioMusicMute", 0) == 1;
             _settings.audioSFXVolume = PlayerPrefs.GetInt("AudioSFXVolume", 10);
+            _settings.audioSFXMute = PlayerPrefs.GetInt("AudioSFXMute", 0) == 1;
             _settings.language = PlayerPrefs.GetInt("Language", -1);
 
             ApplyOptions();
@@ -513,9 +572,10 @@ namespace GGJ23.UI
 
         private void SaveOptions()
         {
-            PlayerPrefs.SetInt("AudioMasterVolume", _settings.audioMasterVolume);
             PlayerPrefs.SetInt("AudioMusicVolume", _settings.audioMusicVolume);
+            PlayerPrefs.SetInt("AudioMusicMute", _settings.audioMusicMute ? 1 : 0);
             PlayerPrefs.SetInt("AudioSFXVolume", _settings.audioSFXVolume);
+            PlayerPrefs.SetInt("AudioSFXMute", _settings.audioSFXMute ? 1 : 0);
 
             for (int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; i++)
             {
@@ -533,13 +593,15 @@ namespace GGJ23.UI
 
         private void ResetOptions()
         {
-            _settings.audioMasterVolume = 10;
             _settings.audioMusicVolume = 10;
+            _settings.audioMusicMute = false;
             _settings.audioSFXVolume = 10;
+            _settings.audioSFXMute = false;
 
-            PlayerPrefs.SetInt("AudioMasterVolume", _settings.audioMasterVolume);
             PlayerPrefs.SetInt("AudioMusicVolume", _settings.audioMusicVolume);
+            PlayerPrefs.SetInt("AudioMusicMute", _settings.audioMusicMute ? 1 : 0);
             PlayerPrefs.SetInt("AudioSFXVolume", _settings.audioSFXVolume);
+            PlayerPrefs.SetInt("AudioSFXMute", _settings.audioSFXMute ? 1 : 0);
 
             ApplyOptions();
 
@@ -550,16 +612,27 @@ namespace GGJ23.UI
         {
             switch (option)
             {
-                case Setting.AudioMasterVolume:
-                    _settings.audioMasterVolume = Mathf.Clamp(value, 0, 10);
-                    ApplyOptions();
-                    break;
                 case Setting.AudioMusicVolume:
                     _settings.audioMusicVolume = Mathf.Clamp(value, 0, 10);
                     ApplyOptions();
                     break;
                 case Setting.AudioSFXVolume:
                     _settings.audioSFXVolume = Mathf.Clamp(value, 0, 10);
+                    ApplyOptions();
+                    break;
+            }
+        }
+
+        public void UpdateOptionBool(Setting option, bool value)
+        {
+            switch (option)
+            {
+                case Setting.AudioMusicVolume:
+                    _settings.audioMusicMute = value;
+                    ApplyOptions();
+                    break;
+                case Setting.AudioSFXVolume:
+                    _settings.audioSFXMute = value;
                     ApplyOptions();
                     break;
             }

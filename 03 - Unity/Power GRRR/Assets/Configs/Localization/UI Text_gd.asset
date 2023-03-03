@@ -17,7 +17,110 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: c13804f9a29a8a046880647014258f9b, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 28497879040
+    m_Localized: "T\xF2isich"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 115697459200
+    m_Localized: Cuideachadh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151659421696
+    m_Localized: Suidhichidhean
+    m_Metadata:
+      m_Items: []
+  - m_Id: 176489701376
+    m_Localized: Creideasan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218466295808
+    m_Localized: "F\xE0g"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5370984210432
+    m_Localized: "Sh\xE0bhaladh"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5429473779712
+    m_Localized: Tilleadh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5432854388736
+    m_Localized: Default
+    m_Metadata:
+      m_Items: []
+  - m_Id: 215712381214720
+    m_Localized: "Nicole Tietze | Illustration / Environment Animation\nStephan Schueritz
+      | Programming\nPaul Wulf | Game Design / Programming\nH\xFCr Palo | Character
+      Animation\nOrion x | Audio Recordings"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 219439439749120
+    m_Localized: "Every night, some electrical plants will get broken. \nIt's your
+      job to fix them during the day!\n\nHold E (keyboard) / A (controller) to repair
+      broken plants.\nIf you leave plants broken for too long, you will lose the
+      game.\n\nYou can tell which plants are broken by their missing connection to
+      the energy grid at night.\n\nPro tip: you can move much faster by pressing
+      Spacebar (keyboard) / B (controller) in rhythm."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 245745334296576
+    m_Localized: Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246163854532608
+    m_Localized: Turbo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 247176376295424
+    m_Localized: "C\xE0radh"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 305656231567360
+    m_Localized: Stad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 306212945731584
+    m_Localized: Lean air
+    m_Metadata:
+      m_Items: []
+  - m_Id: 306441329778688
+    m_Localized: "Ath-th\xF2isich"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 307530728939520
+    m_Localized: An geam seachad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207349030035456
+    m_Localized: "C\xE0nain"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207323033739264
+    m_Localized: Buadhan Fuaim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207288762081280
+    m_Localized: "Ce\xF2l"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3209986806849536
+    m_Localized: Gluasad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3210544758333440
+    m_Localized: "meacanaig t\xF2imhseachain"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3211988391632896
+    m_Localized: Smachdan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3252100433387520
+    m_Localized: "Gus smachdan inneal eile fhaicinn d\xECreach br\xF9th putan."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

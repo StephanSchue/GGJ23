@@ -4,7 +4,7 @@ namespace GGJ23.Game
 {
     public enum InputControlSchema
     {
-        Keyboard,
+        Keyboard = 0,
         XboxController,
         PlaystationController
     }

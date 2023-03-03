@@ -16,6 +16,9 @@ namespace GGJ23.Managment
 
         private bool _paused = false;
 
+        public bool Paused => _paused;
+
+
         private void Start()
         {
             gameLogic.GameOver.AddListener(GameOver);

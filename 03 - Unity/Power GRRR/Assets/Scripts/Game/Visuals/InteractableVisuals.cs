@@ -22,7 +22,8 @@ namespace GGJ23.Game.Visuals
         public Animator animator;
         public Canvas progressBarCanvas;
         public Slider progressBarSlider;
-
+        public Image[] puzzleImages;
+        
         [Header("Settings")]
         public RuntimeAnimatorController[] animatorControllers;
         public Color[] statusColor;
@@ -31,6 +32,9 @@ namespace GGJ23.Game.Visuals
         public bool useRandomize = true;
         public int nonRandomizedIndex = 0;
 
+        public Sprite[] puzzleButtons;
+        public Color puzzleSelectorColor = Color.red;
+
         private bool _hasAnimation = false;
         private bool _hasProgressbar = false;
 
@@ -38,6 +42,7 @@ namespace GGJ23.Game.Visuals
         private bool _fadingIn = false;
 
         private int _index = 0;
+        private bool _puzzleRefreshPending = false;
 
         private void Awake()
         {
@@ -47,6 +52,7 @@ namespace GGJ23.Game.Visuals
             Initalize();
 
             interactable.OnInitialize.AddListener(Initalize);
+            interactable.OnPuzzleRefresh.AddListener(PuzzleRefresh);
         }
 
         private void Initalize()
@@ -62,6 +68,11 @@ namespace GGJ23.Game.Visuals
                     SetAnimator(nonRandomizedIndex);
                 }
             }
+        }
+
+        private void PuzzleRefresh()
+        {
+            _puzzleRefreshPending = true;
         }
 
         // Update is called once per frame
@@ -97,6 +108,26 @@ namespace GGJ23.Game.Visuals
 
                 if (_hasAnimation) { animator.enabled = true; }
 
+                // Puzzle update
+                for (int i = 0; i < puzzleImages.Length; i++)
+                {
+                    if (interactable.Status == InteractionStatus.BeingRepaired && i < interactable.puzzle.MaxNumber)
+                    {
+                        if (!puzzleImages[i].gameObject.activeSelf || _puzzleRefreshPending) { puzzleImages[i].gameObject.SetActive(true); puzzleImages[i].sprite = puzzleButtons[interactable.puzzle.Buttons[i]]; }
+
+                        puzzleImages[i].color = i == interactable.puzzle.Index ? puzzleSelectorColor : Color.white;
+                    }
+                    else
+                    {
+                        if (puzzleImages[i].gameObject.activeSelf)
+                        {
+                            puzzleImages[i].gameObject.SetActive(false);
+                        }
+                    }
+                }
+
+                _puzzleRefreshPending = false;
+
                 if (working)
                 {
                     notificationSpriteRenderer.enabled = false;
@@ -125,7 +156,7 @@ namespace GGJ23.Game.Visuals
             if (_hasProgressbar)
             {
                 progressBarSlider.value = interactable.Progress;
-                progressBarCanvas.enabled = !working && interactable.Progress > 0.01f;
+                progressBarCanvas.enabled = !working && interactable.Status == InteractionStatus.BeingRepaired;
             }
                 
         }

@@ -166,20 +166,19 @@ namespace GGJ23.Game
                     if (inter.Status == InteractionStatus.Broken || inter.Status == InteractionStatus.BeingRepaired)
                     {
                         allGood = false;
-                        _lossPoints += deltaTime;
+                        _lossPoints += (config.LoosePointsSec * deltaTime);
                     }
                 }
 
                 if (allGood)
                 {
-                    _lossPoints = Mathf.Max(0, _lossPoints - deltaTime);
+                    _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodRewardSec * deltaTime));
                 }
             }
 
             if (_lossPoints >= config.LossPointsNeeded)
             {
                 // End the game
-                Debug.LogError($"You lost the game lmao");
                 _running = false;
                 GameOver.Invoke();
                 

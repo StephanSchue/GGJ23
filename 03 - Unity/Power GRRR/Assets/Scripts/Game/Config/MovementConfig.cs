@@ -10,8 +10,6 @@ namespace GGJ23.Game.Config
         [SerializeField]
         private float _boostInterval = 2f;
         [SerializeField]
-        private float _boostThreshold = 0.5f;
-        [SerializeField]
         private float _boostDuration = 2f;
         [SerializeField]
         private float _boostSpeed = 1.5f;

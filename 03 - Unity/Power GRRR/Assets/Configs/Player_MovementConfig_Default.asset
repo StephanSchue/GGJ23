@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd543dc759f0f304caa29d1e7c7792f6, type: 3}
   m_Name: Player_MovementConfig_Default
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 10
   _boostInterval: 2
-  _boostThreshold: 1
   _boostDuration: 1
-  _boostSpeed: 10
+  _boostSpeed: 20
   _stopAtNight: 1
-  _maxBoostPickups: 2
+  _maxBoostPickups: 5

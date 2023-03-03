@@ -109,6 +109,9 @@ MonoBehaviour:
   OnNightSwitch:
     m_PersistentCalls:
       m_Calls: []
+  OnPickupActivate:
+    m_PersistentCalls:
+      m_Calls: []
   GameOver:
     m_PersistentCalls:
       m_Calls: []
@@ -406,6 +409,78 @@ MonoBehaviour:
           m_StringArgument: Interactable_Fix_Start
           m_BoolArgument: 0
         m_CallState: 2
+  OnFixOnFixPositiveSteps:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Fix_Postive_01
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Fix_Postive_02
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Fix_Postive_03
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Fix_Postive_04
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFixOnFixNegativeStep:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 180032631416248981}
+        m_TargetAssemblyTypeName: GGJ23.Managment.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interactable_Fix_Negative
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFixOnFixAbourt:
     m_PersistentCalls:
       m_Calls:
@@ -581,13 +656,34 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 77c4a01fbddc3ec4cb7f2d6d109055cc, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
-  - label: Interactable_Fix_Step
-    enabled: 0
+  - label: Interactable_Fix_Postive_01
+    enabled: 1
+    audioClips:
+    - {fileID: 8300000, guid: 6c2cfbc3ea2c6a344a4b7c2203dfeae5, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Interactable_Fix_Postive_02
+    enabled: 1
     audioClips:
     - {fileID: 8300000, guid: 330c85ce6014a804ba5269db80286139, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Interactable_Fix_Postive_03
+    enabled: 1
+    audioClips:
     - {fileID: 8300000, guid: 49cee02c4714b284694cb207f0a51f51, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Interactable_Fix_Postive_04
+    enabled: 1
+    audioClips:
     - {fileID: 8300000, guid: 2625abb32cd202a4ca2b788b3330c09e, type: 3}
-    - {fileID: 8300000, guid: 6c2cfbc3ea2c6a344a4b7c2203dfeae5, type: 3}
+    fadeInOut: {x: 0, y: 0}
+    volume: 1
+  - label: Interactable_Fix_Negative
+    enabled: 1
+    audioClips:
+    - {fileID: 8300000, guid: e8f096776d4394549b05f8ee06989aee, type: 3}
     fadeInOut: {x: 0, y: 0}
     volume: 1
   - label: Interactable_Fix_Complete
