@@ -163,7 +163,7 @@ namespace GGJ23.Game
                         float repeatDifficulty = Mathf.Clamp(_currentTime, 1f, config.TimeToMaxPuzzleRepetionDifficulty);
                         int number = Mathf.FloorToInt(Mathf.Lerp(config.PuzzleMinNumber, config.PuzzleMaxNumber, countDifficulty / config.TimeToMaxPuzzleCountDifficulty));
                         int repetion = Mathf.FloorToInt(Mathf.Lerp(config.PuzzleStartRepetion, config.PuzzleEndRepetion, repeatDifficulty / config.TimeToMaxPuzzleRepetionDifficulty));
-                        inter.Break(Random.Range(config.PuzzleMinNumber, number), Random.Range(config.PuzzleStartRepetion, repetion));
+                        inter.Break(Random.Range(config.PuzzleMinNumber, number+1), Random.Range(config.PuzzleStartRepetion, repetion+1));
                     }
 
                     GridLightController.RefreshInteractableStatus();
