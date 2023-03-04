@@ -68,6 +68,11 @@ namespace GGJ23.Game
             _movement = axis;
         }
 
+        public void ResetLookDirection()
+        {
+            PlayerDirection = PlayerDirection.Right;
+        }
+
         public bool AddBoostPickup()
         {
             if ((_boostCount+1) > config.MaxBoostPickups)
@@ -134,8 +139,6 @@ namespace GGJ23.Game
             _boostButtonPressed = false;
 
             // -- Movement ---
-            
-
             if (velocity > 0.1f || BoostActive)
             {
                 _movement.Normalize(); 
