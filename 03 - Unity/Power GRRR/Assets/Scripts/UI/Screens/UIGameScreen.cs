@@ -16,7 +16,7 @@ namespace GGJ23.UI
         public Sprite progressDirectionSpriteDecrease;
 
         [Header("Game Progress")]
-        public Image timeTileNextPhaseImage;
+        public UIImageProgress timeTileNextPhaseImage;
 
         // Input
         [Header("Input")]
@@ -85,11 +85,7 @@ namespace GGJ23.UI
                 turboIcon.gameObject.SetActive(!_isNight);
             }
 
-            timeTileNextPhaseImage.color = _isNight ? Color.white : Color.black;
-
-            if (_isNight) { timeTileNextPhaseImage.fillAmount = ((_uiController.gameManager.gameLogic.CurrentTime - 0.5f) % 1f) / 0.5f; }
-            else { timeTileNextPhaseImage.fillAmount = (_uiController.gameManager.gameLogic.CurrentTime % 1f) / 0.5f; }
-
+            timeTileNextPhaseImage.Progess(_uiController.gameManager.gameLogic.CurrentTime % 1);
 
             // --- Buttons ---
             if (inputData.IsPressed(InputButton.Accept) || inputData.IsHold(InputButton.Accept) || _uiRepairButtonHold)
