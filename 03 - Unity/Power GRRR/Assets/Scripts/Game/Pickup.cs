@@ -1,3 +1,4 @@
+using GGJ23.Game.Config;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,10 +17,7 @@ namespace GGJ23.Game
 
     public class Pickup : MonoBehaviour
     {
-        public PickupType type;
-
-        public float interactionRadius = 1f;
-        public float cooldownDuration = 10f;
+        public PickupConfig config;
 
         private PickupStatus _status;
         private float _cooldownTimer = 0f;
@@ -65,7 +63,7 @@ namespace GGJ23.Game
                 return;
 
             _status = PickupStatus.Off;
-            _cooldownTimer = cooldownDuration;
+            _cooldownTimer = config.CooldownDuration;
         }
 
         #region Events
@@ -88,7 +86,10 @@ namespace GGJ23.Game
 
         private void OnDrawGizmos()
         {
-            Gizmos.DrawWireSphere(transform.position, interactionRadius);
+            if (config != null)
+            {
+                Gizmos.DrawWireSphere(transform.position, config.InteractionRadius);
+            }
         }
 
         #endregion

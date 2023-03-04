@@ -303,9 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6277b54d3135c44fa5ffc094fae4185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  interactionRadius: 1
-  cooldownDuration: 2
+  config: {fileID: 11400000, guid: d4a0fe30014bedd4cbb0ba05f233badd, type: 2}
 --- !u!114 &1147091401082410809
 MonoBehaviour:
   m_ObjectHideFlags: 0

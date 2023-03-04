@@ -222,7 +222,7 @@ namespace GGJ23.Game
                 {
                     float tmpDistance = Vector2.Distance(transform.position + (Vector3)config.InteractionOffset, _pickups[i].transform.position);
 
-                    if (tmpDistance < (config.InteractionRadius + _pickups[i].interactionRadius))
+                    if (tmpDistance < (config.InteractionRadius + _pickups[i].config.InteractionRadius))
                     {
                         ApplyPickup(_pickups[i]);
                     }

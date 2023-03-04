@@ -157,6 +157,8 @@ namespace GGJ23.Game
         public float Progress => 1f - Mathf.Lerp(0f, 1f, Mathf.InverseLerp(0f, config.Duration, _progress));
         public bool IsNight => _isNight;
 
+        public bool IsBroken => _status == InteractionStatus.Broken || _status == InteractionStatus.BeingRepaired;
+
         public UnityEvent OnInitialize => _onInitialize;
         public UnityEvent OnPuzzleRefresh => _onPuzzleRefresh;
 

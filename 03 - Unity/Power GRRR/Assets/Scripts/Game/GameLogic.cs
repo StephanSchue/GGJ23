@@ -144,7 +144,6 @@ namespace GGJ23.Game
             {
                 if (_isNight)
                 {
-                    OnNightSwitch.Invoke();
                     //TODO hook this up properly
                     foreach (var inter in GenerateBrokenInteractables())
                     {
@@ -152,6 +151,8 @@ namespace GGJ23.Game
                     }
 
                     GridLightController.RefreshInteractableStatus();
+
+                    OnNightSwitch.Invoke();
                 }
                 else
                 {
@@ -324,7 +325,7 @@ namespace GGJ23.Game
     
         private void ProcessPickupActivate(Pickup pickup)
         {
-            switch (pickup.type)
+            switch (pickup.config.Type)
             {
                 case PickupType.Boost:
                     if(MovementController.AddBoostPickup())
