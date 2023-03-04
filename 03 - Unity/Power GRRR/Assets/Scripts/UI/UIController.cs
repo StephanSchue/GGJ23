@@ -271,7 +271,7 @@ namespace GGJ23.UI
             UpdateMovement();
             UpdateFPSCounter();
 
-            debugText.text = $"DEBUG - Score: {gameManager.Score.ToString("000")}; FPS: {_avgFramerate}";
+            debugText.text = $"DEBUG - FPS: {_avgFramerate}";
         }
 
         private void LateUpdate()

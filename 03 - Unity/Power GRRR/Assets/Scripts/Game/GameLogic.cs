@@ -60,6 +60,7 @@ namespace GGJ23.Game
         public UnityEvent GameOver;
 
         public bool IsNight => _isNight;
+        public bool IsFirstDay => _firstDay;
         
         // Start is called before the first frame update
         void Start()

@@ -83,17 +83,21 @@ namespace GGJ23.UI
             turboLabel.text = $"{_uiController.movementController.BoostCount}/{_uiController.movementController.config.MaxBoostPickups}";
 
             // --- Score Label --
-            if (energyStatus == EnergyStatus.Balanced)
+            if(_uiController.gameManager.gameLogic.IsFirstDay)
             {
-                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000.000")} +++";
+                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000")}";
+            }
+            else if (energyStatus == EnergyStatus.Balanced)
+            {
+                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000")} +++";
             }
             else if (energyStatus == EnergyStatus.Increase)
             {
-                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000.000")} ++";
+                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000")} ++";
             }
             else
             {
-                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000.000")} +";
+                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000")} +";
             }
 
             // --- Input ---
