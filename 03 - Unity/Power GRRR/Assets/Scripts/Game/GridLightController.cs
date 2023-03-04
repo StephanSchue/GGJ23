@@ -12,11 +12,11 @@ namespace GGJ23.Game
 
         public bool includeProps = false;
 
-
         private Interactable[] _interactables;
         private Prop[] _props;
 
         private Dictionary<int, List<Transform>> roots = new Dictionary<int, List<Transform>>();
+        private int _rootCount = 0;
 
         public void PopulateInteractables(Interactable[] interactables, Prop[] props, UnityEvent OnDaySwitch, UnityEvent OnNightSwitch)
         {
@@ -33,19 +33,21 @@ namespace GGJ23.Game
 
         public void RefreshInteractableStatus()
         {
-            int count = 0;
+            _rootCount = 0;
             roots.Clear();
 
             List<Transform> transforms = new List<Transform>();
 
+            // --- Interactables ---
             for (int i = 0; i < _interactables.Length; i++)
             {
-                if(_interactables[i].Status != InteractionStatus.Broken && _interactables[i].Status != InteractionStatus.BeingRepaired)
+                if(!_interactables[i].IsBroken)
                 {
                     transforms.Add(_interactables[i].transform);
                 }
             }
 
+            // --- Props ---
             if (includeProps)
             {
                 for (int i = 0; i < _props.Length; i++)
@@ -54,7 +56,6 @@ namespace GGJ23.Game
                 }
             }
             
-
             // --- Interactables && Props ---
             for (int i = 0; i < transforms.Count; i++)
             {
@@ -70,28 +71,28 @@ namespace GGJ23.Game
 
                 if (!contains)
                 {
-                    if(count < lineRenderers.Length)
+                    if(_rootCount < lineRenderers.Length)
                     {
                         Vector3 origin = transforms[i].position;
-                        LineRenderer lineRenderer = lineRenderers[count];
+                        LineRenderer lineRenderer = lineRenderers[_rootCount];
                         lineRenderer.positionCount = transforms.Count;
                         int lineCount = 0;
                         lineRenderer.SetPosition(lineCount++, origin);
-                        roots.Add(count, new List<Transform>() { transforms[i] });
+                        roots.Add(_rootCount, new List<Transform>() { transforms[i] });
 
                         for (int x = 0; x < transforms.Count; x++)
                         {
                             if (Vector2.Distance(origin, transforms[x].position) < energyConnectionDistance
-                                && !roots[count].Contains(transforms[x]))
+                                && !roots[_rootCount].Contains(transforms[x]))
                             {
                                 lineRenderer.SetPosition(lineCount++, transforms[x].position);
                                 origin = transforms[x].position;
-                                roots[count].Add(transforms[x]);
+                                roots[_rootCount].Add(transforms[x]);
                             }
                         }
 
                         lineRenderer.positionCount = lineCount;
-                        count++;
+                        this._rootCount++;
                     } 
                 }
             }
@@ -109,7 +110,7 @@ namespace GGJ23.Game
         {
             for (int i = 0; i < lineRenderers.Length; i++)
             {
-                lineRenderers[i].enabled = true;
+                lineRenderers[i].enabled = i < _rootCount;
             }
         }
     }
