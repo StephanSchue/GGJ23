@@ -27,6 +27,11 @@ namespace GGJ23.UI
         public Button interactButton;
         public Button boostButton;
 
+        [Header("Direction Helper")]
+        public Image[] directionHelperImages;
+        public Vector2 directionHelperMinMaxDistance;
+        public Vector2 directionHelperMinMaxAlpha;
+
         private bool _uiRepairButtonHold = false;
         private bool _uiTurboButtonHold = false;
 
@@ -86,6 +91,54 @@ namespace GGJ23.UI
             }
 
             timeTileNextPhaseImage.Progess(_uiController.gameManager.gameLogic.CurrentTime % 1);
+
+            // Direction Helper
+            if(!_isNight && _uiController.interactionController.HasNearestBrokenInteractable)
+            {
+                PlayerDirection direction;
+                var directionVector = _uiController.interactionController.NearestBrokenDirection;
+
+                if (Vector2.Dot(Vector2.up, directionVector) > 0.5f)
+                {
+                    direction = PlayerDirection.Up;
+                }
+                else if (Vector2.Dot(Vector2.up, directionVector) < -0.5f)
+                {
+                    direction = PlayerDirection.Down;
+                }
+                else if (Vector2.Dot(Vector2.right, directionVector) > 0.5f)
+                {
+                    direction = PlayerDirection.Right;
+                }
+                else
+                {
+                    direction = PlayerDirection.Left;
+                }
+
+                for (int i = 0; i < directionHelperImages.Length; i++)
+                {
+                    if (i == (int)direction)
+                    {
+                        directionHelperImages[i].enabled = true;
+                        Color color = directionHelperImages[i].color;
+                        float distance = _uiController.interactionController.NearestBrokenDistance;
+                        directionHelperImages[i].color = new Color(color.r, color.g, color.b, 
+                            Mathf.Lerp(directionHelperMinMaxAlpha.x, directionHelperMinMaxAlpha.y, 
+                            Mathf.Max(0f, distance- directionHelperMinMaxDistance.x) / directionHelperMinMaxDistance.y));
+                    }
+                    else
+                    {
+                        directionHelperImages[i].enabled = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < directionHelperImages.Length; i++)
+                {
+                    directionHelperImages[i].enabled = false;
+                }
+            }
 
             // --- Buttons ---
             if (inputData.IsPressed(InputButton.Accept) || inputData.IsHold(InputButton.Accept) || _uiRepairButtonHold)

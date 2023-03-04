@@ -40,6 +40,7 @@ namespace GGJ23.Game
         private float _lossPoints = 0f;
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
         private EnergyStatus _energyStatus = EnergyStatus.Balanced;
+        private bool _firstDay = false;
 
         private Vector3 _spawnPosition = Vector3.zero;
         private bool _running = false;
@@ -64,6 +65,7 @@ namespace GGJ23.Game
         void Start()
         {
             _spawnPosition = MovementController.transform.position;
+            _firstDay = true;
 
             var interactables = FindObjectsByType<Interactable>(FindObjectsSortMode.None);
             var pickups = FindObjectsByType<Pickup>(FindObjectsSortMode.None);
@@ -118,6 +120,7 @@ namespace GGJ23.Game
             _currentScore = 0f;
             _currentTime = 1f;
             _isNight = false;
+            _firstDay = true;
             MovementController.transform.SetPositionAndRotation(_spawnPosition, Quaternion.identity);
             MovementController.ResetLookDirection();
 
@@ -137,7 +140,7 @@ namespace GGJ23.Game
             if (InteractionController.IsWorking)
                 return;
 
-            float deltaTime = Time.deltaTime * (_energyStatus == EnergyStatus.Balanced ? config.FullEnergyDaySpeedMultiplier : 1f);
+            float deltaTime = Time.deltaTime * (!_firstDay && (_energyStatus == EnergyStatus.Balanced || _energyStatus == EnergyStatus.Increase) ? config.FullEnergyDaySpeedMultiplier : 1f);
             float progressToNextTime = ((deltaTime * 1000) / (_isNight ? config.NightDurationMs : _dayDurationMs)) * 0.5f;
             bool lastIsNight = _isNight;
 
@@ -150,6 +153,8 @@ namespace GGJ23.Game
             {
                 if (_isNight)
                 {
+                    _firstDay = false;
+
                     //TODO hook this up properly
                     foreach (var inter in GenerateBrokenInteractables())
                     {
@@ -170,7 +175,7 @@ namespace GGJ23.Game
                 }
             }
 
-            UpdatePoints(deltaTime);
+            UpdatePoints(Time.deltaTime);
             UpdateBrokenLevel();
         }
 

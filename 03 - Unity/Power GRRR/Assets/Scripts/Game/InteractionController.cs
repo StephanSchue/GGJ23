@@ -29,6 +29,11 @@ namespace GGJ23.Game
         private bool _inRepairMode = false;
         private bool _isWorking = false;
 
+        private Interactable _nearestBrokenInteractable;
+        private Vector2 _nearestBrokenDirection;
+        private float _nearestBrokenDistance;
+        private bool _hasNearestBrokenInteractable;
+
         private bool _blockInput = false;
 
         // --- Events ---
@@ -43,6 +48,11 @@ namespace GGJ23.Game
         public Interactable[] Interactables { get => _interactables; }
         public Pickup[] Pickups { get => _pickups; }
         public Interactable.Puzzle CurrentPuzzle => _nearestInteractable.puzzle;
+
+        public Interactable NearestBrokenInteractable => _nearestBrokenInteractable;
+        public Vector2 NearestBrokenDirection => _nearestBrokenDirection;
+        public float NearestBrokenDistance => _nearestBrokenDistance;
+        public bool HasNearestBrokenInteractable => _hasNearestBrokenInteractable;
 
         public bool IsWorking => _isWorking;
 
@@ -126,9 +136,28 @@ namespace GGJ23.Game
         private void Update()
         {
             // Interate trough all registered Interactables
+            float nearestBrokenDistance = float.MaxValue;
+            _hasNearestBrokenInteractable = false;
+
             for (int i = 0; i < _interactables.Length; i++)
             {
                 _interactables[i].Process(Time.deltaTime);
+
+                // Found a broken
+                if (_interactables[i].IsBroken) 
+                {
+                    float tmpDist = Vector2.Distance(transform.position, _interactables[i].transform.position);
+                    if (tmpDist < nearestBrokenDistance)
+                    {
+                        var heading = (_interactables[i].transform.position - transform.position);
+                        _nearestBrokenInteractable = _interactables[i];
+                        _nearestBrokenDistance = heading.magnitude;
+                        _nearestBrokenDirection = heading.normalized;
+                        nearestBrokenDistance = tmpDist;
+                    }
+
+                    _hasNearestBrokenInteractable = true; 
+                }
             }
 
             if(_blockInput)
