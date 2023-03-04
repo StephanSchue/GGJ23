@@ -41,6 +41,7 @@ namespace GGJ23.Game
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
         private EnergyStatus _energyStatus = EnergyStatus.Balanced;
 
+        private Vector3 _spawnPosition = Vector3.zero;
         private bool _running = false;
 
         private BrokenLevel _brokenLevel;
@@ -62,6 +63,8 @@ namespace GGJ23.Game
         // Start is called before the first frame update
         void Start()
         {
+            _spawnPosition = MovementController.transform.position;
+
             var interactables = FindObjectsByType<Interactable>(FindObjectsSortMode.None);
             var pickups = FindObjectsByType<Pickup>(FindObjectsSortMode.None);
             var props = FindObjectsByType<Prop>(FindObjectsSortMode.None);
@@ -115,6 +118,8 @@ namespace GGJ23.Game
             _currentScore = 0f;
             _currentTime = 1f;
             _isNight = false;
+            MovementController.transform.SetPositionAndRotation(_spawnPosition, Quaternion.identity);
+            MovementController.ResetLookDirection();
 
             foreach (var inter in InteractionController.Interactables)
             {
@@ -147,7 +152,11 @@ namespace GGJ23.Game
                     //TODO hook this up properly
                     foreach (var inter in GenerateBrokenInteractables())
                     {
-                        inter.Break();
+                        float countDifficulty = Mathf.Clamp(_currentTime, 1f, config.TimeToMaxPuzzleCountDifficulty);
+                        float repeatDifficulty = Mathf.Clamp(_currentTime, 1f, config.TimeToMaxPuzzleRepetionDifficulty);
+                        int number = Mathf.FloorToInt(Mathf.Lerp(config.PuzzleMinNumber, config.PuzzleMaxNumber, countDifficulty / config.TimeToMaxPuzzleCountDifficulty));
+                        int repetion = Mathf.FloorToInt(Mathf.Lerp(config.PuzzleStartRepetion, config.PuzzleEndRepetion, repeatDifficulty / config.TimeToMaxPuzzleRepetionDifficulty));
+                        inter.Break(number, repetion);
                     }
 
                     GridLightController.RefreshInteractableStatus();

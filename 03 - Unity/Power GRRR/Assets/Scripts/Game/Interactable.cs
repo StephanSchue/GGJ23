@@ -146,7 +146,10 @@ namespace GGJ23.Game
         private InteractionStatus _status;
         private float _progress = 0f;
         private bool _isNight = false;
+        
         private int _puzzleTries = 0;
+        private int _puzzleLength = 4;
+        private int _puzzleRepetion = 2;
 
         private float _timeToBecomeBreakable = 10000f;
         private float _breakableTimer = 0f;
@@ -180,7 +183,7 @@ namespace GGJ23.Game
 
             if (brokenOnStart)
             {
-                Break();
+                Break(config.BrokenOnStartPuzzleNumberCount, config.BrokenOnStartPuzzleNumberApperence);
             }
 
             if (_onInitialize != null) { _onInitialize.Invoke(); }
@@ -250,8 +253,7 @@ namespace GGJ23.Game
 
                 if(_puzzleTries == config.PuzzleTriesBeforeRegenerate)
                 {
-                    puzzle.Generate(config.PuzzleNumberCount, config.PuzzleNumberApperence);
-                    _puzzleTries = 0;
+                    Break();
                     _onPuzzleRefresh.Invoke();
                 }
 
@@ -259,11 +261,18 @@ namespace GGJ23.Game
             }
         }
 
-        public void Break()
+        public void Break(int puzzleLength, int puzzleRepetition)
+        {
+            _puzzleLength = puzzleLength;
+            _puzzleRepetion = puzzleRepetition;
+            Break();
+        }
+
+        private void Break()
         {
             _status = InteractionStatus.Broken;
             _puzzleTries = 0;
-            puzzle.Generate(config.PuzzleNumberCount, config.PuzzleNumberApperence);
+            puzzle.Generate(_puzzleLength, _puzzleRepetion);
         }
 
         public void StartInteraction(InteractionMode interactionMode)
@@ -273,7 +282,7 @@ namespace GGJ23.Game
 
         public void StopInteraction(InteractionMode interactionMode)
         {
-            if (interactionMode == InteractionMode.Puzzle && (_status == InteractionStatus.BeingRepaired)) { _status = InteractionStatus.Broken; puzzle.Generate(config.PuzzleNumberCount, config.PuzzleNumberApperence); }
+            if (interactionMode == InteractionMode.Puzzle && (_status == InteractionStatus.BeingRepaired)) { Break(); }
         }
 
         #endregion

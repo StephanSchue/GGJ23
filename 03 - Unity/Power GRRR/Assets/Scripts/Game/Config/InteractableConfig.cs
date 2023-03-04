@@ -10,16 +10,16 @@ namespace GGJ23.Game.Config
         [SerializeField]
         private float _interactionRadius = 1f;
         [SerializeField]
-        private int _puzzleNumberCount = 4;
+        private int _brokenOnStartPuzzleNumberCount = 4;
         [SerializeField]
-        private int _puzzleNumberApperence = 2;
+        private int _broekenOnStartPuzzleNumberApperence = 2;
         [SerializeField]
         private int _puzzleTriesBeforeRegenerate = 3;
 
         public float Duration => _duration;
         public float InteractionRadius => _interactionRadius;
-        public int PuzzleNumberCount => _puzzleNumberCount;
-        public int PuzzleNumberApperence => _puzzleNumberApperence;
+        public int BrokenOnStartPuzzleNumberCount => _brokenOnStartPuzzleNumberCount;
+        public int BrokenOnStartPuzzleNumberApperence => _broekenOnStartPuzzleNumberApperence;
         public int PuzzleTriesBeforeRegenerate => _puzzleTriesBeforeRegenerate;
 
 

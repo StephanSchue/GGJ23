@@ -23,3 +23,9 @@ MonoBehaviour:
   _maxDifficultyFromDistance: 15
   _distanceToMaxDifficulty: 1000
   _difficultyFactorFromMultipleBreakages: 0.25
+  _timeToMaxPuzzleCountDifficulty: 5
+  _puzzleMinNumber: 2
+  _puzzleMaxNumber: 6
+  _timeToMaxPuzzleRepetionDifficulty: 4
+  _puzzleStartRepetion: 2
+  _puzzleEndRepetion: 1

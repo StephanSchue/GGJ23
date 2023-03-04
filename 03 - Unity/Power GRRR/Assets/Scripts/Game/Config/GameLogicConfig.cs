@@ -22,6 +22,14 @@ namespace GGJ23.Game.Config
         [Range(200f, 2000f)] [SerializeField] private float _distanceToMaxDifficulty = 500f;
         [Range(0.1f, 1.5f)] [SerializeField] private float _difficultyFactorFromMultipleBreakages = 0.235f;
 
+        [Header("Design Tuning (Puzzle)")]
+        [Range(1, 20)] [SerializeField] private int _timeToMaxPuzzleCountDifficulty = 10;
+        [Range(1, 20)] [SerializeField] private int _puzzleMinNumber = 2;
+        [Range(1, 20)] [SerializeField] private int _puzzleMaxNumber = 6;
+        [Range(1, 20)] [SerializeField] private int _timeToMaxPuzzleRepetionDifficulty = 4;
+        [Range(1, 20)] [SerializeField] private int _puzzleStartRepetion = 2;
+        [Range(1, 20)] [SerializeField] private int _puzzleEndRepetion = 1;
+
         // --- Properties ---
         public int FinalDayDurationMs => _finalDayDurationMs;
         public int EarlyDayDurationMs => _earlyDayDurationMs;
@@ -36,6 +44,12 @@ namespace GGJ23.Game.Config
         public float AllGoodRewardSec => _allGoodRewardSec;
         public float LoosePointsSec => _loosePointsSec;
 
-
+        // --- Puzzle ---
+        public float TimeToMaxPuzzleCountDifficulty => _timeToMaxPuzzleCountDifficulty;
+        public float PuzzleMinNumber => _puzzleMinNumber;
+        public float PuzzleMaxNumber => _puzzleMaxNumber;
+        public float TimeToMaxPuzzleRepetionDifficulty => _timeToMaxPuzzleRepetionDifficulty;
+        public float PuzzleStartRepetion => _puzzleStartRepetion;
+        public float PuzzleEndRepetion => _puzzleEndRepetion;
     }
 }
