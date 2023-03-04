@@ -58,10 +58,10 @@ namespace GGJ23.Game.Config
 
         // --- Puzzle ---
         public float TimeToMaxPuzzleCountDifficulty => _timeToMaxPuzzleCountDifficulty;
-        public float PuzzleMinNumber => _puzzleMinNumber;
-        public float PuzzleMaxNumber => _puzzleMaxNumber;
+        public int PuzzleMinNumber => _puzzleMinNumber;
+        public int PuzzleMaxNumber => _puzzleMaxNumber;
         public float TimeToMaxPuzzleRepetionDifficulty => _timeToMaxPuzzleRepetionDifficulty;
-        public float PuzzleStartRepetion => _puzzleStartRepetion;
+        public int PuzzleStartRepetion => _puzzleStartRepetion;
         public float PuzzleEndRepetion => _puzzleEndRepetion;
     }
 }
