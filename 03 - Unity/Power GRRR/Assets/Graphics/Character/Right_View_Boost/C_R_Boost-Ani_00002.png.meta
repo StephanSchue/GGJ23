@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a2cee78e3f889c54aa3d88c1457e1d86
+guid: 38aaf09881d6f6e43b14af452a64fcad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8568277507338380404
-    second: C_IDLE_Back_00000_0
+      213: 1564342205322868727
+    second: C_R_Boost-Ani_00002_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -46,11 +46,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 9
-  spritePivot: {x: 0.5083373, y: 0.3331601}
+  spritePivot: {x: 0.5195854, y: 0.3496972}
   spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -122,22 +122,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: C_IDLE_Back_00000_0
+      name: C_R_Boost-Ani_00002_0
       rect:
         serializedVersion: 2
-        x: 153
-        y: 367
-        width: 182
-        height: 170
+        x: 24
+        y: 15
+        width: 427
+        height: 474
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c8b5026f00d571980800000000000000
-      internalID: -8568277507338380404
+      spriteID: 7f7bb6f82f8a5b510800000000000000
+      internalID: 1564342205322868727
       vertices: []
       indices: 
       edges: []
@@ -146,14 +146,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      C_IDLE_Back_00000_0: -8568277507338380404
+      C_R_Boost-Ani_00002_0: 1564342205322868727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
