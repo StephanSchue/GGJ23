@@ -14,6 +14,7 @@ namespace GGJ23.UI
         public Sprite progressDirectionSpriteBalanced;
         public Sprite progressDirectionSpriteIncrease;
         public Sprite progressDirectionSpriteDecrease;
+        public TextMeshProUGUI scoreLabel;
 
         [Header("Game Progress")]
         public UIImageProgress timeTileNextPhaseImage;
@@ -80,6 +81,20 @@ namespace GGJ23.UI
             // --- Turbo ---
             turboIcon.interactable = _uiController.movementController.BoostCount > 0 && !_uiController.movementController.BoostActive;
             turboLabel.text = $"{_uiController.movementController.BoostCount}/{_uiController.movementController.config.MaxBoostPickups}";
+
+            // --- Score Label --
+            if (energyStatus == EnergyStatus.Balanced)
+            {
+                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000.000")} +++";
+            }
+            else if (energyStatus == EnergyStatus.Increase)
+            {
+                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000.000")} ++";
+            }
+            else
+            {
+                scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000.000")} +";
+            }
 
             // --- Input ---
             if (_uiController.gameManager.gameLogic.IsNight != _isNight)

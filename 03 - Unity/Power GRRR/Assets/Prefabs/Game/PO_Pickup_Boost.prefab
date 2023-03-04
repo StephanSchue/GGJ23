@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 369956497283311181}
   - component: {fileID: 4492943710006153382}
   - component: {fileID: 1147091401082410809}
+  - component: {fileID: 9198472150237219367}
   m_Layer: 6
   m_Name: PO_Pickup_Boost
   m_TagString: Untagged
@@ -145,4 +146,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickup: {fileID: 4492943710006153382}
   spriteRenderer: {fileID: 5762117641690473980}
-  label: {fileID: 0}
+--- !u!95 &9198472150237219367
+Animator:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165338489344156910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0dd8e0e5b2ceb74e8947e80fe6bcc6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

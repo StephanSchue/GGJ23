@@ -186,15 +186,23 @@ namespace GGJ23.Game
             // Gain progress towards game loss if there are broken buildings. The rate increases if the buildings have been broken for long.
             // Undo progress towards game loss if there is a prolonged period of all buildings being fixed.
 
-            if (_energyStatus == EnergyStatus.Balanced)
+            if (!_firstDay)
             {
-                // When Energy is 100%
-                _currentScore += deltaTime * config.FullEnergyScoreMultiplier;
-            }
-            else
-            {
-                // When Energy is not full
-                _currentScore += deltaTime;
+                if (_energyStatus == EnergyStatus.Balanced)
+                {
+                    // When Energy is 100%
+                    _currentScore += deltaTime * config.FullEnergyScoreMultiplier;
+                }
+                else if (_energyStatus == EnergyStatus.Increase)
+                {
+                    // When Energy is not full
+                    _currentScore += deltaTime * config.PowerIncreaseScoreMultiplier;
+                }
+                else
+                {
+                    // Decrease of Power
+                    _currentScore += deltaTime * config.PowerDecreaseScoreMultiplier;
+                }
             }
 
             bool allGood = true;

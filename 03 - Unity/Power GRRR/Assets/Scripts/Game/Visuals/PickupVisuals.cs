@@ -8,6 +8,7 @@ namespace GGJ23.Game.Visuals
         [Header("Components")]
         public Pickup pickup;
         public SpriteRenderer spriteRenderer;
+        public Animator animator;
 
         private void Awake()
         {

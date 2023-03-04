@@ -10,10 +10,16 @@ namespace GGJ23.Game.Config
         [SerializeField] private int _earlyDayDurationMs = 10000;
         [SerializeField] private int _finalDayDurationMs = 40000;
         [SerializeField] private int _nightDurationMs = 10000;
+        [SerializeField] private float _fullEnergyDaySpeedMultiplier = 2f;
+
+        [Header("Loose Points")]
         [SerializeField] private float _loosePointsSec = 1.0f;
         [SerializeField] private float _allGoodLoosePointRegainSec = 1.0f;
+
+        [Header("Score")]
+        [SerializeField] private float _powerIncreaseScoreMultiplier = 1f;
+        [SerializeField] private float _powerDecreaseScoreMultiplier = 0.1f;
         [SerializeField] private float _fullEnergyScoreMultiplier = 2f;
-        [SerializeField] private float _fullEnergyDaySpeedMultiplier = 2f;
 
         [Header("Design Tuning")]
         [Range(0f, 900f)] [SerializeField] private float _lossPointsNeeded = 100;
@@ -42,10 +48,13 @@ namespace GGJ23.Game.Config
         public float MaxDifficultyFromDistance => _maxDifficultyFromDistance;
         public float DistanceToMaxDifficulty => _distanceToMaxDifficulty;
         public float DifficultyFactorFromMultipleBreakages => _difficultyFactorFromMultipleBreakages;
-        public float LoosePointsSec => _loosePointsSec;
-        public float AllGoodLoosePointRegainSec => _allGoodLoosePointRegainSec;
-        public float FullEnergyScoreMultiplier => _fullEnergyScoreMultiplier;
         public float FullEnergyDaySpeedMultiplier => _fullEnergyDaySpeedMultiplier;
+        public float AllGoodLoosePointRegainSec => _allGoodLoosePointRegainSec;
+        public float LoosePointsSec => _loosePointsSec;
+        
+        public float FullEnergyScoreMultiplier => _fullEnergyScoreMultiplier;
+        public float PowerIncreaseScoreMultiplier => _powerIncreaseScoreMultiplier;
+        public float PowerDecreaseScoreMultiplier => _powerDecreaseScoreMultiplier;
 
         // --- Puzzle ---
         public float TimeToMaxPuzzleCountDifficulty => _timeToMaxPuzzleCountDifficulty;
