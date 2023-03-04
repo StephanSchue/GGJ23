@@ -137,7 +137,8 @@ namespace GGJ23.Game
             if (InteractionController.IsWorking)
                 return;
 
-            float progressToNextTime = ((Time.deltaTime * 1000) / (_isNight ? config.NightDurationMs : _dayDurationMs)) * 0.5f;
+            float deltaTime = Time.deltaTime * (_energyStatus == EnergyStatus.Balanced ? config.FullEnergyDaySpeedMultiplier : 1f);
+            float progressToNextTime = ((deltaTime * 1000) / (_isNight ? config.NightDurationMs : _dayDurationMs)) * 0.5f;
             bool lastIsNight = _isNight;
 
             _currentTime += progressToNextTime;
@@ -169,7 +170,7 @@ namespace GGJ23.Game
                 }
             }
 
-            UpdatePoints(Time.deltaTime);
+            UpdatePoints(deltaTime);
             UpdateBrokenLevel();
         }
 
@@ -180,7 +181,16 @@ namespace GGJ23.Game
             // Gain progress towards game loss if there are broken buildings. The rate increases if the buildings have been broken for long.
             // Undo progress towards game loss if there is a prolonged period of all buildings being fixed.
 
-            _currentScore += deltaTime;
+            if (_energyStatus == EnergyStatus.Balanced)
+            {
+                // When Energy is 100%
+                _currentScore += deltaTime * config.FullEnergyScoreMultiplier;
+            }
+            else
+            {
+                // When Energy is not full
+                _currentScore += deltaTime;
+            }
 
             bool allGood = true;
             if (InteractionController != null)
@@ -198,7 +208,7 @@ namespace GGJ23.Game
                 if (allGood)
                 {
                     _energyStatus = Mathf.Approximately(_lossPoints, 0f) ? EnergyStatus.Balanced : EnergyStatus.Increase;
-                    _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodRewardSec * deltaTime));
+                    _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodLoosePointRegainSec * deltaTime));
                     
                 }
             }

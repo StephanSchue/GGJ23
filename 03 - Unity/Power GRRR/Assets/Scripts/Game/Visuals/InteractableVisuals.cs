@@ -17,21 +17,25 @@ namespace GGJ23.Game.Visuals
         // --- Variables ---
         [Header("Components")]
         public Interactable interactable;
+
+        [Header("Day Graphics")]
         public SpriteRenderer spriteRenderer;
-        [FormerlySerializedAs("spriteRendererLightGlow")]
-        public SpriteRenderer spriteRendererNightGlow;
+        public Animator animator;
         [FormerlySerializedAs("notificationSpriteRenderer")]
         public SpriteRenderer dayDotificationSpriteRenderer;
-        public SpriteRenderer nightDotificationSpriteRenderer;
-        public Animator animator;
+        public Animator dayDotificationAnimator;
         public Canvas progressBarCanvas;
         public Slider progressBarSlider;
-        public Image[] puzzleImages;
-        
+
+        [Header("Night Graphics")]
+        [FormerlySerializedAs("spriteRendererLightGlow")]
+        public SpriteRenderer spriteRendererNightGlow;
+        public SpriteRenderer nightDotificationSpriteRenderer;
+        public Animator nightDotificationAnimator;
+
         [Header("Settings")]
         public RuntimeAnimatorController[] animatorControllers;
-        public Color[] statusColor;
-        public bool useStatusColor = true;
+        public Image[] puzzleImages;
         public bool useAnimator = true;
         public bool useRandomize = true;
         public int nonRandomizedIndex = 0;
@@ -41,9 +45,6 @@ namespace GGJ23.Game.Visuals
 
         private bool _hasAnimation = false;
         private bool _hasProgressbar = false;
-
-        private bool _fadingOut = false;
-        private bool _fadingIn = false;
 
         private int _index = 0;
         private bool _puzzleRefreshPending = false;
@@ -83,35 +84,16 @@ namespace GGJ23.Game.Visuals
         private void Update()
         {
             var status = interactable.Status;
-         
-            if (useStatusColor)
-            {
-                spriteRenderer.color = statusColor[(int)status];
-            }
-
             bool working = (status == InteractionStatus.Working || status == InteractionStatus.FreshlyRepaired);
 
             if (interactable.IsNight)
             {
                 // --- Night ---
-                spriteRendererNightGlow.enabled = true;
-                nightDotificationSpriteRenderer.enabled = !working;
-                spriteRenderer.enabled = dayDotificationSpriteRenderer.enabled = false;
-
-                if(_hasAnimation) { animator.enabled = false; }
-
-                _fadingIn = false;
-                _fadingOut = false;
-                dayDotificationSpriteRenderer.color = new Color(dayDotificationSpriteRenderer.color.r, dayDotificationSpriteRenderer.color.g, dayDotificationSpriteRenderer.color.b, 1f);
+                SetGraphicsActive(true, working);
             }
             else
             {
                 // --- Day ---
-                spriteRendererNightGlow.enabled = nightDotificationSpriteRenderer.enabled = false;
-                spriteRenderer.enabled = true;
-
-                if (_hasAnimation) { animator.enabled = true; }
-
                 // Puzzle update
                 for (int i = 0; i < puzzleImages.Length; i++)
                 {
@@ -131,23 +113,7 @@ namespace GGJ23.Game.Visuals
                 }
 
                 _puzzleRefreshPending = false;
-
-                if (working)
-                {
-                    dayDotificationSpriteRenderer.enabled = false;
-                    _fadingIn = false;
-                    _fadingOut = false;
-                    dayDotificationSpriteRenderer.color = new Color(dayDotificationSpriteRenderer.color.r, dayDotificationSpriteRenderer.color.g, dayDotificationSpriteRenderer.color.b, 1f);
-                }
-                else
-                {
-                    dayDotificationSpriteRenderer.enabled = true;
-                    if (!_fadingOut && !_fadingIn)
-                    {
-                        _fadingOut = true;
-                        DOTween.ToAlpha(() => dayDotificationSpriteRenderer.color, x => dayDotificationSpriteRenderer.color = x, 0f, 1f).onComplete = () => SwitchFade();
-                    }
-                }
+                SetGraphicsActive(false, working);
             }
 
             // --- Broken Status ---
@@ -172,25 +138,20 @@ namespace GGJ23.Game.Visuals
             animator.Rebind();
         }
 
-        private void SwitchFade()
+        public void SetGraphicsActive(bool isNight, bool isWorking)
         {
-            if (!_fadingIn && !_fadingOut)
-            { 
-                dayDotificationSpriteRenderer.color = new Color(dayDotificationSpriteRenderer.color.r, dayDotificationSpriteRenderer.color.g, dayDotificationSpriteRenderer.color.b, 1f);
-                return;
-            }
+            // Day
+            spriteRenderer.enabled = !isNight;
+            animator.enabled = !isNight;
+            dayDotificationSpriteRenderer.enabled = !isNight && !isWorking;
+            dayDotificationAnimator.enabled = !isNight && !isWorking;
+            progressBarCanvas.enabled = !isNight && !isWorking;
+            progressBarSlider.enabled = !isNight && !isWorking;
 
-            _fadingIn = !_fadingIn;
-            _fadingOut = !_fadingOut;
-
-            if (_fadingIn)
-            {
-                DOTween.ToAlpha(() => dayDotificationSpriteRenderer.color, x => dayDotificationSpriteRenderer.color = x, 1f, 1f).onComplete = () => SwitchFade();
-            }
-            else if (_fadingOut)
-            {
-                DOTween.ToAlpha(() => dayDotificationSpriteRenderer.color, x => dayDotificationSpriteRenderer.color = x, 0f, 1f).onComplete = () => SwitchFade();
-            }
+            // Night
+            spriteRendererNightGlow.enabled = isNight;
+            nightDotificationSpriteRenderer.enabled = isNight && !isWorking;
+            nightDotificationAnimator.enabled = isNight && !isWorking;
         }
     }
 }
