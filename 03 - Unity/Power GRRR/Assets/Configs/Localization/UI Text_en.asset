@@ -118,7 +118,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3252100433387520
-    m_Localized: To see the controls of a different device just pres a button.
+    m_Localized: To see the controls of a different device just press a button on
+      that device.
     m_Metadata:
       m_Items: []
   references:
