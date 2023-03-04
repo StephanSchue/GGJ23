@@ -20,6 +20,7 @@ namespace GGJ23.Game.Visuals
 
         [Header("Day Graphics")]
         public SpriteRenderer spriteRenderer;
+        public SpriteRenderer repairRenderer;
         public Animator animator;
         [FormerlySerializedAs("notificationSpriteRenderer")]
         public SpriteRenderer dayDotificationSpriteRenderer;
@@ -127,6 +128,7 @@ namespace GGJ23.Game.Visuals
             {
                 progressBarSlider.value = interactable.Progress;
                 progressBarCanvas.enabled = !working && interactable.Status == InteractionStatus.BeingRepaired;
+                repairRenderer.enabled = interactable.Status == InteractionStatus.BeingRepaired;
             }
                 
         }

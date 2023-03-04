@@ -225,6 +225,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PO_Interactable_Cactus
       objectReference: {fileID: 0}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Size.x
+      value: 4.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Size.y
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e66e9d5abd24de9448635812e6330989, type: 3}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3507545038386458444, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: useRandomize
       value: 0

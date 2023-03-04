@@ -216,10 +216,18 @@ PrefabInstance:
     - target: {fileID: 1401708215118854039, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a4ef9078969a128489378e8785d5a4fb, type: 3}
+      objectReference: {fileID: 21300000, guid: 01ffe8ead6da283489b2dbe1a5560ea7, type: 3}
     - target: {fileID: 1429606033355651169, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: m_Name
       value: PO_Interactable_Flower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cd87f84b2cf8de54bb9753c5c24ab4ef, type: 3}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3507545038386458444, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: useRandomize

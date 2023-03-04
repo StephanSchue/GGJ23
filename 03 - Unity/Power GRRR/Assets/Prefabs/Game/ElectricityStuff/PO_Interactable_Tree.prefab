@@ -204,10 +204,26 @@ PrefabInstance:
     - target: {fileID: 1401708215118854039, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b4083f46c327d0444b4e0623235e3008, type: 3}
+      objectReference: {fileID: 21300000, guid: ead7b359c3384db4fa2fefd1da0c1c46, type: 3}
     - target: {fileID: 1429606033355651169, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: m_Name
       value: PO_Interactable_Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e22ddff7d2208ef4c8b287596e1bf2aa, type: 3}
+    - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3507545038386458444, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: useRandomize
