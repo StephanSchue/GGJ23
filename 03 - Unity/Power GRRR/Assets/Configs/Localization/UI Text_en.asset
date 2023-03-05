@@ -56,13 +56,9 @@ MonoBehaviour:
       Animation\nOrion x | Audio Recordings"
     m_Metadata:
       m_Items: []
-  - m_Id: 219439439749120
-    m_Localized: "Every night, some electrical plants will get broken. \nIt's your
-      job to fix them during the day!\n\nHold E (keyboard) / A (controller) to repair
-      broken plants.\nIf you leave plants broken for too long, you will lose the
-      game.\n\nYou can tell which plants are broken by their missing connection to
-      the energy grid at night.\n\nPro tip: you can move much faster by pressing
-      Spacebar (keyboard) / B (controller) in rhythm."
+  - m_Id: 5772655611027456
+    m_Localized: You are a young magican who takes care of the power plants in this
+      world.
     m_Metadata:
       m_Items: []
   - m_Id: 245745334296576
@@ -120,6 +116,29 @@ MonoBehaviour:
   - m_Id: 3252100433387520
     m_Localized: To see the controls of a different device just press a button on
       that device.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772725991448576
+    m_Localized: 'Every night power plants break and the world loses energy.
+
+      Memorize
+      where this plants are to fix them on the next day.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772739711016960
+    m_Localized: You need to drive to the broken plants and repair them, before then
+      energy bar is empty.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772752415563776
+    m_Localized: 'Try to keep the energy bar full to gain more points.
+
+      Every
+      new day will get more difficult.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772764516130816
+    m_Localized: Collect and use POWER BRRU canes to speedup your journey.
     m_Metadata:
       m_Items: []
   references:
