@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 86330f928b579d9448fdb275c3bddb4b
+guid: 41b56fbd9973f91479e79ba7aeedbfd5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7533204637180145449
-    second: controls_ingame-bg_0
+      213: -1461606362184376779
+    second: controls-map_xbox_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -51,11 +51,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
-  spriteBorder: {x: 200, y: 150, z: 200, w: 150}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaUsage: 0
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -122,22 +122,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: controls_ingame-bg_0
+      name: controls-map_xbox_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 7
-        width: 987
-        height: 336
+        x: 0
+        y: 0
+        width: 2048
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d05d8c8b4ea47790800000000000000
-      internalID: -7533204637180145449
+      spriteID: 53e9c8ce1c457bbe0800000000000000
+      internalID: -1461606362184376779
       vertices: []
       indices: 
       edges: []
@@ -146,14 +146,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      controls_ingame-bg_0: -7533204637180145449
+      controls-map_xbox_0: -1461606362184376779
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

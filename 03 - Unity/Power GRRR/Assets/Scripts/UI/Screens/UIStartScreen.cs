@@ -1,18 +1,28 @@
 using GGJ23.Game;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace GGJ23.UI
 {
     public class UIStartScreen : UIScreen
     {
+        public ContentSizeFitter controlsGroup;
+        public Button startButton;
+        public Animator startButtonAnimator;
+
         public override void Enter()
         {
             base.Enter();
+            _uiController.eventSystem.SetSelectedGameObject(startButton.gameObject);
+            LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)controlsGroup.transform);
+
+            startButtonAnimator.enabled = true;
         }
 
         public override void Exit()
         {
             base.Exit();
+            startButtonAnimator.enabled = false;
         }
 
         public override void Tick(float dt, UIInputData inputData)

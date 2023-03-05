@@ -221,7 +221,7 @@ namespace GGJ23.UI
         private Settings _settings;
 
         private bool _startGameDirectExecuted = false;
-        public float _timer, _refresh, _avgFramerate;
+        private float _timer, _refresh, _avgFramerate;
 
         private UIInputContextEvent[] inputContextEvents;
 

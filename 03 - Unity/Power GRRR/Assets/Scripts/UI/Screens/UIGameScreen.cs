@@ -2,6 +2,7 @@ using GGJ23.Game;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 namespace GGJ23.UI
 {
@@ -25,6 +26,7 @@ namespace GGJ23.UI
         public Button boostIcon;
         public TextMeshProUGUI boostLabel;
         public Animator boostAnimator;
+        public ContentSizeFitter controlsGroup;
 
         public Button interactButton;
         public Button boostButton;
@@ -53,6 +55,8 @@ namespace GGJ23.UI
             _isNight = false;
             interactButton.gameObject.SetActive(!_isNight);
             boostButton.gameObject.SetActive(!_isNight);
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)controlsGroup.transform);
         }
 
         public override void Tick(float dt, UIInputData inputData)
