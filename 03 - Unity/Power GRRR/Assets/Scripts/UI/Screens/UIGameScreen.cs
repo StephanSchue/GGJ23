@@ -87,7 +87,7 @@ namespace GGJ23.UI
             interactionPad.interactable = interactionPad.blocksRaycasts = _uiController.interactionController.IsWorking;
 
             // --- Boost ---
-            boostIcon.interactable = _uiController.movementController.BoostCount > 0 && !_uiController.movementController.BoostActive;
+            boostIcon.interactable = _uiController.movementController.BoostCount > 0;
             boostLabel.text = $"{_uiController.movementController.BoostCount}/{_uiController.movementController.config.MaxBoostPickups}";
 
             if (!_boostActive && _uiController.movementController.BoostActive) { boostAnimator.SetTrigger("Use"); }
