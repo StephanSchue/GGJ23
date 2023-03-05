@@ -144,7 +144,7 @@ namespace GGJ23.Game
                 _movement.Normalize(); 
                 _rigidbody2D.MovePosition((Vector2)transform.position + (_movement * dt * config.Speed) + (_boost * dt * config.BoostSpeed));
                 
-                Direction = _movement;
+                Direction = _movement + _boost;
 
                 if (Vector2.Dot(Vector2.up, Direction) > 0.5f)
                 {
@@ -168,7 +168,7 @@ namespace GGJ23.Game
                     OnMovementStart.Invoke();
                 }
                 
-                Velocity = velocity;
+                Velocity = velocity + _boost.sqrMagnitude;
                 IsMoving = true;
             }
             else

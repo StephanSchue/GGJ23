@@ -56,14 +56,9 @@ MonoBehaviour:
       Animation\nOrion x | Audio Recordings"
     m_Metadata:
       m_Items: []
-  - m_Id: 219439439749120
-    m_Localized: "Jede Nacht gehen einige elektrische Anlagen kaputt. \nEs ist deine
-      Aufgabe, sie tags\xFCber zu reparieren!\n\r\nHalte E (Tastatur) / A (Controller),
-      um kaputte Pflanzen zu reparieren.\r\nWenn du Pflanzen zu lange kaputt lassen,
-      verlieren Sie das Spiel.\n\r\nWelche Anlagen defekt sind, erkennen Sie nachts
-      an der fehlenden Verbindung zum Energienetz.\r\n\r\nPro-Tipp: Du kannst dich
-      viel schneller bewegen, indem Sie die Leertaste (Tastatur) / B (Controller)
-      im Rhythmus dr\xFCcken."
+  - m_Id: 5772655611027456
+    m_Localized: "Du bist eine junge*r Magier*in, der sich um die Kraftwerke dieser
+      Welt k\xFCmmert."
     m_Metadata:
       m_Items: []
   - m_Id: 245745334296576
@@ -121,6 +116,27 @@ MonoBehaviour:
   - m_Id: 3252100433387520
     m_Localized: "Um die Steuerung eines anderen Ger\xE4ts anzuzeigen, dr\xFCcke
       einfach eine Taste auf diesem."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772725991448576
+    m_Localized: "Jede Nacht fallen Energie Pflanzen aus und die Welt verliert Energie.\r\nMerke
+      dir, wo diese Pflanzen sind, um sie am n\xE4chsten Tag zu reparieren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772739711016960
+    m_Localized: Du musst zu den kaputten Pflanzen fahren und diese reparieren, bevor
+      der Energiebalken leer ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772752415563776
+    m_Localized: 'Versuchen Sie, den Energiebalken voll zu halten, um mehr Punkte
+      zu sammeln.
+
+      Jeder neue Tag wird schwieriger.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772764516130816
+    m_Localized: Sammle und verwende POWER BRRRU Dosen um deine Reise zu beschleunigen.
     m_Metadata:
       m_Items: []
   references:

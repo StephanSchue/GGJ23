@@ -51,10 +51,6 @@ MonoBehaviour:
     m_Key: Text_Credits
     m_Metadata:
       m_Items: []
-  - m_Id: 219439439749120
-    m_Key: Text_Help
-    m_Metadata:
-      m_Items: []
   - m_Id: 245745334296576
     m_Key: Button_Menu
     m_Metadata:
@@ -109,6 +105,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 3252100433387520
     m_Key: label_controls_switch_help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772655611027456
+    m_Key: text_help_01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772725991448576
+    m_Key: text_help_02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772739711016960
+    m_Key: text_help_03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772752415563776
+    m_Key: text_help_04
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772764516130816
+    m_Key: text_help_05
     m_Metadata:
       m_Items: []
   m_Metadata:
