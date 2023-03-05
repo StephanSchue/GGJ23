@@ -1,0 +1,386 @@
+fileFormatVersion: 2
+guid: 69f4c6032a30527418e4188753ef7c94
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1462992713618222434
+    second: power-item_ui-used_ani_00021_0
+  - first:
+      213: 8761427740190869489
+    second: power-item_ui-used_ani_00021_1
+  - first:
+      213: -5476549420348326368
+    second: power-item_ui-used_ani_00021_2
+  - first:
+      213: 1436306643321306381
+    second: power-item_ui-used_ani_00021_3
+  - first:
+      213: 3443220281140895725
+    second: power-item_ui-used_ani_00021_4
+  - first:
+      213: 5728281840687525260
+    second: power-item_ui-used_ani_00021_5
+  - first:
+      213: -4562442493476497157
+    second: power-item_ui-used_ani_00021_6
+  - first:
+      213: 5479635416592264714
+    second: power-item_ui-used_ani_00021_7
+  - first:
+      213: -4396924152178871211
+    second: power-item_ui-used_ani_00021_8
+  - first:
+      213: -7550969841178281010
+    second: power-item_ui-used_ani_00021_9
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1057
+        width: 47
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26de23c2f189d4410800000000000000
+      internalID: 1462992713618222434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_1
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 1084
+        width: 61
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f784531c18d69970800000000000000
+      internalID: 8761427740190869489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_2
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 1006
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02e344571536ff3b0800000000000000
+      internalID: -5476549420348326368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_3
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 991
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0d33bf3849cee310800000000000000
+      internalID: 1436306643321306381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_4
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 987
+        width: 54
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: defd2dc4a96c8cf20800000000000000
+      internalID: 3443220281140895725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_5
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 959
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8d208ffbf1fe7f40800000000000000
+      internalID: 5728281840687525260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_6
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 804
+        width: 280
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf89f2c99b2fea0c0800000000000000
+      internalID: -4562442493476497157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 891
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0ea1a801639b0c40800000000000000
+      internalID: 5479635416592264714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_8
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 824
+        width: 49
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 554fa0d87ccfaf2c0800000000000000
+      internalID: -4396924152178871211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-item_ui-used_ani_00021_9
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 62
+        width: 437
+        height: 504
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb71eaafe0953790800000000000000
+      internalID: -7550969841178281010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      power-item_ui-used_ani_00021_5: 5728281840687525260
+      power-item_ui-used_ani_00021_4: 3443220281140895725
+      power-item_ui-used_ani_00021_1: 8761427740190869489
+      power-item_ui-used_ani_00021_7: 5479635416592264714
+      power-item_ui-used_ani_00021_2: -5476549420348326368
+      power-item_ui-used_ani_00021_0: 1462992713618222434
+      power-item_ui-used_ani_00021_9: -7550969841178281010
+      power-item_ui-used_ani_00021_3: 1436306643321306381
+      power-item_ui-used_ani_00021_6: -4562442493476497157
+      power-item_ui-used_ani_00021_8: -4396924152178871211
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
