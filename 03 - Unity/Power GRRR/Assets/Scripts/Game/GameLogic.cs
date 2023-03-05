@@ -214,7 +214,8 @@ namespace GGJ23.Game
                     if (inter.Status == InteractionStatus.Broken || inter.Status == InteractionStatus.BeingRepaired)
                     {
                         allGood = false;
-                        _lossPoints += (config.LoosePointsSec * deltaTime);
+                        if (!_isNight) { _lossPoints += (config.LoosePointsSec * deltaTime); }
+
                         _energyStatus = EnergyStatus.Decrease;
                     }
                 }
@@ -222,8 +223,7 @@ namespace GGJ23.Game
                 if (allGood)
                 {
                     _energyStatus = Mathf.Approximately(_lossPoints, 0f) ? EnergyStatus.Balanced : EnergyStatus.Increase;
-                    _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodLoosePointRegainSec * deltaTime));
-                    
+                    if (!_isNight) { _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodLoosePointRegainSec * deltaTime)); }
                 }
             }
 
@@ -231,8 +231,7 @@ namespace GGJ23.Game
             {
                 // End the game
                 _running = false;
-                GameOver.Invoke();
-                
+                GameOver.Invoke();    
             }
 
             // Debug.Log($"Points:{_currentScore}, LossPoints:{_lossPoints}");

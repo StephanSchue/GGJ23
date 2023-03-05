@@ -251,7 +251,7 @@ namespace GGJ23.Game
                 {
                     float tmpDistance = Vector2.Distance(transform.position + (Vector3)config.InteractionOffset, _pickups[i].transform.position);
 
-                    if (tmpDistance < (config.InteractionRadius + _pickups[i].config.InteractionRadius))
+                    if (tmpDistance < (config.PickupRadius + _pickups[i].config.InteractionRadius))
                     {
                         ApplyPickup(_pickups[i]);
                     }
@@ -273,6 +273,9 @@ namespace GGJ23.Game
             if (config != null)
             {
                 Gizmos.DrawWireSphere(transform.position + (Vector3)config.InteractionOffset, config.InteractionRadius);
+
+                Gizmos.color = Color.blue;
+                Gizmos.DrawWireSphere(transform.position + (Vector3)config.InteractionOffset, config.PickupRadius);
             }
         }
 

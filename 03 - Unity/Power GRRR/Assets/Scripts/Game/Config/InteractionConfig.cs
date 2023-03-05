@@ -9,8 +9,11 @@ namespace GGJ23.Game.Config
         private float _interactionRadius = 1f;
         [SerializeField]
         private Vector2 _interactionOffset = Vector2.zero;
+        [SerializeField]
+        private float _pickupRadius = 1f;
 
         public float InteractionRadius => _interactionRadius;
         public Vector2 InteractionOffset => _interactionOffset;
+        public float PickupRadius => _pickupRadius;
     }
 }

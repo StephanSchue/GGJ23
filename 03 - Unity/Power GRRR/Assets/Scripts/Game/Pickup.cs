@@ -88,6 +88,7 @@ namespace GGJ23.Game
         {
             if (config != null)
             {
+                Gizmos.color = Color.blue;
                 Gizmos.DrawWireSphere(transform.position, config.InteractionRadius);
             }
         }

@@ -22,8 +22,9 @@ namespace GGJ23.UI
         // Input
         [Header("Input")]
         public CanvasGroup interactionPad;
-        public Button turboIcon;
-        public TextMeshProUGUI turboLabel;
+        public Button boostIcon;
+        public TextMeshProUGUI boostLabel;
+        public Animator boostAnimator;
 
         public Button interactButton;
         public Button boostButton;
@@ -37,6 +38,9 @@ namespace GGJ23.UI
         private bool _uiTurboButtonHold = false;
 
         private bool _isNight = false;
+
+        private int _boostCount = 0;
+        private bool _boostActive = false;
 
         private EnergyStatus energyStatus = EnergyStatus.None;
 
@@ -78,12 +82,18 @@ namespace GGJ23.UI
             interactionPad.alpha = _uiController.interactionController.IsWorking ? 1f : 0f;
             interactionPad.interactable = interactionPad.blocksRaycasts = _uiController.interactionController.IsWorking;
 
-            // --- Turbo ---
-            turboIcon.interactable = _uiController.movementController.BoostCount > 0 && !_uiController.movementController.BoostActive;
-            turboLabel.text = $"{_uiController.movementController.BoostCount}/{_uiController.movementController.config.MaxBoostPickups}";
+            // --- Boost ---
+            boostIcon.interactable = _uiController.movementController.BoostCount > 0 && !_uiController.movementController.BoostActive;
+            boostLabel.text = $"{_uiController.movementController.BoostCount}/{_uiController.movementController.config.MaxBoostPickups}";
+
+            if (!_boostActive && _uiController.movementController.BoostActive) { boostAnimator.SetTrigger("Use"); }
+            _boostActive = _uiController.movementController.BoostActive;
+
+            if (_uiController.movementController.BoostCount > _boostCount) { boostAnimator.SetTrigger("Collect"); }
+            _boostCount = _uiController.movementController.BoostCount;
 
             // --- Score Label --
-            if(_uiController.gameManager.gameLogic.IsFirstDay)
+            if (_uiController.gameManager.gameLogic.IsFirstDay)
             {
                 scoreLabel.text = $"{_uiController.gameManager.Score.ToString("000")}";
             }
@@ -106,7 +116,7 @@ namespace GGJ23.UI
                 _isNight = _uiController.gameManager.gameLogic.IsNight;
                 interactButton.gameObject.SetActive(!_isNight);
                 boostButton.gameObject.SetActive(!_isNight);
-                turboIcon.gameObject.SetActive(!_isNight);
+                boostIcon.gameObject.SetActive(!_isNight);
             }
 
             timeTileNextPhaseImage.Progess(_uiController.gameManager.gameLogic.CurrentTime % 1);
