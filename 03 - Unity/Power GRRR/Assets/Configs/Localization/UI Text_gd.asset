@@ -113,6 +113,34 @@ MonoBehaviour:
       an inneal sin."
     m_Metadata:
       m_Items: []
+  - m_Id: 5772655611027456
+    m_Localized: You are a young magician  who takes care of the power plants in
+      this world.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772725991448576
+    m_Localized: 'Every night power plants break and the world loses energy.
+
+      Memorize
+      where this plants are to fix them on the next day.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772739711016960
+    m_Localized: You need to drive to the broken plants and repair them, before then
+      energy bar is empty.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772752415563776
+    m_Localized: 'Try to keep the energy bar full to gain more points.
+
+      Every
+      new day will get more difficult.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772764516130816
+    m_Localized: Collect and use POWER BRRU canes to speedup your journey.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
