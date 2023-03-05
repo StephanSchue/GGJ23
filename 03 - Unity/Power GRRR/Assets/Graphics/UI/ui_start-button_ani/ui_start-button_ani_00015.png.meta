@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 86330f928b579d9448fdb275c3bddb4b
+guid: 3816387b3eddc554fb34e6509fb39b08
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7533204637180145449
-    second: controls_ingame-bg_0
+      213: 1592560597985794975
+    second: ui_start-button_ani_00015_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,8 +51,8 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
-  spriteBorder: {x: 200, y: 150, z: 200, w: 150}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -122,22 +122,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: controls_ingame-bg_0
+      name: ui_start-button_ani_00015_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 7
-        width: 987
-        height: 336
+        x: 4
+        y: 4
+        width: 504
+        height: 504
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d05d8c8b4ea47790800000000000000
-      internalID: -7533204637180145449
+      spriteID: f9b1a361d69e91610800000000000000
+      internalID: 1592560597985794975
       vertices: []
       indices: 
       edges: []
@@ -146,14 +146,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      controls_ingame-bg_0: -7533204637180145449
+      ui_start-button_ani_00015_0: 1592560597985794975
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

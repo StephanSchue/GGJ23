@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 41b56fbd9973f91479e79ba7aeedbfd5
+guid: 170cea52be94a9b4c8fb07fc7fdcd0c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1461606362184376779
-    second: controls-map_xbox_0
+      213: 239378325967792821
+    second: ui_start-button_ani_00009_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -54,8 +54,8 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 0
-  alphaIsTransparency: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -122,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: controls-map_xbox_0
+      name: ui_start-button_ani_00009_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 1024
+        x: 4
+        y: 4
+        width: 504
+        height: 504
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,8 +136,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53e9c8ce1c457bbe0800000000000000
-      internalID: -1461606362184376779
+      spriteID: 5baec36b151725300800000000000000
+      internalID: 239378325967792821
       vertices: []
       indices: 
       edges: []
@@ -153,7 +153,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      controls-map_xbox_0: -1461606362184376779
+      ui_start-button_ani_00009_0: 239378325967792821
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
