@@ -16,12 +16,12 @@ MonoBehaviour:
   _finalDayDurationMs: 60000
   _nightDurationMs: 8000
   _fullEnergyDaySpeedMultiplier: 4
-  _loosePointsSec: 0.25
-  _allGoodLoosePointRegainSec: 2.5
+  _loosePointsSec: 0.5
+  _allGoodLoosePointRegainSec: 3
   _powerIncreaseScoreMultiplier: 1
   _powerDecreaseScoreMultiplier: 0.25
   _fullEnergyScoreMultiplier: 2.5
-  _lossPointsNeeded: 100
+  _lossPointsNeeded: 75
   _maxDifficulty: 10
   _timeToMaxDifficulty: 10
   _maxDifficultyFromDistance: 15
