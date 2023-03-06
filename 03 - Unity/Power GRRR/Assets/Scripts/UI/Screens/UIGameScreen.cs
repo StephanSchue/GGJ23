@@ -11,10 +11,11 @@ namespace GGJ23.UI
         // Progress
         [Header("Game Progress")]
         public Image gameProgress;
-        public Image progressDirection;
-        public Sprite progressDirectionSpriteBalanced;
-        public Sprite progressDirectionSpriteIncrease;
-        public Sprite progressDirectionSpriteDecrease;
+        public RectTransform gameProgressBarTransform;
+        public Animator gameProgressBarAnimator;
+        public RectTransform gameProgressEnergyStatusTransform;
+        public Animator gameProgressEnergyStatusAnimator;
+        public Animator gameProgressEnergyOverlayAnimator;
         public TextMeshProUGUI scoreLabel;
 
         [Header("Game Progress")]
@@ -44,6 +45,8 @@ namespace GGJ23.UI
         private int _boostCount = 0;
         private bool _boostActive = false;
 
+        private Vector2 _energyBarSize;
+
         private EnergyStatus energyStatus = EnergyStatus.None;
 
         public override void Enter()
@@ -56,6 +59,8 @@ namespace GGJ23.UI
             interactButton.gameObject.SetActive(!_isNight);
             boostButton.gameObject.SetActive(!_isNight);
 
+            _energyBarSize = new Vector2(390f, 30f);
+
             LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)controlsGroup.transform);
         }
 
@@ -63,22 +68,41 @@ namespace GGJ23.UI
         {
             // -- Energy Progress ---
             gameProgress.fillAmount = _uiController.gameManager.Energy;
+            gameProgressEnergyStatusTransform.sizeDelta = new Vector2(Mathf.Max(30, _energyBarSize.x * _uiController.gameManager.Energy), _energyBarSize.y);
+
+            // --- Status ---
+            if(_uiController.gameManager.Energy < 0.3f)
+            {
+                gameProgressBarAnimator.SetInteger("Status", 2); // Critical
+                gameProgressEnergyOverlayAnimator.SetInteger("Status", 1);
+            }
+            else if(_uiController.gameManager.Energy < 0.99f)
+            {
+                gameProgressBarAnimator.SetInteger("Status", 0); // OK
+                gameProgressEnergyOverlayAnimator.SetInteger("Status", 0);
+            }
+            else
+            {
+                gameProgressBarAnimator.SetInteger("Status", 1); // Balanced
+                gameProgressEnergyOverlayAnimator.SetInteger("Status", 0);
+            }
 
             if (_uiController.gameManager.EnergyStatus != energyStatus)
             {
+                // --- Pointer ---
                 switch (_uiController.gameManager.EnergyStatus)
                 {
                     case EnergyStatus.Increase:
-                        progressDirection.sprite =progressDirectionSpriteIncrease;
+                        gameProgressEnergyStatusAnimator.SetInteger("Status", 1);
                         break;
                     case EnergyStatus.Decrease:
-                        progressDirection.sprite = progressDirectionSpriteDecrease;
+                        gameProgressEnergyStatusAnimator.SetInteger("Status", 2);
                         break;
                     default:
-                        progressDirection.sprite = progressDirectionSpriteBalanced;
+                        gameProgressEnergyStatusAnimator.SetInteger("Status", 0);
                         break;
                 }
-
+                
                 energyStatus = _uiController.gameManager.EnergyStatus;
             }
 

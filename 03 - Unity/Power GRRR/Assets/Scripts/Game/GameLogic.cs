@@ -214,9 +214,8 @@ namespace GGJ23.Game
                     if (inter.Status == InteractionStatus.Broken || inter.Status == InteractionStatus.BeingRepaired)
                     {
                         allGood = false;
-                        if (!_isNight) { _lossPoints += (config.LoosePointsSec * deltaTime); }
-
-                        _energyStatus = EnergyStatus.Decrease;
+                        if (!_isNight) { _lossPoints += (config.LoosePointsSec * deltaTime); _energyStatus = EnergyStatus.Decrease; }
+                        else { _energyStatus = EnergyStatus.None; }  
                     }
                 }
 
@@ -224,6 +223,7 @@ namespace GGJ23.Game
                 {
                     _energyStatus = Mathf.Approximately(_lossPoints, 0f) ? EnergyStatus.Balanced : EnergyStatus.Increase;
                     if (!_isNight) { _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodLoosePointRegainSec * deltaTime)); }
+                    else { _energyStatus = EnergyStatus.None; }
                 }
             }
 

@@ -210,6 +210,7 @@ namespace GGJ23.UI
         public AudioMixer audioMixer;
 
         public UIScreenCollection screens;
+        public CanvasGroup debugBar;
         public TMPro.TextMeshProUGUI debugText;
 
         public bool startGameDirect = false;
@@ -236,6 +237,12 @@ namespace GGJ23.UI
             screens.Init(this);
 
             inputContextEvents = FindObjectsByType<UIInputContextEvent>(FindObjectsSortMode.None);
+
+            #if DEVELOPMENT_BUILD || UNITY_EDITOR
+                debugBar.gameObject.SetActive(false);
+            #else
+                debugBar.gameObject.SetActive(true);
+            #endif
 
             SwitchState(UIState.StartScreen);
 
@@ -271,7 +278,9 @@ namespace GGJ23.UI
             UpdateMovement();
             UpdateFPSCounter();
 
-            debugText.text = $"DEBUG - FPS: {_avgFramerate}";
+            #if DEVELOPMENT_BUILD || UNITY_EDITOR
+                debugText.text = $"DEBUG - FPS: {_avgFramerate}";
+            #endif
         }
 
         private void LateUpdate()
@@ -283,7 +292,7 @@ namespace GGJ23.UI
             UpdateButtonStatus(InputButton.Function03);
         }
 
-        #region Statemachine
+#region Statemachine
 
         public void DoAction(UIAction uiAction)
         {
@@ -367,9 +376,9 @@ namespace GGJ23.UI
             _currentScreen.Refresh();
         }
 
-        #endregion
+#endregion
 
-        #region Input
+#region Input
 
         private void OnInputDeviceChange(InputUser user, InputUserChange change, InputDevice device)
         {
@@ -542,9 +551,9 @@ namespace GGJ23.UI
             if (_timer <= 0) _avgFramerate = (int)(1f / timelapse);
         }
 
-        #endregion
+#endregion
 
-        #region Options
+#region Options
 
         private void ApplyOptions()
         {
@@ -637,15 +646,15 @@ namespace GGJ23.UI
             }
         }
 
-        #endregion
+#endregion
 
-        #region GameOver
+#region GameOver
 
         private void GameOver()
         {
             DoAction(UIAction.Open_GameOverScreen);
         }
 
-        #endregion
+#endregion
     }
 }
