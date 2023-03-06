@@ -239,9 +239,9 @@ namespace GGJ23.UI
             inputContextEvents = FindObjectsByType<UIInputContextEvent>(FindObjectsSortMode.None);
 
             #if DEVELOPMENT_BUILD || UNITY_EDITOR
-                debugBar.gameObject.SetActive(false);
-            #else
                 debugBar.gameObject.SetActive(true);
+            #else
+                debugBar.gameObject.SetActive(false);
             #endif
 
             SwitchState(UIState.StartScreen);
