@@ -27,6 +27,8 @@ namespace GGJ23.UI
 
         public override void Tick(float dt, UIInputData inputData)
         {
+            _uiController.eventSystem.SetSelectedGameObject(null);
+
             if (inputData.IsPressed(InputButton.Accept))
             {
                 DoAction(UIAction.Start_Game);

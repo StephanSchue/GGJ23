@@ -52,6 +52,12 @@ namespace GGJ23.Game
             _boostCount = 0;
         }
 
+        public void ResetBoost()
+        {
+            _boostEffectTimer = 0f;
+            _boostCount = 0;
+        }
+
         public void RegisterEvents(EffectContoller effectContoller, UnityEvent onDayEvent, UnityEvent onNightEvent)
         {
             OnMovementStart.AddListener(() => effectContoller.OnMovementStart.Invoke());

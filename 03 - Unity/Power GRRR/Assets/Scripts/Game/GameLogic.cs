@@ -124,6 +124,7 @@ namespace GGJ23.Game
             _firstDay = true;
             MovementController.transform.SetPositionAndRotation(_spawnPosition, Quaternion.identity);
             MovementController.ResetLookDirection();
+            MovementController.ResetBoost();
 
             foreach (var inter in InteractionController.Interactables)
             {
