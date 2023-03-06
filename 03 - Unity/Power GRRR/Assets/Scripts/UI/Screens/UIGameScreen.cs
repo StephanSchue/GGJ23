@@ -58,6 +58,7 @@ namespace GGJ23.UI
             _isNight = false;
             interactButton.gameObject.SetActive(!_isNight);
             boostButton.gameObject.SetActive(!_isNight);
+            boostIcon.gameObject.SetActive(!_isNight);
 
             _energyBarSize = new Vector2(390f, 30f);
 
