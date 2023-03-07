@@ -207,7 +207,11 @@ namespace GGJ23.UI
         public InteractionController interactionController;
         public PlayerInput playerInput;
         public EventSystem eventSystem;
+
+        [Header("Audio")]
         public AudioMixer audioMixer;
+        public AudioMixerSnapshot audioDefaultSnapshot;
+        public AudioMixerSnapshot audioPauseSnapshot;
 
         public UIScreenCollection screens;
         public CanvasGroup debugBar;
@@ -290,6 +294,16 @@ namespace GGJ23.UI
             UpdateButtonStatus(InputButton.Function01);
             UpdateButtonStatus(InputButton.Function02);
             UpdateButtonStatus(InputButton.Function03);
+        }
+
+        public void SetPauseAudioVolume()
+        {
+            audioPauseSnapshot.TransitionTo(0.5f);
+        }
+
+        public void ResetAudioVolume()
+        {
+            audioDefaultSnapshot.TransitionTo(0.5f);
         }
 
 #region Statemachine

@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: de
   m_SharedData: {fileID: 11400000, guid: c13804f9a29a8a046880647014258f9b, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 8502299294170611755
   m_TableData:
   - m_Id: 28497879040
     m_Localized: Start
@@ -57,8 +58,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5772655611027456
-    m_Localized: "Du bist eine junge*r Magier*in, der sich um die Kraftwerke dieser
-      Welt k\xFCmmert."
+    m_Localized: "Du bist ein*e junge*r Magier*in, die sich um die Energiepflanzen
+      dieser Welt k\xFCmmert.\nAlle Pflanzen sind miteinander verbunden."
     m_Metadata:
       m_Items: []
   - m_Id: 245745334296576
@@ -139,6 +140,15 @@ MonoBehaviour:
     m_Localized: Sammle und verwende POWER BRRRU Dosen um deine Reise zu beschleunigen.
     m_Metadata:
       m_Items: []
+  - m_Id: 6522802292858880
+    m_Localized: 'Punkte: {score}'
+    m_Metadata:
+      m_Items:
+      - rid: 8502299294170611755
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8502299294170611755
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00209b41742c1700

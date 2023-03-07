@@ -12,6 +12,7 @@ namespace GGJ23.UI
         {
             base.Enter();
             LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)controlsGroup.transform);
+            _uiController.SetPauseAudioVolume();
         }
 
         public override void Tick(float dt, UIInputData inputData)
@@ -32,6 +33,12 @@ namespace GGJ23.UI
             {
                 DoAction(UIAction.Stop_Game);
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _uiController.ResetAudioVolume();
         }
     }
 }

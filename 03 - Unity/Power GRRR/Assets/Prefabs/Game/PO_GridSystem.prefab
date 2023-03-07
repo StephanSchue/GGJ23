@@ -482,6 +482,14 @@ PrefabInstance:
       propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3534441021363255839, guid: c91209c815118b6458d7a484fe1a9e5a, type: 3}
+      propertyPath: m_Parameters.numCapVertices
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534441021363255839, guid: c91209c815118b6458d7a484fe1a9e5a, type: 3}
+      propertyPath: m_Parameters.numCornerVertices
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7077211006675026085, guid: c91209c815118b6458d7a484fe1a9e5a, type: 3}
       propertyPath: m_Name
       value: PO_LineRenderer

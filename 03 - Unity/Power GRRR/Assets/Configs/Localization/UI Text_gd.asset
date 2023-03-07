@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: gd
   m_SharedData: {fileID: 11400000, guid: c13804f9a29a8a046880647014258f9b, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 8502299294170611756
   m_TableData:
   - m_Id: 28497879040
     m_Localized: "T\xF2isich"
@@ -114,33 +115,39 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5772655611027456
-    m_Localized: You are a young magician  who takes care of the power plants in
-      this world.
+    m_Localized: "Tha thu nad dhraoidh \xF2g a bheir aire do na lusan cumhachd san
+      t-saoghal seo.\r\nTha na lusan uile eadar-cheangailte."
     m_Metadata:
       m_Items: []
   - m_Id: 5772725991448576
-    m_Localized: 'Every night power plants break and the world loses energy.
-
-      Memorize
-      where this plants are to fix them on the next day.'
+    m_Localized: "Gach oidhche bidh ionadan cumhachd a\u2019 briseadh agus bidh an
+      saoghal a\u2019 call l\xF9th.\r\nCuimhnich far a bheil an lus seo airson an
+      c\xE0radh an ath latha."
     m_Metadata:
       m_Items: []
   - m_Id: 5772739711016960
-    m_Localized: You need to drive to the broken plants and repair them, before then
-      energy bar is empty.
+    m_Localized: "Feumaidh tu draibheadh \u200B\u200Bgu na lusan briste agus an c\xE0radh,
+      mus bi am b\xE0r l\xF9th falamh."
     m_Metadata:
       m_Items: []
   - m_Id: 5772752415563776
-    m_Localized: 'Try to keep the energy bar full to gain more points.
-
-      Every
-      new day will get more difficult.'
+    m_Localized: "Feuch ris a\u2019 bh\xE0r l\xF9tha a chumail l\xE0n gus barrachd
+      phuingean fhaighinn.\r\nBidh a h-uile latha \xF9r a 'f\xE0s nas duilghe."
     m_Metadata:
       m_Items: []
   - m_Id: 5772764516130816
-    m_Localized: Collect and use POWER BRRU canes to speedup your journey.
+    m_Localized: Cruinnich agus cleachd canaichean POWER BRRRU gus do thuras a luathachadh.
     m_Metadata:
       m_Items: []
+  - m_Id: 6522802292858880
+    m_Localized: "Sg\xF2r: {score}"
+    m_Metadata:
+      m_Items:
+      - rid: 8502299294170611756
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8502299294170611756
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00209b41742c1700
