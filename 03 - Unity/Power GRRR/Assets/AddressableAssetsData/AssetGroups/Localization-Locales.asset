@@ -29,12 +29,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9f1ecc2555823374093bc10d5e2a959c
-    m_Address: Turkish (tr)
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb5e3f31a64fb0b43a69f128dd9bdd20
     m_Address: Scottish Gaelic (gd)
     m_ReadOnly: 1

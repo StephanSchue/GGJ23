@@ -1,16 +1,24 @@
 using GGJ23.Game;
 using UnityEngine;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.SmartFormat.PersistentVariables;
+using UnityEngine.UI;
 
 namespace GGJ23.UI
 {
     public class UIGameOverScreen : UIScreen
     {
-        public TMPro.TextMeshProUGUI score;
+        public LocalizeStringEvent scoreLocalizeStringEvent;
+        public ContentSizeFitter controlsGroup;
 
         public override void Enter()
         {
             base.Enter();
-            score.text = $"Score: {_uiController.gameManager.Score}";
+            var time = scoreLocalizeStringEvent.StringReference["score"] as IntVariable;
+            time.Value = (int)_uiController.gameManager.Score;
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)controlsGroup.transform);
+            _uiController.SetPauseAudioVolume();
         }
 
         public override void Tick(float dt, UIInputData inputData)
@@ -23,6 +31,12 @@ namespace GGJ23.UI
             {
                 DoAction(UIAction.Stop_Game);
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _uiController.ResetAudioVolume();
         }
     }
 }

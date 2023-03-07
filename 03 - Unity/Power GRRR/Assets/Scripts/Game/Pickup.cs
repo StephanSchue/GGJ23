@@ -50,7 +50,7 @@ namespace GGJ23.Game
                 {
                     _status = PickupStatus.On;
                 }
-                else
+                else if(!_isNight)
                 {
                     _cooldownTimer -= dt;
                 }

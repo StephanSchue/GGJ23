@@ -98,6 +98,7 @@ namespace GGJ23.Game
 
             if (MovementController != null)
             {
+                MovementController.enabled = false;
                 MovementController.RegisterEvents(EffectContoller, OnDaySwitch, OnNightSwitch);
             }
 
@@ -108,11 +109,13 @@ namespace GGJ23.Game
         public void RunGame()
         {
             _running = true;
+            MovementController.enabled = true;
         }
 
         public void StopGame()
         {
             _running = false;
+            MovementController.enabled = false;
         }
 
         public void ResetGame()

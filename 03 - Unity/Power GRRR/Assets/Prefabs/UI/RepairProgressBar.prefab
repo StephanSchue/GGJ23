@@ -557,7 +557,7 @@ Transform:
   m_Children:
   - {fileID: 6732362987773594861}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5025037454786809558
 GameObject:
@@ -902,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3351292097267966847, guid: e4ef71a15aa26f440b87682b06531ee5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3351292097267966847, guid: e4ef71a15aa26f440b87682b06531ee5, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -914,7 +914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4191534625627449838, guid: e4ef71a15aa26f440b87682b06531ee5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6708544865937303927, guid: e4ef71a15aa26f440b87682b06531ee5, type: 3}
       propertyPath: m_StaticEditorFlags

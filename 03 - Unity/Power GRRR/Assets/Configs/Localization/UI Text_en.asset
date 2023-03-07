@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: c13804f9a29a8a046880647014258f9b, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 8502299294170611754
   m_TableData:
   - m_Id: 28497879040
     m_Localized: Start
@@ -57,8 +58,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5772655611027456
-    m_Localized: You are a young magician  who takes care of the power plants in
+    m_Localized: 'You are a young magician who takes care of the power plants in
       this world.
+
+      All plants are interconnected.'
     m_Metadata:
       m_Items: []
   - m_Id: 245745334296576
@@ -141,6 +144,15 @@ MonoBehaviour:
     m_Localized: Collect and use POWER BRRU canes to speedup your journey.
     m_Metadata:
       m_Items: []
+  - m_Id: 6522802292858880
+    m_Localized: 'Score: {score}'
+    m_Metadata:
+      m_Items:
+      - rid: 8502299294170611754
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8502299294170611754
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00209b41742c1700

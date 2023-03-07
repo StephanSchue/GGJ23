@@ -139,6 +139,7 @@ namespace GGJ23.Game
 
         private UnityEvent _onInitialize = new ();
         private UnityEvent _onPuzzleRefresh = new();
+        private UnityEvent _onRepairComplete = new();
 
         public Puzzle puzzle = new Puzzle();
         public bool brokenOnStart = false;
@@ -164,6 +165,7 @@ namespace GGJ23.Game
 
         public UnityEvent OnInitialize => _onInitialize;
         public UnityEvent OnPuzzleRefresh => _onPuzzleRefresh;
+        public UnityEvent OnRepairComplete => _onRepairComplete;
 
         #region Init
 
@@ -217,6 +219,7 @@ namespace GGJ23.Game
                 {
                     _progress = 0f;
                     _status = InteractionStatus.FreshlyRepaired;
+                    _onRepairComplete.Invoke();
                     return;
                 }
 
@@ -234,6 +237,7 @@ namespace GGJ23.Game
                     // Complete Repair
                     _progress = 0f;
                     _status = InteractionStatus.FreshlyRepaired;
+                    _onRepairComplete.Invoke();
                     return (true,true);
                 }
                 else
@@ -274,7 +278,7 @@ namespace GGJ23.Game
             _puzzleTries = 0;
             puzzle.Generate(_puzzleLength, _puzzleRepetion);
         }
-
+        
         public void StartInteraction(InteractionMode interactionMode)
         {
             if (interactionMode == InteractionMode.Puzzle && _status == InteractionStatus.Broken) { _status = InteractionStatus.BeingRepaired; }

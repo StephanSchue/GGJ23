@@ -127,6 +127,10 @@ MonoBehaviour:
     m_Key: text_help_05
     m_Metadata:
       m_Items: []
+  - m_Id: 6522802292858880
+    m_Key: text_score
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
