@@ -27,6 +27,7 @@ namespace GGJ23.Game.Visuals
         public Animator dayDotificationAnimator;
         public Canvas progressBarCanvas;
         public Slider progressBarSlider;
+        public Animator transitionAnimator;
 
         [Header("Night Graphics")]
         [FormerlySerializedAs("spriteRendererLightGlow")]
@@ -59,6 +60,7 @@ namespace GGJ23.Game.Visuals
 
             interactable.OnInitialize.AddListener(Initalize);
             interactable.OnPuzzleRefresh.AddListener(PuzzleRefresh);
+            interactable.OnRepairComplete.AddListener(RepairCompleted);
         }
 
         private void Initalize()
@@ -81,6 +83,11 @@ namespace GGJ23.Game.Visuals
             _puzzleRefreshPending = true;
         }
 
+        private void RepairCompleted()
+        {
+            transitionAnimator.SetTrigger("RepairComplete");
+        }
+
         // Update is called once per frame
         private void Update()
         {
@@ -98,7 +105,7 @@ namespace GGJ23.Game.Visuals
                 // Puzzle update
                 for (int i = 0; i < puzzleImages.Length; i++)
                 {
-                    if (interactable.Status == InteractionStatus.BeingRepaired && i < interactable.puzzle.MaxNumber)
+                    if ((interactable.Status == InteractionStatus.Broken || interactable.Status == InteractionStatus.BeingRepaired) && i < interactable.puzzle.MaxNumber)
                     {
                         if (!puzzleImages[i].gameObject.activeSelf || _puzzleRefreshPending) { puzzleImages[i].gameObject.SetActive(true); puzzleImages[i].sprite = puzzleButtons[interactable.puzzle.Buttons[i]]; }
 

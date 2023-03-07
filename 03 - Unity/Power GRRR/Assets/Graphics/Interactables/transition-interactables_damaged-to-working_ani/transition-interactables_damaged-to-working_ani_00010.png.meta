@@ -1,0 +1,1236 @@
+fileFormatVersion: 2
+guid: 4cd927549a62eb74a8c627b6de51c480
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 520714101080001555
+    second: transition-interactables_damaged-to-working_ani_00010_0
+  - first:
+      213: -6650466278085874081
+    second: transition-interactables_damaged-to-working_ani_00010_1
+  - first:
+      213: -843184742426124919
+    second: transition-interactables_damaged-to-working_ani_00010_2
+  - first:
+      213: 7794078147408298296
+    second: transition-interactables_damaged-to-working_ani_00010_3
+  - first:
+      213: -8338237465120142254
+    second: transition-interactables_damaged-to-working_ani_00010_4
+  - first:
+      213: 3788810433512153336
+    second: transition-interactables_damaged-to-working_ani_00010_5
+  - first:
+      213: -1573615476795214109
+    second: transition-interactables_damaged-to-working_ani_00010_6
+  - first:
+      213: -8898682121782841229
+    second: transition-interactables_damaged-to-working_ani_00010_7
+  - first:
+      213: 2464167751889663746
+    second: transition-interactables_damaged-to-working_ani_00010_8
+  - first:
+      213: 1606779653026181173
+    second: transition-interactables_damaged-to-working_ani_00010_9
+  - first:
+      213: 966467445617449154
+    second: transition-interactables_damaged-to-working_ani_00010_10
+  - first:
+      213: -7903499294416803421
+    second: transition-interactables_damaged-to-working_ani_00010_11
+  - first:
+      213: -6096955129187978150
+    second: transition-interactables_damaged-to-working_ani_00010_12
+  - first:
+      213: 5988291752160897859
+    second: transition-interactables_damaged-to-working_ani_00010_13
+  - first:
+      213: 3159588103809423077
+    second: transition-interactables_damaged-to-working_ani_00010_14
+  - first:
+      213: 7514770917493369844
+    second: transition-interactables_damaged-to-working_ani_00010_15
+  - first:
+      213: -1522921326000964233
+    second: transition-interactables_damaged-to-working_ani_00010_16
+  - first:
+      213: 4608982054507519145
+    second: transition-interactables_damaged-to-working_ani_00010_17
+  - first:
+      213: -8614602564992018960
+    second: transition-interactables_damaged-to-working_ani_00010_18
+  - first:
+      213: -68888057387218184
+    second: transition-interactables_damaged-to-working_ani_00010_19
+  - first:
+      213: 581040193900862560
+    second: transition-interactables_damaged-to-working_ani_00010_20
+  - first:
+      213: -8644181465395380142
+    second: transition-interactables_damaged-to-working_ani_00010_21
+  - first:
+      213: 749498394888622748
+    second: transition-interactables_damaged-to-working_ani_00010_22
+  - first:
+      213: -7883069238831377757
+    second: transition-interactables_damaged-to-working_ani_00010_23
+  - first:
+      213: 6491398651526580803
+    second: transition-interactables_damaged-to-working_ani_00010_24
+  - first:
+      213: 4933328959451562476
+    second: transition-interactables_damaged-to-working_ani_00010_25
+  - first:
+      213: 1143783394621061072
+    second: transition-interactables_damaged-to-working_ani_00010_26
+  - first:
+      213: 7734369002432831877
+    second: transition-interactables_damaged-to-working_ani_00010_27
+  - first:
+      213: -964443490324575478
+    second: transition-interactables_damaged-to-working_ani_00010_28
+  - first:
+      213: -4736337499013980506
+    second: transition-interactables_damaged-to-working_ani_00010_29
+  - first:
+      213: -5206068983478120137
+    second: transition-interactables_damaged-to-working_ani_00010_30
+  - first:
+      213: -5925478880372787471
+    second: transition-interactables_damaged-to-working_ani_00010_31
+  - first:
+      213: -4361054766315113332
+    second: transition-interactables_damaged-to-working_ani_00010_32
+  - first:
+      213: -26100719980825609
+    second: transition-interactables_damaged-to-working_ani_00010_33
+  - first:
+      213: 2637905310744784720
+    second: transition-interactables_damaged-to-working_ani_00010_34
+  - first:
+      213: 6622465012577304890
+    second: transition-interactables_damaged-to-working_ani_00010_35
+  - first:
+      213: 4509936934221440248
+    second: transition-interactables_damaged-to-working_ani_00010_36
+  - first:
+      213: 9044739474596389039
+    second: transition-interactables_damaged-to-working_ani_00010_37
+  - first:
+      213: 6229527932992743526
+    second: transition-interactables_damaged-to-working_ani_00010_38
+  - first:
+      213: -1288282260167197019
+    second: transition-interactables_damaged-to-working_ani_00010_39
+  - first:
+      213: 8542633564017659957
+    second: transition-interactables_damaged-to-working_ani_00010_40
+  - first:
+      213: 7996324134428824577
+    second: transition-interactables_damaged-to-working_ani_00010_41
+  - first:
+      213: 1601942356019039530
+    second: transition-interactables_damaged-to-working_ani_00010_42
+  - first:
+      213: -9083203363234734912
+    second: transition-interactables_damaged-to-working_ani_00010_43
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_0
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 906
+        width: 53
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31c096057b2f93700800000000000000
+      internalID: 520714101080001555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_1
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 920
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e2affd72cc4b3a0800000000000000
+      internalID: -6650466278085874081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_2
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 948
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98d59a3b1f76c44f0800000000000000
+      internalID: -843184742426124919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_3
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 887
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83108efb7c02a2c60800000000000000
+      internalID: 7794078147408298296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_4
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 873
+        width: 74
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c09ae0431a84c80800000000000000
+      internalID: -8338237465120142254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_5
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 836
+        width: 55
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f029cae30f849430800000000000000
+      internalID: 3788810433512153336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_6
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 487
+        width: 300
+        height: 442
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e6709caf05692ae0800000000000000
+      internalID: -1573615476795214109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 678
+        width: 360
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 370b30ae1c7818480800000000000000
+      internalID: -8898682121782841229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_8
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 834
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2073b5eb38b723220800000000000000
+      internalID: 2464167751889663746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_9
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 839
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53073f2d49d6c4610800000000000000
+      internalID: 1606779653026181173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_10
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 848
+        width: 44
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c8d10f6505996d00800000000000000
+      internalID: 966467445617449154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_11
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 706
+        width: 87
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a96cb92441215290800000000000000
+      internalID: -7903499294416803421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_12
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 477
+        width: 191
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a543141fc93436ba0800000000000000
+      internalID: -6096955129187978150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_13
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 676
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ba3fa0f9faa1350800000000000000
+      internalID: 5988291752160897859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_14
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 709
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e65c14e3ac19db20800000000000000
+      internalID: 3159588103809423077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_15
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 601
+        width: 83
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fbe0a1a554d94860800000000000000
+      internalID: 7514770917493369844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_16
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 677
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77d78de6f1f7ddae0800000000000000
+      internalID: -1522921326000964233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_17
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 638
+        width: 57
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ac121752c466ff30800000000000000
+      internalID: 4608982054507519145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_18
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 630
+        width: 32
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f55b78fb98c27880800000000000000
+      internalID: -8614602564992018960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_19
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 637
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fa0b224da24b0ff0800000000000000
+      internalID: -68888057387218184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_20
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 641
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06c5fa55af4401800800000000000000
+      internalID: 581040193900862560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_21
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 580
+        width: 39
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 250c71d81c2b90880800000000000000
+      internalID: -8644181465395380142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_22
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 598
+        width: 42
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c92df03b1d0c66a00800000000000000
+      internalID: 749498394888622748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_23
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 474
+        width: 77
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a295a72b46b99290800000000000000
+      internalID: -7883069238831377757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_24
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 506
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34a01bf3ea4161a50800000000000000
+      internalID: 6491398651526580803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_25
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 532
+        width: 35
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce1024cfc84b67440800000000000000
+      internalID: 4933328959451562476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_26
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 544
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d7f068ffe88fdf00800000000000000
+      internalID: 1143783394621061072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_27
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 517
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5812dc711aff55b60800000000000000
+      internalID: 7734369002432831877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_28
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 462
+        width: 67
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b044161cb9d92f0800000000000000
+      internalID: -964443490324575478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_29
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 330
+        width: 210
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aed8ea8326254eb0800000000000000
+      internalID: -4736337499013980506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_30
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 504
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7319b9ba7d350c7b0800000000000000
+      internalID: -5206068983478120137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_31
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 468
+        width: 27
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f6fc435a5874cda0800000000000000
+      internalID: -5925478880372787471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_32
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 380
+        width: 31
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8473cfbbcb6a73c0800000000000000
+      internalID: -4361054766315113332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_33
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 394
+        width: 33
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f33921988543aff0800000000000000
+      internalID: -26100719980825609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_34
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 91
+        width: 596
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f2f0667e8bb9420800000000000000
+      internalID: 2637905310744784720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_35
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 358
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a318f1477d8b7eb50800000000000000
+      internalID: 6622465012577304890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_36
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 350
+        width: 45
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f4eeab3fb3869e30800000000000000
+      internalID: 4509936934221440248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_37
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 306
+        width: 60
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa0654d81ae558d70800000000000000
+      internalID: 9044739474596389039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_38
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 203
+        width: 81
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 668e76c46aab37650800000000000000
+      internalID: 6229527932992743526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_39
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 299
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aefb482c1a1f1ee0800000000000000
+      internalID: -1288282260167197019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_40
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 318
+        width: 40
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5301a9537f78d8670800000000000000
+      internalID: 8542633564017659957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_41
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 153
+        width: 43
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10453851f66a8fe60800000000000000
+      internalID: 7996324134428824577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_42
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 183
+        width: 51
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2dca29d51e3b3610800000000000000
+      internalID: 1601942356019039530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition-interactables_damaged-to-working_ani_00010_43
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 42
+        width: 61
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc92cf7aaaf1f180800000000000000
+      internalID: -9083203363234734912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      transition-interactables_damaged-to-working_ani_00010_34: 2637905310744784720
+      transition-interactables_damaged-to-working_ani_00010_20: 581040193900862560
+      transition-interactables_damaged-to-working_ani_00010_24: 6491398651526580803
+      transition-interactables_damaged-to-working_ani_00010_18: -8614602564992018960
+      transition-interactables_damaged-to-working_ani_00010_40: 8542633564017659957
+      transition-interactables_damaged-to-working_ani_00010_21: -8644181465395380142
+      transition-interactables_damaged-to-working_ani_00010_19: -68888057387218184
+      transition-interactables_damaged-to-working_ani_00010_39: -1288282260167197019
+      transition-interactables_damaged-to-working_ani_00010_42: 1601942356019039530
+      transition-interactables_damaged-to-working_ani_00010_2: -843184742426124919
+      transition-interactables_damaged-to-working_ani_00010_43: -9083203363234734912
+      transition-interactables_damaged-to-working_ani_00010_28: -964443490324575478
+      transition-interactables_damaged-to-working_ani_00010_22: 749498394888622748
+      transition-interactables_damaged-to-working_ani_00010_12: -6096955129187978150
+      transition-interactables_damaged-to-working_ani_00010_36: 4509936934221440248
+      transition-interactables_damaged-to-working_ani_00010_6: -1573615476795214109
+      transition-interactables_damaged-to-working_ani_00010_8: 2464167751889663746
+      transition-interactables_damaged-to-working_ani_00010_38: 6229527932992743526
+      transition-interactables_damaged-to-working_ani_00010_10: 966467445617449154
+      transition-interactables_damaged-to-working_ani_00010_17: 4608982054507519145
+      transition-interactables_damaged-to-working_ani_00010_23: -7883069238831377757
+      transition-interactables_damaged-to-working_ani_00010_7: -8898682121782841229
+      transition-interactables_damaged-to-working_ani_00010_27: 7734369002432831877
+      transition-interactables_damaged-to-working_ani_00010_29: -4736337499013980506
+      transition-interactables_damaged-to-working_ani_00010_25: 4933328959451562476
+      transition-interactables_damaged-to-working_ani_00010_30: -5206068983478120137
+      transition-interactables_damaged-to-working_ani_00010_4: -8338237465120142254
+      transition-interactables_damaged-to-working_ani_00010_41: 7996324134428824577
+      transition-interactables_damaged-to-working_ani_00010_31: -5925478880372787471
+      transition-interactables_damaged-to-working_ani_00010_13: 5988291752160897859
+      transition-interactables_damaged-to-working_ani_00010_32: -4361054766315113332
+      transition-interactables_damaged-to-working_ani_00010_26: 1143783394621061072
+      transition-interactables_damaged-to-working_ani_00010_37: 9044739474596389039
+      transition-interactables_damaged-to-working_ani_00010_33: -26100719980825609
+      transition-interactables_damaged-to-working_ani_00010_35: 6622465012577304890
+      transition-interactables_damaged-to-working_ani_00010_15: 7514770917493369844
+      transition-interactables_damaged-to-working_ani_00010_1: -6650466278085874081
+      transition-interactables_damaged-to-working_ani_00010_0: 520714101080001555
+      transition-interactables_damaged-to-working_ani_00010_16: -1522921326000964233
+      transition-interactables_damaged-to-working_ani_00010_9: 1606779653026181173
+      transition-interactables_damaged-to-working_ani_00010_14: 3159588103809423077
+      transition-interactables_damaged-to-working_ani_00010_5: 3788810433512153336
+      transition-interactables_damaged-to-working_ani_00010_11: -7903499294416803421
+      transition-interactables_damaged-to-working_ani_00010_3: 7794078147408298296
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
