@@ -139,7 +139,7 @@ namespace GGJ23.Game
 
         private UnityEvent _onInitialize = new ();
         private UnityEvent _onPuzzleRefresh = new();
-        private UnityEvent _onRepairComplete = new();
+        private EnergyRestoreEvent _onRepairComplete = new();
 
         public Puzzle puzzle = new Puzzle();
         public bool brokenOnStart = false;
@@ -165,7 +165,7 @@ namespace GGJ23.Game
 
         public UnityEvent OnInitialize => _onInitialize;
         public UnityEvent OnPuzzleRefresh => _onPuzzleRefresh;
-        public UnityEvent OnRepairComplete => _onRepairComplete;
+        public EnergyRestoreEvent OnRepairComplete => _onRepairComplete;
 
         #region Init
 
@@ -191,10 +191,11 @@ namespace GGJ23.Game
             if (_onInitialize != null) { _onInitialize.Invoke(); }
         }
 
-        public void RegisterEvents(UnityEvent onDaySwitch, UnityEvent onNightSwitch)
+        public void RegisterEvents(UnityEvent onDaySwitch, UnityEvent onNightSwitch, EnergyRestoreEvent onRepairComplete)
         {
             onDaySwitch.AddListener(OnDaySwitch);
             onNightSwitch.AddListener(OnNightSwitch);
+            _onRepairComplete.AddListener((value) => onRepairComplete.Invoke(value));
         }
 
         public void Process(float dt)
@@ -219,7 +220,7 @@ namespace GGJ23.Game
                 {
                     _progress = 0f;
                     _status = InteractionStatus.FreshlyRepaired;
-                    _onRepairComplete.Invoke();
+                    _onRepairComplete.Invoke(config.PuzzleSolveEnergyRestore);
                     return;
                 }
 
@@ -237,7 +238,7 @@ namespace GGJ23.Game
                     // Complete Repair
                     _progress = 0f;
                     _status = InteractionStatus.FreshlyRepaired;
-                    _onRepairComplete.Invoke();
+                    _onRepairComplete.Invoke(config.PuzzleSolveEnergyRestore);
                     return (true,true);
                 }
                 else

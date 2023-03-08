@@ -61,7 +61,7 @@ namespace GGJ23.Managment
         public void StopGame()
         {
             Score = 0;
-            Pause(true);
+            Pause(false);
         }
 
         public void Pause(bool pause)

@@ -15,13 +15,14 @@ namespace GGJ23.Game.Config
         private int _broekenOnStartPuzzleNumberApperence = 2;
         [SerializeField]
         private int _puzzleTriesBeforeRegenerate = 3;
-
+        [SerializeField]
+        private float _puzzleSolveEnergyRestore = 10;
+        
         public float Duration => _duration;
         public float InteractionRadius => _interactionRadius;
         public int BrokenOnStartPuzzleNumberCount => _brokenOnStartPuzzleNumberCount;
         public int BrokenOnStartPuzzleNumberApperence => _broekenOnStartPuzzleNumberApperence;
         public int PuzzleTriesBeforeRegenerate => _puzzleTriesBeforeRegenerate;
-
-
+        public float PuzzleSolveEnergyRestore => _puzzleSolveEnergyRestore;
     }
 }

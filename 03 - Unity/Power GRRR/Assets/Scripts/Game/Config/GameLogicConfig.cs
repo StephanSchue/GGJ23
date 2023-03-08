@@ -15,6 +15,7 @@ namespace GGJ23.Game.Config
         [Header("Loose Points")]
         [SerializeField] private float _loosePointsSec = 1.0f;
         [SerializeField] private float _allGoodLoosePointRegainSec = 1.0f;
+        [SerializeField] private float _puzzleCompletePointRegainSec = 5.0f;
 
         [Header("Score")]
         [SerializeField] private float _powerIncreaseScoreMultiplier = 1f;
@@ -50,6 +51,8 @@ namespace GGJ23.Game.Config
         public float DifficultyFactorFromMultipleBreakages => _difficultyFactorFromMultipleBreakages;
         public float FullEnergyDaySpeedMultiplier => _fullEnergyDaySpeedMultiplier;
         public float AllGoodLoosePointRegainSec => _allGoodLoosePointRegainSec;
+        public float PuzzleCompletePointRegainSec => _puzzleCompletePointRegainSec;
+
         public float LoosePointsSec => _loosePointsSec;
         
         public float FullEnergyScoreMultiplier => _fullEnergyScoreMultiplier;

@@ -18,10 +18,11 @@ MonoBehaviour:
   _fullEnergyDaySpeedMultiplier: 5
   _loosePointsSec: 0.5
   _allGoodLoosePointRegainSec: 3
+  _puzzleCompletePointRegainSec: 5
   _powerIncreaseScoreMultiplier: 1
   _powerDecreaseScoreMultiplier: 0.25
   _fullEnergyScoreMultiplier: 2.5
-  _lossPointsNeeded: 75
+  _lossPointsNeeded: 100
   _maxDifficulty: 10
   _timeToMaxDifficulty: 10
   _maxDifficultyFromDistance: 15

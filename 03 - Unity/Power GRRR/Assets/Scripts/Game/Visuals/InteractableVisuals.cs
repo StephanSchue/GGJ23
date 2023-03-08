@@ -83,7 +83,7 @@ namespace GGJ23.Game.Visuals
             _puzzleRefreshPending = true;
         }
 
-        private void RepairCompleted()
+        private void RepairCompleted(float energyRestore)
         {
             transitionAnimator.SetTrigger("RepairComplete");
         }

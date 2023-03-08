@@ -11,8 +11,8 @@ namespace GGJ23.Game
         Puzzle
     }
 
-    [System.Serializable]
-    public class PickupEvent : UnityEvent<Pickup> { }
+    [System.Serializable] public class PickupEvent : UnityEvent<Pickup> { }
+    [System.Serializable] public class EnergyRestoreEvent : UnityEvent<float> { }
 
     public class InteractionController : MonoBehaviour
     {
@@ -60,13 +60,13 @@ namespace GGJ23.Game
 
         #region Public methods
 
-        public void PopulateInteractables(Interactable[] interactables, UnityEvent onDaySwitch, UnityEvent onNightSwitch)
+        public void PopulateInteractables(Interactable[] interactables, UnityEvent onDaySwitch, UnityEvent onNightSwitch, EnergyRestoreEvent onRepairComplete)
         {
             _interactables = interactables;
 
             for(int i = 0; i < _interactables.Length; i++)
             {
-                _interactables[i].RegisterEvents(onDaySwitch, onNightSwitch);
+                _interactables[i].RegisterEvents(onDaySwitch, onNightSwitch, onRepairComplete);
             }
         }
 

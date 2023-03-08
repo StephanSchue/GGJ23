@@ -283,7 +283,7 @@ namespace GGJ23.UI
             UpdateFPSCounter();
 
             #if DEVELOPMENT_BUILD || UNITY_EDITOR
-                debugText.text = $"DEBUG - FPS: {_avgFramerate}";
+                debugText.text = $"DEBUG - FPS: {_avgFramerate}; ENERGY: {gameManager.gameLogic.LossPoints}";
             #endif
         }
 

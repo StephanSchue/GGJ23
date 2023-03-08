@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 2
   _interactionRadius: 4
-  _puzzleNumberCount: 4
-  _puzzleNumberApperence: 2
+  _brokenOnStartPuzzleNumberCount: 4
+  _broekenOnStartPuzzleNumberApperence: 2
   _puzzleTriesBeforeRegenerate: 3
+  _puzzleSolveEnergyRestore: 4.5

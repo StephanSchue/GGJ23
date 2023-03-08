@@ -41,6 +41,7 @@ namespace GGJ23.Game
         private float _currentTime = 1f; // 1 = first day, 1.5 = first night, 2 = second day etc.
         private EnergyStatus _energyStatus = EnergyStatus.Balanced;
         private bool _firstDay = false;
+        private float _restoreEnergy = 0f;
 
         private Vector3 _spawnPosition = Vector3.zero;
         private bool _running = false;
@@ -48,6 +49,7 @@ namespace GGJ23.Game
         private BrokenLevel _brokenLevel;
 
         // --- Properties ---
+        public float LossPoints => _lossPoints;
         public float LossPercentage => _lossPoints / config.LossPointsNeeded;
         public EnergyStatus EnergyStatus => _energyStatus;
         public float Score => _currentScore;
@@ -57,6 +59,7 @@ namespace GGJ23.Game
         public UnityEvent OnDaySwitch;
         public UnityEvent OnNightSwitch;
         public PickupEvent OnPickupActivate;
+        public EnergyRestoreEvent OnRepairComplete;
         public UnityEvent GameOver;
 
         public bool IsNight => _isNight;
@@ -73,10 +76,11 @@ namespace GGJ23.Game
             var props = FindObjectsByType<Prop>(FindObjectsSortMode.None);
 
             OnPickupActivate.AddListener(ProcessPickupActivate);
+            OnRepairComplete.AddListener(ProcessRepairComplete);
 
             if (InteractionController != null)
             {
-                InteractionController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch);
+                InteractionController.PopulateInteractables(interactables, OnDaySwitch, OnNightSwitch, OnRepairComplete);
                 InteractionController.PopulatePickups(pickups, OnPickupActivate, OnDaySwitch, OnNightSwitch);
                 InteractionController.RegisterEvents(EffectContoller);
             }
@@ -123,6 +127,7 @@ namespace GGJ23.Game
             _lossPoints = 0f;
             _currentScore = 0f;
             _currentTime = 1f;
+            _restoreEnergy = 0f;
             _isNight = false;
             _firstDay = true;
             MovementController.transform.SetPositionAndRotation(_spawnPosition, Quaternion.identity);
@@ -211,24 +216,31 @@ namespace GGJ23.Game
             }
 
             bool allGood = true;
-            if (InteractionController != null)
+            // LoosePoints Apply
+            foreach (var inter in InteractionController.Interactables)
             {
-                foreach (var inter in InteractionController.Interactables)
+                if (inter.Status == InteractionStatus.Broken || inter.Status == InteractionStatus.BeingRepaired)
                 {
-                    if (inter.Status == InteractionStatus.Broken || inter.Status == InteractionStatus.BeingRepaired)
-                    {
-                        allGood = false;
-                        if (!_isNight) { _lossPoints += (config.LoosePointsSec * deltaTime); _energyStatus = EnergyStatus.Decrease; }
-                        else { _energyStatus = EnergyStatus.None; }  
-                    }
+                    allGood = false;
+                    if (!_isNight) { _lossPoints += (config.LoosePointsSec * deltaTime); _energyStatus = EnergyStatus.Decrease; }
+                    else { _energyStatus = EnergyStatus.None; }  
                 }
+            }
 
-                if (allGood)
-                {
-                    _energyStatus = Mathf.Approximately(_lossPoints, 0f) ? EnergyStatus.Balanced : EnergyStatus.Increase;
-                    if (!_isNight) { _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodLoosePointRegainSec * deltaTime)); }
-                    else { _energyStatus = EnergyStatus.None; }
-                }
+            // RepairRestore
+            if (_restoreEnergy > 0f)
+            {
+                var restorePerFrame = Mathf.Min(config.PuzzleCompletePointRegainSec * deltaTime, _restoreEnergy);
+                _restoreEnergy -= restorePerFrame;
+                _lossPoints = Mathf.Max(0, _lossPoints - restorePerFrame);
+            }
+
+            // All Good Bonus
+            if (allGood)
+            {
+                _energyStatus = Mathf.Approximately(_lossPoints, 0f) ? EnergyStatus.Balanced : EnergyStatus.Increase;
+                if (!_isNight) { _lossPoints = Mathf.Max(0, _lossPoints - (config.AllGoodLoosePointRegainSec * deltaTime)); }
+                else { _energyStatus = EnergyStatus.None; }
             }
 
             if (_lossPoints >= config.LossPointsNeeded)
@@ -370,6 +382,11 @@ namespace GGJ23.Game
                     }
                     break;
             }
+        }
+
+        public void ProcessRepairComplete(float value)
+        {
+            _restoreEnergy = value;
         }
     }
 }
