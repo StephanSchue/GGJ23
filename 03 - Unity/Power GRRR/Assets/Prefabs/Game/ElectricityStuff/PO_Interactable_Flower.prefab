@@ -221,6 +221,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PO_Interactable_Flower
       objectReference: {fileID: 0}
+    - target: {fileID: 2650147525168207472, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2650147525168207472, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2650147525168207472, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.059
+      objectReference: {fileID: 0}
+    - target: {fileID: 2650147525168207472, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.209
+      objectReference: {fileID: 0}
     - target: {fileID: 2696255860857877897, guid: 38056232d94b1124da580cfa6c9b8542, type: 3}
       propertyPath: m_Sprite
       value: 
