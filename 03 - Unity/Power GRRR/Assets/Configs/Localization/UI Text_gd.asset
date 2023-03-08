@@ -52,9 +52,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 215712381214720
-    m_Localized: "Nicole Tietze | Illustration / Environment Animation\nStephan Schueritz
-      | Programming\nPaul Wulf | Game Design / Programming\nH\xFCr Palo | Character
-      Animation\nOrion Reed-Parkinson | Audio Recordings"
+    m_Localized: "<b>Nicole Tietze</b> | Illustration / Environment Animation / Level
+      Design\r\n<b>Stephan Schueritz</b> | Programming / Balancing / Translation
+      (EN/DE/GD)\r\n<b>Paul Wulff</b> | Game Design / Programming\r\n<b>H\xFCr Palo</b>
+      | Character Animation\r\n<b>Orion Reed-Parkinson</b> | Audio Recording"
     m_Metadata:
       m_Items: []
   - m_Id: 245745334296576
