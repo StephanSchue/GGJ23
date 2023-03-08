@@ -1279,7 +1279,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -25, y: -25}
-  m_SizeDelta: {x: 300, y: 70}
+  m_SizeDelta: {x: 300, y: 110}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7967954085510859250
 CanvasRenderer:
@@ -5441,7 +5441,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2871862739877551414}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -9927,7 +9927,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Debug
+  m_text: 'Debug
+
+    Debug'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45e39fbf55b26c84b8f6c5fd1970fe57, type: 2}
   m_sharedMaterial: {fileID: -4354164051632288920, guid: 45e39fbf55b26c84b8f6c5fd1970fe57, type: 2}
