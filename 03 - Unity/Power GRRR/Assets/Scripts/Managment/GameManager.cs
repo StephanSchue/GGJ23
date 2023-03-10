@@ -60,8 +60,10 @@ namespace GGJ23.Managment
 
         public void StopGame()
         {
+            Energy = 1f;
             Score = 0;
-            Pause(false);
+            gameLogic.ResetGame();
+            Pause(true);
         }
 
         public void Pause(bool pause)
