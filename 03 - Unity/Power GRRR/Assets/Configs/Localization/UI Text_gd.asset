@@ -24,7 +24,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 115697459200
-    m_Localized: Cuideachadh
+    m_Localized: deachadhadh
     m_Metadata:
       m_Items: []
   - m_Id: 151659421696
@@ -53,9 +53,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 215712381214720
     m_Localized: "<b>Nicole Tietze</b> | Illustration / Environment Animation / Level
-      Design\r\n<b>Stephan Schueritz</b> | Programming / Balancing / Translation
-      (EN/DE/GD)\r\n<b>Paul Wulff</b> | Game Design / Programming\r\n<b>H\xFCr Palo</b>
-      | Character Animation\r\n<b>Orion Reed-Parkinson</b> | Audio Recording"
+      Design\r\n<b>Stephan Schueritz</b> | Programming / Balancing / UI & UX\r\n<b>Paul
+      Wulff</b> | Game Design / Programming\r\n<b>H\xFCr Palo</b> | Character Animation\r\n<b>Orion
+      Reed-Parkinson</b> | Audio Recording\r\nTranslation:\r\n<b>Stephan Schueritz</b>
+      | EN/DE/GD\r\n<b>Davor Larson</b> | ES\r\n<b>Tomas Hudak</b> | SK"
     m_Metadata:
       m_Items: []
   - m_Id: 245745334296576
@@ -117,13 +118,13 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5772655611027456
     m_Localized: "Tha thu nad dhraoidh \xF2g a bheir aire do na lusan cumhachd san
-      t-saoghal seo.\r\nTha na lusan uile eadar-cheangailte."
+      t-saoghal seo.\nTha na lusan uile eadar-cheangailte."
     m_Metadata:
       m_Items: []
   - m_Id: 5772725991448576
     m_Localized: "Gach oidhche bidh ionadan cumhachd a\u2019 briseadh agus bidh an
-      saoghal a\u2019 call l\xF9th.\r\nCuimhnich far a bheil an lus seo airson an
-      c\xE0radh an ath latha."
+      saoghal a\u2019 call l\xF9th.\nCuimhnich far a bheil an lus seo airson an c\xE0radh
+      an ath latha."
     m_Metadata:
       m_Items: []
   - m_Id: 5772739711016960
@@ -133,7 +134,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5772752415563776
     m_Localized: "Feuch ris a\u2019 bh\xE0r l\xF9tha a chumail l\xE0n gus barrachd
-      phuingean fhaighinn.\r\nBidh a h-uile latha \xF9r a 'f\xE0s nas duilghe."
+      phuingean fhaighinn.\nBidh a h-uile latha \xF9r a 'f\xE0s nas duilghe."
     m_Metadata:
       m_Items: []
   - m_Id: 5772764516130816

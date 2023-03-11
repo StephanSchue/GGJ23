@@ -10,45 +10,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: UI Text_en
+  m_Name: UI Text_es
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: en
+    m_Code: es
   m_SharedData: {fileID: 11400000, guid: c13804f9a29a8a046880647014258f9b, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 8502299294170611754
+    - rid: 8502299386206224385
   m_TableData:
   - m_Id: 28497879040
-    m_Localized: Start
+    m_Localized: Iniciar
     m_Metadata:
       m_Items: []
   - m_Id: 115697459200
-    m_Localized: Help
+    m_Localized: Ayuda
     m_Metadata:
       m_Items: []
   - m_Id: 151659421696
-    m_Localized: Settings
+    m_Localized: Opciones
     m_Metadata:
       m_Items: []
   - m_Id: 176489701376
-    m_Localized: Credits
+    m_Localized: "Cr\xE9ditos"
     m_Metadata:
       m_Items: []
   - m_Id: 218466295808
-    m_Localized: Exit
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5432854388736
-    m_Localized: Reset
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5429473779712
-    m_Localized: Back
+    m_Localized: Salir
     m_Metadata:
       m_Items: []
   - m_Id: 5370984210432
-    m_Localized: Save
+    m_Localized: Guardar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5429473779712
+    m_Localized: "Atr\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5432854388736
+    m_Localized: Restablecer
     m_Metadata:
       m_Items: []
   - m_Id: 215712381214720
@@ -59,102 +59,97 @@ MonoBehaviour:
       | EN/DE/GD\r\n<b>Davor Larson</b> | ES\r\n<b>Tomas Hudak</b> | SK"
     m_Metadata:
       m_Items: []
-  - m_Id: 5772655611027456
-    m_Localized: 'You are a young magician who takes care of the power plants in
-      this world.
-
-      All plants are interconnected.'
-    m_Metadata:
-      m_Items: []
   - m_Id: 245745334296576
     m_Localized: Menu
     m_Metadata:
       m_Items: []
   - m_Id: 246163854532608
-    m_Localized: Boost
+    m_Localized: Acelerar
     m_Metadata:
       m_Items: []
   - m_Id: 247176376295424
-    m_Localized: Repair
+    m_Localized: Reparar
     m_Metadata:
       m_Items: []
   - m_Id: 305656231567360
-    m_Localized: Pause
+    m_Localized: Pausar
     m_Metadata:
       m_Items: []
   - m_Id: 306212945731584
-    m_Localized: Continue
+    m_Localized: Continuar
     m_Metadata:
       m_Items: []
   - m_Id: 306441329778688
-    m_Localized: Restart
+    m_Localized: Reiniciar
     m_Metadata:
       m_Items: []
   - m_Id: 307530728939520
-    m_Localized: Game Over
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3207349030035456
-    m_Localized: Language
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3207323033739264
-    m_Localized: SFX Volume
+    m_Localized: Fin del Juego
     m_Metadata:
       m_Items: []
   - m_Id: 3207288762081280
-    m_Localized: Music Volume
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207323033739264
+    m_Localized: Efectos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207349030035456
+    m_Localized: Lenguaje
     m_Metadata:
       m_Items: []
   - m_Id: 3209986806849536
-    m_Localized: Movement
+    m_Localized: Movimiento
     m_Metadata:
       m_Items: []
   - m_Id: 3210544758333440
-    m_Localized: Riddle mechanic
+    m_Localized: "Mec\xE1nica de Acertijos"
     m_Metadata:
       m_Items: []
   - m_Id: 3211988391632896
-    m_Localized: Controls
+    m_Localized: Controles
     m_Metadata:
       m_Items: []
   - m_Id: 3252100433387520
-    m_Localized: To see the controls of a different device just press a button on
-      that device.
+    m_Localized: Para ver los controles de diferentes dispositivos, presione el buton
+      del mismo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772655611027456
+    m_Localized: "Eres un joven mago que cuida de las plantas de poder de este mundo.\nTodas
+      las plantas est\xE1n interconectadas."
     m_Metadata:
       m_Items: []
   - m_Id: 5772725991448576
-    m_Localized: 'Every night power plants break and the world loses energy.
-
-      Memorize
-      where these plants are to fix them on the next day.'
+    m_Localized: "Cada noche las plantas de poder dejan de funcionar y el mundo pierde
+      energ\xEDa.\nMemoriza las posiciones de las plantas para poder arreglarlas
+      al d\xEDa siguiente."
     m_Metadata:
       m_Items: []
   - m_Id: 5772739711016960
-    m_Localized: You need to drive to the broken plants and repair them, before their
-      energy bar empties.
+    m_Localized: "Tienes que manejar hacia las plantas para repararlas, antes su
+      barra de energ\xEDa se vac\xEDe."
     m_Metadata:
       m_Items: []
   - m_Id: 5772752415563776
-    m_Localized: 'Try to keep the energy bar full to gain more points.
-
-      Every
-      new day will get more difficult.'
+    m_Localized: "Intenta mantener la barra de energ\xEDa llena para ganar m\xE1s
+      puntos.\nLa dificultad aumentar\xE1 al pasar cada d\xEDa."
     m_Metadata:
       m_Items: []
   - m_Id: 5772764516130816
-    m_Localized: Collect and use POWER BRRU cans to speed up your journey.
+    m_Localized: Colecta y usa las latas de POWER BRRU para acelerar tu viaje.
     m_Metadata:
       m_Items: []
   - m_Id: 6522802292858880
-    m_Localized: 'Score: {score}'
+    m_Localized: 'Puntos: {score}'
     m_Metadata:
       m_Items:
-      - rid: 8502299294170611754
+      - rid: 8502299386206224385
   references:
     version: 2
     RefIds:
-    - rid: 8502299294170611754
+    - rid: 8502299386206224385
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 00209b41742c1700

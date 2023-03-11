@@ -10,45 +10,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: UI Text_en
+  m_Name: UI Text_sk
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: en
+    m_Code: sk
   m_SharedData: {fileID: 11400000, guid: c13804f9a29a8a046880647014258f9b, type: 2}
   m_Metadata:
     m_Items:
-    - rid: 8502299294170611754
+    - rid: 8502299386974306305
   m_TableData:
   - m_Id: 28497879040
-    m_Localized: Start
+    m_Localized: "\u0160tart"
     m_Metadata:
       m_Items: []
   - m_Id: 115697459200
-    m_Localized: Help
+    m_Localized: Pomoc
     m_Metadata:
       m_Items: []
   - m_Id: 151659421696
-    m_Localized: Settings
+    m_Localized: Nastavenie
     m_Metadata:
       m_Items: []
   - m_Id: 176489701376
-    m_Localized: Credits
+    m_Localized: Kredity
     m_Metadata:
       m_Items: []
   - m_Id: 218466295808
-    m_Localized: Exit
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5432854388736
-    m_Localized: Reset
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5429473779712
-    m_Localized: Back
+    m_Localized: "Zavrie\u0165"
     m_Metadata:
       m_Items: []
   - m_Id: 5370984210432
-    m_Localized: Save
+    m_Localized: "Ulo\u017Ei\u0165"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5429473779712
+    m_Localized: "Sp\xE4\u0165"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5432854388736
+    m_Localized: "Re\u0161tart"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 245745334296576
+    m_Localized: Menu
     m_Metadata:
       m_Items: []
   - m_Id: 215712381214720
@@ -59,102 +63,92 @@ MonoBehaviour:
       | EN/DE/GD\r\n<b>Davor Larson</b> | ES\r\n<b>Tomas Hudak</b> | SK"
     m_Metadata:
       m_Items: []
-  - m_Id: 5772655611027456
-    m_Localized: 'You are a young magician who takes care of the power plants in
-      this world.
-
-      All plants are interconnected.'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 245745334296576
-    m_Localized: Menu
-    m_Metadata:
-      m_Items: []
   - m_Id: 246163854532608
-    m_Localized: Boost
+    m_Localized: "R\xFDchlos\u0165"
     m_Metadata:
       m_Items: []
   - m_Id: 247176376295424
-    m_Localized: Repair
+    m_Localized: Oprava
     m_Metadata:
       m_Items: []
   - m_Id: 305656231567360
-    m_Localized: Pause
+    m_Localized: Pauza
     m_Metadata:
       m_Items: []
   - m_Id: 306212945731584
-    m_Localized: Continue
+    m_Localized: "Pokra\u010Dova\u0165"
     m_Metadata:
       m_Items: []
   - m_Id: 306441329778688
-    m_Localized: Restart
+    m_Localized: "Re\u0161tart"
     m_Metadata:
       m_Items: []
   - m_Id: 307530728939520
-    m_Localized: Game Over
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3207349030035456
-    m_Localized: Language
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3207323033739264
-    m_Localized: SFX Volume
+    m_Localized: Koniec Hry
     m_Metadata:
       m_Items: []
   - m_Id: 3207288762081280
-    m_Localized: Music Volume
+    m_Localized: Hudba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207323033739264
+    m_Localized: "Zvukov\xE9 efekty"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3207349030035456
+    m_Localized: Jazyk
     m_Metadata:
       m_Items: []
   - m_Id: 3209986806849536
-    m_Localized: Movement
+    m_Localized: Pohyb
     m_Metadata:
       m_Items: []
   - m_Id: 3210544758333440
-    m_Localized: Riddle mechanic
+    m_Localized: "Puzzle Syst\xE9m"
     m_Metadata:
       m_Items: []
   - m_Id: 3211988391632896
-    m_Localized: Controls
+    m_Localized: "Ovl\xE1danie"
     m_Metadata:
       m_Items: []
   - m_Id: 3252100433387520
-    m_Localized: To see the controls of a different device just press a button on
-      that device.
+    m_Localized: "Ak chcete zobrazi\u0165 ovl\xE1danie in\xE9ho zariadenia, sta\u010D\xED
+      stla\u010Di\u0165 tla\u010Didlo na tom zariaden\xED."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5772655611027456
+    m_Localized: "Ste mlad\xFD k\xFAzeln\xEDk, ktor\xFD sa star\xE1 o elektr\xE1rne
+      v tomto svete.\r\nV\u0161etky elektr\xE1rne s\xFA navz\xE1jom prepojen\xE9."
     m_Metadata:
       m_Items: []
   - m_Id: 5772725991448576
-    m_Localized: 'Every night power plants break and the world loses energy.
-
-      Memorize
-      where these plants are to fix them on the next day.'
+    m_Localized: "Ka\u017Ed\xFA noc sa pokazia elektr\xE1rne a svet str\xE1ca energiu.\r\nZapam\xE4tajte
+      si, kde s\xFA tieto elektr\xE1rne, aby ste ich na druh\xFD de\u0148 opravili."
     m_Metadata:
       m_Items: []
   - m_Id: 5772739711016960
-    m_Localized: You need to drive to the broken plants and repair them, before their
-      energy bar empties.
+    m_Localized: "Mus\xEDte \xEDs\u0165 k rozbit\xFDm elektr\xE1r\u0148am a opravi\u0165
+      ich, sk\xF4r ne\u017E sa od nich energia vypr\xE1zdni."
     m_Metadata:
       m_Items: []
   - m_Id: 5772752415563776
-    m_Localized: 'Try to keep the energy bar full to gain more points.
-
-      Every
-      new day will get more difficult.'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5772764516130816
-    m_Localized: Collect and use POWER BRRU cans to speed up your journey.
+    m_Localized: "Sna\u017Ete sa udr\u017Ea\u0165 energetick\xFA ty\u010Dinku pln\xFA,
+      aby ste z\xEDskali viac bodov.\r\nKa\u017Ed\xFD nov\xFD de\u0148 bude \u0165a\u017E\u0161\xED."
     m_Metadata:
       m_Items: []
   - m_Id: 6522802292858880
-    m_Localized: 'Score: {score}'
+    m_Localized: 'Body: {score}'
     m_Metadata:
       m_Items:
-      - rid: 8502299294170611754
+      - rid: 8502299386974306305
+  - m_Id: 5772764516130816
+    m_Localized: "Zbierajte a pou\u017E\xEDvajte plechovky POWER BRRU na r\xFDchlos\u0165."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
-    - rid: 8502299294170611754
+    - rid: 8502299386974306305
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 00209b41742c1700

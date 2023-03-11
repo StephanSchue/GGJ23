@@ -53,9 +53,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 215712381214720
     m_Localized: "<b>Nicole Tietze</b> | Illustration / Environment Animation / Level
-      Design\r\n<b>Stephan Schueritz</b> | Programming / Balancing / Translation
-      (EN/DE/GD)\r\n<b>Paul Wulff</b> | Game Design / Programming\r\n<b>H\xFCr Palo</b>
-      | Character Animation\r\n<b>Orion Reed-Parkinson</b> | Audio Recording"
+      Design\r\n<b>Stephan Schueritz</b> | Programming / Balancing / UI & UX\r\n<b>Paul
+      Wulff</b> | Game Design / Programming\r\n<b>H\xFCr Palo</b> | Character Animation\r\n<b>Orion
+      Reed-Parkinson</b> | Audio Recording\r\nTranslation:\r\n<b>Stephan Schueritz</b>
+      | EN/DE/GD\r\n<b>Davor Larson</b> | ES\r\n<b>Tomas Hudak</b> | SK"
     m_Metadata:
       m_Items: []
   - m_Id: 5772655611027456
@@ -121,7 +122,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5772725991448576
-    m_Localized: "Jede Nacht fallen Energie Pflanzen aus und die Welt verliert Energie.\r\nMerke
+    m_Localized: "Jede Nacht fallen Energie Pflanzen aus und die Welt verliert Energie.\nMerke
       dir, wo diese Pflanzen sind, um sie am n\xE4chsten Tag zu reparieren."
     m_Metadata:
       m_Items: []
