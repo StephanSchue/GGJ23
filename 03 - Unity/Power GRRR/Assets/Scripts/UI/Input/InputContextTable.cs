@@ -6,7 +6,8 @@ namespace GGJ23.Game
     {
         Keyboard = 0,
         XboxController,
-        PlaystationController
+        PlaystationController,
+        WebGLGamepad,
     }
 
     public enum InputButton
@@ -75,6 +76,7 @@ namespace GGJ23.Game
                 case InputControlSchema.Keyboard: return _keyboard.GetBGSprite(button);
                 case InputControlSchema.XboxController: return _xBoxController.GetBGSprite(button);
                 case InputControlSchema.PlaystationController: return _playstationController.GetBGSprite(button);
+                case InputControlSchema.WebGLGamepad: return _xBoxController.GetBGSprite(button);
                 default: return null;
             }
         }
@@ -86,6 +88,7 @@ namespace GGJ23.Game
                 case InputControlSchema.Keyboard: return _keyboard.GetLabel(button);
                 case InputControlSchema.XboxController: return _xBoxController.GetLabel(button);
                 case InputControlSchema.PlaystationController: return _playstationController.GetLabel(button);
+                case InputControlSchema.WebGLGamepad: return _xBoxController.GetLabel(button);
                 default: return null;
             }
         }

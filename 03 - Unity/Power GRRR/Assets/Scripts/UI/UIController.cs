@@ -410,6 +410,9 @@ namespace GGJ23.UI
                     case "XboxController":
                         controlSchema = InputControlSchema.XboxController;
                         break;
+                    case "WebGLGamepad":
+                        controlSchema = InputControlSchema.WebGLGamepad;
+                        break;
                 }
 
                 UpdateControlSchema(controlSchema);
@@ -420,7 +423,16 @@ namespace GGJ23.UI
         {
             if (device != null)
             {
-                UpdateControlSchema(device is DualShockGamepad ? InputControlSchema.PlaystationController : InputControlSchema.XboxController);
+                InputControlSchema controlSchema;
+
+                if (Application.platform == RuntimePlatform.WebGLPlayer)
+                { controlSchema = InputControlSchema.WebGLGamepad; }
+                else if (device is DualShockGamepad)
+                { controlSchema = InputControlSchema.PlaystationController; }
+                else
+                { controlSchema = InputControlSchema.XboxController; }
+
+                UpdateControlSchema(controlSchema);
             }
             else
             {

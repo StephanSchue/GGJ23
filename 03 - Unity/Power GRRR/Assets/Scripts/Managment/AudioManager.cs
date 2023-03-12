@@ -30,6 +30,8 @@ namespace GGJ23.Managment
         public AudioLayerData[] audioLayers;
         public SFXData[] sfxLayers;
 
+        private AudioSource[] audioSourceComponents;
+
         public AudioMixerGroup audioLayerMixerGroup;
         public AudioMixerGroup sfxLayerMixerGroup;
 
@@ -38,16 +40,20 @@ namespace GGJ23.Managment
 
         public void Awake()
         {
+            int index = 0;
+            audioSourceComponents = audioSourceRoot.GetComponents<AudioSource>();
+
             // Audio Layers
             audioLayerSources = new AudioSource[audioLayers.Length];
 
             for (int i = 0; i < audioLayerSources.Length; i++)
             {
-                audioLayerSources[i] = audioSourceRoot.AddComponent<AudioSource>();
+                audioLayerSources[i] = audioSourceComponents[index++];
                 audioLayerSources[i].clip = audioLayers[i].audioClip;
                 audioLayerSources[i].outputAudioMixerGroup = audioLayerMixerGroup;
                 audioLayerSources[i].volume = 0f;
                 audioLayerSources[i].loop = true;
+                audioLayerSources[i].enabled = true;
                 audioLayerSources[i].Play();
             }
 
@@ -56,7 +62,7 @@ namespace GGJ23.Managment
 
             for (int i = 0; i < sfxLayerSources.Length; i++)
             {
-                sfxLayerSources[i] = audioSourceRoot.AddComponent<AudioSource>();
+                sfxLayerSources[i] = audioSourceComponents[index++];
                 sfxLayerSources[i].outputAudioMixerGroup = sfxLayerMixerGroup;
                 sfxLayerSources[i].enabled = false;
             }

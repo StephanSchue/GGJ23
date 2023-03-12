@@ -117,10 +117,10 @@
                 {
                     "name": "",
                     "id": "c4224d0b-5712-46f4-a3ef-4420c3642eae",
-                    "path": "",
+                    "path": "<WebGLGamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "WebGLGamepad",
                     "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -171,6 +171,17 @@
                 },
                 {
                     "name": "",
+                    "id": "76db37a7-a85f-47f6-8d72-ca7f18a638db",
+                    "path": "<WebGLGamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WebGLGamepad",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "052c7454-deaa-4102-b386-cb909eb4a1d9",
                     "path": "<DualShockGamepad>/buttonWest",
                     "interactions": "",
@@ -198,6 +209,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Function01",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb5e654e-4c94-4e67-9a67-940c3edb583b",
+                    "path": "<WebGLGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WebGLGamepad",
                     "action": "Function01",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -237,6 +259,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a4564477-a3c9-476e-9e5a-e1c537ac1fbb",
+                    "path": "<WebGLGamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WebGLGamepad",
+                    "action": "Function02",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f78b00e9-4cb5-406e-b298-370776be6ea0",
                     "path": "<DualShockGamepad>/start",
                     "interactions": "",
@@ -264,6 +297,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Function03",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "138d0326-1540-40af-a201-f93c7789243b",
+                    "path": "<WebGLGamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WebGLGamepad",
                     "action": "Function03",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -346,6 +390,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "",
+                    "id": "4d9a36d2-5370-4405-b6fe-860d8d4a8908",
+                    "path": "<WebGLGamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WebGLGamepad",
+                    "action": "Axis01",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76cbd55e-4152-4386-8bd5-1a3979d99a65",
+                    "path": "<WebGLGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "WebGLGamepad",
+                    "action": "Axis01",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "2D Vector Keyboard Arrowkeys",
                     "id": "1f0fb13e-c3c7-4396-bd1d-928863a16afa",
                     "path": "2DVector",
@@ -417,7 +483,7 @@
                     "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XboxController;PlaystationController",
+                    "groups": "XboxController;PlaystationController;WebGLGamepad",
                     "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -428,7 +494,7 @@
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XboxController;PlaystationController",
+                    "groups": "XboxController;PlaystationController;WebGLGamepad",
                     "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -439,7 +505,7 @@
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XboxController;PlaystationController",
+                    "groups": "XboxController;PlaystationController;WebGLGamepad",
                     "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -450,7 +516,7 @@
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XboxController;PlaystationController",
+                    "groups": "XboxController;PlaystationController;WebGLGamepad",
                     "action": "Axis02",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -487,6 +553,17 @@
             "devices": [
                 {
                     "devicePath": "<DualShockGamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "WebGLGamepad",
+            "bindingGroup": "WebGLGamepad",
+            "devices": [
+                {
+                    "devicePath": "<WebGLGamepad>",
                     "isOptional": false,
                     "isOR": false
                 }
